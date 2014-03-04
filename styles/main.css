@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -415,9 +415,10 @@ body {
   font-family: Lato;
   font-weight: 400;
   font-size: 13px;
+  background-color: #e8e8e8;
 }
 
-/* line 9, ../../src/styles/_base.scss */
+/* line 10, ../../src/styles/_base.scss */
 h2 {
   font-weight: 300;
   font-size: 2em;
@@ -425,7 +426,7 @@ h2 {
   color: #00afea;
 }
 
-/* line 16, ../../src/styles/_base.scss */
+/* line 17, ../../src/styles/_base.scss */
 .button {
   padding: 20px 30px;
   margin: 10px 0;
@@ -438,18 +439,18 @@ h2 {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-/* line 26, ../../src/styles/_base.scss */
+/* line 27, ../../src/styles/_base.scss */
 .button:hover {
   background-color: #00afea;
   color: #fff;
 }
 
-/* line 32, ../../src/styles/_base.scss */
+/* line 33, ../../src/styles/_base.scss */
 #content {
   width: 1000px;
   padding: 50px;
   margin: 0 auto;
-  background-color: #e8e8e8;
+  background-color: #fff;
 }
 
 /* line 1, ../../src/styles/_nav.scss */
