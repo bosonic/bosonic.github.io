@@ -413,8 +413,8 @@ table {
 /* line 3, ../../src/styles/_base.scss */
 body {
   font-family: Lato;
-  font-weight: 400;
-  font-size: 13px;
+  font-weight: 300;
+  font-size: 15px;
   background-color: #e8e8e8;
 }
 
@@ -424,10 +424,12 @@ h2 {
   font-size: 2em;
   text-transform: uppercase;
   color: #00afea;
+  margin-top: 0;
 }
 
-/* line 17, ../../src/styles/_base.scss */
+/* line 18, ../../src/styles/_base.scss */
 .button {
+  display: inline-block;
   padding: 20px 30px;
   margin: 10px 0;
   text-transform: uppercase;
@@ -439,13 +441,13 @@ h2 {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-/* line 27, ../../src/styles/_base.scss */
+/* line 29, ../../src/styles/_base.scss */
 .button:hover {
   background-color: #00afea;
   color: #fff;
 }
 
-/* line 33, ../../src/styles/_base.scss */
+/* line 35, ../../src/styles/_base.scss */
 #content {
   width: 1000px;
   padding: 50px;
