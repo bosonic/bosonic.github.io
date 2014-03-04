@@ -509,18 +509,18 @@ h3 {
   width: 325px;
   height: 159px;
 }
-
 @media screen and (max-width: 1440px) {
-  /* line 47, ../../src/styles/_nav.scss */
-  #logo {
+  /* line 45, ../../src/styles/_nav.scss */
+  #header #logo {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url("/images/bosonic_logo_mini.png");
-    width: 325px;
-    height: 159px;
+    background-image: url("/images/bosonic_logoMini.png");
+    width: 211px;
+    height: 92px;
   }
 }
+
 /* line 1, ../../src/styles/_markdown.scss */
 code {
   background: #ebebff;
