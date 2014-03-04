@@ -423,31 +423,39 @@ h2 {
   font-weight: 300;
   font-size: 2em;
   text-transform: uppercase;
-  color: #00afea;
+  color: #60bf65;
   margin-top: 0;
 }
 
 /* line 18, ../../src/styles/_base.scss */
+h3 {
+  color: #60bf65;
+  font-weight: 400;
+  font-size: 1.17em;
+  margin-top: 0;
+}
+
+/* line 25, ../../src/styles/_base.scss */
 .button {
   display: inline-block;
   padding: 20px 30px;
   margin: 10px 0;
   text-transform: uppercase;
   font-weight: 700;
-  color: #00afea;
-  background-color: rgba(0, 175, 234, 0.2);
+  color: #60bf65;
+  background-color: rgba(96, 191, 101, 0.2);
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-/* line 29, ../../src/styles/_base.scss */
+/* line 36, ../../src/styles/_base.scss */
 .button:hover {
-  background-color: #00afea;
+  background-color: #60bf65;
   color: #fff;
 }
 
-/* line 35, ../../src/styles/_base.scss */
+/* line 42, ../../src/styles/_base.scss */
 #content {
   width: 900px;
   padding: 50px;
@@ -459,7 +467,7 @@ h2 {
 #header {
   width: 100%;
   height: 35px;
-  background-color: #00afea;
+  background-color: #60bf65;
   border-top: 7px solid black;
 }
 /* line 7, ../../src/styles/_nav.scss */
@@ -489,7 +497,7 @@ h2 {
 }
 /* line 27, ../../src/styles/_nav.scss */
 #header #nav li a:hover {
-  color: #00afea;
+  color: #60bf65;
   background-color: #fff;
 }
 /* line 35, ../../src/styles/_nav.scss */
@@ -502,6 +510,17 @@ h2 {
   height: 159px;
 }
 
+@media screen and (max-width: 1440px) {
+  /* line 47, ../../src/styles/_nav.scss */
+  #logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("/images/bosonic_logo_mini.png");
+    width: 325px;
+    height: 159px;
+  }
+}
 /* line 1, ../../src/styles/_markdown.scss */
 code {
   background: #ebebff;
