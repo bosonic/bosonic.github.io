@@ -449,7 +449,7 @@ h2 {
 
 /* line 35, ../../src/styles/_base.scss */
 #content {
-  width: 1000px;
+  width: 900px;
   padding: 50px;
   margin: 0 auto;
   background-color: #fff;
@@ -476,8 +476,8 @@ h2 {
 }
 /* line 17, ../../src/styles/_nav.scss */
 #header #nav li a {
-  font-weight: 200;
-  font-size: 0.9em;
+  font-weight: 300;
+  font-size: 1em;
   color: white;
   text-transform: uppercase;
   padding: 0 0.6em;
@@ -497,7 +497,7 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url("../images/bononic_logo.png");
+  background-image: url("/images/bosonic_logo.png");
   width: 325px;
   height: 159px;
 }
