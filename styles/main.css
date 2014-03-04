@@ -457,7 +457,7 @@ h3 {
 
 /* line 42, ../../src/styles/_base.scss */
 #content {
-  width: 900px;
+  width: 800px;
   padding: 50px;
   margin: 0 auto;
   background-color: #fff;
@@ -504,7 +504,7 @@ h3 {
 #header #logo {
   position: absolute;
   top: 0;
-  left: 0;
+  left: -15px;
   background-image: url("/images/bosonic_logo.png");
   width: 325px;
   height: 159px;
