@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="<%= data.baseUrl %>images/cabin.png">
+    <link href="<%= data.baseUrl %>styles/main.css" rel="stylesheet">
+    
+    <title>My Blog</title>
+    <meta name="description" content="<%= locals.description %>">
+  </head>
+  <body>
+    <ul class="nav group">
+      <li class="icon-menu menu"></li>
+      <li class="nav-link red<%= current === 'index' ? ' active' : '' %>">
+        <a href="<%= data.baseUrl %>" class="name">My Name</a>
+      </li>
+      <li class="nav-link blue<%= current === 'about' ? ' active' : '' %>">
+        <a href="<%= data.baseUrl %>about.html">about</a>
+      </li>
+      <li class="nav-link orange<%= current === 'projects' ? ' active' : '' %>">
+        <a href="<%= data.baseUrl %>projects.html">projects</a>
+      </li>
+      <li class="nav-link green<%= current === 'archives' ? ' active' : '' %>">
+        <a href="<%= data.baseUrl %>archives.html">archives</a>
+      </li>
+    </ul>
+    <div class="content">

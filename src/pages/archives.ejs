@@ -1,0 +1,9 @@
+<% locals.current = "archives" %>
+<% locals.title = "archives" %>
+<% include ../layouts/_header %>
+<% posts.forEach(function(post){ %>
+  <div class="archive-post group">
+    <% include ../layouts/_postHead %>
+  </div>
+<% }) %>
+<% include ../layouts/_footer %>

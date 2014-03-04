@@ -1,0 +1,84 @@
+.nav {
+  list-style: none;
+  position:fixed;
+  z-index: 100;
+  width: 250px;
+  right: -105px;
+  top: 0;
+
+  a {
+    padding: 14px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+.nav-link {
+  margin: 0;
+  position: relative;
+  z-index: 90;
+  width: 245px;
+  @include transition( all 200ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
+
+  &:hover {
+    margin-left: -45px;
+  }
+
+  @include breakpoint(big-phone) {
+    @include transition(none);
+    margin-left: 180px;
+
+    &.nav-show {
+      margin-left: 35px;
+    }
+  }
+}
+
+.active {
+  margin-left: -45px;
+
+  &:hover {
+    margin-left: -45px;
+  }
+
+  @include breakpoint(big-phone) {
+    margin-left: 180px;
+
+    &.nav-show {
+      margin-left: 0px;
+    }
+  }
+}
+
+
+.menu {
+  width: 135px;
+  padding: 5px;
+  display: none;
+  position: absolute;
+  right: 0;
+  color: white;
+  font-size: 1.6em;
+  @include shadow(hsl(0, 0%, 40%));
+
+  @include breakpoint(big-phone) {
+    display: block;
+  }
+
+  @include breakpoint(small-phone) {
+    width: 124px;
+  }
+}
+
+.red    { @include shadow($red); }
+.green  { @include shadow($green); }
+.blue   { @include shadow($blue); }
+.orange { @include shadow($orange); }
+
+.name {
+  font-weight: normal;
+  font-size: 1.2em;
+  margin: 0;
+}
