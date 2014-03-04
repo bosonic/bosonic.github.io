@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/images/cabin.png">
+    <link href="/styles/main.css" rel="stylesheet">
+
+    <title>My Blog</title>
+    <meta name="description" content="undefined">
+  </head>
+  <body>
+   
+    <div class="content">
+
+<div class="post">
+<div class="post-head group">
+  <a href="/posts/examples/">
+    <h1 class="post-title">Examples</h1>
+  </a>
+</div>
+
+<div class="post-body markdown">
+	<pre><code class="lang-js"><div class="highlight"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="o">===</span> <span class="s1">&#39;deploy&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="s1">&#39;pages.posts.options.data.baseUrl&#39;</span><span class="p">,</span> <span class="s1">&#39;/blog/&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">task</span><span class="p">.</span><span class="nx">run</span><span class="p">([</span>
+    <span class="s1">&#39;clean&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;compass&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;copy&#39;</span>
+  <span class="p">]);</span>
+<span class="p">});</span>
+
+<span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;deploy&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;build:deploy&#39;</span><span class="p">,</span> <span class="s1">&#39;yourChosenDeployTask&#39;</span><span class="p">]);</span>
+</pre></div>
+</code></pre>
+
+</div>
+
+</div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/scripts/main.js" type="text/javascript"></script>
+    <script>
+        // Add your analytics code here
+    </script>
+  </body>
+</html>
+
