@@ -482,6 +482,15 @@ h3 {
   margin: 0 auto;
   background-color: #fff;
 }
+/* line 64, ../../src/styles/_base.scss */
+#content a {
+  color: #60bf65;
+  font-weight: 700;
+}
+/* line 68, ../../src/styles/_base.scss */
+#content a:hover {
+  text-decoration: underline;
+}
 
 /* line 1, ../../src/styles/_nav.scss */
 #header {
@@ -524,8 +533,8 @@ h3 {
 /* line 36, ../../src/styles/_nav.scss */
 #header #logo {
   position: absolute;
-  top: 0;
-  left: -15px;
+  top: 45px;
+  left: 15px;
   background-image: url("/images/bosonic_logo.png");
   width: 325px;
   height: 159px;
@@ -535,8 +544,8 @@ h3 {
   /* line 47, ../../src/styles/_nav.scss */
   #header #logo {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 45px;
+    left: 15px;
     background-image: url("/images/bosonic_logoMini.png");
     width: 211px;
     height: 92px;
