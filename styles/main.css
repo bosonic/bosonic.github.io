@@ -419,7 +419,7 @@ body {
 }
 
 /* line 10, ../../src/styles/_base.scss */
-h2 {
+h1 {
   font-weight: 300;
   font-size: 2em;
   text-transform: uppercase;
@@ -428,7 +428,7 @@ h2 {
 }
 
 /* line 18, ../../src/styles/_base.scss */
-h3 {
+h2 {
   color: #60bf65;
   font-weight: 400;
   font-size: 1.17em;
