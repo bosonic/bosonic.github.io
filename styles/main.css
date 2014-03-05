@@ -431,26 +431,31 @@ h1 {
 h2 {
   color: #60bf65;
   font-weight: 400;
-  font-size: 1.17em;
+  font-size: 1.4em;
   margin-top: 0;
 }
 
 /* line 25, ../../src/styles/_base.scss */
+h3 {
+  font-size: 1.2em;
+}
+
+/* line 29, ../../src/styles/_base.scss */
 .clearfix {
   clear: both;
 }
 
-/* line 29, ../../src/styles/_base.scss */
+/* line 33, ../../src/styles/_base.scss */
 .left {
   float: left;
 }
 
-/* line 33, ../../src/styles/_base.scss */
+/* line 37, ../../src/styles/_base.scss */
 .right {
   float: right;
 }
 
-/* line 37, ../../src/styles/_base.scss */
+/* line 41, ../../src/styles/_base.scss */
 .button {
   display: inline-block;
   padding: 20px 30px;
@@ -464,13 +469,13 @@ h2 {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-/* line 48, ../../src/styles/_base.scss */
+/* line 52, ../../src/styles/_base.scss */
 .button:hover {
   background-color: #60bf65;
   color: #fff;
 }
 
-/* line 54, ../../src/styles/_base.scss */
+/* line 58, ../../src/styles/_base.scss */
 #content {
   width: 800px;
   padding: 50px;
