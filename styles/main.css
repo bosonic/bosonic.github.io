@@ -574,7 +574,27 @@ h3 {
   padding-top: 25px;
 }
 
-/* line 1, ../../src/styles/_markdown.scss */
+/* line 3, ../../src/styles/_markdown.scss */
+.markdown ul, .markdown ol {
+  padding-left: 30px;
+}
+/* line 7, ../../src/styles/_markdown.scss */
+.markdown img {
+  max-width: 100%;
+}
+/* line 12, ../../src/styles/_markdown.scss */
+.markdown h1, .markdown h2, .markdown h3,
+.markdown h4, .markdown h5, .markdown h6 {
+  line-height: 1.3;
+}
+/* line 17, ../../src/styles/_markdown.scss */
+.markdown blockquote {
+  border-left: 6px solid gainsboro;
+  margin-left: 0;
+  padding-left: 1em;
+}
+
+/* line 24, ../../src/styles/_markdown.scss */
 code {
   background: #ebebff;
   border: 1px solid #e6e6e6;
@@ -589,23 +609,23 @@ code {
   line-height: 1.5em;
 }
 
-/* line 11, ../../src/styles/_markdown.scss */
+/* line 34, ../../src/styles/_markdown.scss */
 .markdown > pre {
   white-space: normal;
   overflow: auto;
   margin: 1em 0;
 }
-/* line 16, ../../src/styles/_markdown.scss */
+/* line 39, ../../src/styles/_markdown.scss */
 .markdown > pre pre {
   margin: 0;
 }
-/* line 21, ../../src/styles/_markdown.scss */
+/* line 44, ../../src/styles/_markdown.scss */
 .markdown > pre code {
   border: 0;
   padding: 0;
 }
 
-/* line 27, ../../src/styles/_markdown.scss */
+/* line 50, ../../src/styles/_markdown.scss */
 .highlight {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -613,7 +633,7 @@ code {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 30, ../../src/styles/_markdown.scss */
+/* line 53, ../../src/styles/_markdown.scss */
 .highlight pre {
   padding: 15px;
   margin-bottom: 0;
