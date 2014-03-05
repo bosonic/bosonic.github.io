@@ -525,9 +525,10 @@ h3 {
   background-image: url("/images/bosonic_logo.png");
   width: 325px;
   height: 159px;
+  text-indent: -9000px;
 }
 @media screen and (max-width: 1440px) {
-  /* line 46, ../../src/styles/_nav.scss */
+  /* line 47, ../../src/styles/_nav.scss */
   #header #logo {
     position: absolute;
     top: 0;
@@ -535,6 +536,7 @@ h3 {
     background-image: url("/images/bosonic_logoMini.png");
     width: 211px;
     height: 92px;
+    text-indent: -9000px;
   }
 }
 
@@ -598,4 +600,356 @@ code {
 .highlight pre {
   padding: 15px;
   margin-bottom: 0;
+}
+
+/* line 1, ../../src/styles/_solarized-dark.scss */
+.highlight {
+  background-color: #073642;
+  color: #93a1a1;
+}
+
+/* line 6, ../../src/styles/_solarized-dark.scss */
+.highlight .c {
+  color: #586e75 !important;
+  font-style: italic !important;
+}
+
+/* line 11, ../../src/styles/_solarized-dark.scss */
+.highlight .cm {
+  color: #586e75 !important;
+  font-style: italic !important;
+}
+
+/* line 16, ../../src/styles/_solarized-dark.scss */
+.highlight .cp {
+  color: #586e75 !important;
+  font-style: italic !important;
+}
+
+/* line 21, ../../src/styles/_solarized-dark.scss */
+.highlight .c1 {
+  color: #586e75 !important;
+  font-style: italic !important;
+}
+
+/* line 26, ../../src/styles/_solarized-dark.scss */
+.highlight .cs {
+  color: #586e75 !important;
+  font-weight: bold !important;
+  font-style: italic !important;
+}
+
+/* line 32, ../../src/styles/_solarized-dark.scss */
+.highlight .err {
+  color: #dc322f !important;
+  background: none !important;
+}
+
+/* line 37, ../../src/styles/_solarized-dark.scss */
+.highlight .k {
+  color: #cb4b16 !important;
+}
+
+/* line 41, ../../src/styles/_solarized-dark.scss */
+.highlight .o {
+  color: #93a1a1 !important;
+  font-weight: bold !important;
+}
+
+/* line 46, ../../src/styles/_solarized-dark.scss */
+.highlight .p {
+  color: #93a1a1 !important;
+}
+
+/* line 50, ../../src/styles/_solarized-dark.scss */
+.highlight .ow {
+  color: #2aa198 !important;
+  font-weight: bold !important;
+}
+
+/* line 55, ../../src/styles/_solarized-dark.scss */
+.highlight .gd {
+  color: #93a1a1 !important;
+  background-color: #372c34 !important;
+  display: inline-block;
+}
+
+/* line 61, ../../src/styles/_solarized-dark.scss */
+.highlight .gd .x {
+  color: #93a1a1 !important;
+  background-color: #4d2d33 !important;
+  display: inline-block;
+}
+
+/* line 67, ../../src/styles/_solarized-dark.scss */
+.highlight .ge {
+  color: #93a1a1 !important;
+  font-style: italic !important;
+}
+
+/* line 72, ../../src/styles/_solarized-dark.scss */
+.highlight .gr {
+  color: #aa0000;
+}
+
+/* line 76, ../../src/styles/_solarized-dark.scss */
+.highlight .gh {
+  color: #586e75 !important;
+}
+
+/* line 80, ../../src/styles/_solarized-dark.scss */
+.highlight .gi {
+  color: #93a1a1 !important;
+  background-color: #1a412b !important;
+  display: inline-block;
+}
+
+/* line 86, ../../src/styles/_solarized-dark.scss */
+.highlight .gi .x {
+  color: #93a1a1 !important;
+  background-color: #355720 !important;
+  display: inline-block;
+}
+
+/* line 92, ../../src/styles/_solarized-dark.scss */
+.highlight .go {
+  color: #888888;
+}
+
+/* line 96, ../../src/styles/_solarized-dark.scss */
+.highlight .gp {
+  color: #555555;
+}
+
+/* line 100, ../../src/styles/_solarized-dark.scss */
+.highlight .gs {
+  color: #93a1a1 !important;
+  font-weight: bold !important;
+}
+
+/* line 105, ../../src/styles/_solarized-dark.scss */
+.highlight .gu {
+  color: #6c71c4 !important;
+}
+
+/* line 109, ../../src/styles/_solarized-dark.scss */
+.highlight .gt {
+  color: #aa0000;
+}
+
+/* line 113, ../../src/styles/_solarized-dark.scss */
+.highlight .kc {
+  color: #859900 !important;
+  font-weight: bold !important;
+}
+
+/* line 118, ../../src/styles/_solarized-dark.scss */
+.highlight .kd {
+  color: #268bd2 !important;
+}
+
+/* line 122, ../../src/styles/_solarized-dark.scss */
+.highlight .kp {
+  color: #cb4b16 !important;
+  font-weight: bold !important;
+}
+
+/* line 127, ../../src/styles/_solarized-dark.scss */
+.highlight .kr {
+  color: #d33682 !important;
+  font-weight: bold !important;
+}
+
+/* line 132, ../../src/styles/_solarized-dark.scss */
+.highlight .kt {
+  color: #2aa198 !important;
+}
+
+/* line 136, ../../src/styles/_solarized-dark.scss */
+.highlight .n {
+  color: #268bd2 !important;
+}
+
+/* line 140, ../../src/styles/_solarized-dark.scss */
+.highlight .na {
+  color: #268bd2 !important;
+}
+
+/* line 144, ../../src/styles/_solarized-dark.scss */
+.highlight .nb {
+  color: #859900 !important;
+}
+
+/* line 148, ../../src/styles/_solarized-dark.scss */
+.highlight .nc {
+  color: #d33682 !important;
+}
+
+/* line 152, ../../src/styles/_solarized-dark.scss */
+.highlight .no {
+  color: #b58900 !important;
+}
+
+/* line 156, ../../src/styles/_solarized-dark.scss */
+.highlight .ni {
+  color: purple;
+}
+
+/* line 160, ../../src/styles/_solarized-dark.scss */
+.highlight .nl {
+  color: #859900 !important;
+}
+
+/* line 164, ../../src/styles/_solarized-dark.scss */
+.highlight .ne {
+  color: #268bd2 !important;
+  font-weight: bold !important;
+}
+
+/* line 169, ../../src/styles/_solarized-dark.scss */
+.highlight .nf {
+  color: #268bd2 !important;
+  font-weight: bold !important;
+}
+
+/* line 174, ../../src/styles/_solarized-dark.scss */
+.highlight .nn {
+  color: #b58900 !important;
+}
+
+/* line 178, ../../src/styles/_solarized-dark.scss */
+.highlight .nt {
+  color: #268bd2 !important;
+  font-weight: bold !important;
+}
+
+/* line 183, ../../src/styles/_solarized-dark.scss */
+.highlight .nx {
+  color: #b58900 !important;
+}
+
+/* line 187, ../../src/styles/_solarized-dark.scss */
+.highlight .bp {
+  color: #999999;
+}
+
+/* line 191, ../../src/styles/_solarized-dark.scss */
+.highlight .vc {
+  color: teal;
+}
+
+/* line 195, ../../src/styles/_solarized-dark.scss */
+.highlight .vg {
+  color: #268bd2 !important;
+}
+
+/* line 199, ../../src/styles/_solarized-dark.scss */
+.highlight .vi {
+  color: #268bd2 !important;
+}
+
+/* line 203, ../../src/styles/_solarized-dark.scss */
+.highlight .nv {
+  color: #268bd2 !important;
+}
+
+/* line 207, ../../src/styles/_solarized-dark.scss */
+.highlight .w {
+  color: #bbbbbb;
+}
+
+/* line 211, ../../src/styles/_solarized-dark.scss */
+.highlight .mf {
+  color: #2aa198 !important;
+}
+
+/* line 215, ../../src/styles/_solarized-dark.scss */
+.highlight .m {
+  color: #2aa198 !important;
+}
+
+/* line 219, ../../src/styles/_solarized-dark.scss */
+.highlight .mh {
+  color: #2aa198 !important;
+}
+
+/* line 223, ../../src/styles/_solarized-dark.scss */
+.highlight .mi {
+  color: #2aa198 !important;
+}
+
+/* line 227, ../../src/styles/_solarized-dark.scss */
+.highlight .mo {
+  color: #009999;
+}
+
+/* line 231, ../../src/styles/_solarized-dark.scss */
+.highlight .s {
+  color: #2aa198 !important;
+}
+
+/* line 235, ../../src/styles/_solarized-dark.scss */
+.highlight .sb {
+  color: #dd1144;
+}
+
+/* line 239, ../../src/styles/_solarized-dark.scss */
+.highlight .sc {
+  color: #dd1144;
+}
+
+/* line 243, ../../src/styles/_solarized-dark.scss */
+.highlight .sd {
+  color: #2aa198 !important;
+}
+
+/* line 247, ../../src/styles/_solarized-dark.scss */
+.highlight .s2 {
+  color: #2aa198 !important;
+}
+
+/* line 251, ../../src/styles/_solarized-dark.scss */
+.highlight .se {
+  color: #dc322f !important;
+}
+
+/* line 255, ../../src/styles/_solarized-dark.scss */
+.highlight .sh {
+  color: #dd1144;
+}
+
+/* line 259, ../../src/styles/_solarized-dark.scss */
+.highlight .si {
+  color: #268bd2 !important;
+}
+
+/* line 263, ../../src/styles/_solarized-dark.scss */
+.highlight .sx {
+  color: #dd1144;
+}
+
+/* line 267, ../../src/styles/_solarized-dark.scss */
+.highlight .sr {
+  color: #2aa198 !important;
+}
+
+/* line 271, ../../src/styles/_solarized-dark.scss */
+.highlight .s1 {
+  color: #2aa198 !important;
+}
+
+/* line 275, ../../src/styles/_solarized-dark.scss */
+.highlight .ss {
+  color: #990073;
+}
+
+/* line 279, ../../src/styles/_solarized-dark.scss */
+.highlight .il {
+  color: #009999;
+}
+
+/* line 283, ../../src/styles/_solarized-dark.scss */
+.highlight div .gd, .highlight div .gd .x, .highlight div .gi, .highlight div .gi .x {
+  display: inline-block;
+  width: 100%;
 }
