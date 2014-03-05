@@ -436,6 +436,21 @@ h3 {
 }
 
 /* line 25, ../../src/styles/_base.scss */
+.clearfix {
+  clear: both;
+}
+
+/* line 29, ../../src/styles/_base.scss */
+.left {
+  float: left;
+}
+
+/* line 33, ../../src/styles/_base.scss */
+.right {
+  float: right;
+}
+
+/* line 37, ../../src/styles/_base.scss */
 .button {
   display: inline-block;
   padding: 20px 30px;
@@ -449,13 +464,13 @@ h3 {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-/* line 36, ../../src/styles/_base.scss */
+/* line 48, ../../src/styles/_base.scss */
 .button:hover {
   background-color: #60bf65;
   color: #fff;
 }
 
-/* line 42, ../../src/styles/_base.scss */
+/* line 54, ../../src/styles/_base.scss */
 #content {
   width: 800px;
   padding: 50px;
@@ -474,7 +489,7 @@ h3 {
 #header #nav {
   text-align: center;
   margin-top: 0;
-  padding-top: 6px;
+  padding-top: 8px;
 }
 /* line 12, ../../src/styles/_nav.scss */
 #header #nav li {
@@ -488,7 +503,7 @@ h3 {
   font-size: 1em;
   color: white;
   text-transform: uppercase;
-  padding: 0 0.6em;
+  padding: 0.3em 0.6em;
   margin: 0 0.6em;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -519,6 +534,23 @@ h3 {
     width: 211px;
     height: 92px;
   }
+}
+
+/* line 1, ../../src/styles/_home.scss */
+#homepage-top {
+  height: 360px;
+}
+/* line 4, ../../src/styles/_home.scss */
+#homepage-top #illustration {
+  width: 340px;
+  float: left;
+}
+/* line 9, ../../src/styles/_home.scss */
+#homepage-top #welcome {
+  width: 435px;
+  float: left;
+  padding-left: 25px;
+  padding-top: 25px;
 }
 
 /* line 1, ../../src/styles/_markdown.scss */
