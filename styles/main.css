@@ -474,6 +474,7 @@ h3 {
 #content {
   width: 800px;
   padding: 50px;
+  padding-top: 85px;
   margin: 0 auto;
   background-color: #fff;
 }
@@ -484,20 +485,21 @@ h3 {
   height: 35px;
   background-color: #60bf65;
   border-top: 7px solid black;
+  position: fixed;
 }
-/* line 7, ../../src/styles/_nav.scss */
+/* line 8, ../../src/styles/_nav.scss */
 #header #nav {
   text-align: center;
   margin-top: 0;
   padding-top: 8px;
 }
-/* line 12, ../../src/styles/_nav.scss */
+/* line 13, ../../src/styles/_nav.scss */
 #header #nav li {
   display: inline;
   font-size: 0.9em;
   color: white;
 }
-/* line 17, ../../src/styles/_nav.scss */
+/* line 18, ../../src/styles/_nav.scss */
 #header #nav li a {
   font-weight: 300;
   font-size: 1em;
@@ -510,12 +512,12 @@ h3 {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-/* line 27, ../../src/styles/_nav.scss */
+/* line 28, ../../src/styles/_nav.scss */
 #header #nav li a:hover {
   color: #60bf65;
   background-color: #fff;
 }
-/* line 35, ../../src/styles/_nav.scss */
+/* line 36, ../../src/styles/_nav.scss */
 #header #logo {
   position: absolute;
   top: 0;
@@ -525,7 +527,7 @@ h3 {
   height: 159px;
 }
 @media screen and (max-width: 1440px) {
-  /* line 45, ../../src/styles/_nav.scss */
+  /* line 46, ../../src/styles/_nav.scss */
   #header #logo {
     position: absolute;
     top: 0;
