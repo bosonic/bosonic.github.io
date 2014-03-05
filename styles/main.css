@@ -514,10 +514,10 @@ h3 {
   display: inline;
   font-size: 0.9em;
   color: white;
-}
-/* line 18, ../../src/styles/_nav.scss */
-#header #nav li a {
   font-weight: 400;
+}
+/* line 19, ../../src/styles/_nav.scss */
+#header #nav li a {
   font-size: 1em;
   color: white;
   text-transform: uppercase;
