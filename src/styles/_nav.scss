@@ -1,0 +1,56 @@
+#header {
+	width: 100%;
+	height: 35px;
+	background-color: $color;
+	border-top: 7px solid black;
+
+	#nav {
+		text-align: center;
+		margin-top: 0;
+		padding-top: 8px;
+
+		li {
+			display: inline;
+			font-size: 0.9em;
+			color: white;
+
+			a {
+				font-weight: 300;
+				font-size: 1em;
+				color: white;
+				text-transform: uppercase;
+				padding:0.3em 0.6em;
+				margin:0 0.6em;
+
+				@include transition(all 0.5s ease);
+
+				&:hover {
+					color: $color;
+					background-color: #fff;
+				}
+			}
+		}
+	}
+
+	#logo {
+		position: absolute;
+		top:0;
+		left:-15px;
+		background-image: url('/images/bosonic_logo.png');
+		width: 325px;
+		height: 159px;
+	}
+
+	@media screen and (max-width: 1440px) {
+	  #logo {
+			position: absolute;
+			top:0;
+			left:0;
+			background-image: url('/images/bosonic_logoMini.png');
+			width: 211px;
+			height: 92px;
+		}
+	}
+
+}
+
