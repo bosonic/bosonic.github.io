@@ -493,6 +493,11 @@ h3 {
   text-decoration: none;
 }
 
+/* line 76, ../../src/styles/_base.scss */
+.block {
+  margin: 20px 0;
+}
+
 /* line 1, ../../src/styles/_nav.scss */
 #header {
   width: 100%;
