@@ -424,37 +424,35 @@ h1 {
   font-size: 2em;
   text-transform: uppercase;
   color: #60bf65;
-  margin-top: 0;
 }
 
-/* line 19, ../../src/styles/_base.scss */
+/* line 18, ../../src/styles/_base.scss */
 h2 {
   color: #60bf65;
   font-weight: 400;
-  margin-top: 0;
 }
 
-/* line 25, ../../src/styles/_base.scss */
+/* line 23, ../../src/styles/_base.scss */
 h3 {
   font-size: 1.2em;
 }
 
-/* line 29, ../../src/styles/_base.scss */
+/* line 27, ../../src/styles/_base.scss */
 .clearfix {
   clear: both;
 }
 
-/* line 33, ../../src/styles/_base.scss */
+/* line 31, ../../src/styles/_base.scss */
 .left {
   float: left;
 }
 
-/* line 37, ../../src/styles/_base.scss */
+/* line 35, ../../src/styles/_base.scss */
 .right {
   float: right;
 }
 
-/* line 41, ../../src/styles/_base.scss */
+/* line 39, ../../src/styles/_base.scss */
 #content {
   width: 800px;
   padding: 50px;
@@ -465,16 +463,16 @@ h3 {
   -moz-box-shadow: 5px 5px #e6e6e6, 4px 4px #e6e6e6, 3px 3px #e6e6e6, 2px 2px #e6e6e6, 1px 1px #e6e6e6;
   box-shadow: 5px 5px #e6e6e6, 4px 4px #e6e6e6, 3px 3px #e6e6e6, 2px 2px #e6e6e6, 1px 1px #e6e6e6;
 }
-/* line 50, ../../src/styles/_base.scss */
+/* line 48, ../../src/styles/_base.scss */
 #content a {
   color: #60bf65;
   font-weight: 700;
 }
-/* line 54, ../../src/styles/_base.scss */
+/* line 52, ../../src/styles/_base.scss */
 #content a:hover {
   text-decoration: underline;
 }
-/* line 59, ../../src/styles/_base.scss */
+/* line 57, ../../src/styles/_base.scss */
 #content .button {
   display: inline-block;
   padding: 20px 30px;
@@ -488,7 +486,7 @@ h3 {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-/* line 70, ../../src/styles/_base.scss */
+/* line 68, ../../src/styles/_base.scss */
 #content .button:hover {
   background-color: #60bf65;
   color: #fff;
