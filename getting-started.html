@@ -33,19 +33,65 @@
     <div id="content" class="markdown">
 
 
-<h1>Getting started</h1>
 
-<h2>Je suis un h2 !</h2>
+  
 
-<h3>Je suis un h3 !</h3>
+  
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, accusamus, ut, perferendis, unde dolorum deleniti dicta quasi obcaecati eligendi dolore ducimus molestiae impedit? Dignissimos, sit facilis nulla magnam alias deleniti.</p>
+  
 
-<h3>Je suis un h3 !</h3>
+  
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, accusamus, ut, perferendis, unde dolorum deleniti dicta quasi obcaecati eligendi dolore ducimus molestiae impedit? Dignissimos, sit facilis nulla magnam alias deleniti.</p>
+  
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, accusamus, ut, perferendis, unde dolorum deleniti dicta quasi obcaecati eligendi dolore ducimus molestiae impedit? Dignissimos, sit facilis nulla magnam alias deleniti.</p>
+	<h1><a name="getting-started" class="anchor" href="#getting-started"><span class="header-link"></span></a>Getting Started</h1>
+<h2><a name="how-to-use-a-web-component" class="anchor" href="#how-to-use-a-web-component"><span class="header-link"></span></a>How to use a web component ?</h2>
+<p>To start with Bosonic, download the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js">bosonic core library</a> and the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js">bosonic polyfills</a> in order to support the oldest browsers (Shadow DOM unsupported).</p>
+<p>Or you can just enter commands below:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre><span class="c"># In your application javascript folder</span>
+wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js
+wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js
+</pre></div>
+</code></pre>
+<p>Add script links in your HTML file.</p>
+<p>To check if Bosonic is correctly installed, we will use a <a href="https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.js">&quot;HelloWorld&quot; Bosonic web component</a> or you can choose the Bosonic web components you need (<a href="documentation.html">Bosonic web components list</a>).</p>
+<p>Or you can just enter commands below:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre><span class="c"># In your application javascript folder</span>
+wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.js
+
+<span class="c"># In your application css folder</span>
+wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.css
+</pre></div>
+</code></pre>
+<p>Add links to the web component javascript and css file and .</p>
+<p>Your final HTML file should look like this:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My Application<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/bosonic-polyfills.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/bosonic.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/b-flash-message.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;assets/css/b-flash-message.css&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;b-flash-message</span> <span class="na">type=</span><span class="s">&quot;success&quot;</span> <span class="na">visible</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;strong&gt;</span>Congrats!<span class="nt">&lt;/strong&gt;</span> Bosonic is successful installed!
+    <span class="nt">&lt;/b-flash-message&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</code></pre>
+<h2><a name="how-to-build-a-web-component" class="anchor" href="#how-to-build-a-web-component"><span class="header-link"></span></a>How to build a web component ?</h2>
+<h3><a name="prerequisites" class="anchor" href="#prerequisites"><span class="header-link"></span></a>Prerequisites</h3>
+<h3><a name="step-by-step" class="anchor" href="#step-by-step"><span class="header-link"></span></a>Step by step</h3>
+
+
+  
+
 
     </div>
 
