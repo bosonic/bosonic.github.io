@@ -15,7 +15,10 @@ module.exports = function (grunt) {
           pagination: {
             postsPerPage: 10,
             listPage: 'src/pages/index.ejs'
-          }
+          },
+          sortFunction: function (a, b) {
+            return a.order - b.order;
+          },
         }
       }
     },

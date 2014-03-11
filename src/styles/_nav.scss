@@ -3,6 +3,7 @@
 	height: 35px;
 	background-color: $color;
 	border-top: 7px solid black;
+	position: fixed;
 
 	#nav {
 		text-align: center;
@@ -13,9 +14,10 @@
 			display: inline;
 			font-size: 0.9em;
 			color: white;
+			font-weight: 400;
 
 			a {
-				font-weight: 300;
+				font-weight: 400;
 				font-size: 1em;
 				color: white;
 				text-transform: uppercase;
@@ -34,21 +36,23 @@
 
 	#logo {
 		position: absolute;
-		top:0;
-		left:-15px;
+		top:45px;
+		left:15px;
 		background-image: url('/images/bosonic_logo.png');
 		width: 325px;
 		height: 159px;
+		text-indent: -9000px;
 	}
 
 	@media screen and (max-width: 1440px) {
 	  #logo {
 			position: absolute;
-			top:0;
-			left:0;
+			top:45px;
+			left:15px;
 			background-image: url('/images/bosonic_logoMini.png');
 			width: 211px;
 			height: 92px;
+			text-indent: -9000px;
 		}
 	}
 

@@ -1,0 +1,9 @@
+<% include ../layouts/_header %>
+
+<h1>Documentation</h1>
+
+<% posts.forEach(function(post){ %>
+  <%- post.content %>
+<% }) %>
+
+<% include ../layouts/_footer %>

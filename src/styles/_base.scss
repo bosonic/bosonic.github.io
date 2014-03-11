@@ -1,25 +1,27 @@
 @import "compass/css3/opacity";
+@import "compass/css3/box-shadow";
 
 body {
 	font-family: Lato;
 	font-weight: 300;
-	font-size:15px;
+	font-size:16px;
 	background-color: $background;
 }
 
-h2 {
+h1 {
 	font-weight: 300;
 	font-size: 2em;
 	text-transform: uppercase;
 	color: $color;
-	margin-top: 0;
+}
+
+h2 {
+	color: $color;
+	font-weight: 400;
 }
 
 h3 {
-	color: $color;
-	font-weight: 400;
-	font-size: 1.17em;
-	margin-top: 0;
+	font-size: 1.2em;
 }
 
 .clearfix {
@@ -34,26 +36,46 @@ h3 {
 	float: right;
 }
 
-.button {
-	display: inline-block;
-	padding:20px 30px;
-	margin:10px 0;
-	text-transform: uppercase;
-	font-weight: 700;
-	color: $color;
-	background-color: rgba(96,191,101,0.2);
-
-	@include transition(all 0.2s ease);
-	
-	&:hover {
-		background-color: $color;
-		color: #fff;
-	}
-}
-
 #content {
 	width: $width;
 	padding: 50px;
+	padding-top: 85px;
 	margin: 0 auto;
 	background-color: #fff;
+
+	@include box-shadow(5px 5px #E6E6E6, 4px 4px #E6E6E6, 3px 3px #E6E6E6, 2px 2px #E6E6E6, 1px 1px #E6E6E6);
+
+	a {
+		color: $color;
+		font-weight: 700;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.button {
+		display: inline-block;
+		padding:20px 30px;
+		margin:10px 0;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: $color;
+		background-color: rgba(96,191,101,0.2);
+
+		@include transition(all 0.2s ease);
+	
+		&:hover {
+			background-color: $color;
+			color: #fff;
+			text-decoration: none;
+		}
+	}
 }
+
+.block {
+	padding: 20px 0;
+}
+
+
+

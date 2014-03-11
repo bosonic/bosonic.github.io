@@ -1,0 +1,11 @@
+<% include ../layouts/_header %>
+
+<% posts.forEach(function(post){ %>
+  <% if(post.type === 'static' && post.title === 'Getting Started') { %>
+
+	<%- post.content %>
+
+  <% } %>
+<% }) %>
+
+<% include ../layouts/_footer %>
