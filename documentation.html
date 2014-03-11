@@ -45,98 +45,6 @@
   <h2><a name="documentation" class="anchor" href="#documentation"><span class="header-link"></span></a>Documentation</h2>
 
 
-  <h1><a name="getting-started" class="anchor" href="#getting-started"><span class="header-link"></span></a>Getting Started</h1>
-<h2><a name="how-to-use-a-web-component" class="anchor" href="#how-to-use-a-web-component"><span class="header-link"></span></a>How to use a web component ?</h2>
-<p>To start with Bosonic, download the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js">bosonic core library</a> and the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js">bosonic polyfills</a> in order to support the oldest browsers (Shadow DOM unsupported).</p>
-<p>Or you can just enter commands below:</p>
-<pre><code class="lang-bash"><div class="highlight"><pre><span class="c"># In your application javascript folder</span>
-wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js
-wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js
-</pre></div>
-</code></pre>
-<p>Add script links in your HTML file.</p>
-<p>To check if Bosonic is correctly installed, we will use a <a href="https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.js">&quot;HelloWorld&quot; Bosonic web component</a> or you can choose the Bosonic web components you need (<a href="documentation.html">Bosonic web components list</a>).</p>
-<p>Or you can just enter commands below:</p>
-<pre><code class="lang-bash"><div class="highlight"><pre><span class="c"># In your application javascript folder</span>
-wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.js
-
-<span class="c"># In your application css folder</span>
-wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.css
-</pre></div>
-</code></pre>
-<p>Add links to the web component javascript and css file and .</p>
-<p>Your final HTML file should look like this:</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;title&gt;</span>My Application<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/bosonic-polyfills.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/bosonic.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/b-flash-message.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;assets/css/b-flash-message.css&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-
-    <span class="nt">&lt;b-flash-message</span> <span class="na">type=</span><span class="s">&quot;success&quot;</span> <span class="na">visible</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;strong&gt;</span>Congrats!<span class="nt">&lt;/strong&gt;</span> Bosonic is successful installed!
-    <span class="nt">&lt;/b-flash-message&gt;</span>
-
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</pre></div>
-</code></pre>
-<h2><a name="how-to-build-a-web-component" class="anchor" href="#how-to-build-a-web-component"><span class="header-link"></span></a>How to build a web component ?</h2>
-<h3><a name="prerequisites" class="anchor" href="#prerequisites"><span class="header-link"></span></a>Prerequisites</h3>
-<h3><a name="step-by-step" class="anchor" href="#step-by-step"><span class="header-link"></span></a>Step by step</h3>
-
-
-  <h2><a name="contribute" class="anchor" href="#contribute"><span class="header-link"></span></a>Contribute</h2>
-<h2><a name="unordered-list" class="anchor" href="#unordered-list"><span class="header-link"></span></a>Unordered list</h2>
-<ul>
-<li>One<ul>
-<li>A</li>
-<li>B<ul>
-<li>I</li>
-<li>II</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Two</li>
-<li>Three</li>
-</ul>
-<h2><a name="ordered-list" class="anchor" href="#ordered-list"><span class="header-link"></span></a>Ordered list</h2>
-<ol>
-<li>First</li>
-<li>Second</li>
-<li>Third</li>
-</ol>
-<h2><a name="horizontal-line" class="anchor" href="#horizontal-line"><span class="header-link"></span></a>Horizontal line</h2>
-<hr>
-<h2><a name="links" class="anchor" href="#links"><span class="header-link"></span></a>Links</h2>
-<p><a href="http://www.cabinjs.com/">Link text</a> is great.</p>
-<h2><a name="code-block-with-syntax-highlighting" class="anchor" href="#code-block-with-syntax-highlighting"><span class="header-link"></span></a>Code block with syntax highlighting</h2>
-<pre><code class="lang-javascript"><div class="highlight"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;I am a string&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">MyBackboneView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({});</span>
-</pre></div>
-</code></pre>
-<h2><a name="inline-code" class="anchor" href="#inline-code"><span class="header-link"></span></a>Inline code</h2>
-<p>Here is some <code>inline code</code></p>
-<h2><a name="text-stlying" class="anchor" href="#text-stlying"><span class="header-link"></span></a>Text stlying</h2>
-<p><strong>Bold</strong></p>
-<p><em>Italic</em></p>
-<p><del>Strikethough</del></p>
-<h2><a name="block-quote" class="anchor" href="#block-quote"><span class="header-link"></span></a>Block Quote</h2>
-<blockquote>
-<p>The computer is the most remarkable tool that we&#39;ve ever come up with. It&#39;s the
-equivalent of a bicycle for our minds.</p>
-<blockquote>
-<p>Steve Jobs</p>
-</blockquote>
-</blockquote>
-
-
   <p>Blok is a blogging theme for <a href="http://cabinjs.com">Cabin</a>.</p>
 <p>The theme&#39;s source code is located at the <a href="https://github.com/CabinJS/Blok">Blok GitHub repository</a>.</p>
 <h2><a name="installation" class="anchor" href="#installation"><span class="header-link"></span></a>Installation</h2>
@@ -219,6 +127,97 @@ equivalent of a bicycle for our minds.</p>
 </code></pre>
 <h3><a name="linked-headerslink-on-the-left" class="anchor" href="#linked-headerslink-on-the-left"><span class="header-link"></span></a>Linked headers(link on the left)</h3>
 <p>Link into specific sections of your posts.</p>
+
+
+  <h1><a name="getting-started" class="anchor" href="#getting-started"><span class="header-link"></span></a>Getting Started</h1>
+<h2><a name="how-to-use-a-web-component" class="anchor" href="#how-to-use-a-web-component"><span class="header-link"></span></a>How to use a web component ?</h2>
+<p>To start with Bosonic, download the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js">bosonic core library</a> and the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js">bosonic polyfills</a> in order to support the oldest browsers (Shadow DOM unsupported).</p>
+<p>Or you can just enter commands below:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre><span class="c"># In your application javascript folder</span>
+wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js
+wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js
+</pre></div>
+</code></pre>
+<p>Add script links in your HTML file.</p>
+<p>To check if Bosonic is correctly installed, we will use a <a href="https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.js">&quot;HelloWorld&quot; Bosonic web component</a> or you can choose the Bosonic web components you need (<a href="documentation.html">Bosonic web components list</a>).</p>
+<p>Or you can just enter commands below:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre><span class="c"># In your application javascript folder</span>
+wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.js
+
+<span class="c"># In your application css folder</span>
+wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.css
+</pre></div>
+</code></pre>
+<p>Your final HTML file should look like this:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My Application<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/bosonic-polyfills.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/bosonic.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/b-flash-message.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;assets/css/b-flash-message.css&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;b-flash-message</span> <span class="na">type=</span><span class="s">&quot;success&quot;</span> <span class="na">visible</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;strong&gt;</span>Congrats!<span class="nt">&lt;/strong&gt;</span> Bosonic is successful installed!
+    <span class="nt">&lt;/b-flash-message&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</code></pre>
+<h2><a name="how-to-build-a-web-component" class="anchor" href="#how-to-build-a-web-component"><span class="header-link"></span></a>How to build a web component ?</h2>
+<h3><a name="prerequisites" class="anchor" href="#prerequisites"><span class="header-link"></span></a>Prerequisites</h3>
+<h3><a name="step-by-step" class="anchor" href="#step-by-step"><span class="header-link"></span></a>Step by step</h3>
+
+
+  <h2><a name="contribute" class="anchor" href="#contribute"><span class="header-link"></span></a>Contribute</h2>
+<h2><a name="unordered-list" class="anchor" href="#unordered-list"><span class="header-link"></span></a>Unordered list</h2>
+<ul>
+<li>One<ul>
+<li>A</li>
+<li>B<ul>
+<li>I</li>
+<li>II</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Two</li>
+<li>Three</li>
+</ul>
+<h2><a name="ordered-list" class="anchor" href="#ordered-list"><span class="header-link"></span></a>Ordered list</h2>
+<ol>
+<li>First</li>
+<li>Second</li>
+<li>Third</li>
+</ol>
+<h2><a name="horizontal-line" class="anchor" href="#horizontal-line"><span class="header-link"></span></a>Horizontal line</h2>
+<hr>
+<h2><a name="links" class="anchor" href="#links"><span class="header-link"></span></a>Links</h2>
+<p><a href="http://www.cabinjs.com/">Link text</a> is great.</p>
+<h2><a name="code-block-with-syntax-highlighting" class="anchor" href="#code-block-with-syntax-highlighting"><span class="header-link"></span></a>Code block with syntax highlighting</h2>
+<pre><code class="lang-javascript"><div class="highlight"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;I am a string&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">MyBackboneView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({});</span>
+</pre></div>
+</code></pre>
+<h2><a name="inline-code" class="anchor" href="#inline-code"><span class="header-link"></span></a>Inline code</h2>
+<p>Here is some <code>inline code</code></p>
+<h2><a name="text-stlying" class="anchor" href="#text-stlying"><span class="header-link"></span></a>Text stlying</h2>
+<p><strong>Bold</strong></p>
+<p><em>Italic</em></p>
+<p><del>Strikethough</del></p>
+<h2><a name="block-quote" class="anchor" href="#block-quote"><span class="header-link"></span></a>Block Quote</h2>
+<blockquote>
+<p>The computer is the most remarkable tool that we&#39;ve ever come up with. It&#39;s the
+equivalent of a bicycle for our minds.</p>
+<blockquote>
+<p>Steve Jobs</p>
+</blockquote>
+</blockquote>
 
 
 
