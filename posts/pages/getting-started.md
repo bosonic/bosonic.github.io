@@ -32,8 +32,6 @@ wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.
 wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.css
 ```
 
-Add links to the web component javascript and css file and .
-
 Your final HTML file should look like this:
 
 ``` html
