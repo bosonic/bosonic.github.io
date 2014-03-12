@@ -36,6 +36,52 @@
 <h1>Documentation</h1>
 
 
+  <h2><a name="contribute" class="anchor" href="#contribute"><span class="header-link"></span></a>Contribute</h2>
+<h2><a name="unordered-list" class="anchor" href="#unordered-list"><span class="header-link"></span></a>Unordered list</h2>
+<ul>
+<li>One<ul>
+<li>A</li>
+<li>B<ul>
+<li>I</li>
+<li>II</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Two</li>
+<li>Three</li>
+</ul>
+<h2><a name="ordered-list" class="anchor" href="#ordered-list"><span class="header-link"></span></a>Ordered list</h2>
+<ol>
+<li>First</li>
+<li>Second</li>
+<li>Third</li>
+</ol>
+<h2><a name="horizontal-line" class="anchor" href="#horizontal-line"><span class="header-link"></span></a>Horizontal line</h2>
+<hr>
+<h2><a name="links" class="anchor" href="#links"><span class="header-link"></span></a>Links</h2>
+<p><a href="http://www.cabinjs.com/">Link text</a> is great.</p>
+<h2><a name="code-block-with-syntax-highlighting" class="anchor" href="#code-block-with-syntax-highlighting"><span class="header-link"></span></a>Code block with syntax highlighting</h2>
+<pre><code class="lang-javascript"><div class="highlight"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;I am a string&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">MyBackboneView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({});</span>
+</pre></div>
+</code></pre>
+<h2><a name="inline-code" class="anchor" href="#inline-code"><span class="header-link"></span></a>Inline code</h2>
+<p>Here is some <code>inline code</code></p>
+<h2><a name="text-stlying" class="anchor" href="#text-stlying"><span class="header-link"></span></a>Text stlying</h2>
+<p><strong>Bold</strong></p>
+<p><em>Italic</em></p>
+<p><del>Strikethough</del></p>
+<h2><a name="block-quote" class="anchor" href="#block-quote"><span class="header-link"></span></a>Block Quote</h2>
+<blockquote>
+<p>The computer is the most remarkable tool that we&#39;ve ever come up with. It&#39;s the
+equivalent of a bicycle for our minds.</p>
+<blockquote>
+<p>Steve Jobs</p>
+</blockquote>
+</blockquote>
+
+
   <h2><a name="getting-started" class="anchor" href="#getting-started"><span class="header-link"></span></a>Getting Started</h2>
 
 
@@ -148,6 +194,7 @@ wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.
 wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.css
 </pre></div>
 </code></pre>
+<p>Add links to the web component javascript and css files in your HTML file.</p>
 <p>Your final HTML file should look like this:</p>
 <pre><code class="lang-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
@@ -170,54 +217,42 @@ wget https://github.com/bosonic/b-flash-message/raw/master/dist/b-flash-message.
 </pre></div>
 </code></pre>
 <h2><a name="how-to-build-a-web-component" class="anchor" href="#how-to-build-a-web-component"><span class="header-link"></span></a>How to build a web component ?</h2>
-<h3><a name="prerequisites" class="anchor" href="#prerequisites"><span class="header-link"></span></a>Prerequisites</h3>
-<h3><a name="step-by-step" class="anchor" href="#step-by-step"><span class="header-link"></span></a>Step by step</h3>
-
-
-  <h2><a name="contribute" class="anchor" href="#contribute"><span class="header-link"></span></a>Contribute</h2>
-<h2><a name="unordered-list" class="anchor" href="#unordered-list"><span class="header-link"></span></a>Unordered list</h2>
+<p>Bosonic web components is developed as close as the <a href="http://www.w3.org/TR/components-intro">W3C <em>work in progress</em> standards</a>. The W3C describes web components which consist of five pieces:</p>
 <ul>
-<li>One<ul>
-<li>A</li>
-<li>B<ul>
-<li>I</li>
-<li>II</li>
+<li><strong>Templates</strong>, which define chunks of markup that are inert but can be activated for use later.</li>
+<li><strong>Decorators</strong>, which apply templates based on CSS selectors to affect rich visual and behavioral changes to documents.</li>
+<li><strong>Custome Elements</strong>, which let authors define their own elements, with new tag names and new script interfaces.</li>
+<li><strong>Shadow DOM</strong>, which encapsulates a DOM subtree for more reliable composition of user interface elements.</li>
+<li><strong>Imports</strong>, which defines how templates, decorators and custom elements are packaged and loaded as a resource.</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>Two</li>
-<li>Three</li>
-</ul>
-<h2><a name="ordered-list" class="anchor" href="#ordered-list"><span class="header-link"></span></a>Ordered list</h2>
-<ol>
-<li>First</li>
-<li>Second</li>
-<li>Third</li>
-</ol>
-<h2><a name="horizontal-line" class="anchor" href="#horizontal-line"><span class="header-link"></span></a>Horizontal line</h2>
-<hr>
-<h2><a name="links" class="anchor" href="#links"><span class="header-link"></span></a>Links</h2>
-<p><a href="http://www.cabinjs.com/">Link text</a> is great.</p>
-<h2><a name="code-block-with-syntax-highlighting" class="anchor" href="#code-block-with-syntax-highlighting"><span class="header-link"></span></a>Code block with syntax highlighting</h2>
-<pre><code class="lang-javascript"><div class="highlight"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;I am a string&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">MyBackboneView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({});</span>
+<p>Below we will describe how Bosonic handles thoses specifications to give web developers the mowt awesome experience.</p>
+<h3><a name="prerequisites" class="anchor" href="#prerequisites"><span class="header-link"></span></a>Prerequisites</h3>
+<p>Bosonic core is based on several <a href="http://nodejs.org/">Nodes.js</a> packages:</p>
+<pre><code class="lang-json"><div class="highlight"><pre>    <span class="s2">&quot;grunt&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.4.2&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;grunt-contrib-watch&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.5.3&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;grunt-contrib-clean&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.5.0&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;grunt-contrib-concat&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.3.0&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;karma&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.11.14&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;grunt-karma&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.7.2&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;mocha&quot;</span><span class="err">:</span> <span class="s2">&quot;~1.17.1&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;karma-mocha&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.1.1&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;chai&quot;</span><span class="err">:</span> <span class="s2">&quot;~1.9.0&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;karma-chai&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.1.0&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;karma-chrome-launcher&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.1.2&quot;</span><span class="err">,</span>
+    <span class="s2">&quot;karma-firefox-launcher&quot;</span><span class="err">:</span> <span class="s2">&quot;~0.1.3&quot;</span>
 </pre></div>
 </code></pre>
-<h2><a name="inline-code" class="anchor" href="#inline-code"><span class="header-link"></span></a>Inline code</h2>
-<p>Here is some <code>inline code</code></p>
-<h2><a name="text-stlying" class="anchor" href="#text-stlying"><span class="header-link"></span></a>Text stlying</h2>
-<p><strong>Bold</strong></p>
-<p><em>Italic</em></p>
-<p><del>Strikethough</del></p>
-<h2><a name="block-quote" class="anchor" href="#block-quote"><span class="header-link"></span></a>Block Quote</h2>
-<blockquote>
-<p>The computer is the most remarkable tool that we&#39;ve ever come up with. It&#39;s the
-equivalent of a bicycle for our minds.</p>
-<blockquote>
-<p>Steve Jobs</p>
-</blockquote>
-</blockquote>
+<p>But we like to provide you the most simple experience, then we use <a href="http://yeoman.io/">Yeoman</a> to bootstrap a web component creation.</p>
+<p>The next chapter guides you through a web component creation.</p>
+<h3><a name="step-by-step" class="anchor" href="#step-by-step"><span class="header-link"></span></a>Step by step</h3>
+<p>To start from scratch, you will need to install Node.js (<a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">platform specific installation instructions</a>).</p>
+<p>Once Nodejs and npm are installed, just enter the following commands:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre>npm install -g yo generator-bosonic
+mkdir my-awesome-bosonic-component <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
+yo bosonic
+<span class="c"># follow yeoman instructions</span>
+</pre></div>
+</code></pre>
 
 
 
