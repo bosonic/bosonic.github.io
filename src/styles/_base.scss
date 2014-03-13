@@ -78,5 +78,14 @@ h3 {
 	padding: 20px 0;
 }
 
+#footer {
+	background-color: #E6E6E6;
+	height: 150px;
+	width: $width;
+	padding: 50px;
+	margin: 0 auto;
+
+	@include box-shadow(5px 5px #fff, 4px 4px #fff, 3px 3px #fff, 2px 2px #fff, 1px 1px #fff);
+}
 
 
