@@ -109,14 +109,15 @@ Yeoman build automaticcaly the layout of a Bosnic component which is standardize
 
 ``` bash
 └── my-awesome-bosonic-component
-    ├── demo/                       # Write your deme here. Run: grunt demo
+    ├── .gitignore                  # A ready to push .gitignore file
+    ├── demo/                       # Write your demo here. Run: grunt demo
     ├── dist/                       # JS and CSS are generated here
-    ├── node_modules/               # Bononic dependances
+    ├── node_modules/               # Bononic dependencies
     ├── src/                        # Write your code here
     ├── test/                       # Write your test here. Run: grunt karma
     ├── Gruntfile.js                # Grunt configuration
     ├── karma.conf.js               # Test configuration
     ├── LICENSE                     # MIT Licence
-    ├── package.json                # Dependances configuration
+    ├── package.json                # Dependencies configuration
     └── README.md
 ```
