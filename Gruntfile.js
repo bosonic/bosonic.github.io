@@ -1,6 +1,19 @@
 module.exports = function (grunt) {
 
   grunt.initConfig({
+    repos: {
+      multiple_opts: {
+        options: {
+          username: 'bosonic',
+          filterBy: 'name',
+          include: 'b-',
+          sortBy: 'name'
+        },
+        files: {
+          'repos/bosonic_opt.json': ['repos?page=1&per_page=100']
+        }
+      }
+    },
     pages: {
       posts: {
         src: 'posts',
@@ -118,6 +131,18 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', 'server');
+
+  grunt.registerTask('readme', 'Download README.md from bosonic web components', function() {
+    grunt.log.writeln("### Downloading README.md ###");
+    var readmetest = grunt.file.readJSON('repos/bosonic_opt.json');
+    var readmes = [];
+    readmetest.repos.forEach(function (repodesc) {
+      readmes.push(repodesc.url + '/raw/' + repodesc.master_branch + '/README.md');
+    });
+    console.log(readmes);
+  });
+
+  grunt.registerTask('dlmd', ['repos', 'readme']);
 
   require('load-grunt-tasks')(grunt);
 };
