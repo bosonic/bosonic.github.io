@@ -50,7 +50,7 @@ module.exports = function (grunt) {
         files: [
           'posts/**',
           'src/layouts/**',
-          'src/pages/**'
+          'src/pages/**/*.md'
         ],
         tasks: ['pages']
       },

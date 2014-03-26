@@ -3,7 +3,11 @@
 <h1>Documentation</h1>
 
 <% posts.forEach(function(post){ %>
-  <%- post.content %>
+  <% if(post.type === 'static' && post.section === 'documentation') { %>
+
+    <%- post.content %>
+
+  <% } %>
 <% }) %>
 
 <% include ../layouts/_footer %>
