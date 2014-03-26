@@ -40,10 +40,6 @@
 
   
 
-  
-
-  
-
 	<h1><a name="getting-started" class="anchor" href="#getting-started"><span class="header-link"></span></a>Getting Started</h1>
 <h2><a name="how-to-use-a-web-component" class="anchor" href="#how-to-use-a-web-component"><span class="header-link"></span></a>How to use a web component ?</h2>
 <p>To start with Bosonic, download the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js">bosonic core library</a> and the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js">bosonic polyfills</a> in order to support the oldest browsers (Shadow DOM unsupported).</p>
@@ -116,23 +112,72 @@ wget https://github.com/bosonic/b-hello-world/raw/master/dist/b-hello-world.css
 <p>The first thing to do is to install Node.js (<a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">platform specific installation instructions</a>).</p>
 <p>Once Nodejs and npm are installed, just enter the following commands:</p>
 <pre><code class="lang-bash"><div class="highlight"><pre>npm install -g yo generator-bosonic
-mkdir my-awesome-bosonic-component <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
+mkdir b-hello-world <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
 yo bosonic
 <span class="c"># follow yeoman instructions</span>
 </pre></div>
 </code></pre>
-<p>Yeoman build automaticcaly the layout of a Bosnic component which is standardized to keep things as simple as possible. A standard component looks like this:</p>
-<pre><code class="lang-bash"><div class="highlight"><pre>└── my-awesome-bosonic-component
-    ├── demo/                       <span class="c"># Write your deme here. Run: grunt demo</span>
+<p>Yeoman build automaticcaly the layout of a Bosonic component which is standardized to keep things as simple as possible. A standard component looks like this:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre>└── b-hello-world
+    ├── .gitignore                  <span class="c"># A ready to push .gitignore file</span>
+    ├── demo/                       <span class="c"># Write your demo here. Run: grunt demo</span>
     ├── dist/                       <span class="c"># JS and CSS are generated here</span>
-    ├── node_modules/               <span class="c"># Bononic dependances</span>
+    ├── node_modules/               <span class="c"># Bononic dependencies</span>
     ├── src/                        <span class="c"># Write your code here</span>
     ├── <span class="nb">test</span>/                       <span class="c"># Write your test here. Run: grunt karma</span>
     ├── Gruntfile.js                <span class="c"># Grunt configuration</span>
     ├── karma.conf.js               <span class="c"># Test configuration</span>
     ├── LICENSE                     <span class="c"># MIT Licence</span>
-    ├── package.json                <span class="c"># Dependances configuration</span>
+    ├── package.json                <span class="c"># Dependencies configuration</span>
     └── README.md
+</pre></div>
+</code></pre>
+<h4><a name="hello-world" class="anchor" href="#hello-world"><span class="header-link"></span></a>Hello World!</h4>
+<p>First, go to the <code>src/</code> directory and open <code>b-hello-world.html</code>:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;template&gt;</span>
+
+    <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="p">({</span>
+
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</code></pre>
+<p>In this file, you can find the different elements of a web component :</p>
+<ul>
+<li><code>&lt;element</code>, the custom elements</li>
+<li><code>&lt;style&gt;</code>, for the css code</li>
+<li><code>&lt;template&gt;</code>, for the HTML template code</li>
+<li><code>&lt;script&gt;</code>, for the javascript code</li>
+</ul>
+<p>Then go to the <code>demo/</code> directory and open the <code>index.html</code> file:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Demo<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/bosonic-polyfills.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/bosonic.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/b-hello-world.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;css/b-hello-world.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</pre></div>
+</code></pre>
+<p>Notice the <code>&lt;head&gt;</code> tag: Bosonic needs two core javascript files with your web component javascript and css files generated by a Grunt task from the <code>src/b-hello-world.html</code>.</p>
+<p>Go back in the terminal and type the following command to generate the <code>dist/</code> files and start a demo web server:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre>grunt demo
 </pre></div>
 </code></pre>
 
@@ -142,6 +187,10 @@ yo bosonic
   
 
 
+    </div>
+
+    <div id="footer">
+        
     </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>

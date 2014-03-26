@@ -499,6 +499,18 @@ h3 {
   padding: 20px 0;
 }
 
+/* line 81, ../../src/styles/_base.scss */
+#footer {
+  background-color: #E6E6E6;
+  height: 150px;
+  width: 800px;
+  padding: 50px;
+  margin: 0 auto;
+  -webkit-box-shadow: 5px 5px white, 4px 4px white, 3px 3px white, 2px 2px white, 1px 1px white;
+  -moz-box-shadow: 5px 5px white, 4px 4px white, 3px 3px white, 2px 2px white, 1px 1px white;
+  box-shadow: 5px 5px white, 4px 4px white, 3px 3px white, 2px 2px white, 1px 1px white;
+}
+
 /* line 1, ../../src/styles/_nav.scss */
 #header {
   width: 100%;
