@@ -14,21 +14,21 @@
     
     <div id="header">
 
-        <a href="index.html" id="logo">Bosonic web component</a>
-      
+    <a href="index.html" id="logo">Bosonic web component</a>
+  
 
-      <ul id="nav">
-        <li><a href="index.html">Home</a></li>
-        <li>|</li>
-        <li><a href="getting-started.html">Getting Started</a></li>
-        <li>|</li>
-        <li><a href="demos.html">Demos</a></li>
-        <li>|</li>
-        <li><a href="documentation.html">Documentation</a></li>
-        <li>|</li>
-        <li><a href="contribute.html" class="last">Contribute</a></li>
-      </ul>
-    </div>
+  <ul id="nav">
+    <li><a href="index.html">Home</a></li>
+    <li>|</li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+    <li>|</li>
+    <li><a href="demos.html">Demos</a></li>
+    <li>|</li>
+    <li><a href="documentation.html">Documentation</a></li>
+    <li>|</li>
+    <li><a href="contribute.html" class="last">Contribute</a></li>
+  </ul>
+</div>
 
     <div id="content" class="markdown">
 
@@ -64,13 +64,49 @@
 	<p>We loved the <a href="http://www.w3.org/TR/components-intro">Introduction to Web Components</a> spec. What we wanted was a way to build components as this spec describes, shielding ourselves against potential spec changes, and supporting not-so-modern browsers like IE9. And so Bosonic was born !</p>
 </div>
 
+<div class="block">
+	<h2>How it works</h2>
 
+	<div class="schema">
+		<img src="/images/bosonic_howitworks.png" alt="">
+	</div>
+
+	<div class="floating-text">
+		<p>Bosonic is sort of a transpiler that takes Web Components in HTML files and transforms them into JS and CSS code, runnable on modern browsers.</p>
+		<p>Bosonic uses some Polymer polyfills (<a href="https://github.com/polymer/CustomElements">Custom Elements</a>, <a href="https://github.com/polymer/MutationObservers">Mutation Observers</a> and <a href="https://github.com/polymer/WeakMap">Weak Maps</a>) and brings its own polyfills, including a powerful yet simple one for Shadow DOM.</p>
+	</div>
+
+	<div class="clearfix"></div>
+</div>
+
+<div class="block">
+	<h2>Browser Support</h2>
+
+	<p>Please note that we are currently expanding our test farm in order to test Bosonic with more browsers, including mobile ones and older versions of Firefox and Chrome. Bosonic support is most probably better than indicated below.</p>
+
+	<table class="browser-compat">
+		<tr>
+            <td><img src="images/firefox.png" /></td>
+            <td><img src="images/chrome.png" /></td>
+            <td><img src="images/ie.png" /></td>
+            <td><img src="images/safari.png" /></td>
+            <td><img src="images/opera.png" /></td>
+        </tr>
+		<tr>
+			<td>Firefox 25+</td>
+			<td>Chrome 30+</td>
+			<td>Internet Explorer 9+</td>
+			<td>Safari 6+</td>
+			<td>Opera 12+</td>
+		</tr>
+	</table>
+</div>
 
 
     </div>
 
     <div id="footer">
-        
+        <p>© 2014 Bosonic Authors. Code licensed under the <a href="https://github.com/bosonic/bosonic/blob/master/LICENSE">MIT License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>

@@ -14,21 +14,21 @@
     
     <div id="header">
 
-        <a href="index.html" id="logo">Bosonic web component</a>
-      
+    <a href="index.html" id="logo">Bosonic web component</a>
+  
 
-      <ul id="nav">
-        <li><a href="index.html">Home</a></li>
-        <li>|</li>
-        <li><a href="getting-started.html">Getting Started</a></li>
-        <li>|</li>
-        <li><a href="demos.html">Demos</a></li>
-        <li>|</li>
-        <li><a href="documentation.html">Documentation</a></li>
-        <li>|</li>
-        <li><a href="contribute.html" class="last">Contribute</a></li>
-      </ul>
-    </div>
+  <ul id="nav">
+    <li><a href="index.html">Home</a></li>
+    <li>|</li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+    <li>|</li>
+    <li><a href="demos.html">Demos</a></li>
+    <li>|</li>
+    <li><a href="documentation.html">Documentation</a></li>
+    <li>|</li>
+    <li><a href="contribute.html" class="last">Contribute</a></li>
+  </ul>
+</div>
 
     <div id="content" class="markdown">
 
@@ -40,27 +40,14 @@
 
   
 
-	<h1><a name="getting-started" class="anchor" href="#getting-started"><span class="header-link"></span></a>Getting Started</h1>
-<h2><a name="how-to-use-a-web-component" class="anchor" href="#how-to-use-a-web-component"><span class="header-link"></span></a>How to use a web component ?</h2>
-<p>To start with Bosonic, download the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js">bosonic core library</a> and the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js">bosonic polyfills</a> in order to support the oldest browsers (Shadow DOM unsupported).</p>
-<p>Or you can just enter commands below:</p>
-<pre><code class="lang-bash"><div class="highlight"><pre><span class="c"># In your application javascript folder</span>
-wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js
-wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js
-</pre></div>
-</code></pre>
-<p>Add script links in your HTML file.</p>
-<p>To check if Bosonic is correctly installed, we will use a <a href="https://github.com/bosonic/b-hello-world/raw/master/dist/b-hello-world.js">&quot;HelloWorld&quot; Bosonic web component</a> or you can choose the Bosonic web components you need (<a href="documentation.html">Bosonic web components list</a>).</p>
-<p>Or you can just enter commands below:</p>
-<pre><code class="lang-bash"><div class="highlight"><pre><span class="c"># In your application javascript folder</span>
-wget https://github.com/bosonic/b-hello-world/raw/master/dist/b-hello-world.js
+  
 
-<span class="c"># In your application css folder</span>
-wget https://github.com/bosonic/b-hello-world/raw/master/dist/b-hello-world.css
-</pre></div>
-</code></pre>
-<p>Add links to the web component javascript and css files in your HTML file.</p>
-<p>Your final HTML file should look like this:</p>
+	<h1><a name="getting-started" class="anchor" href="#getting-started"><span class="header-link"></span></a>Getting Started</h1>
+<h2><a name="using-bosonic-elements" class="anchor" href="#using-bosonic-elements"><span class="header-link"></span></a>Using Bosonic elements</h2>
+<p>To start with Bosonic, download the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js">bosonic core library</a> and the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js">bosonic polyfills</a>. You need to load the polyfills script before the core library in the browser.</p>
+<p>For our first use of Bosonic, we will use a <a href="https://github.com/bosonic/b-hello-world">&quot;HelloWorld&quot; Bosonic element</a> but you can choose the Bosonic elements you need (unfortunately, we don&#39;t have a full list and documentation page yet. Please go to the <a href="https://github.com/bosonic">Github organization page</a> to view the currently available elements. More coming very soon!).</p>
+<p>Grab the <a href="https://raw.githubusercontent.com/bosonic/b-hello-world/master/dist/b-hello-world.css">CSS</a> and <a href="https://raw.githubusercontent.com/bosonic/b-hello-world/master/dist/b-hello-world.js">JS</a> builded files.</p>
+<p>Your HTML file should look like this:</p>
 <pre><code class="lang-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -73,51 +60,44 @@ wget https://github.com/bosonic/b-hello-world/raw/master/dist/b-hello-world.css
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 
-    <span class="nt">&lt;b-hello-world&gt;</span>
-    <span class="nt">&lt;/b-hello-world&gt;</span>
+    <span class="nt">&lt;b-hello-world&gt;&lt;/b-hello-world&gt;</span>
 
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
 </code></pre>
-<h2><a name="how-to-build-a-web-component" class="anchor" href="#how-to-build-a-web-component"><span class="header-link"></span></a>How to build a web component ?</h2>
-<p>Bosonic web components is developed as close as the <a href="http://www.w3.org/TR/components-intro">W3C <em>work in progress</em> standards</a>. The W3C describes web components which consist of five pieces:</p>
+<p>Load the HTML file in your favorite browser, and you should see a terrific red Hello World ;)</p>
+<h2><a name="creating-bosonic-elements" class="anchor" href="#creating-bosonic-elements"><span class="header-link"></span></a>Creating Bosonic elements</h2>
+<p>Bosonic elements are developed as close as possible to the <a href="http://www.w3.org/TR/components-intro">W3C Introduction to Web Components draft</a>. The Web Components model consists of five pieces:</p>
 <ul>
-<li><strong>Templates</strong>, which define chunks of markup that are inert but can be activated for use later.</li>
-<li><strong>Decorators</strong>, which apply templates based on CSS selectors to affect rich visual and behavioral changes to documents.</li>
-<li><strong>Custome Elements</strong>, which let authors define their own elements, with new tag names and new script interfaces.</li>
-<li><strong>Shadow DOM</strong>, which encapsulates a DOM subtree for more reliable composition of user interface elements.</li>
-<li><strong>Imports</strong>, which defines how templates, decorators and custom elements are packaged and loaded as a resource.</li>
+<li><strong><a href="http://www.w3.org/TR/components-intro/#template-section">Templates</a></strong>, which define chunks of markup that are inert but can be activated for later use.</li>
+<li><strong><a href="http://www.w3.org/TR/components-intro/#decorator-section">Decorators</a></strong>, which apply templates based on CSS selectors for rich visual and behavioral changes to documents.</li>
+<li><strong><a href="http://www.w3.org/TR/components-intro/#custom-element-section">Custom Elements</a></strong>, which let authors define their own elements, with new tag names and associated beahavior and API.</li>
+<li><strong><a href="http://www.w3.org/TR/components-intro/#shadow-dom-section">Shadow DOM</a></strong>, which encapsulates a DOM subtree for reliable composition of user interface elements.</li>
+<li><strong><a href="http://www.w3.org/TR/components-intro/#imports-section">Imports</a></strong>, which defines how templates, decorators and custom elements are packaged and loaded as a resource.</li>
 </ul>
 <p>Below we will describe how Bosonic handles thoses specifications to give web developers the most awesome experience.</p>
 <h3><a name="prerequisites" class="anchor" href="#prerequisites"><span class="header-link"></span></a>Prerequisites</h3>
-<p>Bosonic core is based on several <a href="http://nodejs.org/">Nodes.js</a> packages:</p>
-<pre><code class="lang-json"><div class="highlight"><pre>    <span class="s2">&quot;grunt&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;grunt-contrib-watch&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;grunt-contrib-clean&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;grunt-contrib-concat&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;karma&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;grunt-karma&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;mocha&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;karma-mocha&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;chai&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;karma-chai&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;karma-chrome-launcher&quot;</span><span class="err">,</span>
-    <span class="s2">&quot;karma-firefox-launcher&quot;</span>
-</pre></div>
-</code></pre>
-<p>But we like to provide you the most simple experience, then we use <a href="http://yeoman.io/">Yeoman</a> to bootstrap a new web component.</p>
-<p>The next chapter wiil guide you through the creation of a web component.</p>
+<p>Bosonic is made of several packages:</p>
+<ul>
+<li><strong><a href="https://github.com/bosonic/bosonic">Bosonic core library</a></strong>, which consists of a runtime and various polyfills.</li>
+<li><strong><a href="https://github.com/bosonic/transpiler">Bosonic transpiler</a></strong>, which is a <a href="http://nodejs.org/">Node.js</a> module that transforms elements&#39; HTML files into JS &amp; CSS ones.</li>
+<li><strong><a href="https://github.com/bosonic/grunt-bosonic">grunt-bosonic</a></strong>, which is a <a href="http://gruntjs.com/">Grunt</a> task that uses the transpiler to build your elements.</li>
+<li><strong><a href="https://github.com/bosonic/yeoman-bosonic">yeoman-bosonic</a></strong>, which is a <a href="http://yeoman.io/">Yeoman</a> generator that creates the skeleton of a new element.</li>
+</ul>
+<p>All these <a href="https://www.npmjs.org/search?q=bosonic">components</a>, like all Bosonic elements, are (or will be) available as <a href="https://www.npmjs.org/">npm</a> packages.</p>
+<p>To keep things simple, we will use <a href="http://yeoman.io/">Yeoman</a> to bootstrap our new element.</p>
 <h3><a name="step-by-step" class="anchor" href="#step-by-step"><span class="header-link"></span></a>Step by step</h3>
 <p>The first thing to do is to install Node.js (<a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">platform specific installation instructions</a>).</p>
-<p>Once Nodejs and npm are installed, just enter the following commands:</p>
+<p>Once Node.js and npm are installed, enter the following commands:</p>
 <pre><code class="lang-bash"><div class="highlight"><pre>npm install -g yo generator-bosonic
 mkdir b-hello-world <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
 yo bosonic
 <span class="c"># follow yeoman instructions</span>
+npm install
 </pre></div>
 </code></pre>
-<p>Yeoman build automaticcaly the layout of a Bosonic component which is standardized to keep things as simple as possible. A standard component looks like this:</p>
+<p>Yeoman will generate the layout of your new element, which is standardized to keep things as simple as possible. A standard component looks like this:</p>
 <pre><code class="lang-bash"><div class="highlight"><pre>└── b-hello-world
     ├── .gitignore                  <span class="c"># A ready to push .gitignore file</span>
     ├── demo/                       <span class="c"># Write your demo here. Run: grunt demo</span>
@@ -149,12 +129,12 @@ yo bosonic
 <span class="nt">&lt;/element&gt;</span>
 </pre></div>
 </code></pre>
-<p>In this file, you can find the different elements of a web component :</p>
+<p>In this file, you can find the different parts of a custom element :</p>
 <ul>
-<li><code>&lt;element</code>, the custom elements</li>
-<li><code>&lt;style&gt;</code>, for the css code</li>
-<li><code>&lt;template&gt;</code>, for the HTML template code</li>
-<li><code>&lt;script&gt;</code>, for the javascript code</li>
+<li><code>&lt;element</code>, which encapsulates the custom element definition.</li>
+<li><code>&lt;style&gt;</code>, for the css code.</li>
+<li><code>&lt;template&gt;</code>, useful to build the markup of your element.</li>
+<li><code>&lt;script&gt;</code>, for the javascript code that defines the behavior and API of your element.</li>
 </ul>
 <p>Then go to the <code>demo/</code> directory and open the <code>index.html</code> file:</p>
 <pre><code class="lang-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -175,14 +155,14 @@ yo bosonic
 <span class="nt">&lt;/body&gt;</span>
 </pre></div>
 </code></pre>
-<p>Notice the <code>&lt;head&gt;</code> tag: Bosonic needs two core javascript files with your web component javascript and css files generated by a Grunt task from the <code>src/b-hello-world.html</code>.</p>
+<p>Notice the <code>&lt;head&gt;</code> tag: Bosonic needs two core javascript files alongside your element javascript and css files, which are generated by a Grunt task from the <code>src/b-hello-world.html</code>.</p>
 <p>Go back in the terminal and type the following command to generate the <code>dist/</code> files and start a demo web server:</p>
 <pre><code class="lang-bash"><div class="highlight"><pre>grunt demo
 </pre></div>
 </code></pre>
+<p>Of course, nothing will display yet. It&#39;s time to start building your element ! </p>
+<p>Continue on to the <a href="documentation.html">documentation</a>.</p>
 
-
-  
 
   
 
@@ -190,7 +170,7 @@ yo bosonic
     </div>
 
     <div id="footer">
-        
+        <p>© 2014 Bosonic Authors. Code licensed under the <a href="https://github.com/bosonic/bosonic/blob/master/LICENSE">MIT License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>

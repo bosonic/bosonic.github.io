@@ -412,13 +412,16 @@ table {
 
 /* line 4, ../../src/styles/_base.scss */
 body {
-  font-family: Lato;
-  font-weight: 300;
+  /*font-family: Lato;
+  font-weight: 300;*/
   font-size: 16px;
   background-color: #f0f0f0;
+  font-family: "Open Sans",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  /*line-height: 24px;*/
 }
 
-/* line 11, ../../src/styles/_base.scss */
+/* line 14, ../../src/styles/_base.scss */
 h1 {
   font-weight: 300;
   font-size: 2em;
@@ -426,33 +429,42 @@ h1 {
   color: #60bf65;
 }
 
-/* line 18, ../../src/styles/_base.scss */
+/* line 21, ../../src/styles/_base.scss */
 h2 {
   color: #60bf65;
   font-weight: 400;
 }
 
-/* line 23, ../../src/styles/_base.scss */
+/* line 26, ../../src/styles/_base.scss */
 h3 {
   font-size: 1.2em;
 }
 
-/* line 27, ../../src/styles/_base.scss */
+/* line 30, ../../src/styles/_base.scss */
 .clearfix {
   clear: both;
 }
 
-/* line 31, ../../src/styles/_base.scss */
+/* line 34, ../../src/styles/_base.scss */
 .left {
   float: left;
 }
 
-/* line 35, ../../src/styles/_base.scss */
+/* line 38, ../../src/styles/_base.scss */
 .right {
   float: right;
 }
 
-/* line 39, ../../src/styles/_base.scss */
+/* line 42, ../../src/styles/_base.scss */
+a {
+  color: #44a849;
+}
+/* line 45, ../../src/styles/_base.scss */
+a:hover {
+  text-decoration: underline;
+}
+
+/* line 50, ../../src/styles/_base.scss */
 #content {
   width: 800px;
   padding: 50px;
@@ -464,16 +476,7 @@ h3 {
   -moz-box-shadow: 5px 5px #e6e6e6, 4px 4px #e6e6e6, 3px 3px #e6e6e6, 2px 2px #e6e6e6, 1px 1px #e6e6e6;
   box-shadow: 5px 5px #e6e6e6, 4px 4px #e6e6e6, 3px 3px #e6e6e6, 2px 2px #e6e6e6, 1px 1px #e6e6e6;
 }
-/* line 49, ../../src/styles/_base.scss */
-#content a {
-  color: #60bf65;
-  font-weight: 700;
-}
-/* line 53, ../../src/styles/_base.scss */
-#content a:hover {
-  text-decoration: underline;
-}
-/* line 58, ../../src/styles/_base.scss */
+/* line 60, ../../src/styles/_base.scss */
 #content .button {
   display: inline-block;
   padding: 20px 30px;
@@ -487,28 +490,24 @@ h3 {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-/* line 69, ../../src/styles/_base.scss */
+/* line 71, ../../src/styles/_base.scss */
 #content .button:hover {
   background-color: #60bf65;
   color: #fff;
   text-decoration: none;
 }
 
-/* line 77, ../../src/styles/_base.scss */
+/* line 79, ../../src/styles/_base.scss */
 .block {
   padding: 20px 0;
 }
 
-/* line 81, ../../src/styles/_base.scss */
+/* line 83, ../../src/styles/_base.scss */
 #footer {
-  background-color: #E6E6E6;
-  height: 150px;
+  height: 50px;
   width: 800px;
-  padding: 50px;
+  padding: 0 50px;
   margin: 0 auto;
-  -webkit-box-shadow: 5px 5px white, 4px 4px white, 3px 3px white, 2px 2px white, 1px 1px white;
-  -moz-box-shadow: 5px 5px white, 4px 4px white, 3px 3px white, 2px 2px white, 1px 1px white;
-  box-shadow: 5px 5px white, 4px 4px white, 3px 3px white, 2px 2px white, 1px 1px white;
 }
 
 /* line 1, ../../src/styles/_nav.scss */
@@ -589,6 +588,38 @@ h3 {
   float: left;
   padding-left: 25px;
   padding-top: 25px;
+}
+
+/* line 18, ../../src/styles/_home.scss */
+div.schema {
+  width: 340px;
+  float: left;
+}
+
+/* line 23, ../../src/styles/_home.scss */
+div.floating-text {
+  width: 435px;
+  float: left;
+  padding-left: 25px;
+}
+
+/* line 29, ../../src/styles/_home.scss */
+table.browser-compat {
+  width: 100%;
+}
+
+/* line 33, ../../src/styles/_home.scss */
+table.browser-compat td {
+  text-align: center;
+  width: 160px;
+  vertical-align: middle;
+}
+
+/* line 39, ../../src/styles/_home.scss */
+table.browser-compat img {
+  border: none;
+  background: none;
+  box-shadow: none;
 }
 
 /* line 3, ../../src/styles/_markdown.scss */
