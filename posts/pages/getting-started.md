@@ -89,8 +89,8 @@ Yeoman will generate the layout of your new element, which is standardized to ke
     ├── Gruntfile.js                # Grunt configuration
     ├── karma.conf.js               # Test configuration
     ├── LICENSE                     # MIT Licence
-    ├── package.json                # Dependencies configuration
-    └── README.md
+    ├── package.json                # Package definition and dependencies configuration
+    └── README.md                   # A Readme file
 ```
 
 #### Hello World!
