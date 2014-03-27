@@ -13,7 +13,8 @@
     "grunt-contrib-clean": "~0.4.0",
     "grunt-gh-pages": "~0.8.0",
     "grunt-repos": "~0.1.2",
-    "grunt-curl": "~1.4.0"
+    "grunt-curl": "~1.4.0",
+    "grunt-file-append": "0.0.2"
   },
   "engines": {
     "node": ">=0.10.0"

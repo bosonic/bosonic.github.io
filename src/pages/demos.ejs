@@ -75,4 +75,10 @@
 
         <h1>More coming very soon!</h1>
 
+<% posts.forEach(function(post){ %>
+  <% if(post.type === 'static' && post.title === 'Components') { %>
+    <%- post.content %>
+  <% } %>
+<% }) %>
+
 <% include ../layouts/_footer %>

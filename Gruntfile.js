@@ -1,19 +1,5 @@
 module.exports = function (grunt) {
-
   grunt.initConfig({
-    repos: {
-      multiple_opts: {
-        options: {
-          username: 'bosonic',
-          filterBy: 'name',
-          include: 'b-',
-          sortBy: 'name'
-        },
-        files: {
-          'repos/bosonic_opt.json': ['repos?page=1&per_page=100']
-        }
-      }
-    },
     pages: {
       posts: {
         src: 'posts',
@@ -103,7 +89,7 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      dist: 'dist'
+      dist: ['dist', 'repos']
     },
     'gh-pages': {
       options: {
@@ -111,11 +97,59 @@ module.exports = function (grunt) {
         branch: 'master',
       },
       src: ['**']
+    },
+    repos: {
+      multiple_opts: {
+        options: {
+          username: 'bosonic',
+          filterBy: 'name',
+          include: 'b-',
+          sortBy: 'name'
+        },
+        files: {
+          'repos/bosonic_opt.json': ['repos?page=1&per_page=100']
+        }
+      }
+    },
+    curl: {
+      readmes: {
+        src: function() {
+          if(grunt.file.exists('repos/bosonic_opt.json')) {
+            grunt.log.writeln("Downloading bosonic components README.md");
+            var reposjson = grunt.file.readJSON('repos/bosonic_opt.json');
+            var readmes = [];
+            reposjson.repos.forEach(function(repodesc) {
+              var url = repodesc.url + '/raw/' + repodesc.master_branch + '/README.md';
+              readmes.push(url);
+            });
+          };
+          return readmes;
+        }(),
+        dest: 'posts/components/readmes.md'
+      }
+    },
+    file_append: {
+      default_options: {
+        files: {
+          'posts/components/readmes.md': {
+            prepend: '{\n\ttitle: "Components",\n\ttype: "static"\n}\n\n',
+            input: 'posts/components/readmes.md'
+          }
+        }
+      }
     }
   });
 
+  //FIXME: Pour le moment il faut lancer la task readmes 2 fois car je ne sais pas comment faire autrement
+  grunt.registerTask('readmes:github', 'Download Bosonic Components readme.md', 'repos');
+  grunt.registerTask('readmes:download', 'Download github info', 'curl:readmes');
+  grunt.registerTask('readmes:create', 'Concatenate the components readme.md', 'file_append');
+
+  grunt.registerTask('readmes', ['readmes:github', 'readmes:download', 'readmes:create']);
+
   grunt.registerTask('build', [
     'clean',
+    'readmes',
     'pages',
     'compass',
     'copy'
@@ -131,18 +165,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', 'server');
-
-  grunt.registerTask('readme', 'Download README.md from bosonic web components', function() {
-    grunt.log.writeln("### Downloading README.md ###");
-    var readmetest = grunt.file.readJSON('repos/bosonic_opt.json');
-    var readmes = [];
-    readmetest.repos.forEach(function (repodesc) {
-      readmes.push(repodesc.url + '/raw/' + repodesc.master_branch + '/README.md');
-    });
-    console.log(readmes);
-  });
-
-  grunt.registerTask('dlmd', ['repos', 'readme']);
 
   require('load-grunt-tasks')(grunt);
 };
