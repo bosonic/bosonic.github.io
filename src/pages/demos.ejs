@@ -1,5 +1,28 @@
-<% include ../layouts/_header %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="<%= data.baseUrl %>images/cabin.png">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="<%= data.baseUrl %>styles/main.css" rel="stylesheet">
 
-<h1>Demos</h1>
+    <script src="<%= data.baseUrl %>scripts/bosonic-polyfills.js"></script>
+    <script src="<%= data.baseUrl %>scripts/bosonic.js"></script>
+    <script src="<%= data.baseUrl %>scripts/b-hello-world.js"></script>
+    <link href="<%= data.baseUrl %>styles/b-hello-world.css" rel="stylesheet">
+
+    <title>Bosonic Web Component</title>
+    <meta name="description" content="<%= locals.description %>">
+  </head>
+  <body>
+    
+    <% include ../layouts/_nav %>
+
+    <div id="content">
+
+        <h1>Demos</h1>
+
+        <b-hello-world></b-hello-world>
 
 <% include ../layouts/_footer %>

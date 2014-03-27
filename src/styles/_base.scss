@@ -2,10 +2,13 @@
 @import "compass/css3/box-shadow";
 
 body {
-	font-family: Lato;
-	font-weight: 300;
+	/*font-family: Lato;
+	font-weight: 300;*/
 	font-size:16px;
 	background-color: $background;
+	font-family: "Open Sans",Helvetica,Arial,sans-serif;
+	font-weight: normal;
+	/*line-height: 24px;*/
 }
 
 h1 {
@@ -36,6 +39,14 @@ h3 {
 	float: right;
 }
 
+a {
+	color: darken($color, 10%);
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 #content {
 	width: $width;
 	padding: 50px;
@@ -45,15 +56,6 @@ h3 {
 	background-color: #fff;
 
 	@include box-shadow(5px 5px #E6E6E6, 4px 4px #E6E6E6, 3px 3px #E6E6E6, 2px 2px #E6E6E6, 1px 1px #E6E6E6);
-
-	a {
-		color: $color;
-		font-weight: 700;
-
-		&:hover {
-			text-decoration: underline;
-		}
-	}
 
 	.button {
 		display: inline-block;
@@ -79,13 +81,10 @@ h3 {
 }
 
 #footer {
-	background-color: #E6E6E6;
-	height: 150px;
+	height: 50px;
 	width: $width;
-	padding: 50px;
+	padding: 0 50px;
 	margin: 0 auto;
-
-	@include box-shadow(5px 5px #fff, 4px 4px #fff, 3px 3px #fff, 2px 2px #fff, 1px 1px #fff);
 }
 
 

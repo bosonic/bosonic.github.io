@@ -5,36 +5,15 @@
 
 # Getting Started
 
-## How to use a web component ?
+## Using Bosonic elements
 
-To start with Bosonic, download the [bosonic core library](https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js) and the [bosonic polyfills](https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js) in order to support the oldest browsers (Shadow DOM unsupported).
+To start with Bosonic, download the [bosonic core library](https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js) and the [bosonic polyfills](https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js). You need to load the polyfills script before the core library in the browser.
 
-Or you can just enter commands below:
+For our first use of Bosonic, we will use a ["HelloWorld" Bosonic element](https://github.com/bosonic/b-hello-world) but you can choose the Bosonic elements you need (unfortunately, we don't have a full list and documentation page yet. Please go to the [Github organization page](https://github.com/bosonic) to view the currently available elements. More coming very soon!).
 
-``` bash
-# In your application javascript folder
-wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js
-wget https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js
-```
+Grab the [CSS](https://raw.githubusercontent.com/bosonic/b-hello-world/master/dist/b-hello-world.css) and [JS](https://raw.githubusercontent.com/bosonic/b-hello-world/master/dist/b-hello-world.js) builded files.
 
-Add script links in your HTML file.
-
-
-To check if Bosonic is correctly installed, we will use a ["HelloWorld" Bosonic web component](https://github.com/bosonic/b-hello-world/raw/master/dist/b-hello-world.js) or you can choose the Bosonic web components you need ([Bosonic web components list](documentation.html)).
-
-Or you can just enter commands below:
-
-``` bash
-# In your application javascript folder
-wget https://github.com/bosonic/b-hello-world/raw/master/dist/b-hello-world.js
-
-# In your application css folder
-wget https://github.com/bosonic/b-hello-world/raw/master/dist/b-hello-world.css
-```
-
-Add links to the web component javascript and css files in your HTML file.
-
-Your final HTML file should look like this:
+Your HTML file should look like this:
 
 ``` html
 <!DOCTYPE html>
@@ -49,63 +28,55 @@ Your final HTML file should look like this:
 </head>
 <body>
 
-	<b-hello-world>
-	</b-hello-world>
+	<b-hello-world></b-hello-world>
 
 </body>
 </html>
 
 ```
 
-## How to build a web component ?
+Load the HTML file in your favorite browser, and you should see a terrific red Hello World ;)
 
-Bosonic web components is developed as close as the [W3C _work in progress_ standards](http://www.w3.org/TR/components-intro). The W3C describes web components which consist of five pieces:
+## Creating Bosonic elements
 
-- __Templates__, which define chunks of markup that are inert but can be activated for use later.
-- __Decorators__, which apply templates based on CSS selectors to affect rich visual and behavioral changes to documents.
-- __Custome Elements__, which let authors define their own elements, with new tag names and new script interfaces.
-- __Shadow DOM__, which encapsulates a DOM subtree for more reliable composition of user interface elements.
-- __Imports__, which defines how templates, decorators and custom elements are packaged and loaded as a resource.
+Bosonic elements are developed as close as possible to the [W3C Introduction to Web Components draft](http://www.w3.org/TR/components-intro). The Web Components model consists of five pieces:
+
+- __[Templates](http://www.w3.org/TR/components-intro/#template-section)__, which define chunks of markup that are inert but can be activated for later use.
+- __[Decorators](http://www.w3.org/TR/components-intro/#decorator-section)__, which apply templates based on CSS selectors for rich visual and behavioral changes to documents.
+- __[Custom Elements](http://www.w3.org/TR/components-intro/#custom-element-section)__, which let authors define their own elements, with new tag names and associated beahavior and API.
+- __[Shadow DOM](http://www.w3.org/TR/components-intro/#shadow-dom-section)__, which encapsulates a DOM subtree for reliable composition of user interface elements.
+- __[Imports](http://www.w3.org/TR/components-intro/#imports-section)__, which defines how templates, decorators and custom elements are packaged and loaded as a resource.
 
 Below we will describe how Bosonic handles thoses specifications to give web developers the most awesome experience.
 
 ### Prerequisites
 
-Bosonic core is based on several [Nodes.js](http://nodejs.org/) packages:
+Bosonic is made of several packages:
 
-``` json
-    "grunt",
-    "grunt-contrib-watch",
-    "grunt-contrib-clean",
-    "grunt-contrib-concat",
-    "karma",
-    "grunt-karma",
-    "mocha",
-    "karma-mocha",
-    "chai",
-    "karma-chai",
-    "karma-chrome-launcher",
-    "karma-firefox-launcher"
-```
+- __[Bosonic core library](https://github.com/bosonic/bosonic)__, which consists of a runtime and various polyfills.
+- __[Bosonic transpiler](https://github.com/bosonic/transpiler)__, which is a [Node.js](http://nodejs.org/) module that transforms elements' HTML files into JS & CSS ones.
+- __[grunt-bosonic](https://github.com/bosonic/grunt-bosonic)__, which is a [Grunt](http://gruntjs.com/) task that uses the transpiler to build your elements.
+- __[yeoman-bosonic](https://github.com/bosonic/yeoman-bosonic)__, which is a [Yeoman](http://yeoman.io/) generator that creates the skeleton of a new element.
 
-But we like to provide you the most simple experience, then we use [Yeoman](http://yeoman.io/) to bootstrap a new web component.
+All these [components](https://www.npmjs.org/search?q=bosonic), like all Bosonic elements, are (or will be) available as [npm](https://www.npmjs.org/) packages.
 
-The next chapter wiil guide you through the creation of a web component.
+To keep things simple, we will use [Yeoman](http://yeoman.io/) to bootstrap our new element.
 
 ### Step by step
 
 The first thing to do is to install Node.js ([platform specific installation instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)).
 
-Once Nodejs and npm are installed, just enter the following commands:
+Once Node.js and npm are installed, enter the following commands:
 
 ``` bash
 npm install -g yo generator-bosonic
 mkdir b-hello-world && cd $_
 yo bosonic
 # follow yeoman instructions
+npm install
 ```
 
-Yeoman build automaticcaly the layout of a Bosonic component which is standardized to keep things as simple as possible. A standard component looks like this:
+Yeoman will generate the layout of your new element, which is standardized to keep things as simple as possible. A standard component looks like this:
 
 ``` bash
 └── b-hello-world
@@ -142,12 +113,12 @@ First, go to the `src/` directory and open `b-hello-world.html`:
 </element>
 ```
 
-In this file, you can find the different elements of a web component :
+In this file, you can find the different parts of a custom element :
 
-- `<element`, the custom elements
-- `<style>`, for the css code
-- `<template>`, for the HTML template code
-- `<script>`, for the javascript code
+- `<element`, which encapsulates the custom element definition.
+- `<style>`, for the css code.
+- `<template>`, useful to build the markup of your element.
+- `<script>`, for the javascript code that defines the behavior and API of your element.
 
 Then go to the `demo/` directory and open the `index.html` file:
 
@@ -170,11 +141,15 @@ Then go to the `demo/` directory and open the `index.html` file:
 </body>
 ```
 
-Notice the `<head>` tag: Bosonic needs two core javascript files with your web component javascript and css files generated by a Grunt task from the `src/b-hello-world.html`.
+Notice the `<head>` tag: Bosonic needs two core javascript files alongside your element javascript and css files, which are generated by a Grunt task from the `src/b-hello-world.html`.
 
 Go back in the terminal and type the following command to generate the `dist/` files and start a demo web server:
 
 ``` bash
 grunt demo
 ```
+
+Of course, nothing will display yet. It's time to start building your element ! 
+
+Continue on to the [documentation](documentation.html).
 

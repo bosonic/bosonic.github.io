@@ -14,3 +14,30 @@
 		padding-top: 25px;
 	}
 }
+
+div.schema {
+	width: 340px;
+	float: left;
+}
+
+div.floating-text {
+	width: 435px;
+	float: left;
+	padding-left: 25px;
+}
+
+table.browser-compat {
+    width: 100%;
+}
+
+table.browser-compat td {
+    text-align: center;
+    width: 160px;
+    vertical-align: middle;
+}
+
+table.browser-compat img {
+    border: none;
+    background: none;
+    box-shadow: none;
+}
