@@ -32,42 +32,31 @@
 
     <div id="content" class="markdown">
 
+<div class="post">
+<div class="post-body markdown">
+	<h2><a name="templates" class="anchor" href="#templates"><span class="header-link"></span></a>Templates</h2>
+<p>If you put some markup in the <code>&lt;template&gt;</code> section, you will have access to a <code>this.template</code> property in your <code>&lt;script&gt;</code>, which is a polyfilled HTML template element. We will use this to bring more content on screen with our element:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>    
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;template&gt;</span>
+        <span class="nt">&lt;h3&gt;</span>Hello, world!<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Lorem ipsum<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="p">({</span>
+            <span class="nx">createdCallback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</code></pre>
 
+</div>
 
-  
-
-  
-
-  
-
-    <h1><a name="contribute" class="anchor" href="#contribute"><span class="header-link"></span></a>Contribute</h1>
-<h2><a name="source-code" class="anchor" href="#source-code"><span class="header-link"></span></a>Source code</h2>
-<p>Fork it on <a href="https://github.com/bosonic">Github</a>.</p>
-<p>In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality/element. Lint and test your code using Grunt.</p>
-<h2><a name="discussion" class="anchor" href="#discussion"><span class="header-link"></span></a>Discussion</h2>
-<p>For now, we&#39;ve got only two ways to stay in touch: <a href="https://github.com/bosonic">Github</a> and our <a href="https://twitter.com/bosonic_project">Twitter account</a>.</p>
-<p>We&#39;ll soon open a Google group and an IRC channel.</p>
-<h2><a name="what-do-you-need" class="anchor" href="#what-do-you-need"><span class="header-link"></span></a>What do you need ?</h2>
-<ul>
-<li>More elements: the more the better...</li>
-<li>Better documentation: if you&#39;re fluent, you can help!</li>
-<li>Tasks for alternative task runners: we currently only have a grunt one, if you use Gulp/Pint/Make/Whatever, you&#39;re welcome to build us a transpilation task!</li>
-</ul>
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
+</div>
     </div>
 
     <div id="footer">
@@ -88,3 +77,4 @@
 	</script>
   </body>
 </html>
+

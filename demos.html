@@ -9,8 +9,8 @@
 
     <script src="/scripts/bosonic-polyfills.js"></script>
     <script src="/scripts/bosonic.js"></script>
-    <script src="/scripts/b-hello-world.js"></script>
-    <link href="/styles/b-hello-world.css" rel="stylesheet">
+    <script src="/scripts/bosonic-components.js"></script>
+    <link href="/styles/bosonic-components.css" rel="stylesheet">
 
     <title>Bosonic Web Component</title>
     <meta name="description" content="undefined">
@@ -39,7 +39,57 @@
 
         <h1>Demos</h1>
 
-        <b-hello-world></b-hello-world>
+        <h2>Modal</h2>
+
+        <button id="show-modal">Show modal</button>
+        <p>(Close with ESC)</p>
+
+        <style>
+            b-dialog {
+                padding: 0 20px;
+            }
+        </style>
+
+        <b-dialog>
+            <h3>Test</h3>
+            <p>Hello world</p>
+        </b-dialog>
+
+        <script type="text/javascript">
+            window.addEventListener('WebComponentsReady', function() {
+                var showModalButton = document.getElementById('show-modal');
+                showModalButton.addEventListener('click', function() {
+                    document.querySelector('b-dialog').showModal();
+                }, false);
+            });
+        </script>
+
+        <h2>Selectable</h2>
+        <p>Generic element for selectability in a list. Click on the list below and use arrow keys to change selection.</p>
+
+        <style>
+            .b-selectable-selected {
+                border: 1px solid black;
+            }
+        </style>
+
+        <b-selectable target="li">
+            <ul>
+                <li>item 1</li>
+                <li>item 2</li>
+                <li>item 3</li>
+                <li>item 4</li>
+                <li>item 5</li>
+                <li>item 6</li>
+                <li>item 7</li>
+            </ul>
+        </b-selectable>
+
+        <h2>Datepicker</h2>
+
+        <b-datepicker locale="en"></b-datepicker>
+
+        <h1>More coming very soon!</h1>
 
     </div>
 
