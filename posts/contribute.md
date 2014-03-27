@@ -1,48 +1,22 @@
 {
   title: "Contribute",
-  order: 1
+  type: "static"
 }
 
-## Contribute
+# Contribute
 
-## Unordered list
-- One
-  - A
-  - B
-      - I
-      - II
-- Two
-- Three
+## Source code
+Fork it on [Github](https://github.com/bosonic).
 
-## Ordered list
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality/element. Lint and test your code using Grunt.
 
-1. First
-2. Second
-3. Third
+## Discussion
+For now, we've got only two ways to stay in touch: [Github](https://github.com/bosonic) and our [Twitter account](https://twitter.com/bosonic_project).
 
-## Horizontal line
-- - -
+We'll soon open a Google group and an IRC channel.
 
-## Links
-[Link text](http://www.cabinjs.com/) is great.
+## What do you need ?
 
-## Code block with syntax highlighting
-```javascript
-console.log('I am a string');
-var MyBackboneView = Backbone.View.extend({});
-```
-## Inline code
-Here is some `inline code`
-
-## Text stlying
-__Bold__
-
-
-_Italic_
-
-~~Strikethough~~
-
-## Block Quote
-> The computer is the most remarkable tool that we've ever come up with. It's the
-equivalent of a bicycle for our minds.
-> > Steve Jobs
+- More elements: the more the better...
+- Better documentation: if you're fluent, you can help!
+- Tasks for alternative task runners: we currently only have a grunt one, if you use Gulp/Pint/Make/Whatever, you're welcome to build us a transpilation task!

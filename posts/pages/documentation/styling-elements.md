@@ -1,7 +1,8 @@
 {
   title: "Styling elements",
   type: "static",
-  section: "documentation"
+  section: "documentation",
+  order: 5
 }
 
 ## Styling elements

@@ -1,5 +1,11 @@
 <% include ../layouts/_header %>
 
-<h1>Contribute</h1>
+<% posts.forEach(function(post){ %>
+  <% if(post.type === 'static' && post.title === 'Contribute') { %>
+
+    <%- post.content %>
+
+  <% } %>
+<% }) %>
 
 <% include ../layouts/_footer %>
