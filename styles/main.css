@@ -412,16 +412,13 @@ table {
 
 /* line 4, ../../src/styles/_base.scss */
 body {
-  /*font-family: Lato;
-  font-weight: 300;*/
-  font-size: 16px;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  line-height: 1.4;
+  color: #4C5245;
   background-color: #f0f0f0;
-  font-family: "Open Sans",Helvetica,Arial,sans-serif;
-  font-weight: normal;
-  /*line-height: 24px;*/
 }
 
-/* line 14, ../../src/styles/_base.scss */
+/* line 11, ../../src/styles/_base.scss */
 h1 {
   font-weight: 300;
   font-size: 2em;
@@ -429,42 +426,42 @@ h1 {
   color: #60bf65;
 }
 
-/* line 21, ../../src/styles/_base.scss */
+/* line 18, ../../src/styles/_base.scss */
 h2 {
   color: #60bf65;
   font-weight: 400;
 }
 
-/* line 26, ../../src/styles/_base.scss */
+/* line 23, ../../src/styles/_base.scss */
 h3 {
   font-size: 1.2em;
 }
 
-/* line 30, ../../src/styles/_base.scss */
+/* line 27, ../../src/styles/_base.scss */
 .clearfix {
   clear: both;
 }
 
-/* line 34, ../../src/styles/_base.scss */
+/* line 31, ../../src/styles/_base.scss */
 .left {
   float: left;
 }
 
-/* line 38, ../../src/styles/_base.scss */
+/* line 35, ../../src/styles/_base.scss */
 .right {
   float: right;
 }
 
-/* line 42, ../../src/styles/_base.scss */
+/* line 39, ../../src/styles/_base.scss */
 a {
   color: #44a849;
 }
-/* line 45, ../../src/styles/_base.scss */
+/* line 42, ../../src/styles/_base.scss */
 a:hover {
   text-decoration: underline;
 }
 
-/* line 50, ../../src/styles/_base.scss */
+/* line 47, ../../src/styles/_base.scss */
 #content {
   width: 800px;
   padding: 50px;
@@ -476,7 +473,7 @@ a:hover {
   -moz-box-shadow: 5px 5px #e6e6e6, 4px 4px #e6e6e6, 3px 3px #e6e6e6, 2px 2px #e6e6e6, 1px 1px #e6e6e6;
   box-shadow: 5px 5px #e6e6e6, 4px 4px #e6e6e6, 3px 3px #e6e6e6, 2px 2px #e6e6e6, 1px 1px #e6e6e6;
 }
-/* line 60, ../../src/styles/_base.scss */
+/* line 57, ../../src/styles/_base.scss */
 #content .button {
   display: inline-block;
   padding: 20px 30px;
@@ -490,19 +487,19 @@ a:hover {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-/* line 71, ../../src/styles/_base.scss */
+/* line 68, ../../src/styles/_base.scss */
 #content .button:hover {
   background-color: #60bf65;
   color: #fff;
   text-decoration: none;
 }
 
-/* line 79, ../../src/styles/_base.scss */
+/* line 76, ../../src/styles/_base.scss */
 .block {
   padding: 20px 0;
 }
 
-/* line 83, ../../src/styles/_base.scss */
+/* line 80, ../../src/styles/_base.scss */
 #footer {
   height: 50px;
   width: 800px;
@@ -512,59 +509,61 @@ a:hover {
 
 /* line 1, ../../src/styles/_nav.scss */
 #header {
-  width: 100%;
-  height: 35px;
-  background-color: #60bf65;
-  border-top: 7px solid black;
   position: fixed;
+  width: 100%;
+  border-top: 7px solid black;
+  background-color: #60bf65;
+  line-height: 2.4;
 }
 /* line 8, ../../src/styles/_nav.scss */
 #header #nav {
   text-align: center;
-  margin-top: 0;
-  padding-top: 8px;
+  margin: 0;
 }
-/* line 13, ../../src/styles/_nav.scss */
+/* line 12, ../../src/styles/_nav.scss */
 #header #nav li {
-  display: inline;
+  display: inline-block;
   font-size: 0.9em;
   color: white;
   font-weight: 400;
 }
-/* line 19, ../../src/styles/_nav.scss */
+/* line 18, ../../src/styles/_nav.scss */
 #header #nav li a {
+  display: inline-block;
   font-weight: 400;
   font-size: 1em;
+  line-height: 1.6;
+  padding: 0 .6em;
+  margin: 0 .6em;
   color: white;
   text-transform: uppercase;
-  padding: 0.3em 0.6em;
-  margin: 0 0.6em;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-/* line 29, ../../src/styles/_nav.scss */
+/* line 30, ../../src/styles/_nav.scss */
 #header #nav li a:hover {
   color: #60bf65;
   background-color: #fff;
 }
-/* line 37, ../../src/styles/_nav.scss */
+/* line 38, ../../src/styles/_nav.scss */
+#header .nav-separator {
+  opacity: 0.4;
+}
+/* line 41, ../../src/styles/_nav.scss */
 #header #logo {
   position: absolute;
-  top: 45px;
-  left: 15px;
+  top: 3rem;
+  left: 1rem;
   background-image: url("/images/bosonic_logo.png");
   width: 325px;
   height: 159px;
   text-indent: -9000px;
 }
 @media screen and (max-width: 1440px) {
-  /* line 48, ../../src/styles/_nav.scss */
+  /* line 52, ../../src/styles/_nav.scss */
   #header #logo {
-    position: absolute;
-    top: 45px;
-    left: 15px;
     background-image: url("/images/bosonic_logoMini.png");
     width: 211px;
     height: 92px;
