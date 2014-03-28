@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   grunt.initConfig({
     pages: {
       posts: {
@@ -15,7 +15,7 @@ module.exports = function (grunt) {
             postsPerPage: 10,
             listPage: 'src/pages/index.ejs'
           },
-          sortFunction: function (a, b) {
+          sortFunction: function(a, b) {
             return a.order - b.order;
           },
         }
@@ -114,15 +114,16 @@ module.exports = function (grunt) {
     curl: {
       readmes: {
         src: function() {
-          if(grunt.file.exists('repos/bosonic_opt.json')) {
-            grunt.log.writeln("Downloading bosonic components README.md");
+          if (grunt.file.exists('repos/bosonic_opt.json')) {
             var reposjson = grunt.file.readJSON('repos/bosonic_opt.json');
             var readmes = [];
             reposjson.repos.forEach(function(repodesc) {
               var url = repodesc.url + '/raw/' + repodesc.master_branch + '/README.md';
               readmes.push(url);
             });
-          };
+          } else {
+
+          }
           return readmes;
         }(),
         dest: 'posts/components/readmes.md'
@@ -140,16 +141,23 @@ module.exports = function (grunt) {
     }
   });
 
-  //FIXME: Pour le moment il faut lancer la task readmes 2 fois car je ne sais pas comment faire autrement
   grunt.registerTask('readmes:github', 'Download Bosonic Components readme.md', 'repos');
   grunt.registerTask('readmes:download', 'Download github info', 'curl:readmes');
   grunt.registerTask('readmes:create', 'Concatenate the components readme.md', 'file_append');
 
-  grunt.registerTask('readmes', ['readmes:github', 'readmes:download', 'readmes:create']);
+  grunt.registerTask('readmes', '', function() {
+    if (grunt.file.exists('repos/bosonic_opt.json')) {
+      grunt.task.run('readmes:download');
+      grunt.task.run('readmes:create');
+      grunt.log.ok('all components readmes are appended in \'posts/components/readmes.md\'');
+    } else {
+      grunt.fail.fatal(grunt.util.error('repos/bosonic_opt.json does not exist, run \'readmes:github\' first'));
+      grunt.log.error('You need to run \'readmes:github\' first, then you can run \'readmes\'');
+    }
+  });
 
   grunt.registerTask('build', [
     'clean',
-    'readmes',
     'pages',
     'compass',
     'copy'
