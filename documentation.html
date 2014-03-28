@@ -26,69 +26,16 @@
     <li class="nav-separator">|</li>
     <li><a href="documentation.html">Documentation</a></li>
     <li class="nav-separator">|</li>
+    <li><a href="components.html">Components</a></li>
+    <li class="nav-separator">|</li>
     <li><a href="contribute.html" class="last">Contribute</a></li>
   </ul>
 </div>
-
 
     <div id="content" class="markdown">
 
 
 <h1>Documentation</h1>
-
-
-  
-
-  
-
-  
-
-  
-
-    <p>Bosonic&#39;s philosophy is to enable developers to build Web Components as close as possible to the current spec. Therefore, Bosonic aims to not become a dependency: ideally, when browsers will implement all Web Components spec, you&#39;ll be able to drop Bosonic and to use your components directly.</p>
-<p>For commodity reasons, we&#39;ll start with the boilerplate element we have generated in the <a href="getting-started.html">Getting started</a> section, and describe how to build a powerful element.</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;style&gt;</span>
-
-    <span class="nt">&lt;/style&gt;</span>
-    <span class="nt">&lt;template&gt;</span>
-
-    <span class="nt">&lt;/template&gt;</span>
-    <span class="nt">&lt;script&gt;</span>
-        <span class="p">({</span>
-
-        <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/element&gt;</span>
-</pre></div>
-</code></pre>
-<p>First, you can see that <code>&lt;element&gt;</code> has a <code>name</code> attribute: it is of course mandatory, as it specifies the name of the HTML tag you’ll instantiate in markup. Per spec, it <strong>must</strong> contain a &quot;-&quot;.</p>
-<p>Second, you can see that the <code>&lt;script&gt;</code> element already contains something that is called an Object Expression: it is an expression that evals to an object literal. Per spec again, this Object Expression <strong>must</strong> be the last expression in your <code>&lt;script&gt;</code>.</p>
-<p>All methods &amp; properties included in this Object Expression will constitute the API of your new element. If, for example, we add a <code>sayHello</code> method:</p>
-<pre><code class="lang-js"><div class="highlight"><pre><span class="p">({</span>
-    <span class="nx">sayHello</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-</pre></div>
-</code></pre>
-<p>We put our new element in use in a HTML page:</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-hello-world&gt;&lt;/b-hello-world&gt;</span>
-
-<span class="nt">&lt;script&gt;</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;WebComponentsReady&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-hello-world&#39;</span><span class="p">);</span>
-        <span class="nx">hello</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
-    <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</code></pre>
-<p>You will see a nice &#39;Hello&#39; logged to the console!</p>
-<p>There are two things to notice in this example:</p>
-<ul>
-<li>Custom Elements are at first <code>HTMLUnknownElement</code> and are eventually upgraded by the polyfills. It means that you have to listen to the <code>WebComponentsReady</code> event before attempting to use your elements with JavaScript.</li>
-<li>Custom Elements, once upgraded, behave like standard elements: they can be queried with DOM methods.</li>
-</ul>
 
 
   
@@ -125,6 +72,8 @@
 
   
 
+  
+
     <h2><a name="templates" class="anchor" href="#templates"><span class="header-link"></span></a>Templates</h2>
 <p>If you put some markup in the <code>&lt;template&gt;</code> section, you will have access to a <code>this.template</code> property in your <code>&lt;script&gt;</code>, which is a polyfilled HTML template element. We will use this to bring more content on screen with our element:</p>
 <pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
@@ -142,71 +91,6 @@
         <span class="p">});</span>
     <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
-</pre></div>
-</code></pre>
-
-
-  
-
-  
-
-    <h2><a name="shadow-dom" class="anchor" href="#shadow-dom"><span class="header-link"></span></a>Shadow DOM</h2>
-<p>In the previous example, we appended noded directly to our element: it may be desired in some cases, but we will often prefer to hide the implementation in terms of markup of our element. This is what Shadow DOM is done for. Bosonic provides a powerful polyfill for Shadow DOM, which you can use like this:</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;style&gt;</span>    
-    <span class="nt">&lt;/style&gt;</span>
-    <span class="nt">&lt;template&gt;</span>
-        <span class="nt">&lt;h3&gt;</span>Hello, world!<span class="nt">&lt;/h3&gt;</span>
-        <span class="nt">&lt;p&gt;</span>Lorem ipsum<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;/template&gt;</span>
-    <span class="nt">&lt;script&gt;</span>
-        <span class="p">({</span>
-            <span class="nx">createdCallback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-                <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createShadowRoot</span><span class="p">();</span>
-                <span class="nx">root</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/element&gt;</span>
-</pre></div>
-</code></pre>
-<p>Here, we append the template&#39;s content directly to a shadow root. Of course, if you inspect the HTML in a browser that does not support Shadow DOM natively, you will see some markup: it is the <strong>composed DOM</strong>, generated by Bosonic from our shadow root and the light DOM, which is the user-provided children of our custom element.</p>
-<p>You can define <strong>insertion points</strong> in your Shadow DOM with the <code>&lt;content&gt;</code> element, in which Bosonic will pull Light DOM nodes. For example:</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;style&gt;</span>    
-    <span class="nt">&lt;/style&gt;</span>
-    <span class="nt">&lt;template&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;content</span> <span class="na">select=</span><span class="s">&quot;h3&quot;</span><span class="nt">&gt;&lt;/content&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;content&gt;&lt;/content&gt;</span>
-    <span class="nt">&lt;/template&gt;</span>
-    <span class="nt">&lt;script&gt;</span>
-        <span class="p">({</span>
-            <span class="nx">createdCallback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-                <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createShadowRoot</span><span class="p">();</span>
-                <span class="nx">root</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/element&gt;</span>
-</pre></div>
-</code></pre>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-hello-world&gt;</span>
-    <span class="nt">&lt;h3&gt;</span>Hello world<span class="nt">&lt;/h3&gt;</span>
-    <span class="nt">&lt;p&gt;</span>Lorem ipsum<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;button&gt;</span>Ok<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/b-hello-world&gt;</span>
-</pre></div>
-</code></pre>
-<p>If you inspect the rendered composed DOM in a no-shadowDOM browser, you will see something like this:</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-hello-world&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-        Hello world
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;p&gt;</span>Lorem ipsum<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;button&gt;</span>Ok<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/b-hello-world&gt;</span>
 </pre></div>
 </code></pre>
 
@@ -388,6 +272,125 @@
 <span class="p">}</span>
 </pre></div>
 </code></pre>
+
+
+  
+
+  
+
+  
+
+    <h2><a name="shadow-dom" class="anchor" href="#shadow-dom"><span class="header-link"></span></a>Shadow DOM</h2>
+<p>In the previous example, we appended noded directly to our element: it may be desired in some cases, but we will often prefer to hide the implementation in terms of markup of our element. This is what Shadow DOM is done for. Bosonic provides a powerful polyfill for Shadow DOM, which you can use like this:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>    
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;template&gt;</span>
+        <span class="nt">&lt;h3&gt;</span>Hello, world!<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Lorem ipsum<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="p">({</span>
+            <span class="nx">createdCallback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createShadowRoot</span><span class="p">();</span>
+                <span class="nx">root</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</code></pre>
+<p>Here, we append the template&#39;s content directly to a shadow root. Of course, if you inspect the HTML in a browser that does not support Shadow DOM natively, you will see some markup: it is the <strong>composed DOM</strong>, generated by Bosonic from our shadow root and the light DOM, which is the user-provided children of our custom element.</p>
+<p>You can define <strong>insertion points</strong> in your Shadow DOM with the <code>&lt;content&gt;</code> element, in which Bosonic will pull Light DOM nodes. For example:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>    
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;template&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;content</span> <span class="na">select=</span><span class="s">&quot;h3&quot;</span><span class="nt">&gt;&lt;/content&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;content&gt;&lt;/content&gt;</span>
+    <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="p">({</span>
+            <span class="nx">createdCallback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createShadowRoot</span><span class="p">();</span>
+                <span class="nx">root</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</code></pre>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-hello-world&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Hello world<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Lorem ipsum<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button&gt;</span>Ok<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/b-hello-world&gt;</span>
+</pre></div>
+</code></pre>
+<p>If you inspect the rendered composed DOM in a no-shadowDOM browser, you will see something like this:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-hello-world&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
+        Hello world
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Lorem ipsum<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button&gt;</span>Ok<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/b-hello-world&gt;</span>
+</pre></div>
+</code></pre>
+
+
+  
+
+  
+
+  
+
+    <p>Bosonic&#39;s philosophy is to enable developers to build Web Components as close as possible to the current spec. Therefore, Bosonic aims to not become a dependency: ideally, when browsers will implement all Web Components spec, you&#39;ll be able to drop Bosonic and to use your components directly.</p>
+<p>For commodity reasons, we&#39;ll start with the boilerplate element we have generated in the <a href="getting-started.html">Getting started</a> section, and describe how to build a powerful element.</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;template&gt;</span>
+
+    <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="p">({</span>
+
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</code></pre>
+<p>First, you can see that <code>&lt;element&gt;</code> has a <code>name</code> attribute: it is of course mandatory, as it specifies the name of the HTML tag you’ll instantiate in markup. Per spec, it <strong>must</strong> contain a &quot;-&quot;.</p>
+<p>Second, you can see that the <code>&lt;script&gt;</code> element already contains something that is called an Object Expression: it is an expression that evals to an object literal. Per spec again, this Object Expression <strong>must</strong> be the last expression in your <code>&lt;script&gt;</code>.</p>
+<p>All methods &amp; properties included in this Object Expression will constitute the API of your new element. If, for example, we add a <code>sayHello</code> method:</p>
+<pre><code class="lang-js"><div class="highlight"><pre><span class="p">({</span>
+    <span class="nx">sayHello</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>We put our new element in use in a HTML page:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-hello-world&gt;&lt;/b-hello-world&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;WebComponentsReady&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-hello-world&#39;</span><span class="p">);</span>
+        <span class="nx">hello</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</code></pre>
+<p>You will see a nice &#39;Hello&#39; logged to the console!</p>
+<p>There are two things to notice in this example:</p>
+<ul>
+<li>Custom Elements are at first <code>HTMLUnknownElement</code> and are eventually upgraded by the polyfills. It means that you have to listen to the <code>WebComponentsReady</code> event before attempting to use your elements with JavaScript.</li>
+<li>Custom Elements, once upgraded, behave like standard elements: they can be queried with DOM methods.</li>
+</ul>
 
 
   
