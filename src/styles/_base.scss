@@ -2,13 +2,10 @@
 @import "compass/css3/box-shadow";
 
 body {
-	/*font-family: Lato;
-	font-weight: 300;*/
-	font-size:16px;
+	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	line-height: 1.4;
+	color: #4C5245;
 	background-color: $background;
-	font-family: "Open Sans",Helvetica,Arial,sans-serif;
-	font-weight: normal;
-	/*line-height: 24px;*/
 }
 
 h1 {
@@ -67,7 +64,7 @@ a {
 		background-color: rgba(96,191,101,0.2);
 
 		@include transition(all 0.2s ease);
-	
+
 		&:hover {
 			background-color: $color;
 			color: #fff;
@@ -86,5 +83,3 @@ a {
 	padding: 0 50px;
 	margin: 0 auto;
 }
-
-
