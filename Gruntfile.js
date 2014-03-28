@@ -79,7 +79,7 @@ module.exports = function(grunt) {
       dist: {
         options: {
           port: 5455,
-          hostname: '0.0.0.0',
+          hostname: '*',
           base: 'dist',
           livereload: true
         }
