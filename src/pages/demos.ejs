@@ -16,7 +16,7 @@
     <meta name="description" content="<%= locals.description %>">
   </head>
   <body>
-    
+
     <% include ../layouts/_nav %>
 
     <div id="content">
@@ -74,11 +74,5 @@
         <b-datepicker locale="en"></b-datepicker>
 
         <h1>More coming very soon!</h1>
-
-<% posts.forEach(function(post){ %>
-  <% if(post.type === 'static' && post.title === 'Components') { %>
-    <%- post.content %>
-  <% } %>
-<% }) %>
 
 <% include ../layouts/_footer %>

@@ -1,4 +1,6 @@
 module.exports = function(grunt) {
+  "use strict";
+
   grunt.initConfig({
     pages: {
       posts: {
@@ -126,15 +128,15 @@ module.exports = function(grunt) {
           }
           return readmes;
         }(),
-        dest: 'posts/components/readmes.md'
+        dest: 'posts/pages/components/components_readmes.md'
       }
     },
     file_append: {
       default_options: {
         files: {
-          'posts/components/readmes.md': {
-            prepend: '{\n\ttitle: "Components",\n\ttype: "static"\n}\n\n',
-            input: 'posts/components/readmes.md'
+          'posts/pages/components/components_readmes.md': {
+            prepend: '{\n\ttitle: "Components", \n\ttype: "static", \n\tsection: "components"\n}\n\n',
+            input: 'posts/pages/components/components_readmes.md'
           }
         }
       }
@@ -149,7 +151,7 @@ module.exports = function(grunt) {
     if (grunt.file.exists('repos/bosonic_opt.json')) {
       grunt.task.run('readmes:download');
       grunt.task.run('readmes:create');
-      grunt.log.ok('all components readmes are appended in \'posts/components/readmes.md\'');
+      grunt.log.ok('all components readmes are appended in \'' + 'posts/pages/components/components_readmes.md' + '\'');
     } else {
       grunt.fail.fatal(grunt.util.error('repos/bosonic_opt.json does not exist, run \'readmes:github\' first'));
       grunt.log.error('You need to run \'readmes:github\' first, then you can run \'readmes\'');

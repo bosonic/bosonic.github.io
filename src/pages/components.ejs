@@ -1,0 +1,11 @@
+<% include ../layouts/_header %>
+
+<% posts.forEach(function(post){ %>
+  <% if(post.type === 'static' && post.section === 'components') { %>
+
+    <%- post.content %>
+
+  <% } %>
+<% }) %>
+
+<% include ../layouts/_footer %>

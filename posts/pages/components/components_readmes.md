@@ -1,6 +1,7 @@
 {
-	title: "Components",
-	type: "static"
+	title: "Components", 
+	type: "static", 
+	section: "components"
 }
 
 b-collapsible
@@ -67,5 +68,3 @@ b-selectable is not styled.  You need to style the "b-selectable-selected" CSS c
     background-color: #ccc;
 }
 ```
-b-tabbar
-========
