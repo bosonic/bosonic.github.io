@@ -213,3 +213,17 @@ b-dialog[visible] {
   opacity: 0.5;
   display: block;
 }
+
+b-sortable [draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+b-sortable [draggable] * {
+  -moz-user-drag: none;
+  -khtml-user-drag: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}

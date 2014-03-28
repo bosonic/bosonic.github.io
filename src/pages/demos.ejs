@@ -48,15 +48,50 @@
             });
         </script>
 
+        <h2>Datepicker</h2>
+
+        <b-datepicker locale="en"></b-datepicker>
+
+        <h2>Sortable</h2>
+        <style>
+            b-sortable ul {
+                list-style-type: none;
+                width: 150px;
+            }
+            b-sortable li {
+                border: 1px solid #ccc;
+                background-color: #ddd;
+                margin: 5px;
+            }
+            b-sortable li.sortable-ghost {
+               opacity: .25;
+                -webkit-transition: -webkit-transform 0.2s ease-out;
+                -moz-transition: -moz-transform 0.2s ease-out;
+               -webkit-transform: scale(0.8);
+               -moz-transform: scale(0.8);
+            }
+            b-sortable li.sortable-over {
+               opacity: .25;
+            }
+        </style>
+        <b-sortable>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+                <li>Item 6</li>
+            </ul>
+        </b-sortable>
+
         <h2>Selectable</h2>
         <p>Generic element for selectability in a list. Click on the list below and use arrow keys to change selection.</p>
-
         <style>
             .b-selectable-selected {
                 border: 1px solid black;
             }
         </style>
-
         <b-selectable target="li">
             <ul>
                 <li>item 1</li>
@@ -68,10 +103,6 @@
                 <li>item 7</li>
             </ul>
         </b-selectable>
-
-        <h2>Datepicker</h2>
-
-        <b-datepicker locale="en"></b-datepicker>
 
         <h1>More coming very soon!</h1>
 

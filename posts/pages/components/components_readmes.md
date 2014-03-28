@@ -68,3 +68,5 @@ b-selectable is not styled.  You need to style the "b-selectable-selected" CSS c
     background-color: #ccc;
 }
 ```
+b-sortable
+==========
