@@ -166,7 +166,7 @@ Therefore, you should use classes to avoid this problem:
       color: red;
     }
     div.shadow-blue {
-      color: red;
+      color: blue;
     }
   </style>
   <template>
