@@ -37,39 +37,39 @@
 
 <h1>Documentation</h1>
 
+<ul>
+    
 
-  
+        <li><a href="#introduction">Introduction</a></li>
 
-  
+    
 
-  
+        <li><a href="#lifecycle-callbacks">Lifecycle callbacks</a></li>
 
-    <h2><a name="templates" class="anchor" href="#templates"><span class="header-link"></span></a>Templates</h2>
-<p>If you put some markup in the <code>&lt;template&gt;</code> section, you will have access to a <code>this.template</code> property in your <code>&lt;script&gt;</code>, which is a polyfilled HTML template element. We will use this to bring more content on screen with our element:</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;style&gt;</span>    
-    <span class="nt">&lt;/style&gt;</span>
-    <span class="nt">&lt;template&gt;</span>
-        <span class="nt">&lt;h3&gt;</span>Hello, world!<span class="nt">&lt;/h3&gt;</span>
-        <span class="nt">&lt;p&gt;</span>Lorem ipsum<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;/template&gt;</span>
-    <span class="nt">&lt;script&gt;</span>
-        <span class="p">({</span>
-            <span class="nx">createdCallback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-                <span class="k">this</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/element&gt;</span>
-</pre></div>
-</code></pre>
+    
+
+        <li><a href="#templates">Templates</a></li>
+
+    
+
+        <li><a href="#shadow-dom">Shadow DOM</a></li>
+
+    
+
+        <li><a href="#styling-elements">Styling elements</a></li>
+
+    
+
+        <li><a href="#interoperability">Interoperability</a></li>
+
+    
+
+        <li><a href="#how-it-works">How it works</a></li>
+
+    
+</ul>
 
 
-  
-
-  
-
-  
 
     <p>Bosonic&#39;s philosophy is to enable developers to build Web Components as close as possible to the current spec. Therefore, Bosonic aims to not become a dependency: ideally, when browsers will implement all Web Components spec, you&#39;ll be able to drop Bosonic and to use your components directly.</p>
 <p>For commodity reasons, we&#39;ll start with the boilerplate element we have generated in the <a href="getting-started.html">Getting started</a> section, and describe how to build a powerful element.</p>
@@ -117,9 +117,7 @@
 </ul>
 
 
-  
 
-  
 
     <h2><a name="lifecycle-callbacks" class="anchor" href="#lifecycle-callbacks"><span class="header-link"></span></a>Lifecycle callbacks</h2>
 <p>Lifecycle callbacks are special methods defined by the Custom Elements specification which fire when the element go through specific changes during its lifetime:</p>
@@ -147,9 +145,30 @@
 <p>The takeaway is that <code>this</code> here refers to your element: you can therefore use all DOM methods on it.</p>
 
 
-  
 
-  
+
+    <h2><a name="templates" class="anchor" href="#templates"><span class="header-link"></span></a>Templates</h2>
+<p>If you put some markup in the <code>&lt;template&gt;</code> section, you will have access to a <code>this.template</code> property in your <code>&lt;script&gt;</code>, which is a polyfilled HTML template element. We will use this to bring more content on screen with our element:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>    
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;template&gt;</span>
+        <span class="nt">&lt;h3&gt;</span>Hello, world!<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Lorem ipsum<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="p">({</span>
+            <span class="nx">createdCallback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</code></pre>
+
+
+
 
     <h2><a name="shadow-dom" class="anchor" href="#shadow-dom"><span class="header-link"></span></a>Shadow DOM</h2>
 <p>In the previous example, we appended noded directly to our element: it may be desired in some cases, but we will often prefer to hide the implementation in terms of markup of our element. This is what Shadow DOM is done for. Bosonic provides a powerful polyfill for Shadow DOM, which you can use like this:</p>
@@ -212,9 +231,7 @@
 </code></pre>
 
 
-  
 
-  
 
     <h2><a name="styling-elements" class="anchor" href="#styling-elements"><span class="header-link"></span></a>Styling elements</h2>
 <p>This section describes how to style your Custom Elements, focusing essentially on how to style Shadow DOM and on how Bosonic transpiles these new CSS rules into something current browsers can understand. </p>
@@ -348,7 +365,7 @@
       <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="nt">div</span><span class="nc">.shadow-blue</span> <span class="p">{</span>
-      <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+      <span class="k">color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="nt">&lt;/style&gt;</span>
   <span class="nt">&lt;template&gt;</span>
@@ -391,9 +408,58 @@
 </code></pre>
 
 
-  
 
-  
+
+    <h2><a name="interoperability" class="anchor" href="#interoperability"><span class="header-link"></span></a>Interoperability</h2>
+<p>Bosonic provides you with a custom polyfills build, which use some Polymer polyfills mixed with our own ShadowDOM polyfill. But, as Bosonic transpiles your elements to vanilla JS Custom Elements, they are fully interoperable with Polymer and x-tags elements.</p>
+<p>In short, you can use Bosonic elements with the <a href="http://www.polymer-project.org/docs/start/platform.html">Polymer platform</a>!</p>
+
+
+
+
+    <h2><a name="how-it-works" class="anchor" href="#how-it-works"><span class="header-link"></span></a>How it works</h2>
+<p>Bosonic&#39;s transpiler takes Web Components in HTML files and transforms them into JS and CSS code. In order to do that, it uses some <a href="http://sweetjs.org/">Sweet.js</a> macros to expand your element&#39;s script to vanilla Custom Elements:</p>
+<p><strong>Your element</strong>:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;b-hello-world&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+        <span class="o">...</span>
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;template&gt;</span>
+        ...
+    <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="p">({</span>
+            <span class="nx">createdCallback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createShadowRoot</span><span class="p">();</span>
+                <span class="nx">root</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</code></pre>
+<p><strong>Its expanded code</strong>:</p>
+<pre><code class="lang-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">BHelloWorldPrototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">HTMLElement</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">createdCallback</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">enumerable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createShadowRoot</span><span class="p">();</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">BHelloWorld</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">registerElement</span><span class="p">(</span><span class="s1">&#39;b-hello-world&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">prototype</span><span class="o">:</span> <span class="nx">BHelloWorldPrototype</span> <span class="p">});</span>
+
+<span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">BHelloWorldPrototype</span><span class="p">,</span> <span class="s1">&#39;template&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// code that emulates a &lt;template&gt; element...</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+
+
 
 
     </div>

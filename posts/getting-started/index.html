@@ -38,7 +38,7 @@
 <div class="post-body markdown">
 	<h1><a name="getting-started" class="anchor" href="#getting-started"><span class="header-link"></span></a>Getting Started</h1>
 <h2><a name="using-bosonic-elements" class="anchor" href="#using-bosonic-elements"><span class="header-link"></span></a>Using Bosonic elements</h2>
-<p>To start with Bosonic, download the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js">bosonic core library</a> and the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js">bosonic polyfills</a>. You need to load the polyfills script before the core library in the browser.</p>
+<p>To start with Bosonic, download the <a href="https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js">bosonic polyfills</a>.</p>
 <p>For our first use of Bosonic, we will use a <a href="https://github.com/bosonic/b-hello-world">&quot;HelloWorld&quot; Bosonic element</a> but you can choose the Bosonic elements you need (unfortunately, we don&#39;t have a full list and documentation page yet. Please go to the <a href="https://github.com/bosonic">Github organization page</a> to view the currently available elements. More coming very soon!).</p>
 <p>Grab the <a href="https://raw.githubusercontent.com/bosonic/b-hello-world/master/dist/b-hello-world.css">CSS</a> and <a href="https://raw.githubusercontent.com/bosonic/b-hello-world/master/dist/b-hello-world.js">JS</a> builded files.</p>
 <p>Your HTML file should look like this:</p>
@@ -48,7 +48,6 @@
     <span class="nt">&lt;title&gt;</span>My Application<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/bosonic-polyfills.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/bosonic.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;assets/js/b-hello-world.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;assets/css/b-hello-world.css&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
@@ -74,7 +73,7 @@
 <h3><a name="prerequisites" class="anchor" href="#prerequisites"><span class="header-link"></span></a>Prerequisites</h3>
 <p>Bosonic is made of several packages:</p>
 <ul>
-<li><strong><a href="https://github.com/bosonic/bosonic">Bosonic core library</a></strong>, which consists of a runtime and various polyfills.</li>
+<li><strong><a href="https://github.com/bosonic/bosonic">Bosonic platform</a></strong>, which consists of various polyfills.</li>
 <li><strong><a href="https://github.com/bosonic/transpiler">Bosonic transpiler</a></strong>, which is a <a href="http://nodejs.org/">Node.js</a> module that transforms elements&#39; HTML files into JS &amp; CSS ones.</li>
 <li><strong><a href="https://github.com/bosonic/grunt-bosonic">grunt-bosonic</a></strong>, which is a <a href="http://gruntjs.com/">Grunt</a> task that uses the transpiler to build your elements.</li>
 <li><strong><a href="https://github.com/bosonic/yeoman-bosonic">yeoman-bosonic</a></strong>, which is a <a href="http://yeoman.io/">Yeoman</a> generator that creates the skeleton of a new element.</li>
@@ -137,7 +136,6 @@ npm install
     <span class="nt">&lt;title&gt;</span>Demo<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/bosonic-polyfills.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/bosonic.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/b-hello-world.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;css/b-hello-world.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/head&gt;</span>

@@ -1,8 +1,185 @@
 (function () {
-    Bosonic.registerElement('b-datalist', {
-        get options() {
-            return this.querySelectorAll('option');
-        }
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    var HEADER_CLASS = 'b-collapsible-header', BODY_CLASS = 'b-collapsible-body', CLOSED_CLASS = 'b-collapsible-closed';
+    var BCollapsiblePrototype = Object.create(HTMLElement.prototype, {
+            active: {
+                enumerable: true,
+                get: function () {
+                    return this.hasAttribute('active');
+                },
+                set: function (value) {
+                    value ? this.setAttribute('active', '') : this.removeAttribute('active');
+                }
+            },
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    this.duration = this.hasAttribute('duration') ? parseFloat(this.getAttribute('duration')) : 0.33;
+                    this.dimension = this.hasAttribute('horizontal') ? 'width' : 'height';
+                    this.body = this.querySelector(':not(.' + HEADER_CLASS + ')');
+                    this.header = this.querySelector('.' + HEADER_CLASS);
+                    if (this.body) {
+                        this.body.style.overflow = 'hidden';
+                        this.body.classList.add(BODY_CLASS);
+                        this.addListeners();
+                        this.toggleClosedClass(true);
+                    }
+                    if (this.active) {
+                        this.setSize('auto');
+                        this.toggleClosedClass(false);
+                    }
+                }
+            },
+            detachedCallback: {
+                enumerable: true,
+                value: function () {
+                    this.removeListeners();
+                }
+            },
+            addListeners: {
+                enumerable: true,
+                value: function () {
+                    if (this.header) {
+                        this.toggleListener = this.toggle.bind(this);
+                        this.header.addEventListener('click', this.toggleListener, false);
+                    }
+                    this.transitionEndListener = this.transitionEnd.bind(this);
+                    this.body.addEventListener('webkitTransitionEnd', this.transitionEndListener);
+                    this.body.addEventListener('transitionend', this.transitionEndListener);
+                }
+            },
+            removeListeners: {
+                enumerable: true,
+                value: function () {
+                    if (this.toggleListener) {
+                        this.header.removeEventListener('click', this.toggleListener, false);
+                    }
+                    this.body.removeEventListener('webkitTransitionEnd', this.transitionEndListener);
+                    this.body.removeEventListener('transitionend', this.transitionEndListener);
+                }
+            },
+            attributeChangedCallback: {
+                enumerable: true,
+                value: function (name, oldValue, newValue) {
+                    if (name === 'active')
+                        this.activeChanged(oldValue, newValue);
+                }
+            },
+            toggle: {
+                enumerable: true,
+                value: function () {
+                    this.active = !this.active;
+                }
+            },
+            activeChanged: {
+                enumerable: true,
+                value: function (oldValue, newValue) {
+                    this.update();
+                }
+            },
+            update: {
+                enumerable: true,
+                value: function () {
+                    if (!this.body)
+                        return;
+                    this.active ? this.show() : this.hide();
+                }
+            },
+            show: {
+                enumerable: true,
+                value: function () {
+                    this.toggleClosedClass(false);
+                    var size = this.calcSize();
+                    this.updateSize(size, this.duration);
+                }
+            },
+            hide: {
+                enumerable: true,
+                value: function () {
+                    var size = this.computeSize();
+                    this.setSize(size);
+                    this.updateSize(0, this.duration);
+                }
+            },
+            updateSize: {
+                enumerable: true,
+                value: function (size, duration) {
+                    var that = this;
+                    window.requestAnimationFrame(function () {
+                        that.setTransitionDuration(duration);
+                        that.setSize(size);
+                    });
+                }
+            },
+            calcSize: {
+                enumerable: true,
+                value: function () {
+                    this.setSize('auto');
+                    var size = this.computeSize();
+                    this.setSize(0);
+                    return size;
+                }
+            },
+            computeSize: {
+                enumerable: true,
+                value: function () {
+                    return this.body.getBoundingClientRect()[this.dimension] + 'px';
+                }
+            },
+            setSize: {
+                enumerable: true,
+                value: function (size) {
+                    this.body.style[this.dimension] = size;
+                }
+            },
+            setTransitionDuration: {
+                enumerable: true,
+                value: function (duration) {
+                    var s = this.body.style;
+                    s.webkitTransition = s.transition = duration ? this.dimension + ' ' + duration + 's' : null;
+                }
+            },
+            toggleClosedClass: {
+                enumerable: true,
+                value: function (closed) {
+                    closed ? this.body.classList.add(CLOSED_CLASS) : this.body.classList.remove(CLOSED_CLASS);
+                }
+            },
+            transitionEnd: {
+                enumerable: true,
+                value: function () {
+                    this.setTransitionDuration(null);
+                    if (this.active) {
+                        this.setSize('auto');
+                    } else {
+                        this.toggleClosedClass(true);
+                    }
+                }
+            }
+        });
+    window.BCollapsible = document.registerElement('b-collapsible', { prototype: BCollapsiblePrototype });
+    Object.defineProperty(BCollapsible.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
+    });
+}());
+(function () {
+    var BDatalistPrototype = Object.create(HTMLElement.prototype, {
+            options: {
+                enumerable: true,
+                get: function () {
+                    return this.querySelectorAll('option');
+                }
+            }
+        });
+    window.BDatalist = document.registerElement('b-datalist', { prototype: BDatalistPrototype });
+    Object.defineProperty(BDatalist.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
     });
 }());
 //! moment.js
@@ -3425,120 +3602,234 @@
                 ]
             }
         };
-    Bosonic.registerElement('b-datepicker', {
-        picker: null,
-        defaultLocale: 'en',
-        defaultFormat: 'L',
-        defaultFirstDay: 0,
-        get locale() {
-            return this.getAttribute('locale') || this.defaultLocale;
-        },
-        get format() {
-            return this.getAttribute('format') || this.defaultFormat;
-        },
-        get firstDay() {
-            return this.getAttribute('firstday') || this.defaultFirstDay;
-        },
-        get minDate() {
-            return this.getAttribute('mindate');
-        },
-        get maxDate() {
-            return this.getAttribute('maxdate');
-        },
-        get yearRange() {
-            if (!this.getAttribute('yearrange')) {
-                return null;
+    var BDatepickerPrototype = Object.create(HTMLElement.prototype, {
+            picker: { value: null },
+            defaultLocale: { value: 'en' },
+            defaultFormat: { value: 'L' },
+            defaultFirstDay: { value: 0 },
+            locale: {
+                enumerable: true,
+                get: function () {
+                    return this.getAttribute('locale') || this.defaultLocale;
+                }
+            },
+            format: {
+                enumerable: true,
+                get: function () {
+                    return this.getAttribute('format') || this.defaultFormat;
+                }
+            },
+            firstDay: {
+                enumerable: true,
+                get: function () {
+                    return this.getAttribute('firstday') || this.defaultFirstDay;
+                }
+            },
+            minDate: {
+                enumerable: true,
+                get: function () {
+                    return this.getAttribute('mindate');
+                }
+            },
+            maxDate: {
+                enumerable: true,
+                get: function () {
+                    return this.getAttribute('maxdate');
+                }
+            },
+            yearRange: {
+                enumerable: true,
+                get: function () {
+                    if (!this.getAttribute('yearrange')) {
+                        return null;
+                    }
+                    return this.getAttribute('yearrange').split(',');
+                }
+            },
+            getDate: {
+                enumerable: true,
+                value: function () {
+                    return this.picker.getDate();
+                }
+            },
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    this.appendChild(this.template.content.cloneNode(true));
+                    this.picker = new Pikaday(this.assembleOptions());
+                }
+            },
+            assembleOptions: {
+                enumerable: true,
+                value: function () {
+                    var options = {
+                            field: this.querySelector('input'),
+                            format: this.format,
+                            firstDay: this.firstDay,
+                            onOpen: this.fireOpenEvent.bind(this),
+                            onSelect: this.fireSelectEvent.bind(this)
+                        };
+                    if (this.locale !== this.defaultLocale && i18n.hasOwnProperty(this.locale)) {
+                        options.i18n = i18n[this.locale];
+                    }
+                    if (this.minDate) {
+                        options.minDate = this.minDate;
+                    }
+                    if (this.maxDate) {
+                        options.maxDate = this.maxDate;
+                    }
+                    if (this.yearRange) {
+                        options.yearRange = this.yearRange;
+                    }
+                    return options;
+                }
+            },
+            fireOpenEvent: {
+                enumerable: true,
+                value: function () {
+                    this.dispatchEvent(new CustomEvent('b-open'));
+                }
+            },
+            fireSelectEvent: {
+                enumerable: true,
+                value: function () {
+                    this.dispatchEvent(new CustomEvent('b-select'));
+                }
             }
-            return this.getAttribute('yearrange').split(',');
-        },
-        getDate: function () {
-            return this.picker.getDate();
-        },
-        readyCallback: function () {
-            this.appendChild(this.template.content.cloneNode(true));
-            this.picker = new Pikaday(this.assembleOptions());
-        },
-        assembleOptions: function () {
-            var options = {
-                    field: this.querySelector('input'),
-                    format: this.format,
-                    firstDay: this.firstDay,
-                    onOpen: this.fireOpenEvent.bind(this),
-                    onSelect: this.fireSelectEvent.bind(this)
-                };
-            if (this.locale !== this.defaultLocale && i18n.hasOwnProperty(this.locale)) {
-                options.i18n = i18n[this.locale];
+        });
+    window.BDatepicker = document.registerElement('b-datepicker', { prototype: BDatepickerPrototype });
+    Object.defineProperty(BDatepicker.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
+    });
+    Object.defineProperty(BDatepickerPrototype, 'template', {
+        get: function () {
+            var fragment = document.createDocumentFragment();
+            var div = fragment.appendChild(document.createElement('div'));
+            div.innerHTML = ' <input type="text" value=""> ';
+            while (child = div.firstChild) {
+                fragment.insertBefore(child, div);
             }
-            if (this.minDate) {
-                options.minDate = this.minDate;
-            }
-            if (this.maxDate) {
-                options.maxDate = this.maxDate;
-            }
-            if (this.yearRange) {
-                options.yearRange = this.yearRange;
-            }
-            return options;
-        },
-        fireOpenEvent: function () {
-            this.dispatchEvent(new CustomEvent('b-open'));
-        },
-        fireSelectEvent: function () {
-            this.dispatchEvent(new CustomEvent('b-select'));
-        },
-        template: ' <input type="text" value=""> '
+            fragment.removeChild(div);
+            return { content: fragment };
+        }
     });
 }());
 (function () {
-    Bosonic.registerElement('b-dialog', {
-        readyCallback: function () {
-            var root = this.createShadowRoot();
-            root.appendChild(this.template.content.cloneNode(true));
-        },
-        show: function () {
-            this.setAttribute('visible', '');
-            this.keyupListener = this.onKeyup.bind(this);
-            document.addEventListener('keyup', this.keyupListener, false);
-        },
-        showModal: function () {
-            this.overlay = document.createElement('b-overlay');
-            this.parentNode.appendChild(this.overlay);
-            this.show();
-        },
-        onKeyup: function (e) {
-            if (e.which === 27) {
-                this.cancel();
+    var BDialogPrototype = Object.create(HTMLElement.prototype, {
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    var root = this.createShadowRoot();
+                    root.appendChild(this.template.content.cloneNode(true));
+                }
+            },
+            show: {
+                enumerable: true,
+                value: function () {
+                    this.setAttribute('visible', '');
+                    this.keyupListener = this.onKeyup.bind(this);
+                    document.addEventListener('keyup', this.keyupListener, false);
+                }
+            },
+            showModal: {
+                enumerable: true,
+                value: function () {
+                    this.overlay = document.createElement('b-overlay');
+                    this.parentNode.appendChild(this.overlay);
+                    this.show();
+                }
+            },
+            onKeyup: {
+                enumerable: true,
+                value: function (e) {
+                    if (e.which === 27) {
+                        this.cancel();
+                    }
+                }
+            },
+            hide: {
+                enumerable: true,
+                value: function () {
+                    this.removeAttribute('visible');
+                    if (this.overlay) {
+                        this.parentNode.removeChild(this.overlay);
+                    }
+                    document.removeEventListener('keyup', this.keyupListener, false);
+                    this.dispatchEvent(new CustomEvent('b-close'));
+                }
+            },
+            close: {
+                enumerable: true,
+                value: function () {
+                    this.hide();
+                }
+            },
+            open: {
+                enumerable: true,
+                value: function () {
+                    this.show();
+                }
+            },
+            cancel: {
+                enumerable: true,
+                value: function () {
+                    var doCancel = this.dispatchEvent(new CustomEvent('b-cancel', { cancelable: true }));
+                    if (doCancel) {
+                        this.hide();
+                    }
+                }
             }
-        },
-        hide: function () {
-            this.removeAttribute('visible');
-            if (this.overlay) {
-                this.parentNode.removeChild(this.overlay);
+        });
+    window.BDialog = document.registerElement('b-dialog', { prototype: BDialogPrototype });
+    Object.defineProperty(BDialog.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
+    });
+    Object.defineProperty(BDialogPrototype, 'template', {
+        get: function () {
+            var fragment = document.createDocumentFragment();
+            var div = fragment.appendChild(document.createElement('div'));
+            div.innerHTML = ' <div class="b-dialog"> <content></content> </div> ';
+            while (child = div.firstChild) {
+                fragment.insertBefore(child, div);
             }
-            document.removeEventListener('keyup', this.keyupListener, false);
-            this.dispatchEvent(new CustomEvent('close'));
-        },
-        close: function () {
-            this.hide();
-        },
-        open: function () {
-            this.show();
-        },
-        cancel: function () {
-            var doCancel = this.dispatchEvent(new CustomEvent('cancel', { cancelable: true }));
-            if (doCancel) {
-                this.hide();
-            }
-        },
-        template: ' <div class="b-dialog"> <content></content> </div> '
+            fragment.removeChild(div);
+            return { content: fragment };
+        }
     });
 }());
 (function () {
-    Bosonic.registerElement('b-overlay', {
-        readyCallback: function () {
-            this.appendChild(this.template.content.cloneNode(true));
-        },
-        template: ' <div class="b-overlay"></div> '
+    var BOverlayPrototype = Object.create(HTMLElement.prototype, {
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    this.appendChild(this.template.content.cloneNode(true));
+                }
+            }
+        });
+    window.BOverlay = document.registerElement('b-overlay', { prototype: BOverlayPrototype });
+    Object.defineProperty(BOverlay.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
+    });
+    Object.defineProperty(BOverlayPrototype, 'template', {
+        get: function () {
+            var fragment = document.createDocumentFragment();
+            var div = fragment.appendChild(document.createElement('div'));
+            div.innerHTML = ' <div class="b-overlay"></div> ';
+            while (child = div.firstChild) {
+                fragment.insertBefore(child, div);
+            }
+            fragment.removeChild(div);
+            return { content: fragment };
+        }
     });
 }());
 (function () {
@@ -3549,75 +3840,118 @@
             RIGHT: 39,
             DOWN: 40
         };
-    Bosonic.registerElement('b-selectable', {
-        get selectedItemIndex() {
-            return Number(this.getAttribute('selected'));
-        },
-        readyCallback: function () {
-            this.tabIndex = -1;
-            this.addEventListener('click', this.clickHandler.bind(this), false);
-            this.addEventListener('keydown', this.keydownHandler.bind(this), false);
-        },
-        attributeChanged: function (name, oldValue, newValue) {
-            if (name === 'selected')
-                this.selectedChanged(oldValue, newValue);
-        },
-        selectedChanged: function (oldValue, newValue) {
-            this.dispatchEvent(new CustomEvent('b-select', { detail: { item: newValue } }));
-            if (oldValue !== null) {
-                this.getItem(oldValue).classList.remove('b-selectable-selected');
-            }
-            this.getItem(newValue).classList.add('b-selectable-selected');
-        },
-        clickHandler: function (e) {
-            var itemIndex = this.getItems().indexOf(e.target);
-            if (itemIndex !== -1) {
-                this.setAttribute('selected', itemIndex);
-                this.activate();
-            }
-        },
-        keydownHandler: function (e) {
-            switch (e.keyCode) {
-            case KEY.ENTER: {
-                    this.activate();
-                    break;
+    var BSelectablePrototype = Object.create(HTMLElement.prototype, {
+            selectedItemIndex: {
+                enumerable: true,
+                get: function () {
+                    return Number(this.getAttribute('selected'));
                 }
-            case KEY.DOWN: {
-                    this.selectNextItem();
-                    break;
+            },
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    this.tabIndex = -1;
+                    this.addEventListener('click', this.clickHandler.bind(this), false);
+                    this.addEventListener('keydown', this.keydownHandler.bind(this), false);
                 }
-            case KEY.UP: {
-                    this.selectPreviousItem();
-                    break;
+            },
+            attributeChangedCallback: {
+                enumerable: true,
+                value: function (name, oldValue, newValue) {
+                    if (name === 'selected')
+                        this.selectedChanged(oldValue, this.getAttribute(name));
                 }
-            default:
-                return;
+            },
+            selectedChanged: {
+                enumerable: true,
+                value: function (oldValue, newValue) {
+                    this.dispatchEvent(new CustomEvent('b-select', { detail: { item: newValue } }));
+                    if (oldValue !== null) {
+                        this.getItem(oldValue).classList.remove('b-selectable-selected');
+                    }
+                    this.getItem(newValue).classList.add('b-selectable-selected');
+                }
+            },
+            clickHandler: {
+                enumerable: true,
+                value: function (e) {
+                    var itemIndex = this.getItems().indexOf(e.target);
+                    if (itemIndex !== -1) {
+                        this.setAttribute('selected', itemIndex);
+                        this.activate();
+                    }
+                }
+            },
+            keydownHandler: {
+                enumerable: true,
+                value: function (e) {
+                    switch (e.keyCode) {
+                    case KEY.ENTER: {
+                            this.activate();
+                            break;
+                        }
+                    case KEY.DOWN: {
+                            this.selectNextItem();
+                            break;
+                        }
+                    case KEY.UP: {
+                            this.selectPreviousItem();
+                            break;
+                        }
+                    default:
+                        return;
+                    }
+                }
+            },
+            activate: {
+                enumerable: true,
+                value: function () {
+                    this.dispatchEvent(new CustomEvent('b-activate', { detail: { item: this.getAttribute('selected') } }));
+                }
+            },
+            selectNextItem: {
+                enumerable: true,
+                value: function () {
+                    if (this.selectedItemIndex < this.getItemCount() - 1) {
+                        this.setAttribute('selected', this.selectedItemIndex + 1);
+                    }
+                }
+            },
+            selectPreviousItem: {
+                enumerable: true,
+                value: function () {
+                    if (this.selectedItemIndex > 0) {
+                        this.setAttribute('selected', this.selectedItemIndex - 1);
+                    }
+                }
+            },
+            getItem: {
+                enumerable: true,
+                value: function (pos) {
+                    return this.getItems()[pos] || null;
+                }
+            },
+            getItemCount: {
+                enumerable: true,
+                value: function () {
+                    return this.getItems().length;
+                }
+            },
+            getItems: {
+                enumerable: true,
+                value: function () {
+                    var target = this.getAttribute('target');
+                    var nodes = target ? this.querySelectorAll(target) : this.children;
+                    return Array.prototype.slice.call(nodes, 0);
+                }
             }
-        },
-        activate: function () {
-            this.dispatchEvent(new CustomEvent('b-activate', { detail: { item: this.getAttribute('selected') } }));
-        },
-        selectNextItem: function () {
-            if (this.selectedItemIndex < this.getItemCount() - 1) {
-                this.setAttribute('selected', this.selectedItemIndex + 1);
-            }
-        },
-        selectPreviousItem: function () {
-            if (this.selectedItemIndex > 0) {
-                this.setAttribute('selected', this.selectedItemIndex - 1);
-            }
-        },
-        getItem: function (pos) {
-            return this.getItems()[pos] || null;
-        },
-        getItemCount: function () {
-            return this.getItems().length;
-        },
-        getItems: function () {
-            var target = this.getAttribute('target');
-            var nodes = target ? this.querySelectorAll(target) : this.children;
-            return Array.prototype.slice.call(nodes, 0);
-        }
+        });
+    window.BSelectable = document.registerElement('b-selectable', { prototype: BSelectablePrototype });
+    Object.defineProperty(BSelectable.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
     });
 }());
 /**!
@@ -4163,15 +4497,28 @@
     return  Sortable;
 });
 (function () {
-    Bosonic.registerElement('b-sortable', {
-        readyCallback: function () {
-            var list = this.firstElementChild;
-            var sortable = new Sortable(list, { onUpdate: this.onUpdate.bind(this) });
-        },
-        onUpdate: function (evt) {
-            evt.stopPropagation();
-            var detail = { item: evt.item };
-            this.dispatchEvent(new CustomEvent('update', { detail: detail }));
-        }
+    var BSortablePrototype = Object.create(HTMLElement.prototype, {
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    var list = this.firstElementChild;
+                    var sortable = new Sortable(list, { onUpdate: this.onUpdate.bind(this) });
+                }
+            },
+            onUpdate: {
+                enumerable: true,
+                value: function (evt) {
+                    evt.stopPropagation();
+                    var detail = { item: evt.item };
+                    this.dispatchEvent(new CustomEvent('update', { detail: detail }));
+                }
+            }
+        });
+    window.BSortable = document.registerElement('b-sortable', { prototype: BSortablePrototype });
+    Object.defineProperty(BSortable.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
     });
 }());
