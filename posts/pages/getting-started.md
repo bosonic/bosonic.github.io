@@ -7,7 +7,7 @@
 
 ## Using Bosonic elements
 
-To start with Bosonic, download the [bosonic core library](https://github.com/bosonic/bosonic/raw/master/dist/bosonic.js) and the [bosonic polyfills](https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js). You need to load the polyfills script before the core library in the browser.
+To start with Bosonic, download the [bosonic polyfills](https://github.com/bosonic/bosonic/raw/master/dist/bosonic-polyfills.js).
 
 For our first use of Bosonic, we will use a ["HelloWorld" Bosonic element](https://github.com/bosonic/b-hello-world) but you can choose the Bosonic elements you need (unfortunately, we don't have a full list and documentation page yet. Please go to the [Github organization page](https://github.com/bosonic) to view the currently available elements. More coming very soon!).
 
@@ -22,7 +22,6 @@ Your HTML file should look like this:
     <title>My Application</title>
     <meta charset="utf-8">
     <script src="assets/js/bosonic-polyfills.js"></script>
-    <script src="assets/js/bosonic.js"></script>
     <script src="assets/js/b-hello-world.js"></script>
     <link rel="stylesheet" href="assets/css/b-hello-world.css">
 </head>
@@ -53,7 +52,7 @@ Below we will describe how Bosonic handles thoses specifications to give web dev
 
 Bosonic is made of several packages:
 
-- __[Bosonic core library](https://github.com/bosonic/bosonic)__, which consists of a runtime and various polyfills.
+- __[Bosonic platform](https://github.com/bosonic/bosonic)__, which consists of various polyfills.
 - __[Bosonic transpiler](https://github.com/bosonic/transpiler)__, which is a [Node.js](http://nodejs.org/) module that transforms elements' HTML files into JS & CSS ones.
 - __[grunt-bosonic](https://github.com/bosonic/grunt-bosonic)__, which is a [Grunt](http://gruntjs.com/) task that uses the transpiler to build your elements.
 - __[yeoman-bosonic](https://github.com/bosonic/yeoman-bosonic)__, which is a [Yeoman](http://yeoman.io/) generator that creates the skeleton of a new element.
@@ -129,7 +128,6 @@ Then go to the `demo/` directory and open the `index.html` file:
     <title>Demo</title>
     <meta charset="utf-8">
     <script src="js/bosonic-polyfills.js"></script>
-    <script src="js/bosonic.js"></script>
     <script src="js/b-hello-world.js"></script>
     <link href="css/b-hello-world.css" rel="stylesheet">
 </head>

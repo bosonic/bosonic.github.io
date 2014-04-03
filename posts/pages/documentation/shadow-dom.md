@@ -2,7 +2,7 @@
   title: "Shadow DOM",
   type: "static",
   section: "documentation",
-  order: 3
+  order: 4
 }
 
 ## Shadow DOM
