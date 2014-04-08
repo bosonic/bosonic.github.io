@@ -102,6 +102,20 @@
                 <li>item 7</li>
             </ul>
         </b-selectable>
+
+        <h2>Tooltip</h2>
+        <label for="my-input">Label</label>
+        <input id="my-input" type="text" value="" placeholder="Value...">
+        <b-tooltip target="#my-input" position="bottom center">
+            <p>This is an exciting input field!</p>
+        </b-tooltip>
+        <style>
+            .tooltip-element.tooltip-theme-arrows .tooltip-content {
+                background: white;
+                color: black;
+                border: 1px solid black;
+            }
+        </style>
         
         <h2>Accordion</h2>
         <b-accordion selected="0">
