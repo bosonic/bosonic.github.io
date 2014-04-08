@@ -1,6 +1,44 @@
+b-dialog {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  background: white;
+  border: 1px solid #333;
+  z-index: 1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+b-dialog[visible] {
+  display: block;
+}
+.b-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  display: block;
+}
 b-datalist {
   display: none;
 }
+
 @charset "UTF-8";
 
 /*!
@@ -176,44 +214,6 @@ b-datalist {
 }
 
 
-b-dialog {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  max-width: 100%;
-  max-height: 100%;
-  overflow: auto;
-  background: white;
-  border: 1px solid #333;
-  z-index: 1;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-b-dialog[visible] {
-  display: block;
-}
-.b-overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: black;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-  opacity: 0.5;
-  display: block;
-}
-
 b-sortable [draggable] {
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -226,4 +226,15 @@ b-sortable [draggable] * {
   -khtml-user-drag: none;
   -webkit-user-drag: none;
   user-drag: none;
+}
+b-collapsible {
+  display: block;
+}
+
+.b-collapsible-closed {
+  display: none;
+}
+
+.b-collapsible-body {
+  height: 0px;
 }
