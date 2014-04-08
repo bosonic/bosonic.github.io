@@ -1,168 +1,116 @@
 (function () {
-    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-    var HEADER_CLASS = 'b-collapsible-header', BODY_CLASS = 'b-collapsible-body', CLOSED_CLASS = 'b-collapsible-closed';
-    var BCollapsiblePrototype = Object.create(HTMLElement.prototype, {
-            active: {
-                enumerable: true,
-                get: function () {
-                    return this.hasAttribute('active');
-                },
-                set: function (value) {
-                    value ? this.setAttribute('active', '') : this.removeAttribute('active');
-                }
-            },
+    var BDialogPrototype = Object.create(HTMLElement.prototype, {
             createdCallback: {
                 enumerable: true,
                 value: function () {
-                    this.duration = this.hasAttribute('duration') ? parseFloat(this.getAttribute('duration')) : 0.33;
-                    this.dimension = this.hasAttribute('horizontal') ? 'width' : 'height';
-                    this.body = this.querySelector(':not(.' + HEADER_CLASS + ')');
-                    this.header = this.querySelector('.' + HEADER_CLASS);
-                    if (this.body) {
-                        this.body.style.overflow = 'hidden';
-                        this.body.classList.add(BODY_CLASS);
-                        this.addListeners();
-                        this.toggleClosedClass(true);
-                    }
-                    if (this.active) {
-                        this.setSize('auto');
-                        this.toggleClosedClass(false);
-                    }
-                }
-            },
-            detachedCallback: {
-                enumerable: true,
-                value: function () {
-                    this.removeListeners();
-                }
-            },
-            addListeners: {
-                enumerable: true,
-                value: function () {
-                    if (this.header) {
-                        this.toggleListener = this.toggle.bind(this);
-                        this.header.addEventListener('click', this.toggleListener, false);
-                    }
-                    this.transitionEndListener = this.transitionEnd.bind(this);
-                    this.body.addEventListener('webkitTransitionEnd', this.transitionEndListener);
-                    this.body.addEventListener('transitionend', this.transitionEndListener);
-                }
-            },
-            removeListeners: {
-                enumerable: true,
-                value: function () {
-                    if (this.toggleListener) {
-                        this.header.removeEventListener('click', this.toggleListener, false);
-                    }
-                    this.body.removeEventListener('webkitTransitionEnd', this.transitionEndListener);
-                    this.body.removeEventListener('transitionend', this.transitionEndListener);
-                }
-            },
-            attributeChangedCallback: {
-                enumerable: true,
-                value: function (name, oldValue, newValue) {
-                    if (name === 'active')
-                        this.activeChanged(oldValue, newValue);
-                }
-            },
-            toggle: {
-                enumerable: true,
-                value: function () {
-                    this.active = !this.active;
-                }
-            },
-            activeChanged: {
-                enumerable: true,
-                value: function (oldValue, newValue) {
-                    this.update();
-                }
-            },
-            update: {
-                enumerable: true,
-                value: function () {
-                    if (!this.body)
-                        return;
-                    this.active ? this.show() : this.hide();
+                    var root = this.createShadowRoot();
+                    root.appendChild(this.template.content.cloneNode(true));
                 }
             },
             show: {
                 enumerable: true,
                 value: function () {
-                    this.toggleClosedClass(false);
-                    var size = this.calcSize();
-                    this.updateSize(size, this.duration);
+                    this.setAttribute('visible', '');
+                    this.keyupListener = this.onKeyup.bind(this);
+                    document.addEventListener('keyup', this.keyupListener, false);
+                }
+            },
+            showModal: {
+                enumerable: true,
+                value: function () {
+                    this.overlay = document.createElement('b-overlay');
+                    this.parentNode.appendChild(this.overlay);
+                    this.show();
+                }
+            },
+            onKeyup: {
+                enumerable: true,
+                value: function (e) {
+                    if (e.which === 27) {
+                        this.cancel();
+                    }
                 }
             },
             hide: {
                 enumerable: true,
                 value: function () {
-                    var size = this.computeSize();
-                    this.setSize(size);
-                    this.updateSize(0, this.duration);
+                    this.removeAttribute('visible');
+                    if (this.overlay) {
+                        this.parentNode.removeChild(this.overlay);
+                    }
+                    document.removeEventListener('keyup', this.keyupListener, false);
+                    this.dispatchEvent(new CustomEvent('b-close'));
                 }
             },
-            updateSize: {
-                enumerable: true,
-                value: function (size, duration) {
-                    var that = this;
-                    window.requestAnimationFrame(function () {
-                        that.setTransitionDuration(duration);
-                        that.setSize(size);
-                    });
-                }
-            },
-            calcSize: {
+            close: {
                 enumerable: true,
                 value: function () {
-                    this.setSize('auto');
-                    var size = this.computeSize();
-                    this.setSize(0);
-                    return size;
+                    this.hide();
                 }
             },
-            computeSize: {
+            open: {
                 enumerable: true,
                 value: function () {
-                    return this.body.getBoundingClientRect()[this.dimension] + 'px';
+                    this.show();
                 }
             },
-            setSize: {
-                enumerable: true,
-                value: function (size) {
-                    this.body.style[this.dimension] = size;
-                }
-            },
-            setTransitionDuration: {
-                enumerable: true,
-                value: function (duration) {
-                    var s = this.body.style;
-                    s.webkitTransition = s.transition = duration ? this.dimension + ' ' + duration + 's' : null;
-                }
-            },
-            toggleClosedClass: {
-                enumerable: true,
-                value: function (closed) {
-                    closed ? this.body.classList.add(CLOSED_CLASS) : this.body.classList.remove(CLOSED_CLASS);
-                }
-            },
-            transitionEnd: {
+            cancel: {
                 enumerable: true,
                 value: function () {
-                    this.setTransitionDuration(null);
-                    if (this.active) {
-                        this.setSize('auto');
-                    } else {
-                        this.toggleClosedClass(true);
+                    var doCancel = this.dispatchEvent(new CustomEvent('b-cancel', { cancelable: true }));
+                    if (doCancel) {
+                        this.hide();
                     }
                 }
             }
         });
-    window.BCollapsible = document.registerElement('b-collapsible', { prototype: BCollapsiblePrototype });
-    Object.defineProperty(BCollapsible.prototype, '_super', {
+    window.BDialog = document.registerElement('b-dialog', { prototype: BDialogPrototype });
+    Object.defineProperty(BDialog.prototype, '_super', {
         enumerable: false,
         writable: false,
         configurable: false,
         value: HTMLElement.prototype
+    });
+    Object.defineProperty(BDialogPrototype, 'template', {
+        get: function () {
+            var fragment = document.createDocumentFragment();
+            var div = fragment.appendChild(document.createElement('div'));
+            div.innerHTML = ' <div class="b-dialog"> <content></content> </div> ';
+            while (child = div.firstChild) {
+                fragment.insertBefore(child, div);
+            }
+            fragment.removeChild(div);
+            return { content: fragment };
+        }
+    });
+}());
+(function () {
+    var BOverlayPrototype = Object.create(HTMLElement.prototype, {
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    this.appendChild(this.template.content.cloneNode(true));
+                }
+            }
+        });
+    window.BOverlay = document.registerElement('b-overlay', { prototype: BOverlayPrototype });
+    Object.defineProperty(BOverlay.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
+    });
+    Object.defineProperty(BOverlayPrototype, 'template', {
+        get: function () {
+            var fragment = document.createDocumentFragment();
+            var div = fragment.appendChild(document.createElement('div'));
+            div.innerHTML = ' <div class="b-overlay"></div> ';
+            while (child = div.firstChild) {
+                fragment.insertBefore(child, div);
+            }
+            fragment.removeChild(div);
+            return { content: fragment };
+        }
     });
 }());
 (function () {
@@ -176,6 +124,176 @@
         });
     window.BDatalist = document.registerElement('b-datalist', { prototype: BDatalistPrototype });
     Object.defineProperty(BDatalist.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
+    });
+}());
+(function () {
+    var KEY = {
+            ENTER: 13,
+            LEFT: 37,
+            UP: 38,
+            RIGHT: 39,
+            DOWN: 40
+        };
+    var BSelectablePrototype = Object.create(HTMLElement.prototype, {
+            elementRole: { value: 'listbox' },
+            elementLabel: { value: 'Selectable list' },
+            itemsRole: { value: 'option' },
+            selectedItemIndex: {
+                enumerable: true,
+                get: function () {
+                    return Number(this.getAttribute('selected'));
+                }
+            },
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    this.handleAria();
+                    if (this.hasAttribute('selected')) {
+                        this.selectedChanged(null, this.getAttribute('selected'));
+                    }
+                    this.addListeners();
+                }
+            },
+            handleAria: {
+                enumerable: true,
+                value: function () {
+                    this.tabIndex = 0;
+                    this.setAttribute('role', this.elementRole);
+                    this.setAttribute('aria-label', this.elementLabel);
+                    this.getItems().forEach(function (item) {
+                        item.setAttribute('role', this.itemsRole);
+                    }, this);
+                }
+            },
+            addListeners: {
+                enumerable: true,
+                value: function () {
+                    this.addEventListener('click', this.clickHandler.bind(this), false);
+                    this.addEventListener('keydown', this.keydownHandler.bind(this), false);
+                    this.addEventListener('focus', this.focusHandler.bind(this), false);
+                }
+            },
+            attributeChangedCallback: {
+                enumerable: true,
+                value: function (name, oldValue, newValue) {
+                    if (name === 'selected')
+                        this.selectedChanged(oldValue, this.getAttribute(name));
+                }
+            },
+            selectedChanged: {
+                enumerable: true,
+                value: function (oldValue, newValue) {
+                    this.dispatchEvent(new CustomEvent('b-select', { detail: { item: newValue } }));
+                    if (oldValue !== null) {
+                        this.getItem(oldValue).classList.remove('b-selectable-selected');
+                        this.getItem(oldValue).removeAttribute('aria-selected');
+                    }
+                    this.getItem(newValue).classList.add('b-selectable-selected');
+                    this.getItem(newValue).setAttribute('aria-selected', 'true');
+                }
+            },
+            focusHandler: {
+                enumerable: true,
+                value: function (e) {
+                    if (!this.hasAttribute('selected')) {
+                        this.selectFirst();
+                    }
+                }
+            },
+            clickHandler: {
+                enumerable: true,
+                value: function (e) {
+                    var itemIndex = this.getItems().indexOf(e.target);
+                    if (itemIndex !== -1) {
+                        this.select(itemIndex);
+                        this.activate();
+                    }
+                }
+            },
+            keydownHandler: {
+                enumerable: true,
+                value: function (e) {
+                    switch (e.keyCode) {
+                    case KEY.ENTER: {
+                            this.activate();
+                            break;
+                        }
+                    case KEY.DOWN: {
+                            this.selectNextItem();
+                            break;
+                        }
+                    case KEY.UP: {
+                            this.selectPreviousItem();
+                            break;
+                        }
+                    default:
+                        return;
+                    }
+                }
+            },
+            activate: {
+                enumerable: true,
+                value: function () {
+                    this.dispatchEvent(new CustomEvent('b-activate', { detail: { item: this.getAttribute('selected') } }));
+                }
+            },
+            select: {
+                enumerable: true,
+                value: function (index) {
+                    this.setAttribute('selected', index);
+                }
+            },
+            selectFirst: {
+                enumerable: true,
+                value: function () {
+                    if (this.getItemCount() > 0) {
+                        this.select(0);
+                    }
+                }
+            },
+            selectNextItem: {
+                enumerable: true,
+                value: function () {
+                    if (this.selectedItemIndex < this.getItemCount() - 1) {
+                        this.select(this.selectedItemIndex + 1);
+                    }
+                }
+            },
+            selectPreviousItem: {
+                enumerable: true,
+                value: function () {
+                    if (this.selectedItemIndex > 0) {
+                        this.select(this.selectedItemIndex - 1);
+                    }
+                }
+            },
+            getItem: {
+                enumerable: true,
+                value: function (pos) {
+                    return this.getItems()[pos] || null;
+                }
+            },
+            getItemCount: {
+                enumerable: true,
+                value: function () {
+                    return this.getItems().length;
+                }
+            },
+            getItems: {
+                enumerable: true,
+                value: function () {
+                    var target = this.getAttribute('target');
+                    var nodes = target ? this.querySelectorAll(target) : this.children;
+                    return Array.prototype.slice.call(nodes, 0);
+                }
+            }
+        });
+    window.BSelectable = document.registerElement('b-selectable', { prototype: BSelectablePrototype });
+    Object.defineProperty(BSelectable.prototype, '_super', {
         enumerable: false,
         writable: false,
         configurable: false,
@@ -3717,243 +3835,6 @@
         }
     });
 }());
-(function () {
-    var BDialogPrototype = Object.create(HTMLElement.prototype, {
-            createdCallback: {
-                enumerable: true,
-                value: function () {
-                    var root = this.createShadowRoot();
-                    root.appendChild(this.template.content.cloneNode(true));
-                }
-            },
-            show: {
-                enumerable: true,
-                value: function () {
-                    this.setAttribute('visible', '');
-                    this.keyupListener = this.onKeyup.bind(this);
-                    document.addEventListener('keyup', this.keyupListener, false);
-                }
-            },
-            showModal: {
-                enumerable: true,
-                value: function () {
-                    this.overlay = document.createElement('b-overlay');
-                    this.parentNode.appendChild(this.overlay);
-                    this.show();
-                }
-            },
-            onKeyup: {
-                enumerable: true,
-                value: function (e) {
-                    if (e.which === 27) {
-                        this.cancel();
-                    }
-                }
-            },
-            hide: {
-                enumerable: true,
-                value: function () {
-                    this.removeAttribute('visible');
-                    if (this.overlay) {
-                        this.parentNode.removeChild(this.overlay);
-                    }
-                    document.removeEventListener('keyup', this.keyupListener, false);
-                    this.dispatchEvent(new CustomEvent('b-close'));
-                }
-            },
-            close: {
-                enumerable: true,
-                value: function () {
-                    this.hide();
-                }
-            },
-            open: {
-                enumerable: true,
-                value: function () {
-                    this.show();
-                }
-            },
-            cancel: {
-                enumerable: true,
-                value: function () {
-                    var doCancel = this.dispatchEvent(new CustomEvent('b-cancel', { cancelable: true }));
-                    if (doCancel) {
-                        this.hide();
-                    }
-                }
-            }
-        });
-    window.BDialog = document.registerElement('b-dialog', { prototype: BDialogPrototype });
-    Object.defineProperty(BDialog.prototype, '_super', {
-        enumerable: false,
-        writable: false,
-        configurable: false,
-        value: HTMLElement.prototype
-    });
-    Object.defineProperty(BDialogPrototype, 'template', {
-        get: function () {
-            var fragment = document.createDocumentFragment();
-            var div = fragment.appendChild(document.createElement('div'));
-            div.innerHTML = ' <div class="b-dialog"> <content></content> </div> ';
-            while (child = div.firstChild) {
-                fragment.insertBefore(child, div);
-            }
-            fragment.removeChild(div);
-            return { content: fragment };
-        }
-    });
-}());
-(function () {
-    var BOverlayPrototype = Object.create(HTMLElement.prototype, {
-            createdCallback: {
-                enumerable: true,
-                value: function () {
-                    this.appendChild(this.template.content.cloneNode(true));
-                }
-            }
-        });
-    window.BOverlay = document.registerElement('b-overlay', { prototype: BOverlayPrototype });
-    Object.defineProperty(BOverlay.prototype, '_super', {
-        enumerable: false,
-        writable: false,
-        configurable: false,
-        value: HTMLElement.prototype
-    });
-    Object.defineProperty(BOverlayPrototype, 'template', {
-        get: function () {
-            var fragment = document.createDocumentFragment();
-            var div = fragment.appendChild(document.createElement('div'));
-            div.innerHTML = ' <div class="b-overlay"></div> ';
-            while (child = div.firstChild) {
-                fragment.insertBefore(child, div);
-            }
-            fragment.removeChild(div);
-            return { content: fragment };
-        }
-    });
-}());
-(function () {
-    var KEY = {
-            ENTER: 13,
-            LEFT: 37,
-            UP: 38,
-            RIGHT: 39,
-            DOWN: 40
-        };
-    var BSelectablePrototype = Object.create(HTMLElement.prototype, {
-            selectedItemIndex: {
-                enumerable: true,
-                get: function () {
-                    return Number(this.getAttribute('selected'));
-                }
-            },
-            createdCallback: {
-                enumerable: true,
-                value: function () {
-                    this.tabIndex = -1;
-                    this.addEventListener('click', this.clickHandler.bind(this), false);
-                    this.addEventListener('keydown', this.keydownHandler.bind(this), false);
-                }
-            },
-            attributeChangedCallback: {
-                enumerable: true,
-                value: function (name, oldValue, newValue) {
-                    if (name === 'selected')
-                        this.selectedChanged(oldValue, this.getAttribute(name));
-                }
-            },
-            selectedChanged: {
-                enumerable: true,
-                value: function (oldValue, newValue) {
-                    this.dispatchEvent(new CustomEvent('b-select', { detail: { item: newValue } }));
-                    if (oldValue !== null) {
-                        this.getItem(oldValue).classList.remove('b-selectable-selected');
-                    }
-                    this.getItem(newValue).classList.add('b-selectable-selected');
-                }
-            },
-            clickHandler: {
-                enumerable: true,
-                value: function (e) {
-                    var itemIndex = this.getItems().indexOf(e.target);
-                    if (itemIndex !== -1) {
-                        this.setAttribute('selected', itemIndex);
-                        this.activate();
-                    }
-                }
-            },
-            keydownHandler: {
-                enumerable: true,
-                value: function (e) {
-                    switch (e.keyCode) {
-                    case KEY.ENTER: {
-                            this.activate();
-                            break;
-                        }
-                    case KEY.DOWN: {
-                            this.selectNextItem();
-                            break;
-                        }
-                    case KEY.UP: {
-                            this.selectPreviousItem();
-                            break;
-                        }
-                    default:
-                        return;
-                    }
-                }
-            },
-            activate: {
-                enumerable: true,
-                value: function () {
-                    this.dispatchEvent(new CustomEvent('b-activate', { detail: { item: this.getAttribute('selected') } }));
-                }
-            },
-            selectNextItem: {
-                enumerable: true,
-                value: function () {
-                    if (this.selectedItemIndex < this.getItemCount() - 1) {
-                        this.setAttribute('selected', this.selectedItemIndex + 1);
-                    }
-                }
-            },
-            selectPreviousItem: {
-                enumerable: true,
-                value: function () {
-                    if (this.selectedItemIndex > 0) {
-                        this.setAttribute('selected', this.selectedItemIndex - 1);
-                    }
-                }
-            },
-            getItem: {
-                enumerable: true,
-                value: function (pos) {
-                    return this.getItems()[pos] || null;
-                }
-            },
-            getItemCount: {
-                enumerable: true,
-                value: function () {
-                    return this.getItems().length;
-                }
-            },
-            getItems: {
-                enumerable: true,
-                value: function () {
-                    var target = this.getAttribute('target');
-                    var nodes = target ? this.querySelectorAll(target) : this.children;
-                    return Array.prototype.slice.call(nodes, 0);
-                }
-            }
-        });
-    window.BSelectable = document.registerElement('b-selectable', { prototype: BSelectablePrototype });
-    Object.defineProperty(BSelectable.prototype, '_super', {
-        enumerable: false,
-        writable: false,
-        configurable: false,
-        value: HTMLElement.prototype
-    });
-}());
 /**!
  * Sortable
  * @author  RubaXa   <trash@rubaxa.org>
@@ -4520,5 +4401,254 @@
         writable: false,
         configurable: false,
         value: HTMLElement.prototype
+    });
+}());
+(function () {
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    var HEADER_CLASS = 'b-collapsible-header', BODY_CLASS = 'b-collapsible-body', CLOSED_CLASS = 'b-collapsible-closed';
+    var BCollapsiblePrototype = Object.create(HTMLElement.prototype, {
+            active: {
+                enumerable: true,
+                get: function () {
+                    return this.hasAttribute('active');
+                },
+                set: function (value) {
+                    value ? this.setAttribute('active', '') : this.removeAttribute('active');
+                }
+            },
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    this.duration = this.hasAttribute('duration') ? parseFloat(this.getAttribute('duration')) : 0.33;
+                    this.dimension = this.hasAttribute('horizontal') ? 'width' : 'height';
+                    this.body = this.querySelector(':not(.' + HEADER_CLASS + ')');
+                    this.header = this.querySelector('.' + HEADER_CLASS);
+                    if (this.body) {
+                        this.body.style.overflow = 'hidden';
+                        if (this.supportsTransitions()) {
+                            this.body.classList.add(BODY_CLASS);
+                            if (this.active) {
+                                this.setSize('auto');
+                            }
+                        }
+                        this.addListeners();
+                        this.toggleClosedClass(!this.active);
+                    }
+                }
+            },
+            detachedCallback: {
+                enumerable: true,
+                value: function () {
+                    this.removeListeners();
+                }
+            },
+            addListeners: {
+                enumerable: true,
+                value: function () {
+                    if (this.header) {
+                        this.toggleListener = this.toggle.bind(this);
+                        this.header.addEventListener('click', this.toggleListener, false);
+                    }
+                    if (this.supportsTransitions()) {
+                        this.transitionEndListener = this.transitionEnd.bind(this);
+                        this.body.addEventListener('webkitTransitionEnd', this.transitionEndListener);
+                        this.body.addEventListener('transitionend', this.transitionEndListener);
+                    }
+                }
+            },
+            removeListeners: {
+                enumerable: true,
+                value: function () {
+                    if (this.toggleListener) {
+                        this.header.removeEventListener('click', this.toggleListener, false);
+                    }
+                    if (this.supportsTransitions()) {
+                        this.body.removeEventListener('webkitTransitionEnd', this.transitionEndListener);
+                        this.body.removeEventListener('transitionend', this.transitionEndListener);
+                    }
+                }
+            },
+            attributeChangedCallback: {
+                enumerable: true,
+                value: function (name, oldValue, newValue) {
+                    if (name === 'active')
+                        this.activeChanged(oldValue, newValue);
+                }
+            },
+            toggle: {
+                enumerable: true,
+                value: function () {
+                    this.active = !this.active;
+                }
+            },
+            activeChanged: {
+                enumerable: true,
+                value: function (oldValue, newValue) {
+                    this.update();
+                }
+            },
+            update: {
+                enumerable: true,
+                value: function () {
+                    if (!this.body)
+                        return;
+                    this.active ? this.show() : this.hide();
+                }
+            },
+            show: {
+                enumerable: true,
+                value: function () {
+                    this.toggleClosedClass(false);
+                    if (this.supportsTransitions()) {
+                        var size = this.calcSize();
+                        this.updateSize(size, this.duration);
+                    }
+                }
+            },
+            hide: {
+                enumerable: true,
+                value: function () {
+                    if (!this.supportsTransitions()) {
+                        this.toggleClosedClass(true);
+                        return;
+                    }
+                    var size = this.computeSize();
+                    this.setSize(size);
+                    this.updateSize(0, this.duration);
+                }
+            },
+            updateSize: {
+                enumerable: true,
+                value: function (size, duration) {
+                    var that = this;
+                    window.requestAnimationFrame(function () {
+                        that.setSize(size);
+                        that.setTransitionDuration(duration);
+                    });
+                }
+            },
+            calcSize: {
+                enumerable: true,
+                value: function () {
+                    this.setSize('auto');
+                    var size = this.computeSize();
+                    this.setSize(0);
+                    return size;
+                }
+            },
+            computeSize: {
+                enumerable: true,
+                value: function () {
+                    var size = parseInt(this.body.getBoundingClientRect()[this.dimension]);
+                    return size - this.getBorderWidth() + 'px';
+                }
+            },
+            getBorderWidth: {
+                enumerable: true,
+                value: function () {
+                    return this.dimension === 'width' ? this.computeWidth('borderLeftWidth') + this.computeWidth('borderRightWidth') : this.computeWidth('borderTopWidth') + this.computeWidth('borderBottomWidth');
+                }
+            },
+            computeWidth: {
+                enumerable: true,
+                value: function (property) {
+                    return parseInt(getComputedStyle(this.body)[property].replace('px', ''));
+                }
+            },
+            setSize: {
+                enumerable: true,
+                value: function (size) {
+                    this.body.style[this.dimension] = size;
+                }
+            },
+            setTransitionDuration: {
+                enumerable: true,
+                value: function (duration) {
+                    var s = this.body.style;
+                    s.webkitTransition = s.transition = duration ? this.dimension + ' ' + duration + 's' : null;
+                }
+            },
+            toggleClosedClass: {
+                enumerable: true,
+                value: function (closed) {
+                    closed ? this.body.classList.add(CLOSED_CLASS) : this.body.classList.remove(CLOSED_CLASS);
+                }
+            },
+            transitionEnd: {
+                enumerable: true,
+                value: function () {
+                    this.setTransitionDuration(null);
+                    if (this.active) {
+                        this.setSize('auto');
+                    } else {
+                        this.toggleClosedClass(true);
+                    }
+                }
+            },
+            supportsTransitions: {
+                enumerable: true,
+                value: function () {
+                    return window.requestAnimationFrame !== undefined;
+                }
+            }
+        });
+    window.BCollapsible = document.registerElement('b-collapsible', { prototype: BCollapsiblePrototype });
+    Object.defineProperty(BCollapsible.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: HTMLElement.prototype
+    });
+}());
+(function () {
+    var PANEL_HEADER_CLASS = '.b-collapsible-header';
+    var BAccordionPrototype = Object.create(BSelectable.prototype, {
+            elementRole: { value: 'tablist' },
+            elementLabel: { value: 'Accordion' },
+            itemsRole: { value: 'tabpanel' },
+            headersRole: { value: 'tab' },
+            handleAria: {
+                enumerable: true,
+                value: function () {
+                    this._super.handleAria.call(this);
+                    this.getItems().forEach(function (panel) {
+                        panel.setAttribute('aria-expanded', 'false');
+                        panel.setAttribute('aria-hidden', 'true');
+                        panel.querySelector(PANEL_HEADER_CLASS).setAttribute('role', this.headersRole);
+                    }, this);
+                }
+            },
+            clickHandler: {
+                enumerable: true,
+                value: function (e) {
+                    e.stopPropagation();
+                    if (e.target.nodeName !== 'B-COLLAPSIBLE') {
+                        e = { target: e.target.parentElement };
+                    }
+                    this._super.clickHandler.call(this, e);
+                }
+            },
+            selectedChanged: {
+                enumerable: true,
+                value: function (oldValue, newValue) {
+                    var oldItem = this.getItem(oldValue), newItem = this.getItem(newValue);
+                    this._super.selectedChanged.call(this, oldValue, newValue);
+                    if (oldValue !== null) {
+                        oldItem.removeAttribute('active');
+                        oldItem.setAttribute('aria-expanded', 'false');
+                        oldItem.setAttribute('aria-hidden', 'true');
+                    }
+                    newItem.setAttribute('active', '');
+                    newItem.setAttribute('aria-expanded', 'true');
+                    newItem.setAttribute('aria-hidden', 'false');
+                }
+            }
+        });
+    window.BAccordion = document.registerElement('b-accordion', { prototype: BAccordionPrototype });
+    Object.defineProperty(BAccordion.prototype, '_super', {
+        enumerable: false,
+        writable: false,
+        configurable: false,
+        value: BSelectable.prototype
     });
 }());
