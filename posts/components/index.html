@@ -298,6 +298,29 @@
 <p>The event object will have a <code>detail.item</code> property that refers to the dragged element.</p>
 <h2><a name="license" class="anchor" href="#license"><span class="header-link"></span></a>License</h2>
 <p><a href="http://opensource.org/licenses/MIT">MIT License</a></p>
+<h1><a name="ltb-tooltipgt" class="anchor" href="#ltb-tooltipgt"><span class="header-link"></span></a>&lt;b-tooltip&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> tooltip element which uses <a href="http://github.hubspot.com/tether/">Tether</a>, an excellent library with no dependencies by <a href="https://github.com/HubSpot">HubSpot</a>.</p>
+<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-tooltip
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;my-input&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Value...&quot;</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;b-tooltip</span> <span class="na">target=</span><span class="s">&quot;#my-input&quot;</span> <span class="na">position=</span><span class="s">&quot;bottom center&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>This is an exciting input field!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/b-tooltip&gt;</span>
+</pre></div>
+</code></pre>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
+<ul>
+<li><strong>target</strong>: a CSS selector that points to the element the tooltip must be attached to.</li>
+<li><strong>position</strong>: where the tooltip must be attached (possible values: &#39;top left&#39;, &#39;left top&#39;, &#39;left middle&#39;, &#39;left bottom&#39;, &#39;bottom left&#39;, &#39;bottom center&#39;, &#39;bottom right&#39;, &#39;right bottom&#39;, &#39;right middle&#39;, &#39;right top&#39;, &#39;top right&#39;, &#39;top center&#39;.</li>
+</ul>
 
 </div>
 
