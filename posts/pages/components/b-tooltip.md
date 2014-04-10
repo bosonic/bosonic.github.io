@@ -1,3 +1,9 @@
+{
+	title: "b-tooltip", 
+	type: "static", 
+	section: "components"
+}
+
 # &lt;b-tooltip&gt;
 
 A [Bosonic](http://bosonic.github.io) tooltip element which uses [Tether](http://github.hubspot.com/tether/), an excellent library with no dependencies by [HubSpot](https://github.com/HubSpot).

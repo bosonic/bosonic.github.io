@@ -91,7 +91,8 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      dist: ['dist', 'repos']
+      dist: ['dist'],
+      components: ['posts/pages/components/*']
     },
     'gh-pages': {
       options: {
@@ -109,57 +110,70 @@ module.exports = function(grunt) {
           sortBy: 'name'
         },
         files: {
-          'repos/bosonic_opt.json': ['repos?page=1&per_page=100']
+          'components_repositories.json': ['repos?page=1&per_page=100']
         }
       }
     },
-    curl: {
+    'curl-dir': {
       readmes: {
-        src: function() {
-          if (grunt.file.exists('repos/bosonic_opt.json')) {
-            var reposjson = grunt.file.readJSON('repos/bosonic_opt.json');
-            var readmes = [];
-            reposjson.repos.forEach(function(repodesc) {
-              var url = repodesc.url + '/raw/' + repodesc.master_branch + '/README.md';
-              readmes.push(url);
-            });
-          } else {
-
-          }
-          return readmes;
-        }(),
-        dest: 'posts/pages/components/components_readmes.md'
+        src: [],
+        router: function (url) {
+          return url.replace(/^https:\/\/github.com\/bosonic\/([A-Za-z0-9\-]*)\/raw\/master\/README.md/, '$1.md');
+        },
+        dest: 'posts/pages/components'
       }
     },
     file_append: {
-      default_options: {
-        files: {
-          'posts/pages/components/components_readmes.md': {
-            prepend: '{\n\ttitle: "Components", \n\ttype: "static", \n\tsection: "components"\n}\n\n',
-            input: 'posts/pages/components/components_readmes.md'
-          }
-        }
+      readmes: {
+        files: []
       }
     }
   });
+  
+  grunt.registerTask('set_curl_config', function() {
+    var config = grunt.config.get('curl-dir');
 
-  grunt.registerTask('readmes:github', 'Download Bosonic Components readme.md', 'repos');
-  grunt.registerTask('readmes:download', 'Download github info', 'curl:readmes');
-  grunt.registerTask('readmes:create', 'Concatenate the components readme.md', 'file_append');
+    var readmes = [],
+        reposjson = grunt.file.readJSON('components_repositories.json'),
+        whitelist = grunt.file.readJSON('components_whitelist.json');
+    
+    reposjson.repos.forEach(function(repodesc) {
+      if (whitelist.indexOf(repodesc.name) !== -1) {
+        var url = repodesc.url + '/raw/' + repodesc.master_branch + '/README.md';
+        readmes.push(url);
+      }
+    });
 
-  grunt.registerTask('readmes', '', function() {
-    if (grunt.file.exists('repos/bosonic_opt.json')) {
-      grunt.task.run('readmes:download');
-      grunt.task.run('readmes:create');
-      grunt.log.ok('all components readmes are appended in \'' + 'posts/pages/components/components_readmes.md' + '\'');
-    } else {
-      grunt.fail.fatal(grunt.util.error('repos/bosonic_opt.json does not exist, run \'readmes:github\' first'));
-      grunt.log.error('You need to run \'readmes:github\' first, then you can run \'readmes\'');
-    }
+    config.readmes.src = readmes;
+    grunt.config.set('curl-dir', config);
   });
 
+  grunt.registerTask('set_append_config', function() {
+    var config = grunt.config.get('file_append');
+
+    var files = {};
+    grunt.file.recurse('posts/pages/components', function (abspath, rootdir, subdir, filename) {
+      files[abspath] = {
+        prepend: '{\n\ttitle: "'+filename.replace('.md', '')+'", \n\ttype: "static", \n\tsection: "components"\n}\n\n',
+        input: abspath
+      };
+    });
+
+    config.readmes.files = files;
+    grunt.config.set('file_append', config);
+  });
+  
+  grunt.registerTask('readmes', [
+    'clean:components',
+    'repos',
+    'set_curl_config',
+    'curl-dir',
+    'set_append_config',
+    'file_append'
+  ]);
+
   grunt.registerTask('build', [
-    'clean',
+    'clean:dist',
     'pages',
     'compass',
     'copy'
