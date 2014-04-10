@@ -36,9 +36,27 @@
 
 <div class="post">
 <div class="post-body markdown">
-	<h2><a name="interoperability" class="anchor" href="#interoperability"><span class="header-link"></span></a>Interoperability</h2>
-<p>Bosonic provides you with a custom polyfills build, which use some Polymer polyfills mixed with our own ShadowDOM polyfill. But, as Bosonic transpiles your elements to vanilla JS Custom Elements, they are fully interoperable with Polymer and x-tags elements.</p>
-<p>In short, you can use Bosonic elements with the <a href="http://www.polymer-project.org/docs/start/platform.html">Polymer platform</a>!</p>
+	<h1><a name="ltb-datalistgt" class="anchor" href="#ltb-datalistgt"><span class="header-link"></span></a>&lt;b-datalist&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which emulates the <code>&lt;datalist&gt;</code> element.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-datalist
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-datalist&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Option 1<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Option 2<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Option 3<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/b-datalist&gt;</span>
+</pre></div>
+</code></pre>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="properties" class="anchor" href="#properties"><span class="header-link"></span></a>Properties</h3>
+<ul>
+<li><strong>options</strong>: returns the <code>&lt;option&gt;</code> nodes (read-only).</li>
+</ul>
 
 </div>
 
