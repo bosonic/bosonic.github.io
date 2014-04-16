@@ -46,6 +46,18 @@
 <ul>
     
 
+        <li><a href="#b-accordion">b-accordion</a></li>
+
+    
+
+        <li><a href="#b-dialog">b-dialog</a></li>
+
+    
+
+        <li><a href="#b-selectable">b-selectable</a></li>
+
+    
+
         <li><a href="#b-sortable">b-sortable</a></li>
 
     
@@ -65,19 +77,125 @@
         <li><a href="#b-collapsible">b-collapsible</a></li>
 
     
-
-        <li><a href="#b-dialog">b-dialog</a></li>
-
-    
-
-        <li><a href="#b-accordion">b-accordion</a></li>
-
-    
-
-        <li><a href="#b-selectable">b-selectable</a></li>
-
-    
 </ul>
+
+
+
+    <a name="b-accordion" class="anchor" href="#b-accordion"></a>
+    <h1><a name="ltb-accordiongt" class="anchor" href="#ltb-accordiongt"><span class="header-link"></span></a>&lt;b-accordion&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> accordion element.</p>
+<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-accordion
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<p>This element should be used in conjunction with <code>&lt;b-collapsible&gt;</code> elements:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-accordion</span> <span class="na">selected=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;b-collapsible&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b-collapsible-header&quot;</span><span class="nt">&gt;</span>
+            Header
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+            ...
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/b-collapsible&gt;</span>
+    <span class="nt">&lt;b-collapsible&gt;</span>
+        ...
+    <span class="nt">&lt;/b-collapsible&gt;</span>
+    ...
+<span class="nt">&lt;/b-accordion&gt;</span>
+</pre></div>
+</code></pre>
+<p>The <code>selected</code> attribute indicates which panel is expanded, and can also be used to expand a panel programmatically.</p>
+<p>The user can use the keyboard to switch panels: Up/Down.</p>
+
+
+
+
+    <a name="b-dialog" class="anchor" href="#b-dialog"></a>
+    <h1><a name="ltb-dialoggt" class="anchor" href="#ltb-dialoggt"><span class="header-link"></span></a>&lt;b-dialog&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which can be used for popups in a web page.</p>
+<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-dialog
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-dialog&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Test<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Hello world<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/b-dialog&gt;</span>
+</pre></div>
+</code></pre>
+<p>If you want, for example, close the dialog when the user clicks on the &#39;Close&#39; button:</p>
+<pre><code class="lang-js"><div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;WebComponentsReady&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">dialog</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-dialog&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">closeBtn</span> <span class="o">=</span> <span class="nx">dialog</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+    <span class="nx">closeBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">dialog</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+    <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
+<ul>
+<li><strong>show()</strong> / <strong>open()</strong>: opens the dialog.</li>
+<li><strong>hide()</strong> / <strong>close()</strong>: closes the dialog.</li>
+<li><strong>showModal()</strong>: opens the dialog in a modal way (with an overlay).</li>
+</ul>
+<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
+<ul>
+<li><strong>b-close</strong>: fired when the dialog is closed.</li>
+</ul>
+
+
+
+
+    <a name="b-selectable" class="anchor" href="#b-selectable"></a>
+    <h1><a name="ltb-selectablegt" class="anchor" href="#ltb-selectablegt"><span class="header-link"></span></a>&lt;b-selectable&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which allows single (for now) selection of an item in a list.</p>
+<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-collapsible
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<p>The <code>selected</code> attribute indicates which item element is being selected, and can also be used to select an item programmatically.</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-selectable</span> <span class="na">selected=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>Item 1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>Item 2<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>Item 3<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/b-selectable&gt;</span>
+</pre></div>
+</code></pre>
+<p>The <code>target</code> attribute defines a selector used to query nodes to be used for selectable items.</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-selectable</span> <span class="na">target=</span><span class="s">&quot;li&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item 1<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item 2<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item 3<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/b-selectable&gt;</span>
+</pre></div>
+</code></pre>
+<p>Whenever the selected item changes, a <code>b-selected</code> event will be fired. The user can use the keyboard to select an item: Up/Down.</p>
+<p>If the user clicks/taps on an item, it will be selected AND then activated (a <code>b-activate</code> event will be fired just after the <code>b-selected</code>). If using keyboard, type ENTER to activate the selected item.</p>
+<p>b-selectable is not styled.  You need to style the <code>b-selectable-selected</code> CSS class to style the selected element.</p>
+<pre><code class="lang-css"><div class="highlight"><pre><span class="nc">.b-selectable-selected</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="m">#ccc</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+
 
 
 
@@ -249,124 +367,6 @@
 <ul>
 <li><strong>toggle()</strong>: toggles the active state.</li>
 </ul>
-
-
-
-
-    <a name="b-dialog" class="anchor" href="#b-dialog"></a>
-    <h1><a name="ltb-dialoggt" class="anchor" href="#ltb-dialoggt"><span class="header-link"></span></a>&lt;b-dialog&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which can be used for popups in a web page.</p>
-<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
-<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
-<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-dialog
-</pre></div>
-</code></pre>
-<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
-<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-dialog&gt;</span>
-    <span class="nt">&lt;h3&gt;</span>Test<span class="nt">&lt;/h3&gt;</span>
-    <span class="nt">&lt;p&gt;</span>Hello world<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;button&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/b-dialog&gt;</span>
-</pre></div>
-</code></pre>
-<p>If you want, for example, close the dialog when the user clicks on the &#39;Close&#39; button:</p>
-<pre><code class="lang-js"><div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;WebComponentsReady&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">dialog</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-dialog&#39;</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">closeBtn</span> <span class="o">=</span> <span class="nx">dialog</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
-    <span class="nx">closeBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">dialog</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
-    <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-</code></pre>
-<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
-<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
-<ul>
-<li><strong>show()</strong> / <strong>open()</strong>: opens the dialog.</li>
-<li><strong>hide()</strong> / <strong>close()</strong>: closes the dialog.</li>
-<li><strong>showModal()</strong>: opens the dialog in a modal way (with an overlay).</li>
-</ul>
-<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
-<ul>
-<li><strong>b-close</strong>: fired when the dialog is closed.</li>
-</ul>
-
-
-
-
-    <a name="b-accordion" class="anchor" href="#b-accordion"></a>
-    <h1><a name="ltb-accordiongt" class="anchor" href="#ltb-accordiongt"><span class="header-link"></span></a>&lt;b-accordion&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> accordion element.</p>
-<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
-<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
-<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-accordion
-</pre></div>
-</code></pre>
-<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
-<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<p>This element should be used in conjunction with <code>&lt;b-collapsible&gt;</code> elements:</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-accordion</span> <span class="na">selected=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;b-collapsible&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b-collapsible-header&quot;</span><span class="nt">&gt;</span>
-            Header
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div&gt;</span>
-            ...
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/b-collapsible&gt;</span>
-    <span class="nt">&lt;b-collapsible&gt;</span>
-        ...
-    <span class="nt">&lt;/b-collapsible&gt;</span>
-    ...
-<span class="nt">&lt;/b-accordion&gt;</span>
-</pre></div>
-</code></pre>
-<p>The <code>selected</code> attribute indicates which panel is expanded, and can also be used to expand a panel programmatically.</p>
-<p>The user can use the keyboard to switch panels: Up/Down.</p>
-
-
-
-
-    <a name="b-selectable" class="anchor" href="#b-selectable"></a>
-    <h1><a name="ltb-selectablegt" class="anchor" href="#ltb-selectablegt"><span class="header-link"></span></a>&lt;b-selectable&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which allows single (for now) selection of an item in a list.</p>
-<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
-<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
-<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-collapsible
-</pre></div>
-</code></pre>
-<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
-<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<p>The <code>selected</code> attribute indicates which item element is being selected, and can also be used to select an item programmatically.</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-selectable</span> <span class="na">selected=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div&gt;</span>Item 1<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div&gt;</span>Item 2<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div&gt;</span>Item 3<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/b-selectable&gt;</span>
-</pre></div>
-</code></pre>
-<p>The <code>target</code> attribute defines a selector used to query nodes to be used for selectable items.</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-selectable</span> <span class="na">target=</span><span class="s">&quot;li&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul&gt;</span>
-        <span class="nt">&lt;li&gt;</span>Item 1<span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;</span>Item 2<span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;</span>Item 3<span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/b-selectable&gt;</span>
-</pre></div>
-</code></pre>
-<p>Whenever the selected item changes, a <code>b-selected</code> event will be fired. The user can use the keyboard to select an item: Up/Down.</p>
-<p>If the user clicks/taps on an item, it will be selected AND then activated (a <code>b-activate</code> event will be fired just after the <code>b-selected</code>). If using keyboard, type ENTER to activate the selected item.</p>
-<p>b-selectable is not styled.  You need to style the <code>b-selectable-selected</code> CSS class to style the selected element.</p>
-<pre><code class="lang-css"><div class="highlight"><pre><span class="nc">.b-selectable-selected</span> <span class="p">{</span>
-    <span class="k">background-color</span><span class="o">:</span> <span class="m">#ccc</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</code></pre>
 
 
 

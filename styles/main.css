@@ -556,14 +556,14 @@ a:hover {
 #header .nav-separator {
   opacity: 0.4;
 }
-/* line 45, ../../src/styles/_nav.scss */
+/* line 44, ../../src/styles/_nav.scss */
 #header #logo {
   position: absolute;
-  top: .1rem;
+  top: 4rem;
   left: 1rem;
-  background-image: url("/images/logo.png");
-  width: 211px;
-  height: 46px;
+  background-image: url("/images/logoBig.png");
+  width: 325px;
+  height: 159px;
   text-indent: -9000px;
 }
 
@@ -617,95 +617,107 @@ table.browser-compat img {
   box-shadow: none;
 }
 
+@media screen and (max-width: 1440px) {
+  /* line 3, ../../src/styles/_responsive.scss */
+  #header #logo {
+    position: absolute;
+    top: .1rem;
+    left: 1rem;
+    background-image: url("/images/logo.png");
+    width: 211px;
+    height: 46px;
+    text-indent: -9000px;
+  }
+}
 @media screen and (max-width: 1200px) {
-  /* line 7, ../../src/styles/_responsive.scss */
+  /* line 18, ../../src/styles/_responsive.scss */
   #header #nav {
     text-align: right;
     padding-right: 50px;
   }
-  /* line 11, ../../src/styles/_responsive.scss */
+  /* line 22, ../../src/styles/_responsive.scss */
   #header #nav li {
     font-size: .8em;
   }
-  /* line 14, ../../src/styles/_responsive.scss */
+  /* line 25, ../../src/styles/_responsive.scss */
   #header #nav li a {
     padding: .2em;
     margin: .2em;
   }
 }
 @media screen and (max-width: 992px) {
-  /* line 25, ../../src/styles/_responsive.scss */
+  /* line 36, ../../src/styles/_responsive.scss */
   #content {
     width: 100%;
     padding: 0;
     padding-top: 65px;
   }
-  /* line 30, ../../src/styles/_responsive.scss */
+  /* line 41, ../../src/styles/_responsive.scss */
   #content #illustration {
     display: none;
   }
-  /* line 34, ../../src/styles/_responsive.scss */
+  /* line 45, ../../src/styles/_responsive.scss */
   #content #welcome {
     float: none;
     width: auto;
     padding: 0;
   }
-  /* line 40, ../../src/styles/_responsive.scss */
+  /* line 51, ../../src/styles/_responsive.scss */
   #content #homepage-top, #content .block {
     padding: 20px;
     padding-bottom: 0;
     height: auto;
   }
-  /* line 46, ../../src/styles/_responsive.scss */
+  /* line 57, ../../src/styles/_responsive.scss */
   #content .schema {
     width: auto;
     float: none;
     text-align: center;
   }
-  /* line 52, ../../src/styles/_responsive.scss */
+  /* line 63, ../../src/styles/_responsive.scss */
   #content .floating-text {
     width: auto;
     float: none;
     padding-left: 0;
   }
-  /* line 58, ../../src/styles/_responsive.scss */
+  /* line 69, ../../src/styles/_responsive.scss */
   #content .button {
     display: block;
     margin: 0 auto;
   }
-  /* line 63, ../../src/styles/_responsive.scss */
+  /* line 74, ../../src/styles/_responsive.scss */
   #content .right {
     float: none;
   }
 
-  /* line 69, ../../src/styles/_responsive.scss */
+  /* line 80, ../../src/styles/_responsive.scss */
   #header #nav {
     text-align: center;
     line-height: 100%;
   }
-  /* line 73, ../../src/styles/_responsive.scss */
+  /* line 84, ../../src/styles/_responsive.scss */
   #header #nav li {
     font-size: .9em;
   }
-  /* line 76, ../../src/styles/_responsive.scss */
+  /* line 87, ../../src/styles/_responsive.scss */
   #header #nav li a {
     padding: .2em;
     margin: .2em;
   }
-  /* line 83, ../../src/styles/_responsive.scss */
+  /* line 94, ../../src/styles/_responsive.scss */
   #header #logo {
     position: static;
     display: block;
     margin: 0 auto;
   }
 
-  /* line 90, ../../src/styles/_responsive.scss */
+  /* line 101, ../../src/styles/_responsive.scss */
   #footer {
     width: auto;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 100, ../../src/styles/_responsive.scss */
+  /* line 111, ../../src/styles/_responsive.scss */
   #header #hamburger {
     display: inline;
     position: absolute;
@@ -713,31 +725,31 @@ table.browser-compat img {
     top: 8px;
     cursor: pointer;
   }
-  /* line 108, ../../src/styles/_responsive.scss */
+  /* line 119, ../../src/styles/_responsive.scss */
   #header #logo {
     margin: 0 0 0 15px;
   }
-  /* line 112, ../../src/styles/_responsive.scss */
+  /* line 123, ../../src/styles/_responsive.scss */
   #header #nav {
     padding: 0;
     display: none;
   }
-  /* line 116, ../../src/styles/_responsive.scss */
+  /* line 127, ../../src/styles/_responsive.scss */
   #header #nav li {
     list-style-type: none;
     text-align: left;
     display: block;
   }
-  /* line 121, ../../src/styles/_responsive.scss */
+  /* line 132, ../../src/styles/_responsive.scss */
   #header #nav li.nav-separator {
     display: none;
   }
-  /* line 125, ../../src/styles/_responsive.scss */
+  /* line 136, ../../src/styles/_responsive.scss */
   #header #nav li a {
     display: block;
     padding-left: 20px;
   }
-  /* line 132, ../../src/styles/_responsive.scss */
+  /* line 143, ../../src/styles/_responsive.scss */
   #header #nav.visible {
     display: block;
   }
