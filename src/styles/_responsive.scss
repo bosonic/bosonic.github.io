@@ -1,7 +1,18 @@
-@media screen and (max-width: 1200px) {
-  #logo {
-
+@media screen and (max-width: 1440px) {
+  #header {
+    #logo {
+      position: absolute;
+      top: .1rem;
+      left: 1rem;
+      background-image: url('/images/logo.png');
+      width: 211px;
+      height: 46px;
+      text-indent: -9000px;
+    }
   }
+}
+
+@media screen and (max-width: 1200px) {
 
   #header {
     #nav {
