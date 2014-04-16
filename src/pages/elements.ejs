@@ -8,6 +8,7 @@ function alphaCompare(a, b) {
 }
 %>
 
+<div class="block markdown">
 <h1>Elements</h1>
 
 <ul>
@@ -30,5 +31,5 @@ posts.filter(function(post) { return post.type === 'static' && post.section === 
     <%- post.content %>
 
 <% }) %>
-
+</div>
 <% include ../layouts/_footer %>

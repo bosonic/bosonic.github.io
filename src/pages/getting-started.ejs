@@ -1,5 +1,5 @@
 <% include ../layouts/_header %>
-
+<div class="block markdown">
 <% posts.forEach(function(post){ %>
   <% if(post.type === 'static' && post.title === 'Getting Started') { %>
 
@@ -7,5 +7,5 @@
 
   <% } %>
 <% }) %>
-
+</div>
 <% include ../layouts/_footer %>

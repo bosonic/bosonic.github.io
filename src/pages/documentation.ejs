@@ -10,7 +10,8 @@ var formatPostUrl = function (urlSegment) {
     .replace(/^-+|-+$/g, ''); // trim leading and trailing hyphens
 };
 %>
-
+<div class="block markdown">
+    
 <h1>Documentation</h1>
 
 <ul>
@@ -32,5 +33,5 @@ posts.filter(function(post) { return post.type === 'static' && post.section === 
     <%- post.content %>
 
 <% }) %>
-
+</div>
 <% include ../layouts/_footer %>

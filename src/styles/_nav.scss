@@ -3,7 +3,11 @@
 	width: 100%;
 	border-top: 7px solid black;
 	background-color: $color;
-	line-height: 2.4;
+	line-height: 3;
+
+	#hamburger {
+		display: none;
+	}
 
 	#nav {
 		text-align: center;
@@ -40,21 +44,12 @@
 
 	#logo {
 		position: absolute;
-		top: 3rem;
+		top: .1rem;
 		left: 1rem;
-		background-image: url('/images/bosonic_logo.png');
-		width: 325px;
-		height: 159px;
+		background-image: url('/images/logo.png');
+		width: 211px;
+		height: 46px;
 		text-indent: -9000px;
-	}
-
-	@media screen and (max-width: 1440px) {
-		#logo {
-			background-image: url('/images/bosonic_logoMini.png');
-			width: 211px;
-			height: 92px;
-			text-indent: -9000px;
-		}
 	}
 
 }

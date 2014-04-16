@@ -1,0 +1,136 @@
+@media screen and (max-width: 1200px) {
+  #logo {
+
+  }
+
+  #header {
+    #nav {
+      text-align: right;
+      padding-right: 50px;
+
+      li {
+        font-size: .8em;
+
+        a {
+          padding: .2em;
+          margin: .2em;
+        }
+      }
+    }
+  }
+  
+}
+
+@media screen and (max-width: 992px)  {
+  #content {
+    width: 100%;
+    padding: 0;
+    padding-top: 65px;
+
+    #illustration {
+      display: none;
+    }
+
+    #welcome {
+      float: none;
+      width: auto;
+      padding: 0;
+    }
+
+    #homepage-top, .block {
+      padding: 20px;
+      padding-bottom: 0;
+      height: auto;
+    }
+
+    .schema {
+      width: auto;
+      float: none;
+      text-align: center;
+    }
+
+    .floating-text {
+      width: auto;
+      float: none;
+      padding-left: 0;
+    }
+
+    .button {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .right {
+      float: none;
+    }
+  }
+
+  #header {
+    #nav {
+      text-align: center;
+      line-height: 100%;
+
+      li {
+        font-size: .9em;
+
+        a {
+          padding: .2em;
+          margin: .2em;
+        }
+      }
+    }
+
+    #logo {
+      position: static;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  #footer {
+    width: auto;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  #header {
+
+    #hamburger {
+      display: inline;
+      position: absolute;
+      right: 20px;
+      top: 8px;
+      cursor: pointer;
+    }
+
+    #logo {
+      margin: 0 0 0 15px;
+    }
+
+    #nav {
+      padding: 0;
+      display: none;
+
+      li {
+        list-style-type: none;
+        text-align: left;
+        display: block;
+
+        &.nav-separator {
+          display: none;
+        }
+        
+        a {
+          display: block;
+          padding-left: 20px;  
+        }
+      }
+    }
+
+    #nav.visible {
+      display: block;
+    }
+  }
+}
