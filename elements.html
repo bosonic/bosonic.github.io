@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
     <link rel="icon" type="image/png" href="/images/cabin.png">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href="/styles/main.css" rel="stylesheet">
@@ -45,15 +46,7 @@
 <ul>
     
 
-        <li><a href="#b-collapsible">b-collapsible</a></li>
-
-    
-
-        <li><a href="#b-datalist">b-datalist</a></li>
-
-    
-
-        <li><a href="#b-datepicker">b-datepicker</a></li>
+        <li><a href="#b-sortable">b-sortable</a></li>
 
     
 
@@ -61,7 +54,15 @@
 
     
 
-        <li><a href="#b-sortable">b-sortable</a></li>
+        <li><a href="#b-datepicker">b-datepicker</a></li>
+
+    
+
+        <li><a href="#b-datalist">b-datalist</a></li>
+
+    
+
+        <li><a href="#b-collapsible">b-collapsible</a></li>
 
     
 
@@ -80,64 +81,74 @@
 
 
 
-    <a name="b-collapsible" class="anchor" href="#b-collapsible"></a>
-    <h1><a name="ltb-collapsiblegt" class="anchor" href="#ltb-collapsiblegt"><span class="header-link"></span></a>&lt;b-collapsible&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which adds a collapsible behavior to a block with a header.</p>
+    <a name="b-sortable" class="anchor" href="#b-sortable"></a>
+    <h1><a name="ltb-sortablegt" class="anchor" href="#ltb-sortablegt"><span class="header-link"></span></a>&lt;b-sortable&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which enable a group of DOM elements to be sortable. It uses <a href="http://rubaxa.github.io/Sortable/">Sortable</a>, an excellent independent lib by <a href="https://twitter.com/ibnRubaXa">Lebedev Konstantin</a>.</p>
 <p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-collapsible
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-sortable
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-collapsible&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b-collapsible-header&quot;</span><span class="nt">&gt;</span>
-        Header
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div&gt;</span>
-        Lorem ipsum...
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/b-collapsible&gt;</span>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-sortable&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item 1<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item 2<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item 3<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item 4<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item 5<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item 6<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/b-sortable&gt;</span>
 </pre></div>
 </code></pre>
-<p><code>b-collapsible</code> must wrap 2 block elements, one of which needing to have a <code>b-collapsible-header</code>. The other block will be the body, and it will appear/disappear depending on the <code>active</code> attribute of the element. Clicking on the header will toggle this active state.</p>
+<p>The element will dispatch a <code>update</code> event when the user stop sorting an element and its DOM position has changed:</p>
+<pre><code class="lang-js"><div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;WebComponentsReady&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">sortable</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-sortable&#39;</span><span class="p">);</span>
+    <span class="nx">sortable</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">item</span><span class="p">);</span>
+    <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>The event object will have a <code>detail.item</code> property that refers to the dragged element.</p>
+<h2><a name="license" class="anchor" href="#license"><span class="header-link"></span></a>License</h2>
+<p><a href="http://opensource.org/licenses/MIT">MIT License</a></p>
+
+
+
+
+    <a name="b-tooltip" class="anchor" href="#b-tooltip"></a>
+    <h1><a name="ltb-tooltipgt" class="anchor" href="#ltb-tooltipgt"><span class="header-link"></span></a>&lt;b-tooltip&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> tooltip element which uses <a href="http://github.hubspot.com/tether/">Tether</a>, an excellent library with no dependencies by <a href="https://github.com/HubSpot">HubSpot</a>.</p>
+<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-tooltip
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;my-input&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Value...&quot;</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;b-tooltip</span> <span class="na">target=</span><span class="s">&quot;#my-input&quot;</span> <span class="na">position=</span><span class="s">&quot;bottom center&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>This is an exciting input field!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/b-tooltip&gt;</span>
+</pre></div>
+</code></pre>
 <h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
 <h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
 <ul>
-<li><strong>active</strong>: if set, the body will expand.</li>
-<li><strong>duration</strong>: transition duration in seconds (may be set to 0).</li>
-<li><strong>horizontal</strong>: if set, the body will horizontally expand instead of vertically.</li>
+<li><strong>target</strong>: A CSS selector that points to the element the tooltip must be attached to.</li>
+<li><strong>position</strong>: Where the tooltip must be attached, possible values are: <ul>
+<li><code>top left</code>, <code>top center</code>, <code>top right</code></li>
+<li><code>bottom left</code>, <code>bottom center</code>, <code>bottom right</code></li>
+<li><code>right top</code>, <code>right middle</code>, <code>right bottom</code></li>
+<li><code>left top</code>, <code>left middle</code>, <code>left bottom</code></li>
 </ul>
-<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
-<ul>
-<li><strong>toggle()</strong>: toggles the active state.</li>
-</ul>
-
-
-
-
-    <a name="b-datalist" class="anchor" href="#b-datalist"></a>
-    <h1><a name="ltb-datalistgt" class="anchor" href="#ltb-datalistgt"><span class="header-link"></span></a>&lt;b-datalist&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which emulates the <code>&lt;datalist&gt;</code> element.</p>
-<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
-<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-datalist
-</pre></div>
-</code></pre>
-<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
-<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-datalist&gt;</span>
-    <span class="nt">&lt;option&gt;</span>Option 1<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option&gt;</span>Option 2<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option&gt;</span>Option 3<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/b-datalist&gt;</span>
-</pre></div>
-</code></pre>
-<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
-<h3><a name="properties" class="anchor" href="#properties"><span class="header-link"></span></a>Properties</h3>
-<ul>
-<li><strong>options</strong>: returns the <code>&lt;option&gt;</code> nodes (read-only).</li>
+</li>
 </ul>
 
 
@@ -179,75 +190,65 @@
 
 
 
-    <a name="b-tooltip" class="anchor" href="#b-tooltip"></a>
-    <h1><a name="ltb-tooltipgt" class="anchor" href="#ltb-tooltipgt"><span class="header-link"></span></a>&lt;b-tooltip&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> tooltip element which uses <a href="http://github.hubspot.com/tether/">Tether</a>, an excellent library with no dependencies by <a href="https://github.com/HubSpot">HubSpot</a>.</p>
-<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+    <a name="b-datalist" class="anchor" href="#b-datalist"></a>
+    <h1><a name="ltb-datalistgt" class="anchor" href="#ltb-datalistgt"><span class="header-link"></span></a>&lt;b-datalist&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which emulates the <code>&lt;datalist&gt;</code> element.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-tooltip
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-datalist
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;my-input&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Value...&quot;</span><span class="nt">&gt;</span>
-...
-<span class="nt">&lt;b-tooltip</span> <span class="na">target=</span><span class="s">&quot;#my-input&quot;</span> <span class="na">position=</span><span class="s">&quot;bottom center&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;p&gt;</span>This is an exciting input field!<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/b-tooltip&gt;</span>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-datalist&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Option 1<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Option 2<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Option 3<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/b-datalist&gt;</span>
 </pre></div>
 </code></pre>
 <h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
-<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
+<h3><a name="properties" class="anchor" href="#properties"><span class="header-link"></span></a>Properties</h3>
 <ul>
-<li><strong>target</strong>: A CSS selector that points to the element the tooltip must be attached to.</li>
-<li><strong>position</strong>: Where the tooltip must be attached, possible values are: <ul>
-<li><code>top left</code>, <code>top center</code>, <code>top right</code></li>
-<li><code>bottom left</code>, <code>bottom center</code>, <code>bottom right</code></li>
-<li><code>right top</code>, <code>right middle</code>, <code>right bottom</code></li>
-<li><code>left top</code>, <code>left middle</code>, <code>left bottom</code></li>
-</ul>
-</li>
+<li><strong>options</strong>: returns the <code>&lt;option&gt;</code> nodes (read-only).</li>
 </ul>
 
 
 
 
-    <a name="b-sortable" class="anchor" href="#b-sortable"></a>
-    <h1><a name="ltb-sortablegt" class="anchor" href="#ltb-sortablegt"><span class="header-link"></span></a>&lt;b-sortable&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which enable a group of DOM elements to be sortable. It uses <a href="http://rubaxa.github.io/Sortable/">Sortable</a>, an excellent independent lib by <a href="https://twitter.com/ibnRubaXa">Lebedev Konstantin</a>.</p>
+    <a name="b-collapsible" class="anchor" href="#b-collapsible"></a>
+    <h1><a name="ltb-collapsiblegt" class="anchor" href="#ltb-collapsiblegt"><span class="header-link"></span></a>&lt;b-collapsible&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which adds a collapsible behavior to a block with a header.</p>
 <p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-sortable
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-collapsible
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-sortable&gt;</span>
-    <span class="nt">&lt;ul&gt;</span>
-        <span class="nt">&lt;li&gt;</span>Item 1<span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;</span>Item 2<span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;</span>Item 3<span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;</span>Item 4<span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;</span>Item 5<span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;</span>Item 6<span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/b-sortable&gt;</span>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-collapsible&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b-collapsible-header&quot;</span><span class="nt">&gt;</span>
+        Header
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        Lorem ipsum...
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/b-collapsible&gt;</span>
 </pre></div>
 </code></pre>
-<p>The element will dispatch a <code>update</code> event when the user stop sorting an element and its DOM position has changed:</p>
-<pre><code class="lang-js"><div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;WebComponentsReady&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">sortable</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-sortable&#39;</span><span class="p">);</span>
-    <span class="nx">sortable</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">item</span><span class="p">);</span>
-    <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-</code></pre>
-<p>The event object will have a <code>detail.item</code> property that refers to the dragged element.</p>
-<h2><a name="license" class="anchor" href="#license"><span class="header-link"></span></a>License</h2>
-<p><a href="http://opensource.org/licenses/MIT">MIT License</a></p>
+<p><code>b-collapsible</code> must wrap 2 block elements, one of which needing to have a <code>b-collapsible-header</code>. The other block will be the body, and it will appear/disappear depending on the <code>active</code> attribute of the element. Clicking on the header will toggle this active state.</p>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
+<ul>
+<li><strong>active</strong>: if set, the body will expand.</li>
+<li><strong>duration</strong>: transition duration in seconds (may be set to 0).</li>
+<li><strong>horizontal</strong>: if set, the body will horizontally expand instead of vertically.</li>
+</ul>
+<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
+<ul>
+<li><strong>toggle()</strong>: toggles the active state.</li>
+</ul>
 
 
 
