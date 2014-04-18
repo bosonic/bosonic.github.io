@@ -511,28 +511,29 @@ a:hover {
 /* line 1, ../../src/styles/_nav.scss */
 #header {
   position: fixed;
+  z-index: 2;
   width: 100%;
   border-top: 7px solid black;
   background-color: #60bf65;
   line-height: 3;
 }
-/* line 8, ../../src/styles/_nav.scss */
+/* line 9, ../../src/styles/_nav.scss */
 #header #hamburger {
   display: none;
 }
-/* line 12, ../../src/styles/_nav.scss */
+/* line 13, ../../src/styles/_nav.scss */
 #header #nav {
   text-align: center;
   margin: 0;
 }
-/* line 16, ../../src/styles/_nav.scss */
+/* line 17, ../../src/styles/_nav.scss */
 #header #nav li {
   display: inline-block;
   font-size: 0.9em;
   color: white;
   font-weight: 400;
 }
-/* line 22, ../../src/styles/_nav.scss */
+/* line 23, ../../src/styles/_nav.scss */
 #header #nav li a {
   display: inline-block;
   font-weight: 400;
@@ -547,16 +548,16 @@ a:hover {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-/* line 34, ../../src/styles/_nav.scss */
+/* line 35, ../../src/styles/_nav.scss */
 #header #nav li a:hover {
   color: #60bf65;
   background-color: #fff;
 }
-/* line 42, ../../src/styles/_nav.scss */
+/* line 43, ../../src/styles/_nav.scss */
 #header .nav-separator {
   opacity: 0.4;
 }
-/* line 44, ../../src/styles/_nav.scss */
+/* line 45, ../../src/styles/_nav.scss */
 #header #logo {
   position: absolute;
   top: 4rem;
