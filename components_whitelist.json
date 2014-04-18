@@ -6,5 +6,7 @@
     "b-sortable",
     "b-collapsible",
     "b-accordion",
-    "b-tooltip"
+    "b-tooltip",
+    "b-draggable",
+    "b-resizer"
 ]

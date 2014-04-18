@@ -139,7 +139,7 @@ module.exports = function(grunt) {
     
     reposjson.repos.forEach(function(repodesc) {
       if (whitelist.indexOf(repodesc.name) !== -1) {
-        var url = repodesc.url + '/raw/' + repodesc.master_branch + '/README.md';
+        var url = repodesc.url + '/raw/master/README.md';
         readmes.push(url);
       }
     });

@@ -4664,9 +4664,7 @@
                 }
             }
         });
-    window.BAccordion = document.registerElement('b-accordion', {
-        prototype: BAccordionPrototype
-    });
+    window.BAccordion = document.registerElement('b-accordion', { prototype: BAccordionPrototype });
     Object.defineProperty(BAccordion.prototype, '_super', {
         enumerable: false,
         writable: false,
@@ -8029,4 +8027,347 @@ return this.Tether;
             }
         });
     window.BTooltip = document.registerElement('b-tooltip', { prototype: BTooltipPrototype });
+}());
+(function () {
+    function getComputedDimensions(node) {
+        var c = window.getComputedStyle(node), p = function (v) {
+                return parseInt(v.replace('px', ''));
+            };
+        var width = p(c.width), height = p(c.height), mLeft = p(c.marginLeft), mRight = p(c.marginRight), mTop = p(c.marginTop), mBottom = p(c.marginBottom), pLeft = p(c.paddingLeft), pRight = p(c.paddingRight), pTop = p(c.paddingTop), pBottom = p(c.paddingBottom), bLeft = p(c.borderLeftWidth), bRight = p(c.borderRightWidth), bTop = p(c.borderTopWidth), bBottom = p(c.borderBottomWidth), offsetWidth = width + pLeft + pRight + bLeft + bRight, offsetHeight = height + pTop + pBottom + bTop + bBottom;
+        return {
+            offsetWidth: offsetWidth,
+            offsetHeight: offsetHeight,
+            borderLeftWidth: bLeft,
+            borderRightWidth: bRight,
+            borderTopWidth: bTop,
+            borderBottomWidth: bBottom,
+            paddingLeft: pLeft,
+            paddingRight: pRight,
+            paddingTop: pTop,
+            paddingBottom: pBottom,
+            outerWidth: offsetWidth + mLeft + mRight,
+            outerHeight: offsetHeight + mTop + mBottom
+        };
+    }
+    var BDraggablePrototype = Object.create(HTMLElement.prototype, {
+            axis: {
+                enumerable: true,
+                get: function () {
+                    return this.hasAttribute('axis') ? this.getAttribute('axis') : null;
+                }
+            },
+            handle: {
+                enumerable: true,
+                get: function () {
+                    return this.hasAttribute('handle') ? this.querySelector(this.getAttribute('handle')) : this;
+                }
+            },
+            target: {
+                enumerable: true,
+                get: function () {
+                    if (!this._target) {
+                        this._target = this.hasAttribute('target') ? this.querySelector(this.getAttribute('target')) : this;
+                    }
+                    return this._target;
+                }
+            },
+            verticallyConstrained: {
+                enumerable: true,
+                get: function () {
+                    return this.axis === 'x';
+                }
+            },
+            horizontallyConstrained: {
+                enumerable: true,
+                get: function () {
+                    return this.axis === 'y';
+                }
+            },
+            contained: {
+                enumerable: true,
+                get: function () {
+                    return this.hasAttribute('containment');
+                }
+            },
+            containment: {
+                enumerable: true,
+                get: function () {
+                    if (!this.contained)
+                        return null;
+                    var attr = this.getAttribute('containment');
+                    return attr === 'parent' ? this.parentElement : this.querySelector(attr);
+                }
+            },
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    if (this.contained) {
+                        var contain = getComputedDimensions(this.containment), target = getComputedDimensions(this.target);
+                        this.constraints = {
+                            left: {
+                                min: contain.borderLeftWidth + contain.paddingLeft,
+                                max: contain.offsetWidth - contain.borderRightWidth - contain.paddingRight - target.outerWidth
+                            },
+                            top: {
+                                min: contain.borderTopWidth + contain.paddingTop,
+                                max: contain.offsetHeight - contain.borderBottomWidth - contain.paddingBottom - target.outerHeight
+                            }
+                        };
+                    }
+                    this.startListener = this.start.bind(this);
+                    this.handle.addEventListener('mousedown', this.startListener, false);
+                }
+            },
+            detachedCallback: {
+                enumerable: true,
+                value: function () {
+                    this.handle.removeEventListener('mousedown', this.startListener, false);
+                }
+            },
+            start: {
+                enumerable: true,
+                value: function (e) {
+                    e.preventDefault();
+                    this.refreshPreviousPosition(e);
+                    var targetPositioning = window.getComputedStyle(this.target).position;
+                    if (!targetPositioning.match(/^(?:r|a|f)/)) {
+                        this.target.style.position = 'relative';
+                    }
+                    this.moveListener = this.move.bind(this);
+                    this.stopListener = this.stop.bind(this);
+                    document.addEventListener('mousemove', this.moveListener, false);
+                    document.addEventListener('mouseup', this.stopListener, false);
+                }
+            },
+            move: {
+                enumerable: true,
+                value: function (e) {
+                    var diff = this.getPositionDiff(e);
+                    if (!this.horizontallyConstrained)
+                        this.updatePosition('left', diff.x);
+                    if (!this.verticallyConstrained)
+                        this.updatePosition('top', diff.y);
+                    this.refreshPreviousPosition(e);
+                }
+            },
+            stop: {
+                enumerable: true,
+                value: function (e) {
+                    document.removeEventListener('mousemove', this.moveListener, false);
+                    document.removeEventListener('mouseup', this.stopListener, false);
+                }
+            },
+            refreshPreviousPosition: {
+                enumerable: true,
+                value: function (e) {
+                    this.previousPosition = {
+                        x: e.pageX,
+                        y: e.pageY
+                    };
+                }
+            },
+            getPositionDiff: {
+                enumerable: true,
+                value: function (e) {
+                    var x = e.pageX, y = e.pageY, xdiff = x - this.previousPosition.x, ydiff = y - this.previousPosition.y;
+                    return {
+                        x: xdiff,
+                        y: ydiff
+                    };
+                }
+            },
+            getPosition: {
+                enumerable: true,
+                value: function (side) {
+                    var position = window.getComputedStyle(this.target)[side];
+                    return position !== 'auto' ? parseInt(position.replace('px', '')) : 0;
+                }
+            },
+            setPosition: {
+                enumerable: true,
+                value: function (side, value) {
+                    this.target.style[side] = value + 'px';
+                }
+            },
+            updatePosition: {
+                enumerable: true,
+                value: function (side, diff) {
+                    var currentPos = this.getPosition(side), newPos = currentPos + diff;
+                    if (!this.contained || newPos >= this.constraints[side].min && newPos <= this.constraints[side].max) {
+                        this.setPosition(side, currentPos + diff);
+                    }
+                }
+            }
+        });
+    window.BDraggable = document.registerElement('b-draggable', { prototype: BDraggablePrototype });
+}());
+(function () {
+    var BResizerPrototype = Object.create(HTMLElement.prototype, {
+            left: {
+                enumerable: true,
+                get: function () {
+                    return this.direction === 'left';
+                }
+            },
+            right: {
+                enumerable: true,
+                get: function () {
+                    return this.direction === 'right';
+                }
+            },
+            direction: {
+                enumerable: true,
+                get: function () {
+                    return this.hasAttribute('direction') ? this.getAttribute('direction') : null;
+                }
+            },
+            vertical: {
+                enumerable: true,
+                get: function () {
+                    return this.left || this.right;
+                }
+            },
+            top: {
+                enumerable: true,
+                get: function () {
+                    return this.direction === 'top';
+                }
+            },
+            bottom: {
+                enumerable: true,
+                get: function () {
+                    return this.direction === 'bottom';
+                }
+            },
+            horizontal: {
+                enumerable: true,
+                get: function () {
+                    return this.top || this.bottom;
+                }
+            },
+            omni: {
+                enumerable: true,
+                get: function () {
+                    return !this.top && !this.bottom && !this.left && !this.right;
+                }
+            },
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    if (this.vertical) {
+                        this.setAttribute('vertical', '');
+                    }
+                    if (this.horizontal) {
+                        this.setAttribute('horizontal', '');
+                    }
+                    if (this.omni) {
+                        this.setAttribute('omni', '');
+                    }
+                    this.parentNode.classList.add('b-resizer-container');
+                    if (this.left) {
+                        this.setPosition(this.parentNode, 'left', 0);
+                    }
+                    this.startListener = this.start.bind(this);
+                    this.addEventListener('mousedown', this.startListener, false);
+                }
+            },
+            detachedCallback: {
+                enumerable: true,
+                value: function () {
+                    this.removeEventListener('mousedown', this.startListener, false);
+                }
+            },
+            start: {
+                enumerable: true,
+                value: function (e) {
+                    e.preventDefault();
+                    this.refreshPreviousPosition(e);
+                    this.resizeListener = this.resize.bind(this);
+                    this.stopListener = this.stop.bind(this);
+                    document.addEventListener('mousemove', this.resizeListener, false);
+                    document.addEventListener('mouseup', this.stopListener, false);
+                }
+            },
+            resize: {
+                enumerable: true,
+                value: function (e) {
+                    var diff = this.getPositionDiff(e);
+                    if (this.omni || this.vertical) {
+                        this.updateSize(this.parentNode, 'width', diff.x);
+                        if (this.left) {
+                            this.updatePosition(this.parentNode, 'left', -diff.x);
+                        }
+                    }
+                    if (this.omni || this.horizontal) {
+                        this.updateSize(this.parentNode, 'height', this.top ? -diff.y : diff.y);
+                    }
+                    this.refreshPreviousPosition(e);
+                }
+            },
+            getPositionDiff: {
+                enumerable: true,
+                value: function (e) {
+                    var x = e.pageX, y = e.pageY, xdiff = this.left ? this.previousPosition.x - x : x - this.previousPosition.x, ydiff = y - this.previousPosition.y;
+                    return {
+                        x: xdiff,
+                        y: ydiff
+                    };
+                }
+            },
+            refreshPreviousPosition: {
+                enumerable: true,
+                value: function (e) {
+                    this.previousPosition = {
+                        x: e.pageX,
+                        y: e.pageY
+                    };
+                }
+            },
+            getSize: {
+                enumerable: true,
+                value: function (node, dimension) {
+                    return parseInt(node.getBoundingClientRect()[dimension]);
+                }
+            },
+            setSize: {
+                enumerable: true,
+                value: function (node, dimension, size) {
+                    node.style[dimension] = size + 'px';
+                }
+            },
+            updateSize: {
+                enumerable: true,
+                value: function (node, dimension, diff) {
+                    var currentSize = this.getSize(node, dimension);
+                    this.setSize(node, dimension, currentSize + diff);
+                }
+            },
+            getPosition: {
+                enumerable: true,
+                value: function (node, side) {
+                    return parseInt(node.style[side].replace('px', ''));
+                }
+            },
+            setPosition: {
+                enumerable: true,
+                value: function (node, side, value) {
+                    node.style[side] = value + 'px';
+                }
+            },
+            updatePosition: {
+                enumerable: true,
+                value: function (node, side, diff) {
+                    var currentPos = this.getPosition(node, side);
+                    this.setPosition(node, side, currentPos + diff);
+                }
+            },
+            stop: {
+                enumerable: true,
+                value: function (e) {
+                    document.removeEventListener('mousemove', this.resizeListener, false);
+                    document.removeEventListener('mouseup', this.stopListener, false);
+                }
+            }
+        });
+    window.BResizer = document.registerElement('b-resizer', { prototype: BResizerPrototype });
 }());

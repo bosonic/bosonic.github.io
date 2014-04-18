@@ -362,3 +362,49 @@ b-collapsible {
 b-tooltip {
   display: none;
 }
+
+b-resizer {
+  position: absolute;
+  background-color: #ccc;
+}
+
+b-resizer[omni] {
+  width: 8px;
+  height: 8px;
+  bottom: 0px;
+  right: 0px;
+  cursor: se-resize;
+}
+
+b-resizer[vertical] {
+  top: 0px;
+  width: 8px;
+  height: 100%;
+  cursor: col-resize;
+}
+
+b-resizer[direction='right'] {
+  right: 0px;
+}
+
+b-resizer[direction='left'] {
+  left: 0px;
+}
+
+b-resizer[horizontal] {
+  height: 8px;
+  width: 100%;
+  cursor: row-resize;
+}
+
+b-resizer[direction='top'] {
+  top: 0px;
+}
+
+b-resizer[direction='bottom'] {
+  bottom: 0px;
+}
+
+.b-resizer-container {
+  position: relative;
+}

@@ -116,6 +116,48 @@
                 border: 1px solid black;
             }
         </style>
+
+        <h2>Draggable</h2>
+        <style>
+            .draggable {
+                height: 100px;
+                width: 150px;
+                border: 1px solid black;
+                background: lightblue;
+            }
+            .draggable-container {
+                position: relative;
+                height: 300px;
+                width: 250px;
+                background: #ccc;
+            }
+            .draggable-container .draggable {
+                position: absolute;
+                top: 10px;
+                left: 20px;
+            }
+            .draggable-handle {
+                background: gray;
+                cursor: move;
+            }
+        </style>
+        <div class="draggable-container">
+            <b-draggable handle=".draggable-handle" target=".draggable" containment="parent">
+                <div class="draggable">
+                    <div class="draggable-handle">Handle</div>
+                    Lorem ipsum...
+                </div>
+            </b-draggable>
+        </div>
+
+        <h2>Resizer</h2>
+        <div>
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+            <b-resizer direction="right">
+        </div>
         
         <h2>Accordion</h2>
         <b-accordion selected="0">
