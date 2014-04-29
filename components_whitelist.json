@@ -8,5 +8,6 @@
     "b-accordion",
     "b-tooltip",
     "b-draggable",
-    "b-resizer"
+    "b-resizer",
+    "b-flash-message"
 ]

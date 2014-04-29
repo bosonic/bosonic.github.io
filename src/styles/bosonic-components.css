@@ -231,6 +231,10 @@ b-collapsible {
   display: block;
 }
 
+.b-collapsible-header {
+  cursor: pointer;
+}
+
 .b-collapsible-closed {
   display: none;
 }
@@ -407,4 +411,40 @@ b-resizer[direction='bottom'] {
 
 .b-resizer-container {
   position: relative;
+}
+b-flash-message {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  min-height: 19px;
+  display: none;
+}
+
+b-flash-message[type=success] {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d;
+}
+
+b-flash-message[type=info] {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f;
+}
+
+b-flash-message[type=warning] {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+}
+
+b-flash-message[type=error] {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+
+b-flash-message[visible] {
+  display: block;
 }

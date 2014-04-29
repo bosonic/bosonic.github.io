@@ -44,3 +44,9 @@ Otherwise, you can download and include in your HTML file the builded CSS & JS f
 
 ### Methods
 - __toggle()__: toggles the active state.
+
+### Events
+`b-collapsible` dispatches the following cancelable events:
+- __b-collapsible-toggle__: triggered when the header is clicked.
+- __b-collapsible-show__: triggered before the body expands.
+- __b-collapsible-hide__: triggered before the body collapses.
