@@ -4447,8 +4447,8 @@
                 value: function () {
                     this.duration = this.hasAttribute('duration') ? parseFloat(this.getAttribute('duration')) : 0.33;
                     this.dimension = this.hasAttribute('horizontal') ? 'width' : 'height';
-                    this.body = this.querySelector(':not(.' + HEADER_CLASS + ')');
                     this.header = this.querySelector('.' + HEADER_CLASS);
+                    this.body = this.querySelector('.' + BODY_CLASS) || this.header.nextElementSibling;
                     if (this.body) {
                         this.body.style.overflow = 'hidden';
                         if (this.supportsTransitions()) {
@@ -4504,6 +4504,8 @@
             toggle: {
                 enumerable: true,
                 value: function () {
+                    if (!this.dispatchEvent(new CustomEvent('b-collapsible-toggle', { cancelable: true })))
+                        return;
                     this.active = !this.active;
                 }
             },
@@ -4524,6 +4526,8 @@
             show: {
                 enumerable: true,
                 value: function () {
+                    if (!this.dispatchEvent(new CustomEvent('b-collapsible-show', { cancelable: true })))
+                        return;
                     this.toggleClosedClass(false);
                     if (this.supportsTransitions()) {
                         var size = this.calcSize();
@@ -4534,6 +4538,8 @@
             hide: {
                 enumerable: true,
                 value: function () {
+                    if (!this.dispatchEvent(new CustomEvent('b-collapsible-hide', { cancelable: true })))
+                        return;
                     if (!this.supportsTransitions()) {
                         this.toggleClosedClass(true);
                         return;
@@ -8370,4 +8376,89 @@ return this.Tether;
             }
         });
     window.BResizer = document.registerElement('b-resizer', { prototype: BResizerPrototype });
+}());
+(function () {
+    var BFlashMessagePrototype = Object.create(HTMLElement.prototype, {
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    if (this.getAttribute('closeable') === 'true') {
+                        this.appendChild(this.template.content.cloneNode(true));
+                        this.querySelector('.b-flash-message-close').addEventListener('click', this.close.bind(this), false);
+                    }
+                    var type = this.getAttribute('type');
+                    this.setAttribute('type', type || 'info');
+                    if (this.getAttribute('visible') === 'true')
+                        this.show();
+                    if (this.supportsTransitions()) {
+                        this.fadeOutEndListener = this.fadeOutEnd.bind(this);
+                        this.addEventListener('webkitTransitionEnd', this.fadeOutEndListener);
+                        this.addEventListener('transitionend', this.fadeOutEndListener);
+                    }
+                }
+            },
+            show: {
+                enumerable: true,
+                value: function () {
+                    this.setAttribute('visible', 'true');
+                    var duration = this.getAttribute('duration');
+                    if (duration && !isNaN(parseInt(duration))) {
+                        if (this.supportsTransitions()) {
+                            setTimeout(this.fadeOut.bind(this), duration);
+                        } else {
+                            setTimeout(this.close.bind(this), duration);
+                        }
+                    }
+                    this.dispatchEvent(new CustomEvent('b-flash-message-show'));
+                }
+            },
+            close: {
+                enumerable: true,
+                value: function () {
+                    this.removeAttribute('visible');
+                    this.dispatchEvent(new CustomEvent('b-flash-message-close'));
+                }
+            },
+            fadeOut: {
+                enumerable: true,
+                value: function (duration) {
+                    this.setOpacity(0, 0.5);
+                }
+            },
+            fadeOutEnd: {
+                enumerable: true,
+                value: function (e) {
+                    console.log(e);
+                    this.close();
+                    this.setOpacity(1);
+                }
+            },
+            setOpacity: {
+                enumerable: true,
+                value: function (opacity, transitionDuration) {
+                    var s = this.style;
+                    s.webkitTransition = s.transition = transitionDuration ? 'opacity ' + transitionDuration + 's ease-in-out' : null;
+                    s.opacity = opacity;
+                }
+            },
+            supportsTransitions: {
+                enumerable: true,
+                value: function () {
+                    return window.requestAnimationFrame !== undefined;
+                }
+            }
+        });
+    window.BFlashMessage = document.registerElement('b-flash-message', { prototype: BFlashMessagePrototype });
+    Object.defineProperty(BFlashMessagePrototype, 'template', {
+        get: function () {
+            var fragment = document.createDocumentFragment();
+            var div = fragment.appendChild(document.createElement('div'));
+            div.innerHTML = ' <style> .b-flash-message-close { float:right; opacity:.4; filter:alpha(opacity=40); cursor: pointer; } </style> <button class="b-flash-message-close">\xD7</button> ';
+            while (child = div.firstChild) {
+                fragment.insertBefore(child, div);
+            }
+            fragment.removeChild(div);
+            return { content: fragment };
+        }
+    });
 }());

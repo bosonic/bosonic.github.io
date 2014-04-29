@@ -40,6 +40,22 @@
         <div class="block">
         <h1>Demos</h1>
 
+        <h2>Flash message</h2>
+        <p>Display an info message that automatically disappears after 2 secs: <a href="#" id="show-message">Show message</a></p>
+        <b-flash-message id="myMessage" type="info" closeable="true" duration="2000">
+            <strong>Hello, World!</strong> Foo Bar
+        </b-flash-message>
+
+        <script type="text/javascript">
+            window.addEventListener('WebComponentsReady', function() {
+                var showInfoFlashMessageButton = document.getElementById('show-message');
+                showInfoFlashMessageButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector('#myMessage').show();
+                }, false);
+            });
+    </script>
+
         <h2>Modal</h2>
 
         <button id="show-modal">Show modal</button>

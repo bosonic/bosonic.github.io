@@ -39,43 +39,40 @@
 
 <div class="post">
 <div class="post-body markdown">
-	<h1><a name="ltb-collapsiblegt" class="anchor" href="#ltb-collapsiblegt"><span class="header-link"></span></a>&lt;b-collapsible&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which adds a collapsible behavior to a block with a header.</p>
+	<h1><a name="ltb-flash-messagegt" class="anchor" href="#ltb-flash-messagegt"><span class="header-link"></span></a>&lt;b-flash-message&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> flash message element with four different levels.</p>
 <p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-collapsible
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-flash-message
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-collapsible&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b-collapsible-header&quot;</span><span class="nt">&gt;</span>
-        Header
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div&gt;</span>
-        Lorem ipsum...
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/b-collapsible&gt;</span>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-flash-message</span> <span class="na">visible=</span><span class="s">&quot;true&quot;</span> <span class="na">type=</span><span class="s">&quot;info&quot;</span> <span class="na">closeable=</span><span class="s">&quot;true&quot;</span> <span class="na">duration=</span><span class="s">&quot;2000&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;strong&gt;</span>Hello, World!<span class="nt">&lt;/strong&gt;</span> Foo Bar
+<span class="nt">&lt;/b-flash-message&gt;</span>
 </pre></div>
 </code></pre>
-<p><code>b-collapsible</code> must wrap 2 block elements, one of which needing to have a <code>b-collapsible-header</code>. The other block will be the body, and it will appear/disappear depending on the <code>active</code> attribute of the element. Clicking on the header will toggle this active state.</p>
+<p>Will display a info flash message during 2 secs containing the string &quot;Hello, World! Foo Bar&quot;.</p>
 <h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
 <h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
 <ul>
-<li><strong>active</strong>: if set, the body will expand.</li>
-<li><strong>duration</strong>: transition duration in seconds (may be set to 0).</li>
-<li><strong>horizontal</strong>: if set, the body will horizontally expand instead of vertically.</li>
+<li><strong>visible</strong>: controls the display of the message. Valid values are <code>true</code> or <code>false</code>. By default it is set to <code>false</code>.</li>
+<li><strong>closeable</strong>: adds a button to let the user close the flash message. Valid values are <code>true</code> or <code>false</code>. By default it is set to <code>false</code>.</li>
+<li><strong>type</strong>: four possible values: <code>info</code>, <code>success</code>, <code>warning</code> and <code>error</code>, respectively blue, green, yellow and red. By default this attribute is set to <code>info</code>.
+-<strong>duration</strong>: Trigger a timeout when the message is displayed (see <code>show</code> accessor). Valid value is a number given in milliseconds.</li>
 </ul>
 <h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
 <ul>
-<li><strong>toggle()</strong>: toggles the active state.</li>
+<li><strong>show()</strong>: displays the flash message. If the attribute <code>duration</code> is set to a valid value, the message will be hidden automatically after specified number of milliseconds.</li>
+<li><strong>close()</strong>: hides the flash message.</li>
 </ul>
 <h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
-<p><code>b-collapsible</code> dispatches the following cancelable events:
-- <strong>b-collapsible-toggle</strong>: triggered when the header is clicked.
-- <strong>b-collapsible-show</strong>: triggered before the body expands.
-- <strong>b-collapsible-hide</strong>: triggered before the body collapses.</p>
+<ul>
+<li><strong>b-flash-message-show</strong>: will fire when the flash message is shown.</li>
+<li><strong>b-flash-message-close</strong>: will fire when the flash message is closed.</li>
+</ul>
 
 </div>
 
