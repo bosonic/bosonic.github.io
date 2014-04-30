@@ -46,43 +46,7 @@
 <ul>
     
 
-        <li><a href="#b-dialog">b-dialog</a></li>
-
-    
-
         <li><a href="#b-draggable">b-draggable</a></li>
-
-    
-
-        <li><a href="#b-flash-message">b-flash-message</a></li>
-
-    
-
-        <li><a href="#b-sortable">b-sortable</a></li>
-
-    
-
-        <li><a href="#b-datepicker">b-datepicker</a></li>
-
-    
-
-        <li><a href="#b-selectable">b-selectable</a></li>
-
-    
-
-        <li><a href="#b-resizer">b-resizer</a></li>
-
-    
-
-        <li><a href="#b-collapsible">b-collapsible</a></li>
-
-    
-
-        <li><a href="#b-autocomplete">b-autocomplete</a></li>
-
-    
-
-        <li><a href="#b-datalist">b-datalist</a></li>
 
     
 
@@ -90,53 +54,50 @@
 
     
 
+        <li><a href="#b-sortable">b-sortable</a></li>
+
+    
+
+        <li><a href="#b-resizer">b-resizer</a></li>
+
+    
+
+        <li><a href="#b-selectable">b-selectable</a></li>
+
+    
+
+        <li><a href="#b-flash-message">b-flash-message</a></li>
+
+    
+
+        <li><a href="#b-toggle-button">b-toggle-button</a></li>
+
+    
+
+        <li><a href="#b-collapsible">b-collapsible</a></li>
+
+    
+
+        <li><a href="#b-dialog">b-dialog</a></li>
+
+    
+
+        <li><a href="#b-datepicker">b-datepicker</a></li>
+
+    
+
+        <li><a href="#b-datalist">b-datalist</a></li>
+
+    
+
+        <li><a href="#b-autocomplete">b-autocomplete</a></li>
+
+    
+
         <li><a href="#b-tooltip">b-tooltip</a></li>
 
     
 </ul>
-
-
-
-    <a name="b-dialog" class="anchor" href="#b-dialog"></a>
-    <h1><a name="ltb-dialoggt" class="anchor" href="#ltb-dialoggt"><span class="header-link"></span></a>&lt;b-dialog&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which can be used for popups in a web page.</p>
-<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
-<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
-<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-dialog
-</pre></div>
-</code></pre>
-<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
-<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-dialog&gt;</span>
-    <span class="nt">&lt;h3&gt;</span>Test<span class="nt">&lt;/h3&gt;</span>
-    <span class="nt">&lt;p&gt;</span>Hello world<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;button&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/b-dialog&gt;</span>
-</pre></div>
-</code></pre>
-<p>If you want, for example, close the dialog when the user clicks on the &#39;Close&#39; button:</p>
-<pre><code class="lang-js"><div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;WebComponentsReady&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">dialog</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-dialog&#39;</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">closeBtn</span> <span class="o">=</span> <span class="nx">dialog</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
-    <span class="nx">closeBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">dialog</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
-    <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-</code></pre>
-<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
-<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
-<ul>
-<li><strong>show()</strong> / <strong>open()</strong>: opens the dialog.</li>
-<li><strong>hide()</strong> / <strong>close()</strong>: closes the dialog.</li>
-<li><strong>showModal()</strong>: opens the dialog in a modal way (with an overlay).</li>
-</ul>
-<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
-<ul>
-<li><strong>b-close</strong>: fired when the dialog is closed.</li>
-</ul>
-
 
 
 
@@ -170,41 +131,36 @@
 
 
 
-    <a name="b-flash-message" class="anchor" href="#b-flash-message"></a>
-    <h1><a name="ltb-flash-messagegt" class="anchor" href="#ltb-flash-messagegt"><span class="header-link"></span></a>&lt;b-flash-message&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> flash message element with four different levels.</p>
+    <a name="b-accordion" class="anchor" href="#b-accordion"></a>
+    <h1><a name="ltb-accordiongt" class="anchor" href="#ltb-accordiongt"><span class="header-link"></span></a>&lt;b-accordion&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> accordion element.</p>
 <p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-flash-message
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-accordion
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-flash-message</span> <span class="na">visible=</span><span class="s">&quot;true&quot;</span> <span class="na">type=</span><span class="s">&quot;info&quot;</span> <span class="na">closeable=</span><span class="s">&quot;true&quot;</span> <span class="na">duration=</span><span class="s">&quot;2000&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;strong&gt;</span>Hello, World!<span class="nt">&lt;/strong&gt;</span> Foo Bar
-<span class="nt">&lt;/b-flash-message&gt;</span>
+<p>This element should be used in conjunction with <code>&lt;b-collapsible&gt;</code> elements:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-accordion</span> <span class="na">selected=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;b-collapsible&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b-collapsible-header&quot;</span><span class="nt">&gt;</span>
+            Header
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+            ...
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/b-collapsible&gt;</span>
+    <span class="nt">&lt;b-collapsible&gt;</span>
+        ...
+    <span class="nt">&lt;/b-collapsible&gt;</span>
+    ...
+<span class="nt">&lt;/b-accordion&gt;</span>
 </pre></div>
 </code></pre>
-<p>Will display a info flash message during 2 secs containing the string &quot;Hello, World! Foo Bar&quot;.</p>
-<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
-<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
-<ul>
-<li><strong>visible</strong>: controls the display of the message. Valid values are <code>true</code> or <code>false</code>. By default it is set to <code>false</code>.</li>
-<li><strong>closeable</strong>: adds a button to let the user close the flash message. Valid values are <code>true</code> or <code>false</code>. By default it is set to <code>false</code>.</li>
-<li><strong>type</strong>: four possible values: <code>info</code>, <code>success</code>, <code>warning</code> and <code>error</code>, respectively blue, green, yellow and red. By default this attribute is set to <code>info</code>.
--<strong>duration</strong>: Trigger a timeout when the message is displayed (see <code>show</code> accessor). Valid value is a number given in milliseconds.</li>
-</ul>
-<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
-<ul>
-<li><strong>show()</strong>: displays the flash message. If the attribute <code>duration</code> is set to a valid value, the message will be hidden automatically after specified number of milliseconds.</li>
-<li><strong>close()</strong>: hides the flash message.</li>
-</ul>
-<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
-<ul>
-<li><strong>b-flash-message-show</strong>: will fire when the flash message is shown.</li>
-<li><strong>b-flash-message-close</strong>: will fire when the flash message is closed.</li>
-</ul>
+<p>The <code>selected</code> attribute indicates which panel is expanded, and can also be used to expand a panel programmatically.</p>
+<p>The user can use the keyboard to switch panels: Up/Down.</p>
 
 
 
@@ -248,37 +204,30 @@
 
 
 
-    <a name="b-datepicker" class="anchor" href="#b-datepicker"></a>
-    <h1><a name="ltb-datepickergt" class="anchor" href="#ltb-datepickergt"><span class="header-link"></span></a>&lt;b-datepicker&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> datepicker element which uses <a href="https://github.com/dbushell/Pikaday">Pikaday</a>, an excellent datepicker with no dependencies by <a href="https://github.com/dbushell">David Bushell</a>.</p>
+    <a name="b-resizer" class="anchor" href="#b-resizer"></a>
+    <h1><a name="ltb-resizergt" class="anchor" href="#ltb-resizergt"><span class="header-link"></span></a>&lt;b-resizer&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which may be used to add resizable behavior to an element.</p>
 <p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-datepicker
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-resizer
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-datepicker</span> <span class="na">locale=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;&lt;/b-datepicker&gt;</span>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container-content&quot;</span><span class="nt">&gt;</span>
+        Lorem ipsum dolor sit amet, ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;b-resizer&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </pre></div>
 </code></pre>
+<p><code>&lt;b-resizer&gt;</code> resizes its parent element in a bidirectional way by default.</p>
 <h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
 <h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
 <ul>
-<li><strong>locale</strong>: language setting for month and weekday names.</li>
-<li><strong>format</strong>: the default output format (it uses <a href="http://momentjs.com/">Moment.js</a> for formatting.</li>
-<li><strong>firstday</strong>: first day of the week (0: Sunday, 1: Monday, etc).</li>
-<li><strong>mindate</strong>: the minimum/earliest date that can be selected.</li>
-<li><strong>maxdate</strong>: the maximum/latest date that can be selected.</li>
-</ul>
-<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
-<ul>
-<li><strong>getDate()</strong>: returns the selected date as a JS <code>Date</code> object.</li>
-</ul>
-<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
-<ul>
-<li><strong>b-open</strong>: will fire when the popup opens.</li>
-<li><strong>b-select</strong>: will fire whenever the user picks a date.</li>
+<li><strong>direction</strong>: sets the resize direction (<code>left</code>, <code>right</code>, <code>top</code> or <code>bottom</code>).</li>
 </ul>
 
 
@@ -325,31 +274,105 @@
 
 
 
-    <a name="b-resizer" class="anchor" href="#b-resizer"></a>
-    <h1><a name="ltb-resizergt" class="anchor" href="#ltb-resizergt"><span class="header-link"></span></a>&lt;b-resizer&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which may be used to add resizable behavior to an element.</p>
+    <a name="b-flash-message" class="anchor" href="#b-flash-message"></a>
+    <h1><a name="ltb-flash-messagegt" class="anchor" href="#ltb-flash-messagegt"><span class="header-link"></span></a>&lt;b-flash-message&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> flash message element with four different levels.</p>
 <p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-resizer
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-flash-message
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container-content&quot;</span><span class="nt">&gt;</span>
-        Lorem ipsum dolor sit amet, ...
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;b-resizer&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-flash-message</span> <span class="na">visible=</span><span class="s">&quot;true&quot;</span> <span class="na">type=</span><span class="s">&quot;info&quot;</span> <span class="na">closeable=</span><span class="s">&quot;true&quot;</span> <span class="na">duration=</span><span class="s">&quot;2000&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;strong&gt;</span>Hello, World!<span class="nt">&lt;/strong&gt;</span> Foo Bar
+<span class="nt">&lt;/b-flash-message&gt;</span>
 </pre></div>
 </code></pre>
-<p><code>&lt;b-resizer&gt;</code> resizes its parent element in a bidirectional way by default.</p>
+<p>Will display a info flash message during 2 secs containing the string &quot;Hello, World! Foo Bar&quot;.</p>
 <h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
 <h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
 <ul>
-<li><strong>direction</strong>: sets the resize direction (<code>left</code>, <code>right</code>, <code>top</code> or <code>bottom</code>).</li>
+<li><strong>visible</strong>: controls the display of the message. Valid values are <code>true</code> or <code>false</code>. By default it is set to <code>false</code>.</li>
+<li><strong>closeable</strong>: adds a button to let the user close the flash message. Valid values are <code>true</code> or <code>false</code>. By default it is set to <code>false</code>.</li>
+<li><strong>type</strong>: four possible values: <code>info</code>, <code>success</code>, <code>warning</code> and <code>error</code>, respectively blue, green, yellow and red. By default this attribute is set to <code>info</code>.
+-<strong>duration</strong>: Trigger a timeout when the message is displayed (see <code>show</code> accessor). Valid value is a number given in milliseconds.</li>
 </ul>
+<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
+<ul>
+<li><strong>show()</strong>: displays the flash message. If the attribute <code>duration</code> is set to a valid value, the message will be hidden automatically after specified number of milliseconds.</li>
+<li><strong>close()</strong>: hides the flash message.</li>
+</ul>
+<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
+<ul>
+<li><strong>b-flash-message-show</strong>: will fire when the flash message is shown.</li>
+<li><strong>b-flash-message-close</strong>: will fire when the flash message is closed.</li>
+</ul>
+
+
+
+
+    <a name="b-toggle-button" class="anchor" href="#b-toggle-button"></a>
+    <h1><a name="ltb-toggle-buttongt" class="anchor" href="#ltb-toggle-buttongt"><span class="header-link"></span></a>&lt;b-toggle-button&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which represents a state or option that can be toggled.</p>
+<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-toggle-button
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<p>The <code>checked</code> attribute indicates the state ON of the toggle button.</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-toggle-button</span> <span class="na">checked</span><span class="nt">&gt;&lt;/b-toggle-button&gt;</span>
+</pre></div>
+</code></pre>
+<p>The <code>nocaption</code> attribute removes the default ON/OFF caption of the button.</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-toggle-button</span> <span class="na">nocaption</span><span class="nt">&gt;&lt;/b-toggle-button&gt;</span>
+</pre></div>
+</code></pre>
+<p>The <code>oncaption</code> and <code>offcaption</code> attributes let you change the caption of the button. If the caption is too long, use a padding-right and padding-left directive to adapt the size of the toggle-button</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-toggle-button</span> <span class="na">style=</span><span class="s">&quot;padding: 0 15px&quot;</span> <span class="na">oncaption=</span><span class="s">&quot;activated&quot;</span> <span class="na">offcaption=</span><span class="s">&quot;deactivated&quot;</span><span class="nt">&gt;&lt;/b-toggle-button&gt;</span>
+</pre></div>
+</code></pre>
+<p>The user can use the keyboard to toggle the button: SPACE/ENTER.</p>
+<p>You can control the b-toggle-button with javascript:</p>
+<pre><code class="lang-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">toggleButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-toggle-button&#39;</span><span class="p">);</span>
+
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">activate</span><span class="p">();</span> <span class="c1">// activate</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">deactivate</span><span class="p">();</span> <span class="c1">// deactivate</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">toggle</span><span class="p">();</span> <span class="c1">// toggle</span>
+
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span> <span class="c1">// returns a boolean</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">checked</span><span class="p">;</span> <span class="c1">// returns a boolean</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// activate the button</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// deactivate the button</span>
+</pre></div>
+</code></pre>
+<p>The b-toggle-button can be styled:</p>
+<pre><code class="lang-css"><div class="highlight"><pre><span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="p">{</span>
+    <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="k">border</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">b-toggle-button</span><span class="nc">.kitkat.on</span> <span class="p">{</span>
+    <span class="k">border</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="nc">.b-toggle-on</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="m">#27A1CA</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="nc">.b-toggle-off</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="m">#A1A1A1</span><span class="p">;</span>
+    <span class="k">color</span><span class="o">:</span> <span class="m">#333333</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="nc">.b-toggle-thumb</span> <span class="p">{</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">30px</span><span class="p">;</span>
+    <span class="k">left</span><span class="o">:</span> <span class="n">calc</span><span class="p">(</span><span class="m">50</span><span class="o">%</span> <span class="o">-</span> <span class="m">15px</span><span class="p">);</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="m">#333333</span><span class="p">;</span>
+    <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
 
 
 
@@ -396,6 +419,111 @@
 
 
 
+    <a name="b-dialog" class="anchor" href="#b-dialog"></a>
+    <h1><a name="ltb-dialoggt" class="anchor" href="#ltb-dialoggt"><span class="header-link"></span></a>&lt;b-dialog&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which can be used for popups in a web page.</p>
+<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-dialog
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-dialog&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Test<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Hello world<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/b-dialog&gt;</span>
+</pre></div>
+</code></pre>
+<p>If you want, for example, close the dialog when the user clicks on the &#39;Close&#39; button:</p>
+<pre><code class="lang-js"><div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;WebComponentsReady&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">dialog</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-dialog&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">closeBtn</span> <span class="o">=</span> <span class="nx">dialog</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+    <span class="nx">closeBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">dialog</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+    <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
+<ul>
+<li><strong>show()</strong> / <strong>open()</strong>: opens the dialog.</li>
+<li><strong>hide()</strong> / <strong>close()</strong>: closes the dialog.</li>
+<li><strong>showModal()</strong>: opens the dialog in a modal way (with an overlay).</li>
+</ul>
+<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
+<ul>
+<li><strong>b-close</strong>: fired when the dialog is closed.</li>
+</ul>
+
+
+
+
+    <a name="b-datepicker" class="anchor" href="#b-datepicker"></a>
+    <h1><a name="ltb-datepickergt" class="anchor" href="#ltb-datepickergt"><span class="header-link"></span></a>&lt;b-datepicker&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> datepicker element which uses <a href="https://github.com/dbushell/Pikaday">Pikaday</a>, an excellent datepicker with no dependencies by <a href="https://github.com/dbushell">David Bushell</a>.</p>
+<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-datepicker
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-datepicker</span> <span class="na">locale=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;&lt;/b-datepicker&gt;</span>
+</pre></div>
+</code></pre>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
+<ul>
+<li><strong>locale</strong>: language setting for month and weekday names.</li>
+<li><strong>format</strong>: the default output format (it uses <a href="http://momentjs.com/">Moment.js</a> for formatting.</li>
+<li><strong>firstday</strong>: first day of the week (0: Sunday, 1: Monday, etc).</li>
+<li><strong>mindate</strong>: the minimum/earliest date that can be selected.</li>
+<li><strong>maxdate</strong>: the maximum/latest date that can be selected.</li>
+</ul>
+<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
+<ul>
+<li><strong>getDate()</strong>: returns the selected date as a JS <code>Date</code> object.</li>
+</ul>
+<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
+<ul>
+<li><strong>b-open</strong>: will fire when the popup opens.</li>
+<li><strong>b-select</strong>: will fire whenever the user picks a date.</li>
+</ul>
+
+
+
+
+    <a name="b-datalist" class="anchor" href="#b-datalist"></a>
+    <h1><a name="ltb-datalistgt" class="anchor" href="#ltb-datalistgt"><span class="header-link"></span></a>&lt;b-datalist&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which emulates the <code>&lt;datalist&gt;</code> element.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-datalist
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-datalist&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Option 1<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Option 2<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Option 3<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/b-datalist&gt;</span>
+</pre></div>
+</code></pre>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="properties" class="anchor" href="#properties"><span class="header-link"></span></a>Properties</h3>
+<ul>
+<li><strong>options</strong>: returns the <code>&lt;option&gt;</code> nodes (read-only).</li>
+</ul>
+
+
+
+
     <a name="b-autocomplete" class="anchor" href="#b-autocomplete"></a>
     <h1><a name="ltb-autocompletegt" class="anchor" href="#ltb-autocompletegt"><span class="header-link"></span></a>&lt;b-autocomplete&gt;</h1>
 <p>A <a href="http://bosonic.github.io">Bosonic</a> autocomplete element.</p>
@@ -431,66 +559,6 @@
 <span class="nt">&lt;/b-datalist&gt;</span>
 </pre></div>
 </code></pre>
-
-
-
-
-    <a name="b-datalist" class="anchor" href="#b-datalist"></a>
-    <h1><a name="ltb-datalistgt" class="anchor" href="#ltb-datalistgt"><span class="header-link"></span></a>&lt;b-datalist&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which emulates the <code>&lt;datalist&gt;</code> element.</p>
-<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
-<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-datalist
-</pre></div>
-</code></pre>
-<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
-<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-datalist&gt;</span>
-    <span class="nt">&lt;option&gt;</span>Option 1<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option&gt;</span>Option 2<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option&gt;</span>Option 3<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/b-datalist&gt;</span>
-</pre></div>
-</code></pre>
-<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
-<h3><a name="properties" class="anchor" href="#properties"><span class="header-link"></span></a>Properties</h3>
-<ul>
-<li><strong>options</strong>: returns the <code>&lt;option&gt;</code> nodes (read-only).</li>
-</ul>
-
-
-
-
-    <a name="b-accordion" class="anchor" href="#b-accordion"></a>
-    <h1><a name="ltb-accordiongt" class="anchor" href="#ltb-accordiongt"><span class="header-link"></span></a>&lt;b-accordion&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> accordion element.</p>
-<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
-<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
-<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-accordion
-</pre></div>
-</code></pre>
-<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
-<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<p>This element should be used in conjunction with <code>&lt;b-collapsible&gt;</code> elements:</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-accordion</span> <span class="na">selected=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;b-collapsible&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b-collapsible-header&quot;</span><span class="nt">&gt;</span>
-            Header
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div&gt;</span>
-            ...
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/b-collapsible&gt;</span>
-    <span class="nt">&lt;b-collapsible&gt;</span>
-        ...
-    <span class="nt">&lt;/b-collapsible&gt;</span>
-    ...
-<span class="nt">&lt;/b-accordion&gt;</span>
-</pre></div>
-</code></pre>
-<p>The <code>selected</code> attribute indicates which panel is expanded, and can also be used to expand a panel programmatically.</p>
-<p>The user can use the keyboard to switch panels: Up/Down.</p>
 
 
 
