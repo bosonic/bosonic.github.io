@@ -12,5 +12,6 @@
     "b-flash-message",
     "b-autocomplete",
     "b-toggle-button",
-    "b-tabs"
+    "b-tabs",
+    "b-dropdown"
 ]

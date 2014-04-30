@@ -125,6 +125,27 @@
 
         <b-datepicker locale="en"></b-datepicker>
 
+        <h2>Dropdown</h2>
+        <style>
+            .dropdown-toggle {
+                margin: 0;
+                padding-right: 5px;
+            }
+            .dropdown-toggle:after {
+                padding-left: 10px;
+                content:'\25BE';
+            }
+        </style>
+        <button class="dropdown-toggle" data-b-dropdown-toggle="foo">Dropdown</button>
+        <b-dropdown id="foo">
+            <ul>
+                <li>plain text</li>
+                <li><a href="#">link item</a></li>
+                <hr />
+                <li><a href="#">separated link</a></li>
+            </ul>
+        </b-dropdown>
+
         <h2>Toggle buttons</h2>
         <style>
             .win8 {
