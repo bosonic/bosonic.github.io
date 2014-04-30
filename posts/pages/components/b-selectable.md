@@ -15,7 +15,7 @@ A [Bosonic](http://bosonic.github.io) element which allows single (for now) sele
 This element is available as a npm package, see the [Bosonic documentation](http://bosonic.github.io/documentation.html) for Bosonic transpiler usage.
 
 ```sh
-$ npm install --save b-collapsible
+$ npm install --save b-selectable
 ```
 
 Otherwise, you can download and include in your HTML file the builded CSS & JS files, alongside with Bosonic polyfills, as described in the [Getting Started](http://bosonic.github.io/getting-started.html) guide.

@@ -9,5 +9,6 @@
     "b-tooltip",
     "b-draggable",
     "b-resizer",
-    "b-flash-message"
+    "b-flash-message",
+    "b-autocomplete"
 ]
