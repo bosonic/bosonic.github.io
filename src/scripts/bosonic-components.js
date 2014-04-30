@@ -8408,6 +8408,7 @@ return this.Tether;
                     var duration = this.getAttribute('duration');
                     if (duration && !isNaN(parseInt(duration))) {
                         if (this.supportsTransitions()) {
+                            this.removeAttribute('closing');
                             setTimeout(this.fadeOut.bind(this), duration);
                         } else {
                             setTimeout(this.close.bind(this), duration);
@@ -8426,23 +8427,14 @@ return this.Tether;
             fadeOut: {
                 enumerable: true,
                 value: function (duration) {
-                    this.setOpacity(0, 0.5);
+                    this.setAttribute('closing', '');
                 }
             },
             fadeOutEnd: {
                 enumerable: true,
                 value: function (e) {
-                    console.log(e);
                     this.close();
-                    this.setOpacity(1);
-                }
-            },
-            setOpacity: {
-                enumerable: true,
-                value: function (opacity, transitionDuration) {
-                    var s = this.style;
-                    s.webkitTransition = s.transition = transitionDuration ? 'opacity ' + transitionDuration + 's ease-in-out' : null;
-                    s.opacity = opacity;
+                    this.removeAttribute('closing');
                 }
             },
             supportsTransitions: {
@@ -8902,6 +8894,153 @@ return this.Tether;
             var fragment = document.createDocumentFragment();
             var div = fragment.appendChild(document.createElement('div'));
             div.innerHTML = ' <style> .b-toggle-button { position: absolute; left: -webkit-calc(-100% + 24px); left: -moz-calc(-100% + 24px); left: calc(-100% + 24px); width: -webkit-calc(200% - 24px); width: -moz-calc(200% - 24px); width: calc(200% - 24px); height: 100%; overflow: hidden; white-space: nowrap; transition: left 0.130s ease-out; } .b-toggle-button.on { left: 0; } .b-toggle-button > * { float: left; } .b-toggle-on, .b-toggle-off { width: 50%; height: 100%; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; line-height: 24px; } .b-toggle-on { padding-right: 12px; background-color: #48985f; color: white; } .b-toggle-off { padding-left: 12px; background-color: #bfbfbf; color: #716f6f; } .b-toggle-thumb { position: absolute; left: -webkit-calc(50% - 12px); left: -moz-calc(50% - 12px); left: calc(50% - 12px); width: 24px; height: 100%; border-radius: 1px; background-color: white; } </style> <div class="b-toggle-button"> <span class="b-toggle-on"></span> <span class="b-toggle-thumb"></span> <span class="b-toggle-off"></span> </div> ';
+            while (child = div.firstChild) {
+                fragment.insertBefore(child, div);
+            }
+            fragment.removeChild(div);
+            return { content: fragment };
+        }
+    });
+}());
+(function () {
+    var BTabsPrototype = Object.create(HTMLElement.prototype, {
+            createdCallback: {
+                enumerable: true,
+                value: function () {
+                    this.appendChild(this.template.content.cloneNode(true));
+                    this.tabsNavigation = this.querySelector('ul');
+                    this.tabsContainer = this.querySelector('div');
+                    this.initClasses();
+                    this.initContainer();
+                    this.addListeners();
+                }
+            },
+            detachedCallback: {
+                enumerable: true,
+                value: function () {
+                    this.removeListeners();
+                }
+            },
+            initClasses: {
+                enumerable: true,
+                value: function () {
+                    if (this.tabsNavigation) {
+                        this.tabsNavigation.classList.add('b-tabs-navigation');
+                    }
+                    if (this.tabsContainer) {
+                        this.tabsContainer.classList.add('b-tabs-container');
+                    }
+                }
+            },
+            initContainer: {
+                enumerable: true,
+                value: function () {
+                    if (this.tabsContainer) {
+                        for (var i = 0; i < this.tabsContainer.children.length; i++) {
+                            this.hideElement(i);
+                        }
+                        this.displayTabAt(0);
+                    }
+                }
+            },
+            addListeners: {
+                enumerable: true,
+                value: function () {
+                    if (this.tabsNavigation) {
+                        this.displayListener = this.display.bind(this);
+                        this.tabsNavigation.addEventListener('click', this.displayListener);
+                    }
+                }
+            },
+            removeListeners: {
+                enumerable: true,
+                value: function () {
+                    if (this.tabsNavigation && this.displayListener) {
+                        this.tabsNavigation.removeEventListener(this.displayListener);
+                        this.displayListener = null;
+                    }
+                }
+            },
+            display: {
+                enumerable: true,
+                value: function (e) {
+                    var li = this.findLi(e.target);
+                    if (li) {
+                        var toDisplayIdx = Array.prototype.indexOf.call(this.tabsNavigation.children, li);
+                        this.displayTabAt(toDisplayIdx);
+                    }
+                }
+            },
+            displayTabAt: {
+                enumerable: true,
+                value: function (idx) {
+                    this.hideElement(this.displayedElementIdx);
+                    this.displayedElementIdx = idx;
+                    this.displayCurrentContent();
+                    this.displayCurrentTab();
+                }
+            },
+            displayCurrentContent: {
+                enumerable: true,
+                value: function () {
+                    if (this.displayedElementIdx < this.tabsContainer.children.length) {
+                        var elementToDisplay = this.tabsContainer.children[this.displayedElementIdx];
+                        elementToDisplay.classList.remove('b-tabs-hidden');
+                    }
+                }
+            },
+            displayCurrentTab: {
+                enumerable: true,
+                value: function () {
+                    if (this.displayedElementIdx < this.tabsNavigation.children.length) {
+                        var elementToDisplay = this.tabsNavigation.children[this.displayedElementIdx];
+                        elementToDisplay.classList.remove('b-tabs-hidden');
+                    }
+                }
+            },
+            hideElement: {
+                enumerable: true,
+                value: function (idx) {
+                    if (idx !== undefined) {
+                        this.hideContent(idx);
+                        this.hideTab(idx);
+                    }
+                }
+            },
+            hideContent: {
+                enumerable: true,
+                value: function (idx) {
+                    var elementToHide = this.tabsContainer.children[idx];
+                    elementToHide.classList.add('b-tabs-hidden');
+                }
+            },
+            hideTab: {
+                enumerable: true,
+                value: function (idx) {
+                    var elementToHide = this.tabsNavigation.children[idx];
+                    elementToHide.classList.add('b-tabs-hidden');
+                }
+            },
+            findLi: {
+                enumerable: true,
+                value: function (target) {
+                    var currentNode = target;
+                    var li = null;
+                    while (currentNode.tagName !== 'B-TABS' && li === null) {
+                        if (currentNode.tagName === 'LI')
+                            li = currentNode;
+                        currentNode = currentNode.parentNode;
+                    }
+                    return li;
+                }
+            }
+        });
+    window.BTabs = document.registerElement('b-tabs', { prototype: BTabsPrototype });
+    Object.defineProperty(BTabsPrototype, 'template', {
+        get: function () {
+            var fragment = document.createDocumentFragment();
+            var div = fragment.appendChild(document.createElement('div'));
+            div.innerHTML = ' ';
             while (child = div.firstChild) {
                 fragment.insertBefore(child, div);
             }

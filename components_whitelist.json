@@ -11,5 +11,6 @@
     "b-resizer",
     "b-flash-message",
     "b-autocomplete",
-    "b-toggle-button"
+    "b-toggle-button",
+    "b-tabs"
 ]

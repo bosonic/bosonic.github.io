@@ -419,6 +419,7 @@ b-flash-message {
   border-radius: 4px;
   min-height: 19px;
   display: none;
+  opacity: 1;
 }
 
 b-flash-message[type=success] {
@@ -447,6 +448,11 @@ b-flash-message[type=error] {
 
 b-flash-message[visible] {
   display: block;
+}
+
+b-flash-message[visible][closing] {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 b-autocomplete, b-combo-box {
     position: relative;
@@ -533,4 +539,20 @@ b-toggle-button {
 
 b-toggle-button.on {
   border: 1px solid #08985f;
+}
+b-tabs .b-tabs-navigation li {
+  display: inline;
+  font-weight: bold;
+}
+
+b-tabs .b-tabs-navigation li.b-tabs-hidden {
+  font-weight: 400;
+}
+
+b-tabs .b-tabs-navigation li:hover {
+  cursor: pointer;
+}
+
+b-tabs .b-tabs-hidden {
+  display: none;
 }
