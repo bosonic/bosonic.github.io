@@ -556,3 +556,38 @@ b-tabs .b-tabs-navigation li:hover {
 b-tabs .b-tabs-hidden {
   display: none;
 }
+b-dropdown {
+  position: relative;
+  display: block;
+}
+
+b-dropdown ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  float: left;
+  list-style-type: none;
+  padding: 5px 10px;
+  margin: 0;
+  background-color: white;
+  z-index: 1000;
+  border: 1px solid #ccc;
+}
+
+b-dropdown[open] ul {
+  display: block;
+}
+
+b-dropdown li {
+  display: block;
+  padding: 5px 0;
+}
+
+b-dropdown hr {
+  display: block;
+  background-color: #ddd;
+  height: 1px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
