@@ -10,5 +10,6 @@
     "b-draggable",
     "b-resizer",
     "b-flash-message",
-    "b-autocomplete"
+    "b-autocomplete",
+    "b-toggle-button"
 ]
