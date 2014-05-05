@@ -189,7 +189,7 @@
             selectedItemIndex: {
                 enumerable: true,
                 get: function () {
-                    return Number(this.getAttribute('selected'));
+                    return this.hasAttribute('selected') ? Number(this.getAttribute('selected')) : null;
                 }
             },
             createdCallback: {
@@ -285,14 +285,21 @@
             activate: {
                 enumerable: true,
                 value: function () {
-                    this.dispatchEvent(new CustomEvent('b-activate', { detail: { item: this.getAttribute('selected') } }));
+                    this.dispatchEvent(new CustomEvent('b-activate', { detail: { item: parseInt(this.getAttribute('selected')) } }));
                 }
             },
             select: {
                 enumerable: true,
                 value: function (index) {
-                    this.setAttribute('selected', '');
                     this.setAttribute('selected', index);
+                }
+            },
+            unselect: {
+                enumerable: true,
+                value: function () {
+                    if (this.hasAttribute('selected')) {
+                        this.removeAttribute('selected');
+                    }
                 }
             },
             selectFirst: {
@@ -303,9 +310,21 @@
                     }
                 }
             },
+            selectLast: {
+                enumerable: true,
+                value: function () {
+                    if (this.getItemCount() > 0) {
+                        this.select(this.getItemCount() - 1);
+                    }
+                }
+            },
             selectNextItem: {
                 enumerable: true,
                 value: function () {
+                    if (this.selectedItemIndex === null) {
+                        this.selectFirst();
+                        return;
+                    }
                     if (this.selectedItemIndex < this.getItemCount() - 1) {
                         this.select(this.selectedItemIndex + 1);
                     }
@@ -314,6 +333,10 @@
             selectPreviousItem: {
                 enumerable: true,
                 value: function () {
+                    if (this.selectedItemIndex === null) {
+                        this.selectLast();
+                        return;
+                    }
                     if (this.selectedItemIndex > 0) {
                         this.select(this.selectedItemIndex - 1);
                     }
@@ -4661,16 +4684,18 @@
             selectedChanged: {
                 enumerable: true,
                 value: function (oldValue, newValue) {
-                    var oldItem = this.getItem(oldValue), newItem = this.getItem(newValue);
                     this._super.selectedChanged.call(this, oldValue, newValue);
-                    if (oldValue !== null) {
+                    var oldItem = this.getItem(oldValue), newItem = this.getItem(newValue);
+                    if (oldItem !== null) {
                         oldItem.removeAttribute('active');
                         oldItem.setAttribute('aria-expanded', 'false');
                         oldItem.setAttribute('aria-hidden', 'true');
                     }
-                    newItem.setAttribute('active', '');
-                    newItem.setAttribute('aria-expanded', 'true');
-                    newItem.setAttribute('aria-hidden', 'false');
+                    if (newItem !== null) {
+                        newItem.setAttribute('active', '');
+                        newItem.setAttribute('aria-expanded', 'true');
+                        newItem.setAttribute('aria-hidden', 'false');
+                    }
                 }
             }
         });
@@ -8683,6 +8708,7 @@ return this.Tether;
             paintSuggestionList: {
                 enumerable: true,
                 value: function () {
+                    this.selectable.unselect();
                     var list = this.suggestionList, options = this.filterOptions();
                     while (list.childNodes.length > 0) {
                         list.removeChild(list.childNodes[0]);
@@ -8702,7 +8728,10 @@ return this.Tether;
             },
             toggleSuggestionList: {
                 enumerable: true,
-                value: function () {
+                value: function (e) {
+                    if (e) {
+                        e.stopPropagation();
+                    }
                     this.areSuggestionsVisible() ? this.hideSuggestionList() : this.showSuggestionList();
                     this.input.focus();
                 }
