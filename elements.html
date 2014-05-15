@@ -46,11 +46,15 @@
 <ul>
     
 
-        <li><a href="#b-toggle-button">b-toggle-button</a></li>
+        <li><a href="#b-collapsible">b-collapsible</a></li>
 
     
 
         <li><a href="#b-sortable">b-sortable</a></li>
+
+    
+
+        <li><a href="#b-datepicker">b-datepicker</a></li>
 
     
 
@@ -70,11 +74,11 @@
 
     
 
-        <li><a href="#b-collapsible">b-collapsible</a></li>
+        <li><a href="#b-draggable">b-draggable</a></li>
 
     
 
-        <li><a href="#b-datepicker">b-datepicker</a></li>
+        <li><a href="#b-toggle-button">b-toggle-button</a></li>
 
     
 
@@ -101,74 +105,48 @@
         <li><a href="#b-flash-message">b-flash-message</a></li>
 
     
-
-        <li><a href="#b-draggable">b-draggable</a></li>
-
-    
 </ul>
 
 
 
-    <a name="b-toggle-button" class="anchor" href="#b-toggle-button"></a>
-    <h1><a name="ltb-toggle-buttongt" class="anchor" href="#ltb-toggle-buttongt"><span class="header-link"></span></a>&lt;b-toggle-button&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which represents a state or option that can be toggled.</p>
+    <a name="b-collapsible" class="anchor" href="#b-collapsible"></a>
+    <h1><a name="ltb-collapsiblegt" class="anchor" href="#ltb-collapsiblegt"><span class="header-link"></span></a>&lt;b-collapsible&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which adds a collapsible behavior to a block with a header.</p>
 <p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-toggle-button
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-collapsible
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<p>The <code>checked</code> attribute indicates the state ON of the toggle button.</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-toggle-button</span> <span class="na">checked</span><span class="nt">&gt;&lt;/b-toggle-button&gt;</span>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-collapsible&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b-collapsible-header&quot;</span><span class="nt">&gt;</span>
+        Header
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        Lorem ipsum...
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/b-collapsible&gt;</span>
 </pre></div>
 </code></pre>
-<p>The <code>nocaption</code> attribute removes the default ON/OFF caption of the button.</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-toggle-button</span> <span class="na">nocaption</span><span class="nt">&gt;&lt;/b-toggle-button&gt;</span>
-</pre></div>
-</code></pre>
-<p>The <code>oncaption</code> and <code>offcaption</code> attributes let you change the caption of the button. If the caption is too long, use a padding-right and padding-left directive to adapt the size of the toggle-button</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-toggle-button</span> <span class="na">style=</span><span class="s">&quot;padding: 0 15px&quot;</span> <span class="na">oncaption=</span><span class="s">&quot;activated&quot;</span> <span class="na">offcaption=</span><span class="s">&quot;deactivated&quot;</span><span class="nt">&gt;&lt;/b-toggle-button&gt;</span>
-</pre></div>
-</code></pre>
-<p>The user can use the keyboard to toggle the button: SPACE/ENTER.</p>
-<p>You can control the b-toggle-button with javascript:</p>
-<pre><code class="lang-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">toggleButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-toggle-button&#39;</span><span class="p">);</span>
-
-<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">activate</span><span class="p">();</span> <span class="c1">// activate</span>
-<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">deactivate</span><span class="p">();</span> <span class="c1">// deactivate</span>
-<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">toggle</span><span class="p">();</span> <span class="c1">// toggle</span>
-
-<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span> <span class="c1">// returns a boolean</span>
-<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">checked</span><span class="p">;</span> <span class="c1">// returns a boolean</span>
-<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// activate the button</span>
-<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// deactivate the button</span>
-</pre></div>
-</code></pre>
-<p>The b-toggle-button can be styled:</p>
-<pre><code class="lang-css"><div class="highlight"><pre><span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="p">{</span>
-    <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">border</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">b-toggle-button</span><span class="nc">.kitkat.on</span> <span class="p">{</span>
-    <span class="k">border</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="nc">.b-toggle-on</span> <span class="p">{</span>
-    <span class="k">background-color</span><span class="o">:</span> <span class="m">#27A1CA</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="nc">.b-toggle-off</span> <span class="p">{</span>
-    <span class="k">background-color</span><span class="o">:</span> <span class="m">#A1A1A1</span><span class="p">;</span>
-    <span class="k">color</span><span class="o">:</span> <span class="m">#333333</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="nc">.b-toggle-thumb</span> <span class="p">{</span>
-    <span class="k">width</span><span class="o">:</span> <span class="m">30px</span><span class="p">;</span>
-    <span class="k">left</span><span class="o">:</span> <span class="n">calc</span><span class="p">(</span><span class="m">50</span><span class="o">%</span> <span class="o">-</span> <span class="m">15px</span><span class="p">);</span>
-    <span class="k">background-color</span><span class="o">:</span> <span class="m">#333333</span><span class="p">;</span>
-    <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</code></pre>
+<p><code>b-collapsible</code> must wrap 2 block elements, one of which needing to have a <code>b-collapsible-header</code>. The other block will be the body, and it will appear/disappear depending on the <code>active</code> attribute of the element. Clicking on the header will toggle this active state.</p>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
+<ul>
+<li><strong>active</strong>: if set, the body will expand.</li>
+<li><strong>duration</strong>: transition duration in seconds (may be set to 0).</li>
+<li><strong>horizontal</strong>: if set, the body will horizontally expand instead of vertically.</li>
+</ul>
+<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
+<ul>
+<li><strong>toggle()</strong>: toggles the active state.</li>
+</ul>
+<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
+<p><code>b-collapsible</code> dispatches the following cancelable events:
+- <strong>b-collapsible-toggle</strong>: triggered when the header is clicked.
+- <strong>b-collapsible-show</strong>: triggered before the body expands.
+- <strong>b-collapsible-hide</strong>: triggered before the body collapses.</p>
 
 
 
@@ -208,6 +186,42 @@
 <p>The event object will have a <code>detail.item</code> property that refers to the dragged element.</p>
 <h2><a name="license" class="anchor" href="#license"><span class="header-link"></span></a>License</h2>
 <p><a href="http://opensource.org/licenses/MIT">MIT License</a></p>
+
+
+
+
+    <a name="b-datepicker" class="anchor" href="#b-datepicker"></a>
+    <h1><a name="ltb-datepickergt" class="anchor" href="#ltb-datepickergt"><span class="header-link"></span></a>&lt;b-datepicker&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> datepicker element which uses <a href="https://github.com/dbushell/Pikaday">Pikaday</a>, an excellent datepicker with no dependencies by <a href="https://github.com/dbushell">David Bushell</a>.</p>
+<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
+<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
+<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-datepicker
+</pre></div>
+</code></pre>
+<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-datepicker</span> <span class="na">locale=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;&lt;/b-datepicker&gt;</span>
+</pre></div>
+</code></pre>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
+<ul>
+<li><strong>locale</strong>: language setting for month and weekday names.</li>
+<li><strong>format</strong>: the default output format (it uses <a href="http://momentjs.com/">Moment.js</a> for formatting.</li>
+<li><strong>firstday</strong>: first day of the week (0: Sunday, 1: Monday, etc).</li>
+<li><strong>mindate</strong>: the minimum/earliest date that can be selected.</li>
+<li><strong>maxdate</strong>: the maximum/latest date that can be selected.</li>
+</ul>
+<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
+<ul>
+<li><strong>getDate()</strong>: returns the selected date as a JS <code>Date</code> object.</li>
+</ul>
+<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
+<ul>
+<li><strong>b-open</strong>: will fire when the popup opens.</li>
+<li><strong>b-select</strong>: will fire whenever the user picks a date.</li>
+</ul>
 
 
 
@@ -352,80 +366,96 @@
 
 
 
-    <a name="b-collapsible" class="anchor" href="#b-collapsible"></a>
-    <h1><a name="ltb-collapsiblegt" class="anchor" href="#ltb-collapsiblegt"><span class="header-link"></span></a>&lt;b-collapsible&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which adds a collapsible behavior to a block with a header.</p>
+    <a name="b-draggable" class="anchor" href="#b-draggable"></a>
+    <h1><a name="ltb-draggablegt" class="anchor" href="#ltb-draggablegt"><span class="header-link"></span></a>&lt;b-draggable&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which may be used to add draggable behavior to an element.</p>
 <p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-collapsible
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-draggable
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-collapsible&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b-collapsible-header&quot;</span><span class="nt">&gt;</span>
-        Header
-    <span class="nt">&lt;/div&gt;</span>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-draggable</span> <span class="na">handle=</span><span class="s">&quot;.drag-handle&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div&gt;</span>
-        Lorem ipsum...
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;drag-handle&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Lorem ipsum...<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/b-collapsible&gt;</span>
+<span class="nt">&lt;/b-draggable&gt;</span>
 </pre></div>
 </code></pre>
-<p><code>b-collapsible</code> must wrap 2 block elements, one of which needing to have a <code>b-collapsible-header</code>. The other block will be the body, and it will appear/disappear depending on the <code>active</code> attribute of the element. Clicking on the header will toggle this active state.</p>
 <h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
 <h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
 <ul>
-<li><strong>active</strong>: if set, the body will expand.</li>
-<li><strong>duration</strong>: transition duration in seconds (may be set to 0).</li>
-<li><strong>horizontal</strong>: if set, the body will horizontally expand instead of vertically.</li>
+<li><strong>handle</strong>: a CSS selector that points to the element to be used to drag the object (defaults to the whole object).</li>
+<li><strong>axis</strong>: constrains the draggability along an axis (<code>x</code> or <code>y</code>).</li>
+<li><strong>containement</strong>: specifies an element that defines the boundaries of the draggable area: <code>parent</code> or <code>&lt;selector&gt;</code>.</li>
 </ul>
-<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
-<ul>
-<li><strong>toggle()</strong>: toggles the active state.</li>
-</ul>
-<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
-<p><code>b-collapsible</code> dispatches the following cancelable events:
-- <strong>b-collapsible-toggle</strong>: triggered when the header is clicked.
-- <strong>b-collapsible-show</strong>: triggered before the body expands.
-- <strong>b-collapsible-hide</strong>: triggered before the body collapses.</p>
 
 
 
 
-    <a name="b-datepicker" class="anchor" href="#b-datepicker"></a>
-    <h1><a name="ltb-datepickergt" class="anchor" href="#ltb-datepickergt"><span class="header-link"></span></a>&lt;b-datepicker&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> datepicker element which uses <a href="https://github.com/dbushell/Pikaday">Pikaday</a>, an excellent datepicker with no dependencies by <a href="https://github.com/dbushell">David Bushell</a>.</p>
+    <a name="b-toggle-button" class="anchor" href="#b-toggle-button"></a>
+    <h1><a name="ltb-toggle-buttongt" class="anchor" href="#ltb-toggle-buttongt"><span class="header-link"></span></a>&lt;b-toggle-button&gt;</h1>
+<p>A <a href="http://bosonic.github.io">Bosonic</a> element which represents a state or option that can be toggled.</p>
 <p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
 <h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
 <p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-datepicker
+<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-toggle-button
 </pre></div>
 </code></pre>
 <p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
 <h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-datepicker</span> <span class="na">locale=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;&lt;/b-datepicker&gt;</span>
+<p>The <code>checked</code> attribute indicates the state ON of the toggle button.</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-toggle-button</span> <span class="na">checked</span><span class="nt">&gt;&lt;/b-toggle-button&gt;</span>
 </pre></div>
 </code></pre>
-<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
-<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
-<ul>
-<li><strong>locale</strong>: language setting for month and weekday names.</li>
-<li><strong>format</strong>: the default output format (it uses <a href="http://momentjs.com/">Moment.js</a> for formatting.</li>
-<li><strong>firstday</strong>: first day of the week (0: Sunday, 1: Monday, etc).</li>
-<li><strong>mindate</strong>: the minimum/earliest date that can be selected.</li>
-<li><strong>maxdate</strong>: the maximum/latest date that can be selected.</li>
-</ul>
-<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
-<ul>
-<li><strong>getDate()</strong>: returns the selected date as a JS <code>Date</code> object.</li>
-</ul>
-<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
-<ul>
-<li><strong>b-open</strong>: will fire when the popup opens.</li>
-<li><strong>b-select</strong>: will fire whenever the user picks a date.</li>
-</ul>
+<p>The <code>nocaption</code> attribute removes the default ON/OFF caption of the button.</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-toggle-button</span> <span class="na">nocaption</span><span class="nt">&gt;&lt;/b-toggle-button&gt;</span>
+</pre></div>
+</code></pre>
+<p>The <code>oncaption</code> and <code>offcaption</code> attributes let you change the caption of the button. If the caption is too long, use a padding-right and padding-left directive to adapt the size of the toggle-button</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-toggle-button</span> <span class="na">style=</span><span class="s">&quot;padding: 0 15px&quot;</span> <span class="na">oncaption=</span><span class="s">&quot;activated&quot;</span> <span class="na">offcaption=</span><span class="s">&quot;deactivated&quot;</span><span class="nt">&gt;&lt;/b-toggle-button&gt;</span>
+</pre></div>
+</code></pre>
+<p>The user can use the keyboard to toggle the button: SPACE/ENTER.</p>
+<p>You can control the b-toggle-button with javascript:</p>
+<pre><code class="lang-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">toggleButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;b-toggle-button&#39;</span><span class="p">);</span>
+
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">activate</span><span class="p">();</span> <span class="c1">// activate</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">deactivate</span><span class="p">();</span> <span class="c1">// deactivate</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">toggle</span><span class="p">();</span> <span class="c1">// toggle</span>
+
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span> <span class="c1">// returns a boolean</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">checked</span><span class="p">;</span> <span class="c1">// returns a boolean</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// activate the button</span>
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// deactivate the button</span>
+</pre></div>
+</code></pre>
+<p>The b-toggle-button can be styled:</p>
+<pre><code class="lang-css"><div class="highlight"><pre><span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="p">{</span>
+    <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="k">border</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">b-toggle-button</span><span class="nc">.kitkat.on</span> <span class="p">{</span>
+    <span class="k">border</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="nc">.b-toggle-on</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="m">#27A1CA</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="nc">.b-toggle-off</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="m">#A1A1A1</span><span class="p">;</span>
+    <span class="k">color</span><span class="o">:</span> <span class="m">#333333</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">b-toggle-button</span><span class="nc">.kitkat</span> <span class="nc">.b-toggle-thumb</span> <span class="p">{</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">30px</span><span class="p">;</span>
+    <span class="k">left</span><span class="o">:</span> <span class="n">calc</span><span class="p">(</span><span class="m">50</span><span class="o">%</span> <span class="o">-</span> <span class="m">15px</span><span class="p">);</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="m">#333333</span><span class="p">;</span>
+    <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
 
 
 
@@ -652,36 +682,6 @@
 <ul>
 <li><strong>b-flash-message-show</strong>: will fire when the flash message is shown.</li>
 <li><strong>b-flash-message-close</strong>: will fire when the flash message is closed.</li>
-</ul>
-
-
-
-
-    <a name="b-draggable" class="anchor" href="#b-draggable"></a>
-    <h1><a name="ltb-draggablegt" class="anchor" href="#ltb-draggablegt"><span class="header-link"></span></a>&lt;b-draggable&gt;</h1>
-<p>A <a href="http://bosonic.github.io">Bosonic</a> element which may be used to add draggable behavior to an element.</p>
-<p><a href="http://bosonic.github.io/demos.html">Check the demo</a>.</p>
-<h2><a name="install" class="anchor" href="#install"><span class="header-link"></span></a>Install</h2>
-<p>This element is available as a npm package, see the <a href="http://bosonic.github.io/documentation.html">Bosonic documentation</a> for Bosonic transpiler usage.</p>
-<pre><code class="lang-sh"><div class="highlight"><pre><span class="nv">$ </span>npm install --save b-draggable
-</pre></div>
-</code></pre>
-<p>Otherwise, you can download and include in your HTML file the builded CSS &amp; JS files, alongside with Bosonic polyfills, as described in the <a href="http://bosonic.github.io/getting-started.html">Getting Started</a> guide.</p>
-<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-draggable</span> <span class="na">handle=</span><span class="s">&quot;.drag-handle&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;drag-handle&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-        <span class="nt">&lt;p&gt;</span>Lorem ipsum...<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/b-draggable&gt;</span>
-</pre></div>
-</code></pre>
-<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
-<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
-<ul>
-<li><strong>handle</strong>: a CSS selector that points to the element to be used to drag the object (defaults to the whole object).</li>
-<li><strong>axis</strong>: constrains the draggability along an axis (<code>x</code> or <code>y</code>).</li>
-<li><strong>containement</strong>: specifies an element that defines the boundaries of the draggable area: <code>parent</code> or <code>&lt;selector&gt;</code>.</li>
 </ul>
 
 
