@@ -1,0 +1,52 @@
+.b-collapsible-header{
+  text-align:center;
+  font-weight:700; 
+  padding:1em;
+  display:block;
+  text-decoration:none;
+  color:#fff;
+  background-color:$lightColor; 
+  border-bottom:1px solid $darkColor;
+
+  @include transition(background-color 0.5s ease-in-out);
+
+  &:hover{
+    background-color:$darkColor;
+  }
+
+  &:before {
+    content: "+";
+    font-size:1.5em;
+    line-height:1em;
+    float:left; 
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 0.5s;
+  }
+}
+
+
+.b-selectable-selected .b-collapsible-header{
+  background-color:$darkColor;
+  border: none;
+
+  &:before {
+    @include transform(rotate(135deg));
+  }
+}
+
+.b-collapsible-body {
+  background-color:#eee;
+  font-size:1em;
+  line-height:1.5em;
+  padding:1em 2em;
+}
+
+b-accordion:after {
+  content: "";
+  display:block;
+  height:0.5em;
+  width:100%;
+  background-color:$darkColor;
+}

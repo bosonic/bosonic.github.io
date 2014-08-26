@@ -1,0 +1,42 @@
+.b-tabs-navigation {
+  overflow: hidden;
+  border-right: 1px solid #fff;
+  height: 35px;
+  position: absolute;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+
+  li {
+    float: left;
+    list-style: none;
+    background: $lightColor;
+    border-right: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 30px;
+    text-decoration: none;
+    
+    @include transition(background-color 0.5s ease-in-out);
+
+    &:not(.b-tabs-hidden) {
+      background: $darkColor;  
+      font-weight: 700;
+      height: 50px;
+    }
+
+    &.b-tabs-hidden:hover {
+      background: $darkColor;
+    }
+  }
+}
+
+.b-tabs-container {
+  background: #eee;
+  margin: 53px 0 0;
+  border-bottom: 8px solid $darkColor;
+  padding: 20px;
+}

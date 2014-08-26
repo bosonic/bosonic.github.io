@@ -576,3 +576,16 @@ b-dropdown hr {
   margin-top: 10px;
   margin-bottom: 5px;
 }
+
+
+b-tabs .b-tabs-navigation li {
+  display: inline;
+}
+
+b-tabs .b-tabs-navigation li:hover {
+  cursor: pointer;
+}
+
+b-tabs .b-tabs-hidden {
+  display: none;
+}

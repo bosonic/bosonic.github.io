@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         tasks: ['pages']
       },
       compass: {
-        files: ['src/styles/**'],
+        files: ['src/styles/**/*'],
         tasks: ['compass']
       },
       copy: {

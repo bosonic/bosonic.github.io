@@ -1,0 +1,56 @@
+/* line 1, ../../src/styles/themes/alizarin/_b-collapsible.scss */
+.b-collapsible-header {
+  text-align: center;
+  font-weight: 700;
+  padding: 1em;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  background-color: #e74c3c;
+  border-bottom: 1px solid #c0392b;
+}
+/* line 12, ../../src/styles/themes/alizarin/_b-collapsible.scss */
+.b-collapsible-header:hover {
+  background-color: #c0392b;
+}
+/* line 16, ../../src/styles/themes/alizarin/_b-collapsible.scss */
+.b-collapsible-header:before {
+  content: "+";
+  font-size: 1.5em;
+  line-height: 1em;
+  float: left;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-property: -moz-transform;
+  -moz-transition-duration: 0.5s;
+}
+
+/* line 29, ../../src/styles/themes/alizarin/_b-collapsible.scss */
+.b-selectable-selected .b-collapsible-header {
+  background-color: #c0392b;
+  border: none;
+}
+/* line 33, ../../src/styles/themes/alizarin/_b-collapsible.scss */
+.b-selectable-selected .b-collapsible-header:before {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+/* line 40, ../../src/styles/themes/alizarin/_b-collapsible.scss */
+.b-collapsible-body {
+  background-color: #eee;
+  font-size: 1em;
+  line-height: 1.5em;
+  padding: 1em 2em;
+}
+
+/* line 47, ../../src/styles/themes/alizarin/_b-collapsible.scss */
+b-accordion:after {
+  content: "";
+  display: block;
+  height: 0.5em;
+  width: 100%;
+  background-color: #c0392b;
+}
