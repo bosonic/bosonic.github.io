@@ -540,22 +540,7 @@ b-toggle-button {
 b-toggle-button.on {
   border: 1px solid #08985f;
 }
-b-tabs .b-tabs-navigation li {
-  display: inline;
-  font-weight: bold;
-}
 
-b-tabs .b-tabs-navigation li.b-tabs-hidden {
-  font-weight: 400;
-}
-
-b-tabs .b-tabs-navigation li:hover {
-  cursor: pointer;
-}
-
-b-tabs .b-tabs-hidden {
-  display: none;
-}
 b-dropdown {
   position: relative;
   display: block;
