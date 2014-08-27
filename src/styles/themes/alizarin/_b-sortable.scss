@@ -1,0 +1,44 @@
+b-sortable ul {
+  list-style-type: none;
+  width: 150px;
+
+  li {
+    border: 1px solid #fff;
+    background-color: $lightColor;
+    margin: 5px;
+    color:#fff;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+
+    @include transition(background-color 0.5s ease-in-out);
+
+    &:before {
+      font-family: FontAwesome;
+      content: "\f047";
+      float: left;
+      background-color: $darkColor;
+      border-right: 1px solid #fff;
+      padding:0 10px;
+      font-weight: 300;
+    }
+
+    &:hover {
+      background-color: $darkColor;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    &.sortable-ghost {
+      opacity: .25;
+      -webkit-transition: -webkit-transform 0.2s ease-out;
+      -moz-transition: -moz-transform 0.2s ease-out;
+      -webkit-transform: scale(0.8);
+      -moz-transform: scale(0.8);
+    }
+
+    &.sortable-over {
+      opacity: .25;
+    }
+  }
+}

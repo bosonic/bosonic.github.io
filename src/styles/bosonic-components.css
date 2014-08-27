@@ -369,7 +369,6 @@ b-tooltip {
 
 b-resizer {
   position: absolute;
-  background-color: #ccc;
 }
 
 b-resizer[omni] {
