@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="<%= data.baseUrl %>images/cabin.png">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
     <link href="<%= data.baseUrl %>styles/main.css" rel="stylesheet">
 
     <script src="<%= data.baseUrl %>scripts/bosonic-polyfills.js"></script>
@@ -306,34 +306,11 @@
         </style>
 
         <h2>Draggable</h2>
-        <style>
-            .draggable {
-                height: 100px;
-                width: 150px;
-                border: 1px solid black;
-                background: lightblue;
-            }
-            .draggable-container {
-                position: relative;
-                height: 300px;
-                width: 250px;
-                background: #ccc;
-            }
-            .draggable-container .draggable {
-                position: absolute;
-                top: 10px;
-                left: 20px;
-            }
-            .draggable-handle {
-                background: gray;
-                cursor: move;
-            }
-        </style>
         <div class="draggable-container">
             <b-draggable handle=".draggable-handle" target=".draggable" containment="parent">
                 <div class="draggable">
-                    <div class="draggable-handle">Handle</div>
-                    Lorem ipsum...
+                    <div class="draggable-handle">Drag me !</div>
+                    <div class="draggable-content">Lorem ipsum</div>
                 </div>
             </b-draggable>
         </div>

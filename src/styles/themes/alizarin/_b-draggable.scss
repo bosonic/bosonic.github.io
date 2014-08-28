@@ -1,0 +1,29 @@
+.draggable {
+    height: 100px;
+    width: 150px;
+    border: 1px solid $darkColor;
+    background: #fff;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.draggable-container {
+    position: relative;
+    height: 300px;
+    width: 250px;
+    background: #eee;
+}
+
+.draggable-handle {
+    background: $lightColor;
+    cursor: move;
+    color: #fff;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.draggable-content {
+    padding: 10px;
+}
