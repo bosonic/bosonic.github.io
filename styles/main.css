@@ -754,6 +754,11 @@ table.browser-compat img {
   #header #nav.visible {
     display: block;
   }
+
+  /* line 148, ../../src/styles/_responsive.scss */
+  .forkme {
+    display: none;
+  }
 }
 /* line 3, ../../src/styles/_markdown.scss */
 .markdown ul, .markdown ol {

@@ -6,8 +6,6 @@ b-dialog {
   max-width: 100%;
   max-height: 100%;
   overflow: auto;
-  background: white;
-  border: 1px solid #333;
   z-index: 1;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -369,7 +367,6 @@ b-tooltip {
 
 b-resizer {
   position: absolute;
-  background-color: #ccc;
 }
 
 b-resizer[omni] {
@@ -540,22 +537,7 @@ b-toggle-button {
 b-toggle-button.on {
   border: 1px solid #08985f;
 }
-b-tabs .b-tabs-navigation li {
-  display: inline;
-  font-weight: bold;
-}
 
-b-tabs .b-tabs-navigation li.b-tabs-hidden {
-  font-weight: 400;
-}
-
-b-tabs .b-tabs-navigation li:hover {
-  cursor: pointer;
-}
-
-b-tabs .b-tabs-hidden {
-  display: none;
-}
 b-dropdown {
   position: relative;
   display: block;
@@ -590,4 +572,17 @@ b-dropdown hr {
   height: 1px;
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+
+b-tabs .b-tabs-navigation li {
+  display: inline;
+}
+
+b-tabs .b-tabs-navigation li:hover {
+  cursor: pointer;
+}
+
+b-tabs .b-tabs-hidden {
+  display: none;
 }

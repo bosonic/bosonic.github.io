@@ -4,12 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/images/cabin.png">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
     <link href="/styles/main.css" rel="stylesheet">
 
     <script src="/scripts/bosonic-polyfills.js"></script>
     <script src="/scripts/bosonic-components.js"></script>
+    
     <link href="/styles/bosonic-components.css" rel="stylesheet">
+    <link href="/styles/themes/alizarin/main.css" rel="stylesheet">
 
     <title>Bosonic Web Component</title>
     <meta name="description" content="undefined">
@@ -134,10 +136,10 @@
             <option value="Wisconsin"></option>
             <option value="Wyoming"></option>
         </b-datalist>
-        <b-autocomplete list="data"></b-autocomplete>
+        <b-autocomplete class="b" list="data"></b-autocomplete>
 
         <h2>Combo box</h2>
-        <b-combo-box list="data"></b-combo-box>
+        <b-combo-box class="b" list="data"></b-combo-box>
 
         <h2>Datepicker</h2>
 
@@ -253,27 +255,7 @@
         </ul>
 
         <h2>Tabs</h2>
-        <style>
-            .b-tabs-navigation {
-                margin: 0;
-                margin-bottom: 2px;
-            }
-            .b-tabs-navigation li {
-                background: #fff;
-                border: 1px solid #ccc;
-                border-bottom: 1px solid #fff;
-                padding: 5px;
-            }
-            .b-tabs-navigation li.b-tabs-hidden {
-                background: #ddd;
-                border-bottom: 1px solid #ccc;
-            }
-            .b-tabs-container {
-                border: 1px solid #ccc;
-                width: 50%;
-                padding: 10px;
-            }
-        </style>
+
         <b-tabs>
             <ul>
                 <li>Tab 1</li>
@@ -297,27 +279,6 @@
         </b-tabs>
 
         <h2>Sortable</h2>
-        <style>
-            b-sortable ul {
-                list-style-type: none;
-                width: 150px;
-            }
-            b-sortable li {
-                border: 1px solid #ccc;
-                background-color: #ddd;
-                margin: 5px;
-            }
-            b-sortable li.sortable-ghost {
-               opacity: .25;
-                -webkit-transition: -webkit-transform 0.2s ease-out;
-                -moz-transition: -moz-transform 0.2s ease-out;
-               -webkit-transform: scale(0.8);
-               -moz-transform: scale(0.8);
-            }
-            b-sortable li.sortable-over {
-               opacity: .25;
-            }
-        </style>
         <b-sortable>
             <ul>
                 <li>Item 1</li>
@@ -333,7 +294,7 @@
         <p>Generic element for selectability in a list. Click on the list below and use arrow keys to change selection.</p>
         <style>
             .b-selectable-selected {
-                border: 1px solid black;
+                /*border: 1px solid black;*/
             }
         </style>
         <b-selectable target="li">
@@ -363,34 +324,11 @@
         </style>
 
         <h2>Draggable</h2>
-        <style>
-            .draggable {
-                height: 100px;
-                width: 150px;
-                border: 1px solid black;
-                background: lightblue;
-            }
-            .draggable-container {
-                position: relative;
-                height: 300px;
-                width: 250px;
-                background: #ccc;
-            }
-            .draggable-container .draggable {
-                position: absolute;
-                top: 10px;
-                left: 20px;
-            }
-            .draggable-handle {
-                background: gray;
-                cursor: move;
-            }
-        </style>
         <div class="draggable-container">
             <b-draggable handle=".draggable-handle" target=".draggable" containment="parent">
                 <div class="draggable">
-                    <div class="draggable-handle">Handle</div>
-                    Lorem ipsum...
+                    <div class="draggable-handle">Drag me !</div>
+                    <div class="draggable-content">Lorem ipsum</div>
                 </div>
             </b-draggable>
         </div>
@@ -405,7 +343,7 @@
         </div>
         
         <h2>Accordion</h2>
-        <b-accordion selected="0">
+        <b-accordion class="b" selected="0">
             <b-collapsible>
                 <div class="b-collapsible-header">
                     Header
@@ -433,19 +371,7 @@
         </b-accordion>
 
         <h2>Collapsible</h2>
-        <style>
-            b-collapsible {
-                border: 1px solid #ccc;
-            }
-            b-collapsible div {
-                padding: 2px 5px;
-            }
-            b-collapsible .b-collapsible-header {
-                border-bottom: 1px solid #ccc;
-            }
-            b-accordion .b-selectable-selected {
-                border: 1px solid #ccc;
-            }
+        <style>            
             b-accordion:focus {
                 outline: none;
             }
@@ -466,7 +392,7 @@
         <p>© 2014 Bosonic Authors. Code licensed under the <a href="https://github.com/bosonic/bosonic/blob/master/LICENSE">MIT License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     </div>
 
-    <a href="https://github.com/bosonic/bosonic" target="_blank"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:2" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <a href="https://github.com/bosonic/bosonic" target="_blank" class="forkme"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:2" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>
     <script src="/scripts/main.js" type="text/javascript"></script>
