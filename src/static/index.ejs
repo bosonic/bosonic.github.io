@@ -70,7 +70,7 @@
 
 	<script type="text/javascript">
 		window.addEventListener('scroll', function() {
-			var top = document.body.scrollTop,
+			var top = document.documentElement.scrollTop || document.body.scrollTop,
 				header = document.querySelector('header');
 			if (top > 50) {
 				header.classList.add('scrolled');
