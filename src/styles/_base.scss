@@ -48,11 +48,13 @@ main {
 	background-color: #fff;
 
 	@include box-shadow(5px 5px #E6E6E6, 4px 4px #E6E6E6, 3px 3px #E6E6E6, 2px 2px #E6E6E6, 1px 1px #E6E6E6);
-
-	& > section > section {
-		padding: 50px;
-		max-width: $maxWidth;
-		margin: 0 auto;
+	& > section {
+		padding-top: 50px;
+		& > section {
+			padding-bottom: 50px;
+			max-width: $maxWidth;
+			margin: 0 auto;
+		}
 	}
 }
 
