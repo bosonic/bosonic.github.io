@@ -1,0 +1,88 @@
+<% include ../partials/_head %>
+<body>
+	<header class="home">
+		<% include ../partials/_nav %>
+	</header>
+
+	<main class="markdown">
+
+		<section id="welcome">
+			<section>
+				<img src="/images/bosonic_logo_big.png" alt="Bosonic logo">
+				<h1>A Web Components development toolkit</h1>
+
+				<p>Web Components make it possible for web developers to build and reuse UI atoms & molecules as simple HTML elements. Bosonic provides you with the necessary tooling for the best integration of these new standards into your applications.</p>
+
+				<a href="/getting-started.html" class="button">Getting started</a>
+			</section>
+		</section>
+
+		<section id="features">
+
+			<section>
+				<img class="left" src="/images/bosonic_periodic.png" alt="Fake periodic table of elements">
+				<h3>A curated library of reusable elements</h3>
+				<p>Carefully crafted with web standards and accessibility in mind, they cover the web developer everyday needs and are fully interoperable with elements built for the Polymer platform.</p>
+			</section>
+
+			<section>
+				<img class="right" src="/images/bosonic_balloon.png" alt="A high altitude balloon">
+				<h3>A lightweight platform</h3>
+				<p>Carefully crafted with web standards and accessibility in mind, they cover the web developer everyday needs and are fully interoperable with elements built for the Polymer platform.</p>
+			</section>
+
+			<section>
+				<img class="left" src="/images/bosonic_spaceship.png" alt="An Enterprise-class spaceship entering a wormhole">
+				<h3>A future-proof solution to Web Components usage</h3>
+				<p>The Bosonic transpiler uses code transformation to desugar your elements source code into vanilla JavaScript which only uses stable Web Components features.</p>
+			</section>
+
+		</section>
+
+		<section id="browsers">
+			<section>
+				<h2>Browser Support</h2>
+
+				<p>Please note that we are currently expanding our test farm in order to test Bosonic with more browsers, including mobile ones and older versions of Firefox and Chrome. Bosonic support is most probably better than indicated below.</p>
+
+				<table class="browser-compat">
+					<tr>
+			            <td><img src="images/firefox.png" /></td>
+			            <td><img src="images/chrome.png" /></td>
+			            <td><img src="images/ie.png" /></td>
+			            <td><img src="images/safari.png" /></td>
+			            <td><img src="images/opera.png" /></td>
+			        </tr>
+					<tr>
+						<td>Firefox 25+</td>
+						<td>Chrome 30+</td>
+						<td>Internet Explorer 9+</td>
+						<td>Safari 6+</td>
+						<td>Opera 12+</td>
+					</tr>
+				</table>
+			</section>
+		</section>
+
+	</main>
+
+	<% include ../partials/_footer %>
+
+	<script type="text/javascript">
+		window.addEventListener('scroll', function() {
+			var top = document.body.scrollTop,
+				header = document.querySelector('header');
+			if (top > 50) {
+				header.classList.add('scrolled');
+				if (top > 150) {
+					header.classList.add('logo');
+				} else {
+					header.classList.remove('logo');
+				}
+			} else {
+				header.classList.remove('scrolled');
+			}
+		});
+	</script>
+</body>
+</html>

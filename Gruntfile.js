@@ -3,19 +3,15 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pages: {
-      posts: {
-        src: 'posts',
+      docs: {
+        src: 'src/pages',
         dest: 'dist',
-        layout: 'src/layouts/post.ejs',
-        url: 'posts/:title/',
+        layout: 'src/layouts/page.ejs',
+        url: ':category/:section/:title',
         options: {
-          pageSrc: 'src/pages',
+          pageSrc: 'src/static',
           data: {
             baseUrl: '/'
-          },
-          pagination: {
-            postsPerPage: 10,
-            listPage: 'src/pages/index.ejs'
           },
           sortFunction: function(a, b) {
             return a.order - b.order;
@@ -49,9 +45,10 @@ module.exports = function(grunt) {
     watch: {
       pages: {
         files: [
-          'posts/**',
-          'src/layouts/**',
-          'src/pages/**/*.ejs'
+          'src/static/*.ejs',
+          'src/layouts/*.ejs',
+          'src/partials/*.ejs',
+          'src/pages/**/*.md'
         ],
         tasks: ['pages']
       },
@@ -92,7 +89,7 @@ module.exports = function(grunt) {
     },
     clean: {
       dist: ['dist'],
-      components: ['posts/pages/components/*']
+      //components: ['posts/pages/components/*']
     },
     'gh-pages': {
       options: {

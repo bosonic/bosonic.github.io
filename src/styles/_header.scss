@@ -1,0 +1,63 @@
+header {
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+
+	&.scrolled {
+		@include single-box-shadow(5px 0px rgba(0,0,0,.3));
+		background-color: $veryLightColor;
+	}
+
+	nav {
+		text-align: center;
+		padding-top: 7px;
+
+		#hamburger {
+			display: none;
+		}
+
+		ul {
+			margin: 15px 0 10px 0;
+
+			li {
+				display: inline-block;
+				font-size: 0.9em;
+				font-weight: 400;
+
+				a {
+					display: inline-block;
+					font-weight: 400;
+					font-size: 1em;
+					line-height: 1.6;
+					padding: 0 .6em;
+					margin: 0 .6em;
+					text-transform: uppercase;
+
+					@include transition(all 0.5s ease);
+
+					&:hover {
+						
+					}
+				}
+			}
+		}
+	}
+
+	.nav-separator { opacity: .4 }
+
+	#logo {
+		position: absolute;
+		left: 1rem;
+		background: transparent url('/images/bosonic_logo_small.png') no-repeat;
+		width: 325px;
+		height: 159px;
+		text-align: left;
+		text-indent: -9000px;
+		display: none;
+	}
+
+	&.logo #logo {
+		display: inline-block;
+	}
+
+}

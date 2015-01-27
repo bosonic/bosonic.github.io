@@ -1,24 +1,8 @@
-@media screen and (max-width: 1440px) {
-  #header {
-    #logo {
-      position: absolute;
-      top: .1rem;
-      left: 1rem;
-      background-image: url('/images/logo.png');
-      width: 211px;
-      height: 46px;
-      text-indent: -9000px;
-    }
-  }
-}
+@media screen and (max-width: 1080px) {
+  header nav {
+    text-align: right;
 
-@media screen and (max-width: 1200px) {
-
-  #header {
-    #nav {
-      text-align: right;
-      padding-right: 50px;
-
+    ul {
       li {
         font-size: .8em;
 
@@ -29,95 +13,20 @@
       }
     }
   }
-  
 }
 
-@media screen and (max-width: 992px)  {
-  #content {
-    width: 100%;
-    padding: 0;
-    padding-top: 65px;
+@media screen and (max-width: 895px) {
 
-    #illustration {
-      display: none;
-    }
+  header {
 
-    #welcome {
-      float: none;
-      width: auto;
-      padding: 0;
-    }
-
-    #homepage-top, .block {
-      padding: 20px;
-      padding-bottom: 0;
-      height: auto;
-    }
-
-    .schema {
-      width: auto;
-      float: none;
-      text-align: center;
-    }
-
-    .floating-text {
-      width: auto;
-      float: none;
-      padding-left: 0;
-    }
-
-    .button {
-      display: block;
-      margin: 0 auto;
-    }
-
-    .right {
-      float: none;
-    }
-  }
-
-  #header {
-    #nav {
-      text-align: center;
-      line-height: 100%;
-
-      li {
-        font-size: .9em;
-
-        a {
-          padding: .2em;
-          margin: .2em;
-        }
+    nav {
+      #hamburger {
+        display: inline;
+        position: absolute;
+        right: 20px;
+        top: 8px;
+        cursor: pointer;
       }
-    }
-
-    #logo {
-      position: static;
-      display: block;
-      margin: 0 auto;
-    }
-  }
-
-  #footer {
-    width: auto;
-  }
-
-}
-
-@media screen and (max-width: 768px) {
-
-  #header {
-
-    #hamburger {
-      display: inline;
-      position: absolute;
-      right: 20px;
-      top: 8px;
-      cursor: pointer;
-    }
-
-    #logo {
-      margin: 0 0 0 15px;
     }
 
     #nav {

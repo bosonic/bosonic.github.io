@@ -1,6 +1,7 @@
 {
   title: "Contribute",
-  type: "static"
+  category: "documentation",
+  section: "Community"
 }
 
 # Contribute

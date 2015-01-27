@@ -1,0 +1,22 @@
+<% include ../partials/_head %>
+<body>
+    <% include ../partials/_header %>
+
+    <div id="content" class="markdown">
+
+        <div class="block markdown">
+            <ul>
+                <% posts.forEach(function(post) { %>
+                    <li><a href="/<%- post.url %>.html"><%- post.title %></a></li>
+                <% }); %>
+            </ul>
+
+            <%- post.content %>
+        </div>
+
+    </div>
+
+    <% include ../partials/_footer %>
+
+</body>
+</html>

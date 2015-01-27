@@ -1,29 +1,37 @@
-#homepage-top {
-	height: 360px;
-	padding-bottom: 20px;
+#welcome {
+    text-align: center;
+    background-color: $veryLightColor;
 
-	#illustration {
-		width: 340px;
-		float: left;
-	}
+    h1 {
 
-	#welcome {
-		width: 435px;
-		float: left;
-		padding-left: 25px;
-		padding-top: 25px;
-	}
+    }
+
+    p {
+        text-align: left;
+    }
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 }
 
-div.schema {
-	width: 340px;
-	float: left;
-}
+#features {
+    section {
+        img.left {
+            margin-right: 50px;
+        }
+        img.right {
+            margin-left: 50px;
+        }
+    }
 
-div.floating-text {
-	width: 435px;
-	float: left;
-	padding-left: 25px;
+    section:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 }
 
 table.browser-compat {
