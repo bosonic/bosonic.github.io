@@ -1,20 +1,25 @@
 <% include ../partials/_head %>
 <body>
-    <% include ../partials/_header %>
+    <header class="home scrolled logo">
+      <% include ../partials/_nav %>
+    </header>
 
-    <div id="content" class="markdown">
+    <main class="markdown">
 
-        <div class="block markdown">
-            <ul>
-                <% posts.forEach(function(post) { %>
-                    <li><a href="/<%- post.url %>.html"><%- post.title %></a></li>
-                <% }); %>
-            </ul>
+        <section class="content">
+            <section>
+                <ul>
+                    <% posts.forEach(function(post) { %>
+                        <li><a href="/<%- post.url %>.html"><%- post.title %></a></li>
+                    <% }); %>
+                </ul>
+            </section>
+            <section>
+                <%- post.content %>
+            </section>
+        </section>
 
-            <%- post.content %>
-        </div>
-
-    </div>
+    </main>
 
     <% include ../partials/_footer %>
 
