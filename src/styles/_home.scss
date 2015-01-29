@@ -1,79 +1,86 @@
 #welcome {
-    text-align: center;
-    background-color: $veryLightColor;
+  text-align: center;
+  background-color: $veryLightColor;
 
-    h1 {
+  h1 {
 
-    }
+  }
 
-    p {
-        text-align: left;
-    }
+  p {
+    text-align: left;
+  }
 
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  & img.logo {
+    width: 100%;
+  }
 }
 
 #features {
-    section {
-        img.left {
-            margin-right: 50px;
-        }
-        img.right {
-            margin-left: 50px;
-        }
+  section {
+    img.left {
+      margin-right: 50px;
     }
+    img.right {
+      margin-left: 50px;
+    }
+  }
 
-    section:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
+  section:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
-table.browser-compat {
-    width: 100%;
-}
+ul.browser-compat {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: outside none none;
+  padding: 0;
+  margin: 0;
 
-table.browser-compat td {
+  & > li {
+    flex: 0 0 auto;
     text-align: center;
-    width: 160px;
-    vertical-align: middle;
-}
 
-table.browser-compat img {
-    border: none;
-    background: none;
-    box-shadow: none;
+    & > p {
+      line-height: 10px;
+      color: $fontSecondary;
+    }
+  }
 }
 
 .browser-logo{
-    width:64px;
-    height:64px;
-    margin-bottom:.5em;
-    background:url(../images/browser-logos.jpg) no-repeat 0 0;
-    background-size:auto 100%
+  width:64px;
+  height:64px;
+  margin-bottom:.5em;
+  background:url(../images/browser-logos.jpg) no-repeat 0 0;
+  background-size:auto 100%
 }
 
 .browser-logo--chrome{
-    background-position:0 0
+  background-position:0 0
 }
 
 .browser-logo--opera{
-   background-position:-64px 0
+  background-position:-64px 0
 }
 
 .browser-logo--firefox{
-   background-position:-128px 0
+  background-position:-128px 0
 }
 
 .browser-logo--safari{
-   background-position:-192px 0
+  background-position:-192px 0
 }
 
 .browser-logo--ie{
-   background-position:-256px 0
+  background-position:-256px 0
 }
