@@ -37,6 +37,7 @@ h3 {
 
 a {
 	color: darken($veryDarkColor, 10%);
+	text-decoration: none;
 
 	&:hover {
 		text-decoration: underline;
