@@ -63,9 +63,9 @@
 		window.addEventListener('scroll', function() {
 			var top = document.documentElement.scrollTop || document.body.scrollTop,
 				header = document.querySelector('header');
-			if (top > 50) {
+			if (top > 30) {
 				header.classList.add('scrolled');
-				if (top > 150) {
+				if (top > 130) {
 					header.classList.add('logo');
 				} else {
 					header.classList.remove('logo');
