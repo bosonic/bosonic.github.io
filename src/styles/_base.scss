@@ -45,7 +45,7 @@ a {
 }
 
 main {
-	margin-bottom: 75px;
+	margin-bottom: 50px;
 	background-color: #fff;
 
 	@include box-shadow(5px 5px #E6E6E6, 4px 4px #E6E6E6, 3px 3px #E6E6E6, 2px 2px #E6E6E6, 1px 1px #E6E6E6);
@@ -83,9 +83,8 @@ main {
 	}
 }
 
-#footer {
-	height: 50px;
-	width: $width;
-	padding: 0 50px;
-	margin: 0 auto;
+footer {
+	display: flex;
+	justify-content: center;
+	margin: 15px 30px;
 }
