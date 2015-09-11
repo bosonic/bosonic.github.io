@@ -5,7 +5,7 @@ body {
 	font-family: 'Lato', sans-serif;
 	line-height: 1.4;
 	color: #4C5245;
-	background-color: $background;
+	background-color: #fff;
 }
 
 h1 {
@@ -44,18 +44,40 @@ a {
 	}
 }
 
-main {
+main.content {
 	margin-bottom: 50px;
 	background-color: #fff;
 
-	@include box-shadow(5px 5px #E6E6E6, 4px 4px #E6E6E6, 3px 3px #E6E6E6, 2px 2px #E6E6E6, 1px 1px #E6E6E6);
 	& > section {
 		padding: 0 15px;
 		padding-top: 50px;
+		max-width: $maxWidth;
+		margin: 0 auto;
 		& > section {
 			padding-bottom: 50px;
-			max-width: $maxWidth;
-			margin: 0 auto;
+			width: 80%;
+		}
+		& > section.full-content {
+			padding-bottom: 50px;
+			width: 100%;
+		}
+		& > nav {
+			width: 15%;
+			float: right;
+			& > ul {
+				position: fixed;
+				top: 70px;
+				list-style-type: none;
+				padding: 0;
+				& > h6 {
+					margin: 0;
+					padding-bottom: 15px;
+					text-transform: uppercase;
+					color: $veryDarkColor;
+					font-weight: 300;
+					font-size: 1.2em;
+				}
+			}
 		}
 	}
 }
@@ -68,7 +90,6 @@ main {
 	display: inline-block;
 	padding:20px 30px;
 	margin:10px 0;
-	width: 153px;
 	text-transform: uppercase;
 	font-weight: 700;
 	color: white;
@@ -82,9 +103,12 @@ main {
 		text-decoration: none;
 	}
 }
+.demo-link {
+	float: right;
+}
 
 footer {
-	display: flex;
-	justify-content: center;
+	text-align: center;
 	margin: 15px 30px;
+	color: $fontSecondary;
 }

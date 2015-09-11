@@ -1,24 +1,14 @@
 {
-	title: "b-selectable", 
-	type: "static", 
-	section: "components"
+  title: 'Selectable',
+  element: 'b-selectable',
+  category: "elements",
+  section: "core",
+  order: 8
 }
 
-# &lt;b-selectable&gt;
+# b-selectable
 
-A [Bosonic](http://bosonic.github.io) element which allows single (for now) selection of an item in a list.
-
-[Check the demo](http://bosonic.github.io/demos.html).
-
-## Install
-
-This element is available as a npm package, see the [Bosonic documentation](http://bosonic.github.io/documentation.html) for Bosonic transpiler usage.
-
-```sh
-$ npm install --save b-selectable
-```
-
-Otherwise, you can download and include in your HTML file the builded CSS & JS files, alongside with Bosonic polyfills, as described in the [Getting Started](http://bosonic.github.io/getting-started.html) guide.
+`b-selectable` is an element which allows single (for now) selection of an item in a list.
 
 ## Usage
 
@@ -47,10 +37,14 @@ Whenever the selected item changes, a `b-selected` event will be fired. The user
 
 If the user clicks/taps on an item, it will be selected AND then activated (a `b-activate` event will be fired just after the `b-selected`). If using keyboard, type ENTER to activate the selected item.
 
-b-selectable is not styled.  You need to style the `b-selectable-selected` CSS class to style the selected element.
+`b-selectable` is not styled.  You need to style the `b-selectable-selected` CSS class to style the selected element.
 
 ```css
 .b-selectable-selected {
     background-color: #ccc;
 }
 ```
+
+## Accessibility
+
+`b-selectable` acts as an ARIA listbox widget. As such, `role="listbox"` will be automatically added to it, and `role="option"` to each item. Each selected list item will have `aria-selected="true"`. TAB & Up/Down support are implemented.

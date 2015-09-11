@@ -1,8 +1,8 @@
 {
   title: "Creating elements",
   category: "documentation",
-  section: "Getting started",
-  order: 3
+  section: "Reference",
+  order: 2
 }
 
 # Creating elements

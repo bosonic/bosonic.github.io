@@ -1,7 +1,5 @@
 {
-  title: "Contribute",
-  category: "documentation",
-  section: "Community"
+  title: "Contribute"
 }
 
 # Contribute

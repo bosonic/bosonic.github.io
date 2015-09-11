@@ -4,17 +4,10 @@
       <% include ../partials/_nav %>
     </header>
 
-    <main class="">
+    <main class="content">
 
-        <section class="content">
-            <section>
-                <ul>
-                    <% posts.forEach(function(post) { %>
-                        <li><a href="/<%- post.url %>.html"><%- post.title %></a></li>
-                    <% }); %>
-                </ul>
-            </section>
-            <section>
+        <section>
+            <section class="full-content">
                 <%- post.content %>
             </section>
         </section>

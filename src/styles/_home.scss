@@ -1,9 +1,24 @@
+main.home {
+  margin-bottom: 50px;
+  background-color: #fff;
+
+  & > section {
+    padding: 0 15px;
+    padding-top: 50px;
+    & > section {
+      padding-bottom: 50px;
+      max-width: $maxWidth;
+      margin: 0 auto;
+    }
+  }
+}
+
 #welcome {
   text-align: center;
   background-color: $veryLightColor;
 
   h1 {
-
+    margin-top: 0;
   }
 
   p {
@@ -38,22 +53,15 @@
   }
 }
 
-ul.browser-compat {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: outside none none;
+table.browser-compat {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  text-align: center;
 
-  & > li {
-    flex: 0 0 auto;
-    text-align: center;
-
-    & > p {
-      line-height: 10px;
-      color: $fontSecondary;
-    }
+  p {
+    
+    line-height: 10px;
+    color: $fontSecondary;
   }
 }
 

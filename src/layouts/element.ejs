@@ -1,0 +1,29 @@
+<% include ../partials/_head %>
+<body>
+    <header class="home scrolled logo">
+      <% include ../partials/_nav %>
+    </header>
+
+    <main class="content">
+
+        <section class="content">
+            <nav>
+                <ul>
+                    <h6>Elements</h6>
+                    <% posts.forEach(function(p) { %>
+                        <% if (post.section == p.section) { %><li><a href="/<%- p.url %>.html"><%- p.title %></a></li><% } %>
+                    <% }); %>
+                </ul>
+            </nav>
+            <section>
+                <a class="button demo-link" href="/demos/<%- post.element %>.html">Demo</a>
+                <%- post.content %>
+            </section>
+        </section>
+
+    </main>
+
+    <% include ../partials/_footer %>
+
+</body>
+</html>

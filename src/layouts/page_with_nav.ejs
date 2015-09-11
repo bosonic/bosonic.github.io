@@ -1,0 +1,28 @@
+<% include ../partials/_head %>
+<body>
+    <header class="home scrolled logo">
+      <% include ../partials/_nav %>
+    </header>
+
+    <main class="content">
+
+        <section class="content">
+            <nav>
+                <ul>
+                    <h6><%- post.section %></h6>
+                    <% posts.forEach(function(p) { %>
+                        <% if (post.section == p.section) { %><li><a href="/<%- p.url %>.html"><%- p.title %></a></li><% } %>
+                    <% }); %>
+                </ul>
+            </nav>
+            <section>
+                <%- post.content %>
+            </section>
+        </section>
+
+    </main>
+
+    <% include ../partials/_footer %>
+
+</body>
+</html>

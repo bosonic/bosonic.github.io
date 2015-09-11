@@ -62,4 +62,12 @@
   .forkme {
     display: none;
   }
+
+  main.content > section > nav {
+    float: none;
+    & > ul {
+      position: relative;
+      top: 10px;
+    }
+  }
 }
