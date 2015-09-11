@@ -7,7 +7,7 @@
 
 # Creating elements
 
-Creating a new HTML element is easy with Bosonic. Here is a boilerplate of a basic element (let's say you'll save this as `src/hello-world.html`):
+Creating a new HTML element is easy with Bosonic. Here is a boilerplate of a basic element (let's say you'll save this as `lib/hello-world.html`):
 
 ``` html
 <element name="hello-world">
@@ -29,7 +29,7 @@ As you can see, the `<element>` tag that encapsulates our element's definition h
 
 In the `<script>` element, we call `Bosonic.register` to register the API of our new element: all methods & properties defined here will become API methods & props of each attached element in a web page.
 
-One of the Bosonic's features is the automatic rendering of the `<template>` tag content: this markup will become our elements' Shadow DOM. The `shadowRoot` property allows you to query and manipulate this Shadow DOM, as showed in the `sayHello` method.
+One of the Bosonic's features is the automatic rendering of the `<template>` tag content: this markup will become our elements' [Shadow DOM](http://webcomponents.org/polyfills/shadow-dom/). The `shadowRoot` property allows you to query and manipulate this Shadow DOM, as showed in the `sayHello` method.
 
 Using our new element in a web page is easy too:
 
@@ -39,11 +39,11 @@ Using our new element in a web page is easy too:
 <head>
     <title>My Application</title>
     <meta charset="utf-8">
-    <!-- Load the platform & runtime -->
-    <script src="node_modules/bosonic/dist/bosonic-platform.js"></script>
-    <script src="node_modules/bosonic/dist/bosonic-runtime.js"></script>
+    <!-- Load the polyfills & runtime -->
+    <script src="lib/webcomponents.js"></script>
+    <script src="lib/bosonic-runtime.js"></script>
     <!-- Import the element -->
-    <link rel="import" href="src/hello-world.html">
+    <link rel="import" href="lib/hello-world.html">
 </head>
 <body>
     <!-- Declare the element -->
@@ -60,5 +60,3 @@ var hello = document.querySelector('hello-world');
 hello.sayHello();
 ```
 You should now see 'Hello, world!' on screen. We've successfully used our element's API!
-
-But there is a problem through: the asynchronous nature of the Bosonic polyfills. On a browser that doesn't implement natively the Custom Elements spec, it will take some time for the polyfill to __upgrade__ our custom elements and make their API available. Before upgrade, they are simply `HTMLUnknownElement` instances with no API. It means we need to wait for their upgrade in order to interact with them. Polymer offers 2 special events for that, `WebComponentsReady` and `polymer-ready`, unfortunately they are not part of the Custom Elements spec. A solution to this problem is to trigger
