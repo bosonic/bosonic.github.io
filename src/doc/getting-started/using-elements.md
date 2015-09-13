@@ -7,7 +7,7 @@
 
 # Using elements
 
-Now that you've grabed Bosonic and some elements, it's time to put these to use. For the sake of simplicity, we'll assume you put the downloaded files into a `lib` folder next to a blank HTML page. To use Bosonic elements, you first need to include the `webcomponents.js` polyfill library, and then the Bosonic runtime. Once done, you can import the element you want to play with using an [HTML import](http://webcomponents.org/articles/introduction-to-html-imports/).
+Now that you've decided to use Bosonic and some it's elements, it's time to put them to good use. For the sake of simplicity, we'll assume you put the downloaded files into a `lib` folder next to a blank HTML page. To use Bosonic elements, you first need to include the `webcomponents.js` polyfill library, and then the Bosonic runtime. Once this step is complete, you can import the element or elements you want to play with using an [HTML import](http://webcomponents.org/articles/introduction-to-html-imports/).
 
 ``` html
 <!DOCTYPE html>
@@ -50,10 +50,10 @@ Now that you've grabed Bosonic and some elements, it's time to put these to use.
 </html>
 ```
 
-We just added a dialog into our page! And as you can see in the sample above, you can manipulate your dialog element just like a native HTML one, using standard DOM features:
+We just added a dialog into our page! As you can see in the sample above, you can manipulate your dialog element just like a native HTML one, using standard DOM features:
 
 ## Attributes
-Elements' behaviour can be modified by using specific [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes). For example, if we add a `opened` attribute to a `b-collapsible` element, it will be opened by default:
+Element behavior can be modified by using specific [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes). For example, if we add a `opened` attribute to a `b-collapsible` element, it will be opened by default:
 
 ``` html
 <b-collapsible opened>
@@ -69,7 +69,7 @@ collapsible.setAttribute('opened', '');
 ```
 
 ## Elements API
-Like native HTML elements, Bosonic elements expose an API: properties and methods that trigger various behaviours. In the `b-dialog` sample above, we used its `showModal()` method to open the dialog with an overlay. Similarly, we could have used the `opened` property of the `b-collapsible` element to open it:
+Like native HTML elements, Bosonic elements expose an API: properties and methods that trigger various behaviors. In the `b-dialog` sample above, we used the `showModal()` method to open the dialog with an overlay. Similarly, we could have used the `opened` property of the `b-collapsible` element to open it:
 ``` js
 var collapsible = document.querySelector('b-collapsible');
 collapsible.opened = true;
@@ -77,14 +77,14 @@ collapsible.opened = true;
 Please refer to the [elements' documentation](/elements/dialogs-modals.html) for more information about their specific APIs.
 
 ## Custom events
-Bosonic elements emit various custom [events](https://developer.mozilla.org/en-US/docs/Web/API/Event) during their lifecycle. For instance, `b-collapsible` emits a `b-collapsible-show` event when it is about to be shown, event that you can listen too and even cancel:
+Bosonic elements emit various [custom events](https://developer.mozilla.org/en-US/docs/Web/API/Event) during their lifecycle. For instance, `b-collapsible` emits a `b-collapsible-show` event when it is about to be shown, event that you can listen too and even cancel:
 ``` js
 var collapsible = document.querySelector('b-collapsible');
 collapsible.addEventListener('b-collapsible-show', function(event) {
     event.preventDefault();
 });
 ```
-Again, please refer to the elements documentation for more information about the events they emit.
+Again, please refer to the elements documentation for more information about the events they publish.
 
 ## WebComponentsReady event
 The [Custom Elements](http://webcomponents.org/polyfills/custom-elements/) polyfill handles element upgrades asynchronously. When the browser parses your page's markup, it doesn't recognize custom elements at first, they're therefore interpreted as `HTMLUnknownElement`. When `DOMContentsLoaded` is fired, the polyfill will take a look at each of the unknown elements in the page, see if they have been registered as custom elements, and then upgrade them to custom elements with APIs. Consequently, custom elements API are not available until after they have been upgraded. That's why you need to listen to the `WebComponentsReady` event (that will be fired by the polyfill) before trying to use their APIs.
@@ -98,7 +98,7 @@ window.addEventListener("WebComponentsReady", function() {
 ```
 
 ## Styling elements
-There are basically two types of elements: those who use [Shadow DOM](http://webcomponents.org/polyfills/shadow-dom/) and those who don't. Those who don't are easy to style, just use classic CSS selectors:
+There are basically two types of elements: those that use [Shadow DOM](http://webcomponents.org/polyfills/shadow-dom/) and those that don't. The elements that don't use Shadow DOM are easy to style. They work just like standard HTML and use classic global CSS selectors:
 
 ``` html
 <style>
@@ -121,9 +121,9 @@ b-dropdown.modern > button {
 </b-dropdown>
 ```
 
-Those who use Shadow DOM extensively (for instance, `b-tooltip`) can be a bit more complicated to style. The reason is Shadow DOM scopes and encapsulates its CSS, making it theoretically immune from style leakage. But of course, elements' users want to theme their custom elements, and therefore need to alter this Shadow CSS. The Shadow DOM spec authors have provided pseudo-selectors (`/deep/` and `::shadow`) in order to achieve this, but they're not easy to use and introduce another round of problems.
+Elements that use Shadow DOM extensively (for instance, `b-tooltip`) can be a bit more complicated to style. The reason for that is that Shadow DOM scopes and encapsulates CSS, making it theoretically immune from style leakage. Of course,  Web Component creators want to theme their custom elements, and therefore they need to alter the CSS within the element. The Shadow DOM spec authors have provided pseudo-selectors (`/deep/` and `::shadow`) in order to achieve this, but they're not easy to use. They additionally introduce another round of problems.
 
-Like the Polymer authors, we found ourselves in the quest of a better way. And we decided to use [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables). Basically, elements declare variables for setting some CSS properties like colors or padding, variables that can be set in an external stylesheet:
+The Polymer authors, found themselves in the quest of a better way. They decided to use [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) to achieve easy theming strategy for elements utilizing Shadow DOM. In using CSS Variables, elements declare their variables by setting some CSS properties like color or padding. Variables that can be set in an external stylesheet as seen in this example:
 
 ``` html
 <style>
@@ -135,8 +135,8 @@ Like the Polymer authors, we found ourselves in the quest of a better way. And w
 <b-tooltip for="btn">Tooltip text</b-tooltip>
 <button id="btn">My button</button>
 ```
-CSS Variables are still an experimental feature though, and only recent Firefox versions implement it. That's why we're actively developing a small build tool based on an existing CSS post-processor in order to make it work in every browser. It will be released in a few weeks, stay tuned!
+Please keep in mind that CSS Variables are still an experimental feature and as of now Firefox is the only browser with a implementation of them. This is why the web components community is actively developing a small build tool based on an existing CSS post-processor. This makes these CSS Variables able to work in every browser. This tool will be released in a few weeks, stay tuned!
 
 ## Interoperability
 
-Bosonic is built on top of the [web components polyfill library](http://webcomponents.org/polyfills/), like Polymer and x-tag. It means that you can happily mix Bosonic, Polymer & x-tag elements in the same page!
+Bosonic is built on top of the [web components polyfill library](http://webcomponents.org/polyfills/) just like Polymer and x-tag are. This means that you can happily mix Bosonic, Polymer, and x-tag elements on the same page!
