@@ -2,7 +2,7 @@
   title: "Putting into production",
   category: "documentation",
   section: "Getting started",
-  order: 3
+  order: 4
 }
 
 # Putting into production
