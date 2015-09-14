@@ -11,7 +11,7 @@ Shadow DOM is designed for CSS scoping & encapsulation. As such, styling Shadow 
 
 Please note that Shadow DOM spec is still a draft, and so CSS rules may change. We'll try to keep Bosonic in sync with these potential changes.
 
-Keep in mind that some of these rules are not easily shimable, therefore Bosonic support of these rules is limited. To be on the safe side, use only rules that are documented here.
+Keep in mind that some of these rules are not easily shimmed, therefore Bosonic support of these rules is limited. To be on the safe side, use only rules that are documented here.
 
 ### Styling the host element
 
@@ -72,9 +72,9 @@ The `:host-context(<selector>)` functional pseudo-class matches the host element
 
 ### Styling Shadow DOM markup from inside
 
-Shadow DOM features scoped styling: styles defined inside the scope of the shadow tree don't leak into the document DOM, and document styles don't leak into the shadow DOM. 
+Shadow DOM features scoped styling: styles defined inside the scope of the shadow tree don't leak into the main document's DOM (AKA Light DOM), and document styles don't leak into the Shadow DOM.
 
-Unfortunately, emulating scoped styling is near-to-impossible: the polyfill transforms these styles by prepending selectors with the element tag name, but this does not enforce lower bound encapsulation. Keep that in mind when authoring your elements (more on this later).
+Unfortunately, truly emulating scoped styling is near-to-impossible: the polyfill transforms these styles by prepending selectors with the element tag name, but this does not enforce [lower bound](https://github.com/webcomponents/webcomponentsjs/blob/master/src/ShadowCSS/ShadowCSS.js#L84-91) encapsulation. Keep this knowledge in the back of your mind when authoring your elements (more on this later).
 
 ``` html
 <element name="b-bar">
@@ -188,7 +188,7 @@ Second problem:
     <div id="three" class="foo">...</div>
 </b-bar>
 ```
-In this case, only the divs with a `foo` class will be distributed (`#one` and `#three`); the `::content div` selector should therefore match only these distributed nodes. Alas, as Bosonic will transpile this selector to `b-bar div`, `#two` will be styled too. To avoid this, you should use classes to distinguish between these divs:
+In this case, only the divs with a `foo` class will be distributed (`#one` and `#three`); the `::content div` selector should therefore match only these distributed nodes. Alas, as Bosonic will transpile this selector to `b-bar div`, `#two` will be styled too. To avoid this, you should use classes to distinguish between these HTML div elements:
 ``` css
 ::content div.foo {
     color: red;
