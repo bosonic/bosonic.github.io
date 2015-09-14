@@ -7,7 +7,7 @@
 
 # Using elements
 
-Now that you've decided to use Bosonic and some it's elements, it's time to put them to good use. For the sake of simplicity, we'll assume you put the downloaded files into a `lib` folder next to a blank HTML page. To use Bosonic elements, you first need to include the `webcomponents.js` polyfill library, and then the Bosonic runtime. Once this step is complete, you can import the element or elements you want to play with using an [HTML import](http://webcomponents.org/articles/introduction-to-html-imports/).
+Now that you've decided to use Bosonic and some of its elements, it's time to put them to good use. For the sake of simplicity, we'll assume you put the downloaded files into a `lib` folder next to a blank HTML page. To use Bosonic elements, you first need to include the [`webcomponents.js`](http://webcomponents.org/polyfills/) polyfill library, and then the Bosonic runtime. Once this step is complete, you can import the element or elements you want to play with using an [HTML import](http://webcomponents.org/articles/introduction-to-html-imports/).
 
 ``` html
 <!DOCTYPE html>
@@ -50,10 +50,10 @@ Now that you've decided to use Bosonic and some it's elements, it's time to put 
 </html>
 ```
 
-We just added a dialog into our page! As you can see in the sample above, you can manipulate your dialog element just like a native HTML one, using standard DOM features:
+We just added a [dialog](/elements/dialogs-modals.html) into our page! As you can see in the sample above, you can manipulate your dialog element just like a native HTML one, using standard DOM features:
 
 ## Attributes
-Element behavior can be modified by using specific [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes). For example, if we add a `opened` attribute to a `b-collapsible` element, it will be opened by default:
+Element behavior can be modified by using specific [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes). For example, if we add a `opened` attribute to a [`b-collapsible`](/elements/collapsible.html) element, it will be opened by default:
 
 ``` html
 <b-collapsible opened>
@@ -121,9 +121,9 @@ b-dropdown.modern > button {
 </b-dropdown>
 ```
 
-Elements that use Shadow DOM extensively (for instance, `b-tooltip`) can be a bit more complicated to style. The reason for that is that Shadow DOM scopes and encapsulates CSS, making it theoretically immune from style leakage. Of course,  Web Component creators want to theme their custom elements, and therefore they need to alter the CSS within the element. The Shadow DOM spec authors have provided pseudo-selectors (`/deep/` and `::shadow`) in order to achieve this, but they're not easy to use. They additionally introduce another round of problems.
+Elements that use Shadow DOM extensively (for instance, [`b-tooltip`](/elements/tooltips.html)) can be a bit more complicated to style. The reason for that is that Shadow DOM scopes and encapsulates CSS, making it theoretically immune from style leakage. Of course,  Web Component creators want to theme their custom elements, and therefore they need to alter the CSS within the element. The Shadow DOM spec authors have provided pseudo-selectors (`/deep/` and `::shadow`) in order to achieve this, but they're not easy to use. They additionally introduce another round of problems.
 
-The Polymer authors, found themselves in the quest of a better way. They decided to use [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) to achieve easy theming strategy for elements utilizing Shadow DOM. In using CSS Variables, elements declare their variables by setting some CSS properties like color or padding. Variables that can be set in an external stylesheet as seen in this example:
+The Polymer authors found themselves in the quest of a better way. They decided to use [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) to achieve easy theming strategy for elements utilizing Shadow DOM. In using CSS Variables, elements declare their variables by setting some CSS properties like color or padding. Variables that can be set in an external stylesheet as seen in this example:
 
 ``` html
 <style>
@@ -135,7 +135,7 @@ The Polymer authors, found themselves in the quest of a better way. They decided
 <b-tooltip for="btn">Tooltip text</b-tooltip>
 <button id="btn">My button</button>
 ```
-Please keep in mind that CSS Variables are still an experimental feature and as of now Firefox is the only browser with a implementation of them. This is why the web components community is actively developing a small build tool based on an existing CSS post-processor. This makes these CSS Variables able to work in every browser. This tool will be released in a few weeks, stay tuned!
+This is a great idea, and we've started to add some CSS variables in our elements too. Please keep in mind that CSS Variables are still an experimental feature and as of now Firefox is the only browser with a implementation of them. Polymer includes a shim in order to support CSS variables in all browsers, but it comes with a non-negligible performance cost. This is why the Bosonic team is actively developing a small build tool based on an existing CSS post-processor. This will make these CSS Variables able to work in every browser. This tool will be released in a few weeks, stay tuned!
 
 ## Interoperability
 
