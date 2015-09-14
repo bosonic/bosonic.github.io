@@ -7,7 +7,7 @@
 
 # Creating elements
 
-Creating a new HTML element is easy with Bosonic. Here is a boilerplate of a basic element (let's say you'll save this as `lib/hello-world.html`):
+Creating a new HTML element is easy with Bosonic. Here is a boilerplate of a basic element (let's assume for now that you'll save this as `lib/hello-world.html`):
 
 ``` html
 <element name="hello-world">
@@ -25,11 +25,11 @@ Creating a new HTML element is easy with Bosonic. Here is a boilerplate of a bas
 </element>
 ```
 
-As you can see, the `<element>` tag that encapsulates our element's definition has a `name` attribute: it is of course mandatory, as it specifies the name of the HTML tag you’ll instantiate in markup. Per spec, it __must__ contain a "-".
+As you can see, the `<element>` tag that encapsulates our element's definition has a `name` attribute: it is of course mandatory, as it specifies the name of the HTML tag you’ll instantiate in the markup. As per spec, it __must__ contain a "-".
 
 In the `<script>` element, we call `Bosonic.register` to register the API of our new element: all methods & properties defined here will become API methods & props of each attached element in a web page.
 
-One of the Bosonic's features is the automatic rendering of the `<template>` tag content: this markup will become our elements' [Shadow DOM](http://webcomponents.org/polyfills/shadow-dom/). The `shadowRoot` property allows you to query and manipulate this Shadow DOM, as showed in the `sayHello` method.
+One of the Bosonic's features is the automatic rendering of the `<template>` tag content: this markup will become our elements' [Shadow DOM](http://webcomponents.org/polyfills/shadow-dom/). The `shadowRoot` property allows you to query and manipulate this Shadow DOM, as shown in the `sayHello` method.
 
 Using our new element in a web page is easy too:
 

@@ -14,7 +14,7 @@ Lifecycle callbacks are special methods defined by the Custom Elements specifica
 - `detachedCallback()` is called when a custom element is removed from a DOM subtree.
 - `attributeChangedCallback(attributeName, oldValue, newValue)` is called when a custom element's attribute value has changed.
 
-Bosonic provides an useful feature: if you declare the attributes used by your element in the `<element>` tag, like this:
+Bosonic provides a useful feature: if you declare the attributes used by your element in the `<element>` tag, like this:
 ``` html
 <element name="hello-world" attributes="opened active">
     ...

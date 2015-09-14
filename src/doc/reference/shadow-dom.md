@@ -27,7 +27,7 @@ You can define __insertion points__ in your Shadow DOM with the `<content>` elem
     </script>
 </element>
 ```
-Here, we've defined 2 distribution points. As you can guess, the `select` attribute takes a CSS selector and is used to target a specific node in the Light DOM to be distributed at a specific point. The second `<content>` will simply distribute the rest of the Light DOM nodes at this insertion point.
+In this example, we've defined two distribution points. As you can probably guess, the `select` attribute takes a CSS selector and is used to target a specific node in the Light DOM to be distributed at a specific point. The second `<content>` will simply distribute the rest of the Light DOM nodes at this insertion point.
 
 If we put our element into use like this:
 ``` html
