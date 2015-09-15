@@ -10,8 +10,14 @@
             <nav>
                 <ul>
                     <h6>Elements</h6>
-                    <% posts.forEach(function(p) { %>
-                        <% if (post.section == p.section) { %><li><a href="/<%- p.url %>.html"><%- p.title %></a></li><% } %>
+                    <% posts.filter(function(p) { return p.section == 'core' }).forEach(function(p) { %>
+                        <li><a href="/<%- p.url %>.html"><%- p.title %></a></li>
+                    <% }); %>
+                    <% posts.filter(function(p) { return p.section == 'dnd' && p.published !== false }).forEach(function(p) { %>
+                        <li class="wip"><a href="/<%- p.url %>.html"><%- p.title %></a></li>
+                    <% }); %>
+                    <% posts.filter(function(p) { return p.section == 'data' && p.published !== false }).forEach(function(p) { %>
+                        <li class="wip"><a href="/<%- p.url %>.html"><%- p.title %></a></li>
                     <% }); %>
                 </ul>
             </nav>

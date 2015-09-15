@@ -48,6 +48,10 @@ module.exports = function(grunt) {
       assets: { expand: true, cwd: 'src', dest: 'dist', src: ['images/**', 'scripts/**', 'styles/**.css', 'styles/fonts/**']},
       core_demos: { expand: true, cwd: 'node_modules/bosonic-core-elements/demo', dest: 'dist/demos', src: '**/*' },
       core_docs: { expand: true, cwd: 'node_modules/bosonic-core-elements/doc', dest: 'src/elements', src: '**/*' },
+      dnd_demos: { expand: true, cwd: 'node_modules/bosonic-dnd-elements/demo', dest: 'dist/demos', src: '**/*' },
+      dnd_docs: { expand: true, cwd: 'node_modules/bosonic-dnd-elements/doc', dest: 'src/elements', src: '**/*' },
+      data_demos: { expand: true, cwd: 'node_modules/bosonic-data-elements/demo', dest: 'dist/demos', src: '**/*' },
+      data_docs: { expand: true, cwd: 'node_modules/bosonic-data-elements/doc', dest: 'src/elements', src: '**/*' }
     },
 
     watch: {
@@ -103,7 +107,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask('elements', [
     'copy:core_demos',
-    'copy:core_docs'
+    'copy:core_docs',
+    'copy:dnd_demos',
+    'copy:dnd_docs',
+    'copy:data_demos',
+    'copy:data_docs'
   ]);
 
   grunt.registerTask('build', [
