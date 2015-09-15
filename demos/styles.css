@@ -12,44 +12,79 @@ h2 {
     font-size: 1.6em;
 }
 
-b-sortable ul {
-    list-style-type: none;
-    width: 150px;
-}
-b-sortable ul li {
-    border: 1px solid #fff;
-    background-color: #e74c3c;
-    margin: 5px;
-    color: #fff;
-    height: 35px;
-    line-height: 35px;
+b-dialog-content {
     text-align: center;
+    padding: 20px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+}
+
+.b-flash-message-close {
+    float:right;
+    opacity:.4;
+    cursor: pointer;
+}
+
+.collapsible-toggle:hover {
+    background-color: #c0392b;
+}
+.collapsible-toggle {
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-weight: 700;
+    padding: 1em;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #e74c3c;
+    border-bottom: 1px solid #c0392b;
     -moz-transition: background-color 0.5s ease-in-out;
     -o-transition: background-color 0.5s ease-in-out;
     -webkit-transition: background-color 0.5s ease-in-out;
     transition: background-color 0.5s ease-in-out;
 }
-b-sortable ul li:before {
-    font-family: FontAwesome;
-    content: "\f047";
-    float: left;
-    background-color: #c0392b;
-    border-right: 1px solid #fff;
-    padding: 0 10px;
-    font-weight: 300;
+.collapsible-content, .tab-content {
+    background-color: #eee;
+    font-size: 1em;
+    line-height: 1.5em;
+    padding: 1em 2em;
 }
-b-sortable ul li:hover {
-    background-color: $darkColor;
-    cursor: pointer;
-    font-weight: 700;
+.tab-content {
+    border-left: 1px solid #ccc;
 }
-b-sortable ul li.sortable-ghost {
-    opacity: .25;
-    -webkit-transition: -webkit-transform 0.2s ease-out;
-    -moz-transition: -moz-transform 0.2s ease-out;
-    -webkit-transform: scale(0.8);
-    -moz-transform: scale(0.8);
+b-tab {
+    border-radius: 4px 4px 0 0;
 }
-b-sortable ul li.sortable-over {
-    opacity: .25;
+b-tab.active {
+    background-color: #eee;
+}
+
+.draggable {
+    height: 100px;
+    width: 150px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+    background: #fff;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.draggable-container {
+    position: relative;
+    height: 300px;
+    width: 250px;
+    background: #eee;
+}
+
+.draggable-handle {
+    background: #e74c3c;
+    cursor: move;
+    color: #fff;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.draggable-content {
+    padding: 10px;
 }
