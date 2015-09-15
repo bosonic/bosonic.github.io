@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+    <link rel="icon" type="image/png" href="/images/cabin.png">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="/styles/main.css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="/images/favicon.ico" />
+    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" /><![endif]-->
+
+    <title>Bosonic Web Component</title>
+    <meta name="description" content="undefined">
+  </head>
+<body>
+    <header class="home scrolled logo">
+      <nav>
+    <a href="/index.html" id="logo">Bosonic web component</a>
+    <img id="hamburger" src="/images/hamburger.png" alt="">
+    <ul id="nav">
+        <li><a href="/index.html">Home</a></li>
+        <li class="nav-separator">|</li>
+        <li><a href="/documentation/getting-started/getting-the-code.html">Getting Started</a></li>
+        <li class="nav-separator">|</li>
+        <li><a href="/elements/dialogs-modals.html">Elements</a></li>
+        <li class="nav-separator">|</li>
+        <li><a href="/documentation/reference/introduction.html">Reference</a></li>
+        <li class="nav-separator">|</li>
+        <li><a href="/contribute.html" class="last">Contribute</a></li>
+    </ul>
+</nav>
+
+    </header>
+
+    <main class="content">
+
+        <section class="content">
+            <nav>
+                <ul>
+                    <h6>Reference</h6>
+                    
+                        <li><a href="/documentation/reference/introduction.html">Introduction</a></li>
+                    
+                        
+                    
+                        
+                    
+                        <li><a href="/documentation/reference/creating-elements.html">Creating elements</a></li>
+                    
+                        <li><a href="/documentation/reference/lifecycle-callbacks.html">Lifecycle callbacks</a></li>
+                    
+                        
+                    
+                        
+                    
+                        <li><a href="/documentation/reference/shadow-dom.html">Shadow DOM</a></li>
+                    
+                        
+                    
+                        <li><a href="/documentation/reference/shadow-css.html">Shadow CSS</a></li>
+                    
+                </ul>
+            </nav>
+            <section>
+                <h1><a name="creating-elements" class="anchor" href="#creating-elements"><span class="header-link"></span></a>Creating elements</h1>
+<p>Creating a new HTML element is easy with Bosonic. Here is a boilerplate of a basic element (let&#39;s assume for now that you&#39;ll save this as <code>lib/hello-world.html</code>):</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;hello-world&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;template&gt;</span>
+        <span class="nt">&lt;span&gt;</span>I&#39;m Shadow DOM<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="nx">Bosonic</span><span class="p">.</span><span class="nx">register</span><span class="p">({</span>
+            <span class="nx">sayHello</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">span</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">);</span>
+                <span class="nx">span</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="s1">&#39;Hello, world!&#39;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</code></pre>
+<p>As you can see, the <code>&lt;element&gt;</code> tag that encapsulates our element&#39;s definition has a <code>name</code> attribute: it is of course mandatory, as it specifies the name of the HTML tag you’ll instantiate in the markup. As per spec, it <strong>must</strong> contain a &quot;-&quot;.</p>
+<p>In the <code>&lt;script&gt;</code> element, we call <code>Bosonic.register</code> to register the API of our new element: all methods &amp; properties defined here will become API methods &amp; props of each attached element in a web page.</p>
+<p>One of the Bosonic&#39;s features is the automatic rendering of the <code>&lt;template&gt;</code> tag content: this markup will become our elements&#39; <a href="http://webcomponents.org/polyfills/shadow-dom/">Shadow DOM</a>. The <code>shadowRoot</code> property allows you to query and manipulate this Shadow DOM, as shown in the <code>sayHello</code> method.</p>
+<p>Using our new element in a web page is easy too:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My Application<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Load the polyfills &amp; runtime --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;lib/webcomponents.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;lib/bosonic-runtime.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="c">&lt;!-- Import the element --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;import&quot;</span> <span class="na">href=</span><span class="s">&quot;lib/hello-world.html&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- Declare the element --&gt;</span>
+    <span class="nt">&lt;hello-world&gt;&lt;/hello-world&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</code></pre>
+<p>If all goes well, you should see &#39;I&#39;m Shadow DOM&#39; in your browser. But remember our elements are just DOM elements ;) Open the web console of your browser and type the following:</p>
+<pre><code class="lang-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;hello-world&#39;</span><span class="p">);</span>
+<span class="nx">hello</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
+</pre></div>
+</code></pre>
+<p>You should now see &#39;Hello, world!&#39; on screen. We&#39;ve successfully used our element&#39;s API!</p>
+
+            </section>
+        </section>
+
+    </main>
+
+    
+    <footer>
+        <p>© 2015 Bosonic Authors. Code licensed under the <a href="https://github.com/bosonic/bosonic/blob/master/LICENSE">MIT License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    </footer>
+
+    <!--<a href="https://github.com/bosonic/bosonic" target="_blank" class="forkme"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:2" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>-->
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/scripts/main.js" type="text/javascript"></script>
+    <script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-3319204-5', 'bosonic.github.io');
+		  ga('send', 'pageview');
+
+	</script>
+
+
+
+</body>
+</html>

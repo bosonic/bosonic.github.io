@@ -1,0 +1,243 @@
+<element name="b-tree">
+    <style>
+        [draggable] {
+          -moz-user-select: none;
+          -khtml-user-select: none;
+          -webkit-user-select: none;
+          user-select: none;
+        }
+        [draggable] * {
+          -moz-user-drag: none;
+          -khtml-user-drag: none;
+          -webkit-user-drag: none;
+          user-drag: none;
+        }
+        [draggable]:hover {
+            cursor: move;
+        }
+        .cursor {
+            position: fixed;
+            width: 100%;
+            border-bottom: 1px solid #c7d2d8;
+            height: 1px;
+        }
+        .marker {
+            position: absolute;
+            height: 4px;
+            width: 4px;
+            margin-top: -2px;
+            border: 1px solid #c7d2d8;
+            border-radius: 4px;
+            background: #c7d2d8;
+        }
+        .handle {
+            display: none;
+        }
+        .hidden {
+            display: none;
+        }
+        .toggle-collapse {
+            float: left;
+        }
+        ul {
+            display: block;
+            max-height: 1000px;
+            overflow: auto;
+            transition: all 1s cubic-bezier(0, 1, 0.5, 1);
+        }
+        ul.collapsed {
+            max-height: 0px;
+        }
+    </style>
+    <template>
+        <content></content>
+        <div class="cursor hidden">
+            <div class="marker"></div>
+        </div>
+    </template>
+    <script>
+        (function(){
+            Bosonic.register({
+                isChildrenOf: function(node, parent) {
+                    var isChildren = false;
+                    while(node && !isChildren) {
+                        isChildren = node === parent;
+                        node = node.parentNode;
+                    }
+                    return isChildren;
+                },
+                getFirstParentTarget: function(node) {
+                    if (node.classList.contains('cursor') || node.classList.contains('marker')) {
+                        return this.querySelector('ul');
+                    }
+                    var parent = null;
+                    while(node && !parent) {
+                        if (node.nodeName === 'UL' || node.nodeName === 'LI')  {
+                            parent = node;
+                        }
+                        node = node.parentNode;
+                    }
+                    return parent;
+                },
+                getParentLi: function(node) {
+                    var li = null;
+                    while(node && !li) {
+                        if (node.nodeName === 'LI') {
+                            li = node;
+                        } else {
+                            node = node.parentNode;
+                        }
+                    }
+                    return li;
+                },
+                createdCallback: function() {
+                    var lis = this.querySelectorAll('li');
+                    var handle = document.createElement('a');
+                    handle.classList.add('toggle-collapse');
+                    handle.setAttribute('href', '#');
+                    handle.innerHTML = '>';
+                    Array.prototype.forEach.call(lis, function(li) {
+                        li.insertBefore(handle.cloneNode(true), li.firstChild);
+                        li.setAttribute('draggable', 'true');
+                    });
+                    this.bindEvent();
+                },
+                // Create custom element
+                attachedCallback: function() {
+                    this.dropIndicator = this.shadowRoot.querySelector('.cursor');
+                },
+                bindEvent: function() {
+                    // Drag n Drop
+                    this.addEventListener('dragstart', this.onDragStart.bind(this), false);
+                    this.addEventListener('dragover', this.onDragOver.bind(this), false);
+                    this.addEventListener('dragenter', this.onDragEnter.bind(this), false);
+                    this.addEventListener('dragleave', this.onDragLeave.bind(this), false);
+                    this.addEventListener('dragend', this.onDragEnd.bind(this), false);
+                    this.addEventListener('drop', this.onDrop.bind(this), false);
+                    // Collapsible
+                    this.addEventListener('click', this.onToggleCollapseClick.bind(this), false);
+                },
+                onToggleCollapseClick: function(e) {
+                    if (!e.target.classList.contains('toggle-collapse')) {
+                        return;
+                    }
+                    e.preventDefault();
+                    var li = this.getParentLi(e.target);
+                    var ul = li.querySelector('ul');
+                    if (ul.classList.contains('collapsed')) {
+                        ul.classList.remove('collapsed');
+                        li.classList.remove('collapsed');
+                    } else {
+                        ul.classList.add('collapsed');
+                        li.classList.add('collapsed');
+                    }
+                },
+                onDragStart: function(e) {
+                    this.dragSrcEl = this.getParentLi(e.target);
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('Text', this.dragSrcEl.innerHTML);
+                },
+                getInsertPoint: function(hoveredNode, mouseY) {
+                    var parent = this.getFirstParentTarget(hoveredNode);
+                    if (!parent) {
+                        return null;
+                    }
+                    if (this.isChildrenOf(hoveredNode, this.dragSrcEl)) {
+                        return null;
+                    }
+                    if (parent.nodeName === 'UL') {
+                        var list = parent.children;
+                        var match = false;
+                        var iterator = 0;
+                        while(!match && iterator < list.length) {
+                            var li = list[iterator];
+                            var currentY = li.offsetTop;
+                            if (mouseY < currentY) {
+                                match = li;
+                                this.dropIndicator.classList.remove('hidden');
+                                this.dropIndicator.style.top = li.offsetTop - 7.5 + 'px';
+                                this.dropIndicator.querySelector('.marker').style.left = li.offsetLeft - 10 + 'px';
+                                setTimeout(function() {}, 1000);
+                            }
+                            iterator++;
+                        }
+                        return li;
+                    } else {
+                        this.dropIndicator.classList.add('hidden');
+                        return parent;
+                    }
+                },
+                onDragOver: function(e) {
+                    e.preventDefault();
+                    var node = this.getFirstParentTarget(e.target);
+                    if (this.isChildrenOf(node, this.dragSrcEl)) {
+                        e.dataTransfer.dropEffect = 'none';
+                    } else {
+                        e.dataTransfer.dropEffect = 'move';
+                        if (node === null) {
+                            console.log(e.target, node);
+                        }
+                        this.getInsertPoint(node, e.clientY);
+                    }
+                },
+                onDragEnter: function(e) {
+                    e.preventDefault();
+                    if (e.target.nodeName !== "UL") {
+                        var li = this.getParentLi(e.target);
+                        console.log('enter', li);
+                        if (li) {
+                            li.classList.add('drag-over');
+                        }
+                    }
+                },
+                onDragLeave: function(e) {
+                    e.preventDefault();
+                    if (e.target.nodeName !== "UL") {
+                        var li = this.getParentLi(e.target);
+                        console.log('leave', li);
+                        if (li) {
+                            li.classList.remove('drag-over');
+                        }
+                    }
+                },
+                onDragEnd: function(e) {
+                    this.dropIndicator.classList.add('hidden');
+                    var hovered = this.querySelector('.drag-over');
+                    if (hovered) {
+                        hovered.classList.remove('drag-over');
+                    }
+                },
+                onDrop: function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var node = this.getFirstParentTarget(e.target);
+                    if (this.isChildrenOf(node, this.dragSrcEl)) {
+                        return;
+                    }
+                    if (node.classList.contains('dragging')) {
+                        return;
+                    }
+                    switch (node.nodeName) {
+                        case 'LI':
+                            if (!node.querySelector('ul')) {
+                                var ul = document.createElement('ul');
+                                node.appendChild(ul);
+                            }
+                            this.dragSrcEl.parentNode.removeChild(this.dragSrcEl);
+                            node.querySelector('ul').appendChild(this.dragSrcEl);
+                            break;
+                        case 'UL':
+                            var insertBeforeNode = this.getInsertPoint(node, e.clientY);
+                            if (insertBeforeNode === this.dragSrcEl) {
+                                return;
+                            }
+                            this.dragSrcEl.parentNode.removeChild(this.dragSrcEl);
+                            node.insertBefore(this.dragSrcEl, insertBeforeNode);
+                            break;
+                    }
+                    this.dragSrcEl = null;
+                }
+            });
+        })();
+    </script>
+</element>

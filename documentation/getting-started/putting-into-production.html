@@ -35,21 +35,40 @@
 
     <main class="content">
 
-        <section>
-            <section class="full-content">
-                <h1><a name="contribute" class="anchor" href="#contribute"><span class="header-link"></span></a>Contribute</h1>
-<h2><a name="source-code" class="anchor" href="#source-code"><span class="header-link"></span></a>Source code</h2>
-<p>Fork it on <a href="https://github.com/bosonic">Github</a>.</p>
-<p>In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality/element. Lint and test your code using Grunt.</p>
-<h2><a name="discussion" class="anchor" href="#discussion"><span class="header-link"></span></a>Discussion</h2>
-<p>For now, we&#39;ve got only two ways to stay in touch: <a href="https://github.com/bosonic">Github</a> and our <a href="https://twitter.com/bosonic_project">Twitter account</a>.</p>
-<p>We&#39;ll soon open a Google group and an IRC channel.</p>
-<h2><a name="what-do-you-need" class="anchor" href="#what-do-you-need"><span class="header-link"></span></a>What do you need ?</h2>
-<ul>
-<li>More elements: the more the better...</li>
-<li>Better documentation: if you&#39;re fluent, you can help!</li>
-<li>Tasks for alternative task runners: we currently only have a grunt one, if you use Gulp/Pint/Make/Whatever, you&#39;re welcome to build us a transpilation task!</li>
-</ul>
+        <section class="content">
+            <nav>
+                <ul>
+                    <h6>Getting started</h6>
+                    
+                        
+                    
+                        <li><a href="/documentation/getting-started/getting-the-code.html">Getting the code</a></li>
+                    
+                        <li><a href="/documentation/getting-started/using-elements.html">Using elements</a></li>
+                    
+                        
+                    
+                        
+                    
+                        <li><a href="/documentation/getting-started/working-with-frameworks.html">Working with frameworks</a></li>
+                    
+                        <li><a href="/documentation/getting-started/putting-into-production.html">Putting into production</a></li>
+                    
+                        
+                    
+                        <li><a href="/documentation/getting-started/faq.html">FAQ</a></li>
+                    
+                        
+                    
+                </ul>
+            </nav>
+            <section>
+                <h1><a name="putting-into-production" class="anchor" href="#putting-into-production"><span class="header-link"></span></a>Putting into production</h1>
+<p>If you use several of elements in your app, you&#39;ll get a lot of network requests (one for each HTML import), and that&#39;s not necessarily good for performance (until we all start using <a href="https://en.wikipedia.org/wiki/HTTP/2">Http2</a>). It&#39;s therefore often necessary in today&#39;s web applications to concatenate Web Components into a single file.</p>
+<h2><a name="concatenating-web-components" class="anchor" href="#concatenating-web-components"><span class="header-link"></span></a>Concatenating Web Components</h2>
+<p>The Polymer authors have developed a handy tool for that purpose that&#39;s called <a href="https://github.com/Polymer/vulcanize">Vulcanize</a>. It&#39;s a command line tool that easily integrates with your build tool of choice, that recursively pulls in all your imports, flattens their dependencies and spits out a single file.</p>
+<h2><a name="in-the-future" class="anchor" href="#in-the-future"><span class="header-link"></span></a>In the future</h2>
+<p>We have a specific build tool in the works that will leverage Vulcanize and include CSS Variables post-processing. It will be released in a few weeks, stay tuned!</p>
 
             </section>
         </section>

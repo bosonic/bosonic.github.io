@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+    <link rel="icon" type="image/png" href="/images/cabin.png">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="/styles/main.css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="/images/favicon.ico" />
+    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" /><![endif]-->
+
+    <title>Bosonic Web Component</title>
+    <meta name="description" content="undefined">
+  </head>
+<body>
+    <header class="home scrolled logo">
+      <nav>
+    <a href="/index.html" id="logo">Bosonic web component</a>
+    <img id="hamburger" src="/images/hamburger.png" alt="">
+    <ul id="nav">
+        <li><a href="/index.html">Home</a></li>
+        <li class="nav-separator">|</li>
+        <li><a href="/documentation/getting-started/getting-the-code.html">Getting Started</a></li>
+        <li class="nav-separator">|</li>
+        <li><a href="/elements/dialogs-modals.html">Elements</a></li>
+        <li class="nav-separator">|</li>
+        <li><a href="/documentation/reference/introduction.html">Reference</a></li>
+        <li class="nav-separator">|</li>
+        <li><a href="/contribute.html" class="last">Contribute</a></li>
+    </ul>
+</nav>
+
+    </header>
+
+    <main class="content">
+
+        <section class="content">
+            <nav>
+                <ul>
+                    <h6>Elements</h6>
+                    
+                        <li><a href="/elements/dialogs-modals.html">Dialogs & modals</a></li>
+                    
+                        <li><a href="/elements/dropdowns.html">Dropdowns</a></li>
+                    
+                        <li><a href="/elements/tabs.html">Tabs</a></li>
+                    
+                        <li><a href="/elements/tooltips.html">Tooltips</a></li>
+                    
+                        <li><a href="/elements/collapsible.html">Collapsible</a></li>
+                    
+                        <li><a href="/elements/accordion.html">Accordion</a></li>
+                    
+                        <li><a href="/elements/flash-messages.html">Flash messages</a></li>
+                    
+                        <li><a href="/elements/selectable.html">Selectable</a></li>
+                    
+                        <li><a href="/elements/draggable.html">Draggable</a></li>
+                    
+                    
+                        <li class="wip"><a href="/elements/sortable.html">Sortable</a></li>
+                    
+                    
+                        <li class="wip"><a href="/elements/autocomplete.html">Autocomplete</a></li>
+                    
+                        <li class="wip"><a href="/elements/tables.html">Tables</a></li>
+                    
+                </ul>
+            </nav>
+            <section>
+                <a class="button demo-link" href="/demos/b-flash-message.html">Demo</a>
+                <h1><a name="b-flash-message" class="anchor" href="#b-flash-message"><span class="header-link"></span></a>b-flash-message</h1>
+<p>A flash message (or notification) element with four different levels.</p>
+<h2><a name="usage" class="anchor" href="#usage"><span class="header-link"></span></a>Usage</h2>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;b-flash-message</span> <span class="na">visible=</span><span class="s">&quot;true&quot;</span> <span class="na">type=</span><span class="s">&quot;info&quot;</span> <span class="na">duration=</span><span class="s">&quot;2000&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;strong&gt;</span>Hello, World!<span class="nt">&lt;/strong&gt;</span> Foo Bar
+    <span class="nt">&lt;button</span> <span class="na">flash-message-dismiss</span><span class="nt">&gt;</span>x<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/b-flash-message&gt;</span>
+</pre></div>
+</code></pre>
+<p>Will display an info flash message during 2 secs containing the string &quot;Hello, World! Foo Bar&quot;. You can make it dismissable without any JS by adding a <code>flash-message-dismiss</code> or <code>data-flash-message-dismiss</code> attribute to any link or button inside the dialog content.</p>
+<h2><a name="api" class="anchor" href="#api"><span class="header-link"></span></a>API</h2>
+<h3><a name="attributes" class="anchor" href="#attributes"><span class="header-link"></span></a>Attributes</h3>
+<ul>
+<li><strong>visible</strong>: controls the display of the message. Valid values are <code>true</code> or <code>false</code>. By default it is set to <code>false</code>.</li>
+<li><strong>type</strong>: four possible values: <code>info</code>, <code>success</code>, <code>warning</code> and <code>error</code>, respectively blue, green, yellow and red. By default this attribute is set to <code>info</code>.
+-<strong>duration</strong>: Trigger a timeout when the message is displayed (see <code>show</code> accessor). Valid value is a number given in milliseconds.</li>
+</ul>
+<h3><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3>
+<ul>
+<li><strong>show()</strong>: displays the flash message. If the attribute <code>duration</code> is set to a valid value, the message will be hidden automatically after specified number of milliseconds.</li>
+<li><strong>close()</strong>: hides the flash message.</li>
+</ul>
+<h3><a name="events" class="anchor" href="#events"><span class="header-link"></span></a>Events</h3>
+<ul>
+<li><strong>b-flash-message-show</strong>: will fire when the flash message is shown.</li>
+<li><strong>b-flash-message-close</strong>: will fire when the flash message is closed.</li>
+</ul>
+
+            </section>
+        </section>
+
+    </main>
+
+    
+    <footer>
+        <p>© 2015 Bosonic Authors. Code licensed under the <a href="https://github.com/bosonic/bosonic/blob/master/LICENSE">MIT License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    </footer>
+
+    <!--<a href="https://github.com/bosonic/bosonic" target="_blank" class="forkme"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:2" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>-->
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/scripts/main.js" type="text/javascript"></script>
+    <script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-3319204-5', 'bosonic.github.io');
+		  ga('send', 'pageview');
+
+	</script>
+
+
+
+</body>
+</html>

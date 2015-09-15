@@ -1,0 +1,38 @@
+<element name="b-template" extends="template">
+    <script>
+        (function(){
+            Bosonic.register({
+                get outerHTML() {
+                    var tmp = document.createElement('div');
+                    tmp.appendChild(document.importNode(this.content, true));
+                    return tmp.innerHTML;
+                },
+
+                compile: function(html) {
+                    var code = "var v, out='" 
+                        + html.replace(/[\r\t\n]/g, " ")
+                              .replace(/\{\{([\s\S]+?)\}\}/g, function(m, js) {
+                                  return "'+\n((v=(data." + js + "))==null?'':v)+\n'";
+                               }) + "';return out;";
+                    try {
+                        return new Function('data', code);
+                    } catch (e) {
+                        console.log("Could not create a renderer: " + code);
+                        throw e;
+                    }
+                },
+
+                render: function(data) {
+                    var html = this.outerHTML,
+                        renderer = this.compile(html);
+
+                    return renderer(data);
+                },
+
+                renderInto: function(data, elt) {
+                    elt.innerHTML = this.render(data);
+                }
+            });
+        })();
+    </script>
+</element>

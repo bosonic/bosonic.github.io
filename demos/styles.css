@@ -1,0 +1,55 @@
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.4;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 2em;
+}
+h2 {
+    font-weight: 300;
+    font-size: 1.6em;
+}
+
+b-sortable ul {
+    list-style-type: none;
+    width: 150px;
+}
+b-sortable ul li {
+    border: 1px solid #fff;
+    background-color: #e74c3c;
+    margin: 5px;
+    color: #fff;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    -webkit-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+}
+b-sortable ul li:before {
+    font-family: FontAwesome;
+    content: "\f047";
+    float: left;
+    background-color: #c0392b;
+    border-right: 1px solid #fff;
+    padding: 0 10px;
+    font-weight: 300;
+}
+b-sortable ul li:hover {
+    background-color: $darkColor;
+    cursor: pointer;
+    font-weight: 700;
+}
+b-sortable ul li.sortable-ghost {
+    opacity: .25;
+    -webkit-transition: -webkit-transform 0.2s ease-out;
+    -moz-transition: -moz-transform 0.2s ease-out;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+}
+b-sortable ul li.sortable-over {
+    opacity: .25;
+}

@@ -1,0 +1,39 @@
+<element name="b-combo-box" extends="b-autocomplete">
+    <style>
+        input {
+            padding-right: 15px;
+        }
+        .b-combo-box-toggle {
+            position: absolute;
+            padding: 2px 5px;
+            top: 0;
+            right: 0;
+        }
+        .b-combo-box-toggle:hover {
+            cursor: pointer;
+        }
+        .b-combo-box-toggle:before { 
+            content:'\25BE'; 
+        }
+    </style>
+    <template>
+        <input type="text" autocomplete="off" role="textbox" value="">
+        <a class="b-combo-box-toggle"></a>
+        <b-selectable target="li">
+            <ul></ul>
+        </b-selectable>
+    </template>
+    <script>
+        (function(){
+            Bosonic.register({
+                get listToggle() {
+                    return this.querySelector('.b-combo-box-toggle');
+                },
+                createdCallback: function() {
+                    this._super.createdCallback.call(this);
+                    this.listToggle.addEventListener('click', this.toggleSuggestionList.bind(this), false);
+                }
+            });
+        })();
+    </script>
+</element>

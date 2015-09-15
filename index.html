@@ -13,108 +13,92 @@
     <title>Bosonic Web Component</title>
     <meta name="description" content="undefined">
   </head>
-  <body>
-    
-    <div id="header">
-
-    <a href="index.html" id="logo">Bosonic web component</a>
+<body>
+	<header class="home">
+		<nav>
+    <a href="/index.html" id="logo">Bosonic web component</a>
     <img id="hamburger" src="/images/hamburger.png" alt="">
-
     <ul id="nav">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="/index.html">Home</a></li>
         <li class="nav-separator">|</li>
-        <li><a href="getting-started.html">Getting Started</a></li>
+        <li><a href="/documentation/getting-started/getting-the-code.html">Getting Started</a></li>
         <li class="nav-separator">|</li>
-        <li><a href="demos.html">Demos</a></li>
+        <li><a href="/elements/dialogs-modals.html">Elements</a></li>
         <li class="nav-separator">|</li>
-        <li><a href="documentation.html">Documentation</a></li>
+        <li><a href="/documentation/reference/introduction.html">Reference</a></li>
         <li class="nav-separator">|</li>
-        <li><a href="elements.html">Elements</a></li>
-        <li class="nav-separator">|</li>
-        <li><a href="contribute.html" class="last">Contribute</a></li>
+        <li><a href="/contribute.html" class="last">Contribute</a></li>
     </ul>
-</div>
+</nav>
 
-    <div id="content" class="markdown">
+	</header>
 
+	<main class="home">
 
-<div id="homepage-top">
-	<div id="illustration">
-		<img src="/images/bosonic_illustration.png" alt="">
-	</div>
+		<section id="welcome">
+			<section>
+				<img class="logo" src="/images/bosonic_logo_big.png" alt="Bosonic logo">
+				<h1>A practical collection of everyday Web Components</h1>
 
-	<div id="welcome">
+				<a href="/documentation/getting-started/getting-the-code.html" class="button">Getting started</a>
+			</section>
+		</section>
 
-		<h1>Welcome to Bosonic !</h1>
+		<section id="features">
 
-		<p>Bosonic is a set of tools that enable you to build and use reusable Web Components now ! By leveraging the power of DOM to build high-level elements, you'll simplify your application code and benefit from 3rd-party elements.</p>
+			<section>
+				<img class="left" src="/images/bosonic_periodic.png" alt="Fake periodic table of elements">
+				<h3>A curated library of reusable Custom elements at an atomic level</h3>
+				<p>Carefully crafted with web standards and accessibility in mind, these custom HTML elements cover the web developer everyday needs. Simply put, these are the 'atomic parts' that will make up your application. Think of them as a system of component blueprints that are easily styled and changed to fit the needs of your applications. Bosonic Elements are composable and interoperable with frameworks &amp; libraries built with evergreen browsers in mind.</p>
+			</section>
 
-		<a href="/getting-started.html" class="button right">Getting started</a>
-	</div>
+			<section>
+				<img class="right" src="/images/bosonic_balloon.png" alt="A high altitude balloon">
+				<h3>A lightweight platform</h3>
+				<p>Built on top of the <a href="http://webcomponents.org/polyfills/">web components polyfill library</a>, Bosonic provides a very thin layer of syntactic sugar that eases the burden of working with Web Components primitives.</p>
+			</section>
 
-	<div class="clearfix"></div>
-</div>
+			<section>
+				<img class="left" src="/images/bosonic_spaceship.png" alt="An Enterprise-class spaceship entering a wormhole">
+				<h3>A future-proof solution</h3>
+				<p>With Web Component standards being implemented progressively in modern browsers, our elements' already good performance will get even better.</p>
+			</section>
 
-<div class="block">
-	<h2>What are Web Components ?</h2>
+		</section>
 
-	<p>Web Components are based on a set of specs that provide developers with a solid foundation for building UI components as HTML custom elements. By building more advanced HTML elements that the browsers propose, you will be able to build more complex applications without making your code a total mess, dealing simultaneously with high-level application concepts and low-level DOM manipulation.
-	</p>
-</div>
+		<section id="browsers">
+			<section>
+				<h2>Browser Support</h2>
 
+				<p>Please note that we have plans (and code, just not released yet) to vastly improve browser support, At some point, we are planning to support Internet Explorer 9 (IE9).</p>
 
-<div class="block">
-	<h2>Why Bosonic ?</h2>
+				<table class="browser-compat">
+		          <tr>
+		          	<td><figure class="browser-logo browser-logo--firefox"></figure></td>
+		          	<td><figure class="browser-logo browser-logo--chrome"></figure></td>
+		          	<td><figure class="browser-logo browser-logo--ie"></figure></td>
+		          	<td><figure class="browser-logo browser-logo--safari"></figure></td>
+		          	<td><figure class="browser-logo browser-logo--opera"></figure></td>
+		          </tr>
+		          <tr>
+		          	<td><p>Firefox</p><p>35+</p></td>
+		          	<td><p>Chrome</p><p>35+</p></td>
+		          	<td><p>Internet Explorer</p><p>10+</p></td>
+		          	<td><p>Safari</p><p>7+</p></td>
+		          	<td><p>Opera</p><p>12+</p></td>
+		          </tr>
+				</table>
+			</section>
+		</section>
 
-	<p>We loved the <a href="http://www.w3.org/TR/components-intro">Introduction to Web Components</a> spec. What we wanted was a way to build components as this spec describes, shielding ourselves against potential spec changes, and supporting not-so-modern browsers like IE9. And so Bosonic was born !</p>
-</div>
+	</main>
 
-<div class="block">
-	<h2>How it works</h2>
+	
+    <footer>
+        <p>© 2015 Bosonic Authors. Code licensed under the <a href="https://github.com/bosonic/bosonic/blob/master/LICENSE">MIT License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    </footer>
 
-	<div class="schema">
-		<img src="/images/bosonic_howitworks.png" alt="">
-	</div>
-
-	<div class="floating-text">
-		<p>Bosonic is sort of a transpiler that takes Web Components in HTML files and transforms them into JS and CSS code, runnable on modern browsers.</p>
-		<p>Bosonic uses some Polymer polyfills (<a href="https://github.com/polymer/CustomElements">Custom Elements</a>, <a href="https://github.com/polymer/MutationObservers">Mutation Observers</a> and <a href="https://github.com/polymer/WeakMap">Weak Maps</a>) and brings its own polyfills, including a powerful yet simple one for Shadow DOM.</p>
-	</div>
-
-	<div class="clearfix"></div>
-</div>
-
-<div class="block">
-	<h2>Browser Support</h2>
-
-	<p>Please note that we are currently expanding our test farm in order to test Bosonic with more browsers, including mobile ones and older versions of Firefox and Chrome. Bosonic support is most probably better than indicated below.</p>
-
-	<table class="browser-compat">
-		<tr>
-            <td><img src="images/firefox.png" /></td>
-            <td><img src="images/chrome.png" /></td>
-            <td><img src="images/ie.png" /></td>
-            <td><img src="images/safari.png" /></td>
-            <td><img src="images/opera.png" /></td>
-        </tr>
-		<tr>
-			<td>Firefox 25+</td>
-			<td>Chrome 30+</td>
-			<td>Internet Explorer 9+</td>
-			<td>Safari 6+</td>
-			<td>Opera 12+</td>
-		</tr>
-	</table>
-</div>
-
-
-    </div>
-
-    <div id="footer">
-        <p>© 2014 Bosonic Authors. Code licensed under the <a href="https://github.com/bosonic/bosonic/blob/master/LICENSE">MIT License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-    </div>
-
-    <a href="https://github.com/bosonic/bosonic" target="_blank" class="forkme"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:2" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <!--<a href="https://github.com/bosonic/bosonic" target="_blank" class="forkme"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:2" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>-->
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>
     <script src="/scripts/main.js" type="text/javascript"></script>
@@ -128,6 +112,24 @@
 		  ga('send', 'pageview');
 
 	</script>
-  </body>
-</html>
 
+
+
+	<script type="text/javascript">
+		window.addEventListener('scroll', function() {
+			var top = document.documentElement.scrollTop || document.body.scrollTop,
+				header = document.querySelector('header');
+			if (top > 30) {
+				header.classList.add('scrolled');
+				if (top > 130) {
+					header.classList.add('logo');
+				} else {
+					header.classList.remove('logo');
+				}
+			} else {
+				header.classList.remove('scrolled');
+			}
+		});
+	</script>
+</body>
+</html>
