@@ -7,7 +7,7 @@
 
 # Getting the code
 
-The preferred way to install Bosonic is through [NPM](https://www.npmjs.com/package/bosonic), but you can download the Bosonic platform as a [ZIP file](https://github.com/bosonic/bosonic/archive/master.zip). It contains two files: `webcomponents.js`, which is the file that contains the community polyfills and `bosonic-runtime.js`, which is the Bosonic library (not the elements!).
+The preferred way to install Bosonic is through [NPM](https://www.npmjs.com/package/bosonic), but you can download the Bosonic platform as a [ZIP file](https://github.com/bosonic/bosonic/releases/latest). It contains two files: `webcomponents.js`, which is the file that contains the community polyfills and `bosonic-runtime.js`, which is the Bosonic library (not the elements!).
 
 ## With npm
 
@@ -33,19 +33,18 @@ npm install --save webcomponents.js
 
 ## Installing elements
 
-Bosonic's elements are grouped in several npm packages:
+Bosonic's elements are grouped in several NPM packages, but as [dnd-elements](https://github.com/bosonic/dnd-elements) and [data-elements](https://github.com/bosonic/data-elements) are still a Work-In-Progress, they aren't published yet.
 
 ``` bash
 npm install --save bosonic-core-elements
 ```
-``` bash
-npm install --save bosonic-dnd-elements
-```
-``` bash
-npm install --save bosonic-data-elements
-```
 
-They're available as ZIP files too.
-- [Bosonic Core Elements](https://github.com/bosonic/core-elements/archive/master.zip)
-- [Bosonic DND Elements](https://github.com/bosonic/dnd-elements/archive/master.zip)
-- [Bosonic Data Elements](https://github.com/bosonic/data-elements/archive/master.zip)
+[Bosonic Core Elements](https://github.com/bosonic/core-elements) are available as a [ZIP file](https://github.com/bosonic/core-elements/releases/latest) too.
+
+## Project setup
+
+Some elements depends on other elements ; all elements should therefore reside in the same folder when developing. If you downloaded ZIP files, extract all the files into the same folder. If you used NPM, you'll need to copy files from the installed packages into a "developement" folder. Depending on your task runner of choice, you can use [grunt-contrib-copy]() or [gulp-copy]() to do this.
+
+### Use a web server
+
+Because of the way HTML imports work, you'll need a local web server to use Bosonic elements (usage of the `file:` protocol is blocked by Cross-Origin Resource Sharing policy).
