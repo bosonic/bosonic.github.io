@@ -71,3 +71,11 @@
     }
   }
 }
+
+@media screen and (max-width: 400px) {
+  .browser-compat {
+    width: 30%;
+    padding: 0;
+  }
+}
+
