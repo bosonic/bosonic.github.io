@@ -53,14 +53,12 @@ main.home {
   }
 }
 
-table.browser-compat {
-  padding: 0;
-  margin: 0 auto;
-  text-align: center;
+.browser-compat {
+
+  display: inline-table;
+  padding: 0 15px;
 
   p {
-    
-    line-height: 10px;
     color: $fontSecondary;
   }
 }

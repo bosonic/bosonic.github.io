@@ -7,7 +7,7 @@
 
 # Introduction
 
-If you've already read the "Getting started" section, you probably doesn't need to read this.
+If you've already read the "Getting started" section, you probably don't need to read this.
 
 Why? Because __Bosonic aims to be a library of low-level UI elements__, elements that you can just drop into your project and use immediately. This is a major problem in Web Components' evangelization by the way: a lot of people I've talked to think that Web Components are a stack of technologies designed for building components & complete apps as HTML elements, but that's not the case, at least not in my mind. Web Components enable the creation of __UI atoms__ as HTML elements, atoms that you can include into your components templates, powered by Angular, Ember, React or whatever.
 

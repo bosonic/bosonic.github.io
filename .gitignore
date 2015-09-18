@@ -19,3 +19,6 @@ node_modules
 # Cabin-specific ignored files
 dist
 .grunt
+
+#idea
+.idea
