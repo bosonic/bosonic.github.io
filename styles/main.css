@@ -501,12 +501,11 @@ main.home {
   display: table;
   clear: both; }
 
-table.browser-compat {
-  padding: 0;
-  margin: 0 auto;
-  text-align: center; }
-  table.browser-compat p {
-    line-height: 10px;
+.browser-compat {
+  display: inline-table;
+  text-align: center;
+  padding: 0 15px; }
+  .browser-compat p {
     color: #6D6D6D; }
 
 .browser-logo {
@@ -573,6 +572,11 @@ table.browser-compat {
     main.content > section > nav > ul {
       position: relative;
       top: 10px; } }
+
+@media screen and (max-width: 400px) {
+  .browser-compat {
+    width: 30%;
+    padding: 0; } }
 
 .markdown ul, .markdown ol {
   padding-left: 30px; }
