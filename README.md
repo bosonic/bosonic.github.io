@@ -1,30 +1,31 @@
 bosonic.github.io
 =================
 
-Bosonic website is built with [CabinJS](http://www.cabinjs.com), a simple and extensible static site generator powered by Grunt.
+Bosonic website is built with [CabinJS](http://www.cabinjs.com), a static site generator powered by Grunt.
 
 Therefore to contribute, you need to do a pull request on the `dev` branch.
 
 [Visit the website](http://bosonic.github.io/)
 
-
 ### Getting started
 
 Fork the GitHub project first.
 
-Install **node.js**. Then **sass**, **grunt** if you haven't yet.
-
-    $ gem install sass
-    $ gem install scss-lint
-    $ npm -g install grunt
-
-After that, install npm dependencies, and run the application in development mode.
+Install **node.js**, then install npm dependencies:
 
     $ npm install
 
-You are now ready to go
+In order to include elements' doc & demos, you'll need to npm link their working trees:
+
+    $ cd core-elements
+    $ npm link
+    $ cd bosonic.github.io
+    $ npm link bosonic-core-elements
+    
+Do the same with dnd-elements & data-elements.
+
+You are now ready to go:
 
     $ grunt server
 
-
-your application is available at **http://127.0.0.1:5455**.
+The website is available at **http://127.0.0.1:5455**.
