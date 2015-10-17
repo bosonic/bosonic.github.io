@@ -40,13 +40,13 @@
                 <ul>
                     <h6>Reference</h6>
                     
-                        
-                    
                         <li><a href="/documentation/reference/introduction.html">Introduction</a></li>
                     
                         
                     
                         <li><a href="/documentation/reference/creating-elements.html">Creating elements</a></li>
+                    
+                        
                     
                         <li><a href="/documentation/reference/lifecycle-callbacks.html">Lifecycle callbacks</a></li>
                     
@@ -71,6 +71,7 @@
 <li><code>detachedCallback()</code> is called when a custom element is removed from a DOM subtree.</li>
 <li><code>attributeChangedCallback(attributeName, oldValue, newValue)</code> is called when a custom element&#39;s attribute value has changed.</li>
 </ul>
+<h2><a name="automatic-changed-attributes-callback" class="anchor" href="#automatic-changed-attributes-callback"><span class="header-link"></span></a>Automatic changed attributes callback</h2>
 <p>Bosonic provides a useful feature: if you declare the attributes used by your element in the <code>&lt;element&gt;</code> tag, like this:</p>
 <pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;hello-world&quot;</span> <span class="na">attributes=</span><span class="s">&quot;opened active&quot;</span><span class="nt">&gt;</span>
     ...
@@ -84,6 +85,8 @@
 <span class="p">});</span>
 </pre></div>
 </code></pre>
+<h2><a name="observing-children-mutations" class="anchor" href="#observing-children-mutations"><span class="header-link"></span></a>Observing children mutations</h2>
+<p>Bosonic provides support for <code>childListChangedCallback(removedNodes, addedNodes)</code>: if you define this callback in your element&#39;s code, Bosonic will setup a <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver</a> that will call your method with the removed and added nodes as arguments whenever you add or remove children to/from your element.</p>
 
             </section>
         </section>
