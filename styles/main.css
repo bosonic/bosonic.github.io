@@ -538,34 +538,30 @@ main.home {
   display: table;
   clear: both; }
 
-.browser-compat {
-  display: inline-table;
-  text-align: center;
-  padding: 0 15px; }
-  .browser-compat p {
-    color: #6D6D6D; }
-
-.browser-logo {
-  width: 64px;
-  height: 64px;
-  margin-bottom: .5em;
-  background: url(../images/browser-logos.jpg) no-repeat 0 0;
-  background-size: auto 100%; }
-
-.browser-logo--chrome {
-  background-position: 0 0; }
-
-.browser-logo--opera {
-  background-position: -64px 0; }
-
-.browser-logo--firefox {
-  background-position: -128px 0; }
-
-.browser-logo--safari {
-  background-position: -192px 0; }
-
-.browser-logo--ie {
-  background-position: -256px 0; }
+#browsers-list {
+  text-align: center; }
+  #browsers-list .browser-compat {
+    display: inline-table;
+    text-align: center;
+    padding: 0 15px; }
+    #browsers-list .browser-compat p {
+      color: #6D6D6D; }
+  #browsers-list .browser-logo {
+    width: 64px;
+    height: 64px;
+    margin-bottom: .5em;
+    background: url(../images/browser-logos.jpg) no-repeat 0 0;
+    background-size: auto 100%; }
+  #browsers-list .browser-logo--chrome {
+    background-position: 0 0; }
+  #browsers-list .browser-logo--opera {
+    background-position: -64px 0; }
+  #browsers-list .browser-logo--firefox {
+    background-position: -128px 0; }
+  #browsers-list .browser-logo--safari {
+    background-position: -192px 0; }
+  #browsers-list .browser-logo--ie {
+    background-position: -256px 0; }
 
 @media screen and (max-width: 1080px) {
   header nav {
