@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>b-table</title>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="lib/webcomponents.js"></script>
+        <script type="text/javascript" src="lib/bosonic-runtime.js"></script>
+
+        <link rel="import" href="lib/b-table.html">
+
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <h1>Datagrid</h1>
+        <style>
+            table {
+                empty-cells: show;
+                max-width: 100%;
+                width: 100%;
+                border: 0;
+                padding: 0;
+                border-collapse: collapse;
+            }
+            thead {
+                border: 1px solid #e5e5e4;
+                background: #e2dfdc;
+                background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e2dfdc));
+                background-image: -webkit-linear-gradient(top, #fff, #e2dfdc);
+                background-image: linear-gradient(to bottom, #fff, #e2dfdc);
+            }
+            thead button {
+                padding-top: .9em;
+                padding-bottom: .7em;
+                padding-left: .6em;
+                padding-right: 1.6em;
+                min-width: 100%;
+                color: inherit;
+                background: transparent;
+                border: 0;
+                padding: 0;
+                text-align: left;
+                font: inherit;
+                text-transform: inherit;
+                position: relative;
+            }
+            thead th[sort] button:after {
+                width: 7px;
+                height: 10px;
+                content: "\0020";
+                position: absolute;
+                top: .3em;
+                right: .5em;
+            }
+            thead th[sort='asc'] button:after {
+                background-image: url('data:image/svg+xml;charset=US-ASCII,<%3Fxml%20version%3D"1.0"%20encoding%3D"utf-8"%3F><!DOCTYPE%20svg%20PUBLIC%20"-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN"%20"http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd"><svg%20version%3D"1.1"%20id%3D"Layer_1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20xmlns%3Axlink%3D"http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink"%20x%3D"0px"%20y%3D"0px"%20%20width%3D"6.7px"%20height%3D"9.5px"%20viewBox%3D"0%200%206.7%209.5"%20enable-background%3D"new%200%200%206.7%209.5"%20xml%3Aspace%3D"preserve"><g>%20<g>%20%20%20%20%20<polyline%20fill%3D"none"%20stroke%3D"%23905A8D"%20stroke-width%3D"1.5184"%20stroke-linecap%3D"round"%20stroke-linejoin%3D"round"%20stroke-miterlimit%3D"10"%20points%3D"%20%20%200.8%2C5.7%203.5%2C8.8%206%2C5.7%20%20%20"%2F>%20<%2Fg>%20%20%20<line%20fill%3D"none"%20stroke%3D"%23905A8D"%20stroke-width%3D"1.5184"%20stroke-linecap%3D"round"%20stroke-linejoin%3D"round"%20stroke-miterlimit%3D"10"%20x1%3D"3.4"%20y1%3D"0.8"%20x2%3D"3.4"%20y2%3D"8.6"%2F><%2Fg><%2Fsvg>');
+                background-repeat: no-repeat;
+            }
+            thead th[sort='desc'] button:after {
+                background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%226.7px%22%20height%3D%229.5px%22%20viewBox%3D%220%200%206.7%209.5%22%20enable-background%3D%22new%200%200%206.7%209.5%22%20xml%3Aspace%3D%22preserve%22%3E%3Cg%3E%20%3Cg%3E%20%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22%23905A8D%22%20stroke-width%3D%221.5184%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20points%3D%22%20%20%206%2C3.8%203.2%2C0.8%200.8%2C3.8%20%20%20%22%2F%3E%20%3C%2Fg%3E%20%20%20%3Cline%20fill%3D%22none%22%20stroke%3D%22%23905A8D%22%20stroke-width%3D%221.5184%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%223.4%22%20y1%3D%228.8%22%20x2%3D%223.4%22%20y2%3D%220.9%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+                background-repeat: no-repeat;
+            }
+            tbody tr {
+                border-bottom: 1px solid #dfdfdf;
+            }
+        </style>
+        <!-- <button class="columns-dropdown">Columns</button>
+        <b-dropdown id="columns">
+            <b-table-column-toggle for="sample"></b-table-column-toggle>
+        </b-dropdown> -->
+        <b-table-column-toggle for="sample"></b-table-column-toggle>
+        <table is="b-table" id="sample" sortable>
+            <thead is="b-thead">
+                <tr>
+                    <th data-key="id"><button>ID</button></th>
+                    <th data-key="firstname">
+                        <button>Firstname</button>
+                        <b-table-column-filter></b-table-column-filter>
+                    </th>
+                    <th data-key="lastname">
+                        <button>Lastname</button>
+                        <b-table-column-filter></b-table-column-filter>
+                    </th>
+                    <th data-key="email">
+                        <button>Email</button>
+                        <b-table-column-filter></b-table-column-filter>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <script type="text/javascript">
+            window.addEventListener('WebComponentsReady', function() {
+                // document.querySelector('.columns-dropdown').addEventListener('click', function(e) {
+                //     e.stopPropagation();
+                //     document.querySelector('#columns').toggle();
+                // });
+                var table = document.querySelector('table');
+                table.data = [ 
+                    { 
+                      "id" : 0,
+                      "firstname" : "David",
+                      "lastname" : "Anderson",
+                      "email" : "l.rodriguez@miller.com"
+                      },
+                    { 
+                      "id" : 1,
+                      "firstname" : "Jeffrey",
+                      "lastname" : "Gonzalez",
+                      "email" : "g.anderson@moore.com"
+                      },
+                    { 
+                      "id" : 2,
+                      "firstname" : "Christopher",
+                      "lastname" : "Robinson",
+                      "email" : "b.rodriguez@rodriguez.com"
+                      },
+                    { 
+                      "id" : 3,
+                      "firstname" : "Mark",
+                      "lastname" : "Jackson",
+                      "email" : "s.white@lewis.com"
+                      },
+                    { 
+                      "id" : 4,
+                      "firstname" : "Michael",
+                      "lastname" : "Garcia",
+                      "email" : "b.clark@davis.com"
+                      },
+                    { 
+                      "id" : 5,
+                      "firstname" : "Charles",
+                      "lastname" : "Gonzalez",
+                      "email" : "x.lewis@harris.com"
+                      },
+                    { 
+                      "id" : 6,
+                      "firstname" : "Matthew",
+                      "lastname" : "Miller",
+                      "email" : "r.jones@lee.com"
+                      },
+                    { 
+                      "id" : 7,
+                      "firstname" : "Edward",
+                      "lastname" : "Moore",
+                      "email" : "q.williams@taylor.com"
+                      },
+                    { 
+                      "id" : 8,
+                      "firstname" : "David",
+                      "lastname" : "Garcia",
+                      "email" : "a.brown@thomas.com"
+                      },
+                    { 
+                      "id" : 9,
+                      "firstname" : "Larry",
+                      "lastname" : "Lopez",
+                      "email" : "d.lopez@garcia.com"
+                      },
+                    { 
+                      "id" : 10,
+                      "firstname" : "Michael",
+                      "lastname" : "Young",
+                      "email" : "g.johnson@perez.com"
+                      },
+                    { 
+                      "id" : 11,
+                      "firstname" : "Scott",
+                      "lastname" : "Jones",
+                      "email" : "o.lee@lee.com"
+                      },
+                    { 
+                      "id" : 12,
+                      "firstname" : "Jason",
+                      "lastname" : "Allen",
+                      "email" : "w.hall@thompson.com"
+                      },
+                    { 
+                      "id" : 13,
+                      "firstname" : "Paul",
+                      "lastname" : "Jones",
+                      "email" : "g.harris@smith.com"
+                      },
+                    { 
+                      "id" : 14,
+                      "firstname" : "Michael",
+                      "lastname" : "Thomas",
+                      "email" : "j.martinez@lee.com"
+                      },
+                    { 
+                      "id" : 15,
+                      "firstname" : "Steven",
+                      "lastname" : "Lopez",
+                      "email" : "j.anderson@johnson.com"
+                      },
+                    { 
+                      "id" : 16,
+                      "firstname" : "Robert",
+                      "lastname" : "Rodriguez",
+                      "email" : "t.martinez@hall.com"
+                      },
+                    { 
+                      "id" : 17,
+                      "firstname" : "Larry",
+                      "lastname" : "Lopez",
+                      "email" : "e.wilson@lewis.com"
+                      },
+                    { 
+                      "id" : 18,
+                      "firstname" : "Paul",
+                      "lastname" : "Wilson",
+                      "email" : "o.thompson@robinson.com"
+                      },
+                    { 
+                      "id" : 19,
+                      "firstname" : "Daniel",
+                      "lastname" : "Rodriguez",
+                      "email" : "a.robinson@harris.com"
+                      },
+                    { 
+                      "id" : 20,
+                      "firstname" : "Matthew",
+                      "lastname" : "Martin",
+                      "email" : "d.hall@hernandez.com"
+                      },
+                    { 
+                      "id" : 21,
+                      "firstname" : "Daniel",
+                      "lastname" : "Jackson",
+                      "email" : "n.hernandez@jones.com"
+                      },
+                    { 
+                      "id" : 22,
+                      "firstname" : "Robert",
+                      "lastname" : "Walker",
+                      "email" : "m.williams@garcia.com"
+                      },
+                    { 
+                      "id" : 23,
+                      "firstname" : "Scott",
+                      "lastname" : "Lewis",
+                      "email" : "i.rodriguez@hernandez.com"
+                      },
+                    { 
+                      "id" : 24,
+                      "firstname" : "Christopher",
+                      "lastname" : "Moore",
+                      "email" : "k.jones@smith.com"
+                      },
+                    { 
+                      "id" : 25,
+                      "firstname" : "William",
+                      "lastname" : "Walker",
+                      "email" : "t.lewis@smith.com"
+                      },
+                    { 
+                      "id" : 26,
+                      "firstname" : "John",
+                      "lastname" : "Lopez",
+                      "email" : "a.clark@rodriguez.com"
+                      },
+                    { 
+                      "id" : 27,
+                      "firstname" : "Donald",
+                      "lastname" : "Jackson",
+                      "email" : "b.moore@lewis.com"
+                      },
+                    { 
+                      "id" : 28,
+                      "firstname" : "Thomas",
+                      "lastname" : "Jackson",
+                      "email" : "f.lewis@anderson.com"
+                      },
+                    { 
+                      "id" : 29,
+                      "firstname" : "Steven",
+                      "lastname" : "Moore",
+                      "email" : "z.martin@jones.com"
+                      },
+                    { 
+                      "id" : 30,
+                      "firstname" : "Edward",
+                      "lastname" : "Hall",
+                      "email" : "i.hall@harris.com"
+                      },
+                    { 
+                      "id" : 31,
+                      "firstname" : "Jeffrey",
+                      "lastname" : "Jones",
+                      "email" : "w.jackson@lee.com"
+                      },
+                    { 
+                      "id" : 32,
+                      "firstname" : "Robert",
+                      "lastname" : "Robinson",
+                      "email" : "y.anderson@williams.com"
+                      },
+                    { 
+                      "id" : 33,
+                      "firstname" : "Joseph",
+                      "lastname" : "Moore",
+                      "email" : "x.lopez@rodriguez.com"
+                      },
+                    { 
+                      "id" : 34,
+                      "firstname" : "Charles",
+                      "lastname" : "Brown",
+                      "email" : "b.davis@wilson.com"
+                      },
+                    { 
+                      "id" : 35,
+                      "firstname" : "Kevin",
+                      "lastname" : "Hall",
+                      "email" : "f.smith@wilson.com"
+                      },
+                    { 
+                      "id" : 36,
+                      "firstname" : "Richard",
+                      "lastname" : "Perez",
+                      "email" : "u.lee@jackson.com"
+                      },
+                    { 
+                      "id" : 37,
+                      "firstname" : "Anthony",
+                      "lastname" : "Wilson",
+                      "email" : "i.garcia@young.com"
+                      },
+                    { 
+                      "id" : 38,
+                      "firstname" : "Richard",
+                      "lastname" : "Moore",
+                      "email" : "o.perez@hernandez.com"
+                      },
+                    { 
+                      "id" : 39,
+                      "firstname" : "Steven",
+                      "lastname" : "Thompson",
+                      "email" : "c.white@allen.com"
+                      },
+                    { 
+                      "id" : 40,
+                      "firstname" : "Daniel",
+                      "lastname" : "Jackson",
+                      "email" : "w.jones@davis.com"
+                      }
+                    ];
+            });
+        </script>
+    </body>
+</html>

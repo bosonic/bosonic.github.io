@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>b-sortable</title>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="lib/webcomponents.js"></script>
+        <script type="text/javascript" src="lib/bosonic-runtime.js"></script>
+
+        <link rel="import" href="lib/b-tree.html">
+
+        <link rel="stylesheet" href="dnd-styles.css">
+    </head>
+    <body>
+
+        <style>
+            .item {
+                display: inline-block;
+                padding: 10px;
+                background: white;
+                border: 1px solid #c3c3c3;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .drag-over > .item {
+                background: #3c3c3c;
+                color: white;
+            }
+            ul {
+                list-style-type: none;
+                list-style-position: inside;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            > ul {
+                margin: 0;
+                padding: 5px 0;
+            }
+            li {
+                margin: 5px 0;
+            }
+        </style>
+
+        <button id="toggle-prevent-drop">Prevent drop</button>
+
+        <b-tree>
+            <ul>
+                <li><div class="item">Item 1</div></li>
+                <li>
+                    <div class="item">Item 3</div>
+                    <ul>
+                        <li><div class="item">Item 3.1</div></li>
+                        <li><div class="item">Item 3.2</div></li>
+                    </ul>
+                </li>
+                <li><div class="item">Item 4</div></li>
+            </ul>
+        </b-tree>
+
+        <form id="add">
+            <input type="text" id="node-to-add" />
+        </form>
+
+        <div id="log"></div>
+
+        <script type="text/javascript">
+            var form = document.getElementById('add');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var value = document.getElementById('node-to-add').value;
+                var li = document.createElement('li');
+                li.setAttribute('draggable', true);
+                li.innerHTML = value;
+                document.querySelector('b-tree ul').appendChild(li);
+                document.getElementById('node-to-add').value = '';
+            }, false);
+            var togglePreventBtn = document.getElementById('toggle-prevent-drop');
+            togglePreventBtn.addEventListener('click', function(e) {
+                togglePreventDrop();
+            }, false);
+            var droppable = true;
+            function togglePreventDrop() {
+                droppable = !droppable;
+                togglePreventBtn.innerHTML = droppable ? 'prent drop' : 'allow drop';
+            }
+            function preventDrop(e) {
+                if (droppable) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                window.alert('Drop is not allowed');
+            }
+            var bTree = document.querySelector('b-tree ul');
+            bTree.addEventListener('drop', preventDrop, false);
+        </script>
+    </body>
+</html>

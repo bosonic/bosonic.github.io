@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>b-template</title>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="lib/webcomponents.js"></script>
+        <script type="text/javascript" src="lib/bosonic-runtime.js"></script>
+
+        <link rel="import" href="lib/b-template.html">
+
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <h1>Templating</h1>
+        <h2></h2>
+        <template is="b-template" id="template1">
+            <span class="{{css}}">Hello, {{name}}! Foo? {{obj.foo}}!</span>
+        </template>
+
+        <script type="text/javascript">
+            window.addEventListener('WebComponentsReady', function() {
+                var h2 = document.querySelector('h2'),
+                    tpl1 = document.getElementById('template1');
+                console.log(tpl1.renderInto({ 
+                    name: 'Bosonic',
+                    css: 'foo',
+                    obj: {
+                        foo: 'bar'
+                    }
+                }, h2));
+            }); 
+        </script>
+    </body>
+</html>
