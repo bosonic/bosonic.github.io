@@ -1,4 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
 <% include ../partials/_head %>
+<script type="text/javascript" src="/bosonic/webcomponents.js"></script>
+<script type="text/javascript" src="/bosonic/bosonic-runtime.js"></script>
+
+<link rel="import" href="/bosonic/default/<%- element.tag %>.html">
+
+<link rel="stylesheet" href="/bosonic/default/theme.css">
+</head>
 <body>
     <header class="home scrolled logo">
       <% include ../partials/_nav %>
@@ -8,28 +18,16 @@
 
         <section class="content">
             <nav>
-                <ul>
-                    <h6>Elements</h6>
-                    <% posts.filter(function(p) { return p.section == 'core' }).forEach(function(p) { %>
-                        <li><a href="/<%- p.url %>.html"><%- p.title %></a></li>
-                    <% }); %>
-                    <% posts.filter(function(p) { return p.section == 'dnd' && p.published !== false }).forEach(function(p) { %>
-                        <li class="wip"><a href="/<%- p.url %>.html"><%- p.title %></a></li>
-                    <% }); %>
-                    <% posts.filter(function(p) { return p.section == 'data' && p.published !== false }).forEach(function(p) { %>
-                        <li class="wip"><a href="/<%- p.url %>.html"><%- p.title %></a></li>
-                    <% }); %>
-                </ul>
+                <%- nav %>
             </nav>
             <section>
-                <a class="button demo-link" href="/demos/<%- post.element %>.html">Demo</a>
-                <%- post.content %>
+                <h1><%- element.title %></h1>
+                <%- element.content %>
             </section>
         </section>
 
     </main>
 
     <% include ../partials/_footer %>
-
 </body>
 </html>

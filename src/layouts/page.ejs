@@ -1,4 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
 <% include ../partials/_head %>
+</head>
 <body>
     <header class="home scrolled logo">
       <% include ../partials/_nav %>
@@ -6,15 +10,17 @@
 
     <main class="content">
 
-        <section>
-            <section class="full-content">
-                <%- post.content %>
+        <section class="content">
+            <nav>
+                <%- nav %>
+            </nav>
+            <section>
+                <%- page.content %>
             </section>
         </section>
 
     </main>
 
     <% include ../partials/_footer %>
-
 </body>
 </html>

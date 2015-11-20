@@ -1,11 +1,19 @@
 {
-  "name": "cabin-site",
+  "name": "bosonic-website",
   "version": "0.0.0",
+  "description": "Bosonic website",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bosonic/bosonic.github.io.git"
+  },
+  "author": "Raphaël Rougeron <goldoraf@gmail.com>",
+  "license": "CC_by_3.0",
+  "private": true,
   "devDependencies": {
     "compass-mixins": "^0.12.3",
+    "ejs": "^2.3.4",
     "grunt": "~0.4.1",
     "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-compass": "^1.0.1",
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-watch": "~0.4.3",
@@ -13,11 +21,14 @@
     "grunt-file-append": "0.0.2",
     "grunt-gh-pages": "~0.8.0",
     "grunt-open": "~0.2.0",
-    "grunt-pages": "~0.10.0",
-    "grunt-repos": "~0.1.2",
     "grunt-sass": "^1.0.0",
+    "highlight.js": "^8.9.1",
     "load-grunt-tasks": "~0.1.0",
-    "node-sass": "^3.3.3"
+    "marked": "^0.3.5",
+    "posthtml": "^0.7.0",
+    "posthtml-parser": "^0.1.1",
+    "posthtml-render": "^1.0.3",
+    "pygmentize-bundled": "^2.3.0"
   },
   "engines": {
     "node": ">=0.10.0"
