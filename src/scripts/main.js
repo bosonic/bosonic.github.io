@@ -8,7 +8,7 @@ document.body.onload = function () {
       nav.classList.remove('visible');
     } else
       nav.classList.add('visible');
-      content.style.paddingTop = header.offsetHeight + "px";
+      //content.style.paddingTop = header.offsetHeight + "px";
   }
 }
 

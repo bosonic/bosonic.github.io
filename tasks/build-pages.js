@@ -75,7 +75,7 @@ grunt.registerTask('build-pages', 'Build website pages', function() {
             posthtml()
                 .use(function(tree) { 
                     tree.match({ tag: 'div' }, function(node) {
-                        if (node.attrs.class === 'element-demo') {
+                        if (node.attrs && node.attrs.class === 'element-demo') {
                             demos[node.attrs.id] = require('posthtml-render')(node.content);
                         }
                     });
