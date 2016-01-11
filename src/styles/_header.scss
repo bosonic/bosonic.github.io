@@ -1,10 +1,13 @@
 header {
-	position: fixed;
 	width: 100%;
 	z-index: 2;
 
+	&.page-header {
+		height: 60px;
+	}
+
 	&.scrolled {
-		box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+		box-shadow: 0 3px 10px rgba(0,0,0,.2);
 		background-color: $veryLightColor;
 	}
 
