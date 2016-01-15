@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
     copy: {
       assets: { expand: true, cwd: 'src', dest: 'dist', src: ['images/**', 'scripts/**', 'styles/**.css', 'styles/fonts/**']},
-      bosonic: { expand: true, cwd: 'node_modules/bosonic-core-elements/dist', dest: 'dist/bosonic', src: '**/*' }
+      bosonic: { expand: true, cwd: 'node_modules/bosonic/dist', dest: 'dist/bosonic', src: '**/*' }
     },
 
     watch: {
