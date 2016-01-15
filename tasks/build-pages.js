@@ -35,10 +35,11 @@ grunt.registerTask('build-pages', 'Build website pages', function() {
     grunt.file.write('dist/index.html', render(homeTpl));
     grunt.log.writeln('Created home');
 
-    // build code doc
+    // build doc
     var docTpl = 'src/layouts/page.ejs',
         navTpl = 'src/layouts/nav.ejs',
         docFolder = 'node_modules/bosonic/doc',
+        demoFolder = 'node_modules/bosonic/demo',
         docConf = grunt.file.readJSON(docFolder + '/config.json');
 
     docConf.sections.forEach(function(section) {
@@ -48,58 +49,43 @@ grunt.registerTask('build-pages', 'Build website pages', function() {
             var mdFile = [docFolder, section.path, page.path+'.md'].join('/'),
                 htmlFile = ['dist', section.path, page.path+'.html'].join('/');
             
-            page.content = marked(grunt.file.read(mdFile));
+            // render Markdown
+            var htmlContent = marked(grunt.file.read(mdFile));
+
+            if (section.path !== 'elements') {
+                page.content = htmlContent;
+            } else {
+                // extract demos
+                var demos = {},
+                    demoFile = demoFolder + '/' + page.demos + '.html';
+
+                posthtml()
+                    .use(function(tree) { 
+                        tree.match({ tag: 'div' }, function(node) {
+                            if (node.attrs && node.attrs.class === 'element-demo') {
+                                demos[node.attrs.id] = require('posthtml-render')(node.content);
+                            }
+                        });
+                    }).process(grunt.file.read(demoFile), { sync: true });
+
+                // insert demos
+                page.content = posthtml()
+                    .use(function(tree) { 
+                        tree.match({ tag: 'div' }, function(node) {
+                            if (node.attrs.class === 'element-demo') {
+                                if (!demos[node.attrs.id]) {
+                                    grunt.warn("Demo snippet '"+node.attrs.id+"' not found for "+element.tag);
+                                } else {
+                                    node.content = require('posthtml-parser')(demos[node.attrs.id]);
+                                }
+                            }
+                            return node;
+                        });
+                    }).process(htmlContent, { sync: true })
+                    .html;
+            }
 
             grunt.file.write(htmlFile, render(docTpl, { page: page, nav: navHtml }));
-            grunt.log.writeln('Created '+htmlFile);
-        });
-    });
-
-    // build elements doc
-    var docTpl = 'src/layouts/element.ejs',
-        navTpl = 'src/layouts/elt_nav.ejs',
-        docFolder = 'node_modules/bosonic-core-elements/doc',
-        demoFolder = 'node_modules/bosonic-core-elements/demo',
-        docConf = grunt.file.readJSON(docFolder + '/config.json');
-
-    var navHtml = render(navTpl, docConf);
-
-    docConf.sections.forEach(function(section) {
-        section.elements.forEach(function(element) {
-            var mdFile = docFolder + '/' + element.tag + '.md',
-                demoFile = demoFolder + '/' + element.tag + '.html',
-                htmlFile = 'dist/elements/' + element.tag + '.html';
-
-            // extract demos
-            var demos = {};
-            posthtml()
-                .use(function(tree) { 
-                    tree.match({ tag: 'div' }, function(node) {
-                        if (node.attrs && node.attrs.class === 'element-demo') {
-                            demos[node.attrs.id] = require('posthtml-render')(node.content);
-                        }
-                    });
-                }).process(grunt.file.read(demoFile), { sync: true });
-
-            // render Markdown and insert demos
-            var htmlContent = marked(grunt.file.read(mdFile));
-            element.content = posthtml()
-                .use(function(tree) { 
-                    tree.match({ tag: 'div' }, function(node) {
-                        if (node.attrs.class === 'element-demo') {
-                            if (!demos[node.attrs.id]) {
-                                grunt.warn("Demo snippet '"+node.attrs.id+"' not found for "+element.tag);
-                            } else {
-                                node.content = require('posthtml-parser')(demos[node.attrs.id]);
-                            }
-                        }
-                        return node;
-                    });
-                }).process(htmlContent, { sync: true })
-                .html;
-
-            // render final HTML file
-            grunt.file.write(htmlFile, render(docTpl, { element: element, nav: navHtml }));
             grunt.log.writeln('Created '+htmlFile);
         });
     });

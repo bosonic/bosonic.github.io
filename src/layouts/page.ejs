@@ -2,6 +2,14 @@
 <html>
 <head>
 <% include ../partials/_head %>
+<% if (page.import) { %>
+<script type="text/javascript" src="/bosonic/webcomponents.js"></script>
+<script type="text/javascript" src="/bosonic/bosonic-runtime.js"></script>
+<% page.import.forEach(function(i) { %>
+<link rel="import" href="/bosonic/default/<%- i %>.html">
+<% }); %>
+<link rel="stylesheet" href="/bosonic/default/theme.css">
+<% } %>
 </head>
 <body>
     <header class="page-header scrolled logo">

@@ -1,9 +1,0 @@
-<ul>
-    <h6>Elements</h6>
-    <% sections.forEach(function(section) { %>
-        <li class="section"><%- section.lib %></li>
-        <% section.elements.forEach(function(elt) { %>
-            <li<% if (elt.wip) { %> class="wip"<% } %>><a href="/elements/<%- elt.tag %>.html"><%- elt.title %></a></li>
-        <% }); %>
-    <% }); %>
-</ul>
