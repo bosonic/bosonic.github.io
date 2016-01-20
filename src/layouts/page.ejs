@@ -9,6 +9,19 @@
 <link rel="import" href="/bosonic/default/<%- i %>.html">
 <% }); %>
 <link rel="stylesheet" href="/bosonic/default/theme.css">
+<style>
+    body:not(.resolved) section.content > section {
+        opacity: 0;
+        display: block;
+        overflow: hidden;
+        position: relative;
+    }
+</style>
+<script type="text/javascript">
+    window.addEventListener('WebComponentsReady', function() {
+        document.body.classList.add('resolved');
+    })
+</script>
 <% } %>
 </head>
 <body>
